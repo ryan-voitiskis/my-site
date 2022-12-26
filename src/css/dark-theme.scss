@@ -1,0 +1,33 @@
+@mixin dark-theme {
+	--page-bg: hsl(216, 15%, 16%); // ! also change in moon.svg
+	--theme-toggle-bg: hsl(216, 9%, 60%); // ! also change in moon.svg
+
+	/* elements */
+	--hr: hsl(0, 0%, 80%);
+	--border-colour: hsl(0, 0%, 43%);
+
+	/* text and icons */
+	--white-text: hsl(0, 0%, 100%);
+	--lighter-text: hsl(0, 0%, 70%);
+	--light-text: hsl(0, 0%, 80%);
+	--dark-text: hsl(0, 0%, 88%);
+	--darker-text: hsl(0, 0%, 97%);
+	--darkest-text: hsl(0, 0%, 100%);
+	--link-text: hsl(40, 90%, 65%);
+	--link-text-hover: hsl(40, 70%, 78%);
+	--abbr-title: hsla(0, 0%, 5%, 0.74);
+	--label-text: hsl(207, 13%, 77%);
+	--input-text: hsl(0, 0%, 100%);
+}
+
+:root.dark {
+	background-color: hsl(216, 15%, 16%);
+	@include dark-theme;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		background-color: hsl(216, 15%, 16%);
+		@include dark-theme;
+	}
+}
