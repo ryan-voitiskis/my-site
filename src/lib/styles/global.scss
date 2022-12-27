@@ -72,7 +72,6 @@ li {
 	margin-bottom: 8px;
 }
 
-pre,
 blockquote,
 dl,
 figure,
@@ -81,7 +80,11 @@ p,
 ul,
 ol,
 form {
-	margin-bottom: 25px;
+	margin-bottom: var(--standard-margin-bottom);
+}
+
+pre {
+	margin-bottom: var(--standard-margin-bottom) !important; // override imported prism styles
 }
 
 hr {
@@ -144,6 +147,20 @@ a,
 	}
 }
 
+// could have just added padding to the article or main element but this
+// allows other content within an article to be full width
+article > p,
+article > h1,
+article > h2,
+article > h3,
+article > h4 {
+	padding: 0 var(--horizontal-padding);
+}
+
+pre {
+	overflow: scroll;
+}
+
 ::-webkit-scrollbar {
 	width: 6px;
 	height: 11px;
@@ -168,4 +185,16 @@ a,
 }
 ::-webkit-scrollbar-track:active {
 	background: hsla(0, 0%, 50%, 0.28);
+}
+
+@media (max-width: 880px) {
+	pre[class*='language-'] {
+		border-radius: 0;
+	}
+}
+
+@media (max-width: 570px) {
+	pre {
+		width: 100vw;
+	}
 }

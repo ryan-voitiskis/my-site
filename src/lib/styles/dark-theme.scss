@@ -1,6 +1,7 @@
 @mixin dark-theme {
-	--page-bg: hsl(216, 15%, 16%); // ! also change in moon.svg
-	--theme-toggle-bg: hsl(216, 9%, 60%); // ! also change in moon.svg
+	--page-bg: hsl(216, 15%, 16%);
+	--odd-bg: hsl(216, 15%, 19%);
+	--theme-toggle-bg: hsl(216, 9%, 60%);
 
 	/* elements */
 	--hr: hsl(0, 0%, 80%);

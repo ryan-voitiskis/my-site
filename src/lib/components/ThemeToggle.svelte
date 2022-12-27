@@ -54,7 +54,7 @@
 		input:checked ~ .control {
 			&:after {
 				left: calc(var(--toggle-width) - var(--theme-toggle-size) - var(--gutter));
-				background-image: url('../svg/moon.svg');
+				background-image: url('$lib/svg/moon.svg');
 			}
 		}
 
@@ -70,8 +70,9 @@
 
 			&:after {
 				content: '';
-				background-image: url('../svg/sun.svg');
+				background-image: url('$lib/svg/sun.svg');
 				background-size: 24px 24px;
+				background-color: var(--page-bg);
 				position: absolute;
 				left: var(--gutter);
 				top: var(--gutter);

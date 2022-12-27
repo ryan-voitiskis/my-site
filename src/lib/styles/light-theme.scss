@@ -1,6 +1,7 @@
 @mixin light-theme {
-	--page-bg: hsl(40, 20%, 97%); // ! also change in sun.svg
-	--theme-toggle-bg: hsl(40, 12%, 60%); // ! also change in sun.svg
+	--page-bg: hsl(40, 22%, 96%);
+	--odd-bg: hsl(40, 20%, 91%);
+	--theme-toggle-bg: hsl(40, 12%, 60%);
 
 	/* elements */
 	--hr: hsl(0, 0%, 80%);
@@ -10,7 +11,7 @@
 	--white-text: hsl(0, 0%, 100%);
 	--lighter-text: hsl(0, 0%, 76%);
 	--light-text: hsl(0, 0%, 57%);
-	--dark-text: hsl(0, 0%, 41%);
+	--dark-text: hsl(0, 0%, 39%);
 	--darker-text: hsl(0, 0%, 28%);
 	--darkest-text: hsl(0, 0%, 20%);
 	--link-text: hsl(216, 76%, 39%);
@@ -22,13 +23,13 @@
 
 :root,
 :root.light {
-	background-color: hsl(40, 20%, 97%);
+	background-color: hsl(40, 22%, 96%);
 	@include light-theme;
 }
 
 @media not (prefers-color-scheme: light) {
 	:root.light {
-		background-color: hsl(40, 20%, 97%);
+		background-color: hsl(40, 22%, 96%);
 		@include light-theme;
 	}
 }
