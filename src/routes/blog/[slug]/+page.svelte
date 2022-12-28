@@ -19,4 +19,15 @@
 </article>
 
 <style lang="scss">
+	:global(article > pre) {
+		box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+		border-radius: 5px;
+	}
+
+	@media (min-width: 879px) {
+		:global(article > pre) {
+			margin-left: var(--horizontal-padding) !important;
+			margin-right: var(--horizontal-padding) !important;
+		}
+	} ;
 </style>

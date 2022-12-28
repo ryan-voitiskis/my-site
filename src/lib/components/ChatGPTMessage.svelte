@@ -34,8 +34,8 @@
 			background: linear-gradient(
 				to right,
 				transparent 0,
-				var(--odd-bg) 100px,
-				var(--odd-bg) calc(var(--page-width) + 100px),
+				var(--alt-bg) 100px,
+				var(--alt-bg) calc(var(--page-width) + 100px),
 				transparent calc(var(--page-width) + 200px)
 			);
 			.icon {
@@ -71,8 +71,8 @@
 				background: linear-gradient(
 					to right,
 					transparent 0,
-					var(--odd-bg) 50px,
-					var(--odd-bg) calc(var(--page-width) + 50px),
+					var(--alt-bg) 50px,
+					var(--alt-bg) calc(var(--page-width) + 50px),
 					transparent calc(var(--page-width) + 100px)
 				);
 			}
@@ -83,7 +83,7 @@
 		.wrapper {
 			margin: 0 calc(-1 * var(--horizontal-padding));
 			&.from-bot {
-				background: var(--odd-bg);
+				background: var(--alt-bg);
 			}
 			.message > .icon {
 				margin-left: var(--horizontal-padding);

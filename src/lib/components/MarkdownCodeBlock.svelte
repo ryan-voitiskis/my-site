@@ -11,10 +11,11 @@
 <pre class={langClassName}><code class={langClassName}>{@html html}</code></pre>
 
 <style lang="scss">
-	pre {
-		overflow: scroll;
+	div[class*='language-'],
+	pre[class*='language-'] {
+		background-color: var(--alt-alt-bg);
+		overflow-x: scroll;
 		padding-bottom: 10px;
-		border-radius: 0.3em;
 	}
 
 	@media (max-width: 570px) {

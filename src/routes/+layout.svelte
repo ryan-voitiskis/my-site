@@ -4,7 +4,7 @@
 	import '$lib/styles/light-theme.scss'
 	import '$lib/styles/dark-theme.scss'
 	import '$lib/styles/dimensions.scss'
-	import '$lib/styles/prism-one-dark.css'
+	import '$lib/styles/prism-custom.scss'
 	import '$lib/styles/global.scss'
 	import ThemeToggle from '$lib/components/ThemeToggle.svelte'
 

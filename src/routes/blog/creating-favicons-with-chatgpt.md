@@ -125,8 +125,6 @@ This is the result:
 {@html favicon2at300}
 </div>
 
-Conversation continued:
-
 <ChatGPTMessage fromHuman="{true}">
 Can you change the diameter of the inner circle to 60% of what it is now and half the distance between the middle and outer circles by increasing the inner circle?
 </ChatGPTMessage>
@@ -150,7 +148,7 @@ Unfortunately the result still did not resemble a vinyl record:
 {@html favicon3at300}
 </div>
 
-The model performed well in providing me an SVG tag with more attributes, plus the html tag required, but it failed to generate a convincing record svg.
+The model performed well this time in providing me with attributes on the SVG tag and the html tag required, however it failed to generate a convincing record svg.
 
 I modified the results to achieve the following and provided my modifications in the feedback:
 
@@ -162,7 +160,7 @@ I modified the results to achieve the following and provided my modifications in
 
 ## Summary
 
-Despite the failures of my second attempt, ChatGPT proved to be very helpful in this task. I look forward to making use of these models for creating SVGs in the future.
+Despite the failures of my second attempt, ChatGPT was very helpful in this task. I look forward to making use of these models for creating SVGs in the future.
 
 <style lang="scss">
 .md-image-wrapper {

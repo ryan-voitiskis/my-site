@@ -1,6 +1,7 @@
 @mixin dark-theme {
 	--page-bg: hsl(216, 15%, 16%);
-	--odd-bg: hsl(216, 15%, 19%);
+	--alt-bg: hsl(216, 15%, 19%);
+	--alt-alt-bg: hsl(216, 15%, 21%);
 	--theme-toggle-bg: hsl(216, 9%, 60%);
 
 	/* elements */

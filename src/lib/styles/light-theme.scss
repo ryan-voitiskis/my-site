@@ -1,6 +1,7 @@
 @mixin light-theme {
 	--page-bg: hsl(40, 22%, 96%);
-	--odd-bg: hsl(40, 20%, 91%);
+	--alt-bg: hsl(40, 20%, 91%);
+	--alt-alt-bg: hsl(40, 20%, 88%);
 	--theme-toggle-bg: hsl(40, 12%, 60%);
 
 	/* elements */
