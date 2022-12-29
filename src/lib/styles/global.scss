@@ -5,36 +5,48 @@
 	transition: background-color 160ms, background 160ms, color 160ms;
 }
 
+html {
+	font-size: 16px;
+}
+
 body {
 	margin: 0;
-	color: var(--dark-text);
-	font: 400 18px/1.6 Manrope, sans-serif;
+	color: var(--text);
+	font-family: var(--serif-font);
+	font-size: 1.4rem;
+	font-weight: 400;
+	line-height: 1.4;
 }
 
 h1,
 h2,
 h3,
 h4 {
-	font: 400 16px/1.6 Manrope, sans-serif;
+	line-height: 1.6;
+	color: var(--heading-text);
+	font-family: Urbanist, sans-serif;
+	font-weight: 400;
+	letter-spacing: 0.0625rem;
 	margin-top: 0;
 	margin-bottom: 14px;
 }
 
 h1 {
-	font-size: 30px;
+	font-size: 1.8rem;
 }
 
 h2 {
-	font-size: 24px;
+	font-size: 1.4rem;
+	font-weight: bold;
 }
 
 h3 {
-	font-size: 22px;
+	font-size: 1.3rem;
+	font-weight: bold;
 }
 
 h4 {
-	font-size: 17px;
-	font-weight: 500;
+	font-size: 1.3rem;
 }
 
 p {
@@ -46,8 +58,9 @@ a {
 }
 
 ul {
-	margin-left: 20px;
-	list-style: disc inside;
+	margin-left: 40px;
+	list-style-type: none;
+	list-style: var(--ul-marker);
 }
 
 ol {
@@ -58,6 +71,9 @@ ol,
 ul {
 	padding-left: 0;
 	margin-top: 0;
+	li::marker {
+		color: var(--marker-color);
+	}
 }
 
 ul ul,
@@ -141,6 +157,7 @@ input[type='button']::-moz-focus-inner {
 a,
 .link-text {
 	color: var(--link-text);
+	text-decoration: underline;
 	cursor: pointer;
 	&:hover {
 		color: var(--link-text-hover);
@@ -159,6 +176,8 @@ article > h4 {
 
 pre {
 	overflow: scroll;
+	font-family: var(--monospace-font);
+	font-size: 1rem;
 }
 
 ::-webkit-scrollbar {

@@ -1,6 +1,6 @@
 ---
 title: Creating favicons with ChatGPT
-date: '2022-12-26'
+published: '2022-12-26'
 ---
 
 <script>
@@ -91,11 +91,7 @@ This is the result:
 {@html favicon1}
 </div>
 
-The SVG was exactly what I wanted. I just added the XML Namespace tag:
-
-```markup
-xmlns="http://www.w3.org/2000/svg"
-```
+The SVG was exactly what I wanted. I just added the XML Namespace tag <code class="language-markup">xmlns="http://www.w3.org/2000/svg"</code>
 
 ---
 

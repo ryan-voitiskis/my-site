@@ -3,23 +3,25 @@
 	--alt-bg: hsl(40, 20%, 91%);
 	--alt-alt-bg: hsl(40, 20%, 88%);
 	--theme-toggle-bg: hsl(40, 12%, 60%);
-
-	/* elements */
+	--primary: hsl(337, 70%, 50%); //! also change in ul-marker-light.svg
+	--secondary: hsl(337, 80%, 90%);
 	--hr: hsl(0, 0%, 80%);
-	--border-colour: hsl(0, 0%, 43%);
 
-	/* text and icons */
-	--white-text: hsl(0, 0%, 100%);
-	--lighter-text: hsl(0, 0%, 76%);
-	--light-text: hsl(0, 0%, 57%);
-	--dark-text: hsl(0, 0%, 39%);
-	--darker-text: hsl(0, 0%, 28%);
-	--darkest-text: hsl(0, 0%, 20%);
-	--link-text: hsl(216, 76%, 39%);
-	--link-text-hover: hsl(216, 70%, 56%);
+	// typography
+	--text: hsl(0, 0%, 34%);
+	--text-strong: hsl(0, 0%, 18%);
+	--text-soft: hsl(0, 0%, 48%);
+	--heading-text: hsl(216, 20%, 33%);
+	--nav-text: hsl(0, 0%, 18%);
+	--nav-text-hover: var(--primary);
+	--nav-underline: var(--primary);
+	--link-text: hsl(0, 0%, 34%);
+	--link-text-hover: hsl(216, 52%, 42%);
 	--abbr-title: hsla(0, 0%, 5%, 0.74);
-	--label-text: hsl(207, 13%, 41%);
-	--input-text: hsl(207, 12%, 29%);
+	--side-note-bg: hsl(19, 52%, 93%);
+	--side-note-text: hsl(19, 12%, 44%);
+	--ul-marker: url('$lib/svg/ul-marker-light.svg');
+	--marker-color: var(--primary); //! also change in ul-marker-light.svg
 }
 
 :root,

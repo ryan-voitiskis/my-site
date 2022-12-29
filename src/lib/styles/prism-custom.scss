@@ -87,13 +87,6 @@
 	--prism-marker-opacity: 0.4;
 	--prism-marker-font-size: 0.8rem;
 
-	/* Font */
-	--prism-font-size: 1rem;
-	--prism-line-height: 1.5rem;
-	--prism-font-family: monospace;
-	--prism-inline-font-size: var(--prism-font-size);
-	--prism-block-font-size: var(--prism-font-size);
-
 	/* Sizing */
 	--prism-tab-size: 2;
 
@@ -110,14 +103,14 @@
 div[class*='language-'],
 pre[class*='language-'],
 code[class*='language-'] {
-	font-size: var(--prism-font-size);
-	font-family: var(--prism-font-family);
+	font-family: 'Source Code Pro', monospace;
+	font-size: 1rem;
 	direction: ltr;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
 	word-break: normal;
-	line-height: var(--prism-line-height);
+	line-height: 1.5rem;
 	-moz-tab-size: var(--prism-tab-size);
 	-o-tab-size: var(--prism-tab-size);
 	tab-size: var(--prism-tab-size);
@@ -131,7 +124,6 @@ code[class*='language-'] {
 /* Code blocks */
 div[class*='language-'],
 pre[class*='language-'] {
-	font-size: var(--prism-block-font-size);
 	padding: var(--prism-block-padding-y) var(--prism-block-padding-x);
 	margin: var(--prism-block-margin-y) var(--prism-block-margin-x);
 	border-radius: var(--prism-block-radius);
@@ -140,8 +132,9 @@ pre[class*='language-'] {
 }
 
 /* Inline code */
-:not(pre) > code[class*='language-'] {
-	font-size: var(--prism-inline-font-size);
+:not(pre) > code {
+	font-size: 0.8em;
+	display: inline;
 	padding: var(--prism-inline-padding-y) var(--prism-inline-padding-x);
 	border-radius: var(--prism-inline-radius);
 	background: var(--prism-inline-background);

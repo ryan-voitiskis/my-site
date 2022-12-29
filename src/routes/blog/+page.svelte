@@ -14,7 +14,8 @@
 					{post.metadata.title}
 				</a>
 			</h2>
-			Published {post.metadata.date}
+			Published {post.metadata.published}
+			{#if post.metadata.updated} Updated {post.metadata.updated} {/if}
 		</li>
 	{/each}
 </ul>

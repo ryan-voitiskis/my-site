@@ -57,7 +57,7 @@
 				justify-content: center;
 			}
 			.content {
-				color: var(--darkest-text);
+				color: var(--text-strong);
 				grid-column: 2 / 3;
 				overflow: hidden;
 			}

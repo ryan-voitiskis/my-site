@@ -1,9 +1,14 @@
 ---
-title: Test
-date: '2022-12-28'
+title: Prism theme test
+published: '2022-12-28'
+updated: '2022-12-30'
 ---
 
-this is a test
+This is a post designed to test the styling of prismjs code blocks and inline code.
+
+### Inline code
+
+Scelerisque fermentum dui faucibus in ornare. Sed id semper risus in hendrerit gravida rutrum quisque non. Ornare quam viverra orci sagittis eu volutpat odio `<meta http-equiv="X-UA-Compatible" content="IE=edge" />` facilisis mauris. Enim nunc faucibus a pellentesque sit. Vivamus at augue eget arcu dictum varius duis at consectetur. Enim ut sem viverra aliquet eget. Risus `class Square extends Polygon` feugiat in ante metus dictum at tempor commodo ullamcorper. Tincidunt nunc pulvinar sapien et ligula. In dictum non consectetur a erat nam at lectus. At varius vel pharetra vel turpis nunc. Eu turpis egestas pretium aenean pharetra magna. Cras semper auctor neque vitae tempus quam pellentesque nec nam.
 
 ### typescript
 
@@ -88,7 +93,6 @@ class Square extends Polygon {
 
 body {
 	margin: 0;
-	color: var(--dark-text);
 	font: 400 18px/1.6 Manrope, sans-serif;
 }
 
@@ -107,7 +111,7 @@ h1 {
 
 @media (max-width: 570px) {
 	pre {
-		width: calc(100vw - 2 * var(--horizontal-padding));
+		overflow-x: auto;
 	}
 }
 ```
