@@ -29,9 +29,7 @@
 	</nav>
 	<ThemeToggle />
 </header>
-<main>
-	<slot />
-</main>
+<slot />
 
 <style lang="scss">
 	:global(:root) {
@@ -41,7 +39,6 @@
 		--nav-font: 'Space Mono', monospace;
 	}
 
-	main,
 	header {
 		max-width: var(--page-width);
 		margin: 0 auto;
