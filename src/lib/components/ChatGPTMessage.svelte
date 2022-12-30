@@ -1,6 +1,6 @@
 <script lang="ts">
-	import ChatbotDisplayIcon from '$lib/components/ChatbotDisplayIcon.svelte'
-	import HumanDisplayIcon from '$lib/components/HumanDisplayIcon.svelte'
+	import ChatbotDisplayIcon from '$lib/components/icons/ChatbotDisplayIcon.svelte'
+	import HumanDisplayIcon from '$lib/components/icons/HumanDisplayIcon.svelte'
 
 	export let fromHuman: boolean
 </script>
