@@ -68,6 +68,7 @@
 		font-family: var(--nav-font);
 		gap: 20px;
 		line-height: 28px;
+		margin-bottom: 20px;
 		a {
 			color: var(--nav-text);
 			margin-right: 1rem;

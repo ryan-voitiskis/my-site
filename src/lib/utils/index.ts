@@ -1,4 +1,4 @@
-import type { Post } from '$lib/types/Post'
+import type Post from '$lib/types/Post'
 
 export const fetchMarkdownPosts = async () => {
 	const allPostFiles = import.meta.glob('/src/routes/blog/*.md')

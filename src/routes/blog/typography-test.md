@@ -1,7 +1,9 @@
 ---
 title: Typography test
+type: article
 published: '2022-12-29'
-updated: '2022-12-31'
+updated: '2022-12-30'
+short: A test article created for testing the typography styling of this site.
 ---
 
 This is a post designed for testing of typographic styling. This is a post designed for testing of typographic styling. This is a post designed for testing of typographic styling.

@@ -1,7 +1,9 @@
 ---
 title: Prism theme test
+type: article
 published: '2022-12-28'
 updated: '2022-12-30'
+short: An article created for the purpose of testing prism js styling.
 ---
 
 This is a post designed to test the styling of prismjs code blocks and inline code.

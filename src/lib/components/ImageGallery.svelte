@@ -1,14 +1,15 @@
 <script lang="ts">
 	import ArrowLeftCircle from '$lib/components/icons/ArrowLeftCircle.svelte'
 	import ArrowRightCircle from '$lib/components/icons/ArrowRightCircle.svelte'
+	import type Image from '$lib/types/Image'
 
-	export let images: string[]
+	export let images: Image[]
 	let modalIsOpen: boolean = false
-	let selectedImage: number
-	$: indexLabel = `${selectedImage + 1} / ${images.length}`
+	let selectedImageIndex: number = 0
+	$: indexLabel = `${selectedImageIndex + 1} / ${images.length}`
 
 	function openInModal(index: number) {
-		selectedImage = index
+		selectedImageIndex = index
 		modalIsOpen = true
 		document.addEventListener('keydown', (e) => {
 			if (e.key === 'Escape') {
@@ -22,40 +23,50 @@
 	}
 
 	function previousImage() {
-		if (selectedImage === 0) {
-			selectedImage = images.length - 1
+		if (selectedImageIndex === 0) {
+			selectedImageIndex = images.length - 1
 		} else {
-			selectedImage = selectedImage - 1
+			selectedImageIndex = selectedImageIndex - 1
 		}
 	}
 
 	function nextImage() {
-		if (selectedImage === images.length - 1) {
-			selectedImage = 0
+		if (selectedImageIndex === images.length - 1) {
+			selectedImageIndex = 0
 		} else {
-			selectedImage = selectedImage + 1
+			selectedImageIndex = selectedImageIndex + 1
+		}
+	}
+	let testIndex = 0
+
+	function handleKeydown(e: KeyboardEvent) {
+		console.log(e.key)
+		console.log('teeee')
+
+		if (e.key === 'Escape') {
+			closeModal()
 		}
 	}
 </script>
 
 <div class="image-gallery">
 	{#each images as image, index}
-		<div class="image">
-			<img src={image} alt="test" on:click={() => openInModal(index)} />
-		</div>
+		<button class="clean image" on:click={() => openInModal(index)}>
+			<img src={image.src} alt={image.alt} />
+		</button>
 	{/each}
 </div>
 
-<div class="modal-backdrop" class:open={modalIsOpen} on:click={closeModal}>
+<button class="clean modal-backdrop" class:open={modalIsOpen} on:click={closeModal}>
 	<div class="modal">
-		<img src={images[selectedImage]} />
+		<img src={images[selectedImageIndex].src} alt={images[selectedImageIndex].alt} />
 		<div class="controls">
 			<button on:click|stopPropagation={previousImage}><ArrowLeftCircle /></button>
 			<div class="index-label">{indexLabel}</div>
 			<button on:click|stopPropagation={nextImage}><ArrowRightCircle /></button>
 		</div>
 	</div>
-</div>
+</button>
 
 <style lang="scss">
 	.image-gallery {

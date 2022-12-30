@@ -1,6 +1,10 @@
 ---
 title: Creating favicons with ChatGPT
+type: article
 published: '2022-12-26'
+short: An attempt at creating web app SVG favicons quickly using ChatGPT.
+image: src/lib/post_images/cover_images/creating-favicons-with-chatgpt.jpg
+image_alt: AI generated image of a pink circuit board
 ---
 
 <script>

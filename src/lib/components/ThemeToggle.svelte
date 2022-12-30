@@ -44,7 +44,6 @@
 		user-select: none;
 
 		input {
-			cursor: pointer;
 			position: absolute;
 			height: 0;
 			opacity: 0;

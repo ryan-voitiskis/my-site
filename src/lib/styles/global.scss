@@ -166,12 +166,23 @@ a,
 
 // could have just added padding to the article or main element but this
 // allows other content within an article to be full width
-article > p,
-article > h1,
-article > h2,
-article > h3,
-article > h4 {
+article:not(.post-preview) > p,
+article:not(.post-preview) > h1,
+article:not(.post-preview) > h2,
+article:not(.post-preview) > h3,
+article:not(.post-preview) > h4 {
 	padding: 0 var(--horizontal-padding);
+}
+
+button {
+	cursor: pointer;
+
+	// allows turning any element into a button to deal with "a11y-click-events-have-key-events" error
+	&.clean {
+		background: none;
+		border: none;
+		padding: 0;
+	}
 }
 
 pre {
