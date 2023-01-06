@@ -23,6 +23,9 @@
 	--side-note-text: hsl(19, 12%, 44%);
 	--ul-marker: url('$lib/svg/ul-marker-light.svg');
 	--marker-color: var(--primary); //! also change in ul-marker-light.svg
+
+	--gallery-ui: hsl(40, 20%, 77%);
+	--gallery-ui-hover: hsl(40, 94%, 66%);
 }
 
 :root,

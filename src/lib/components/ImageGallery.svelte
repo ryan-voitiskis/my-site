@@ -1,9 +1,9 @@
 <script lang="ts">
 	import ArrowLeftCircle from '$lib/components/icons/ArrowLeftCircle.svelte'
 	import ArrowRightCircle from '$lib/components/icons/ArrowRightCircle.svelte'
-	import type Image from '$lib/types/Image'
+	import type ImageData from '$lib/types/ImageData'
 
-	export let images: Image[]
+	export let images: ImageData[]
 	let modalIsOpen: boolean = false
 	let selectedImageIndex: number = 0
 	$: indexLabel = `${selectedImageIndex + 1} / ${images.length}`
@@ -37,22 +37,12 @@
 			selectedImageIndex = selectedImageIndex + 1
 		}
 	}
-	let testIndex = 0
-
-	function handleKeydown(e: KeyboardEvent) {
-		console.log(e.key)
-		console.log('teeee')
-
-		if (e.key === 'Escape') {
-			closeModal()
-		}
-	}
 </script>
 
 <div class="image-gallery">
-	{#each images as image, index}
+	{#each images as { src, alt }, index}
 		<button class="clean image" on:click={() => openInModal(index)}>
-			<img src={image.src} alt={image.alt} />
+			<img {src} {alt} />
 		</button>
 	{/each}
 </div>
@@ -127,11 +117,11 @@
 				:global(svg) {
 					height: 60%;
 					width: 60%;
-					color: white;
+					color: var(--gallery-ui);
 				}
 				&:hover {
 					:global(svg) {
-						color: var(--primary);
+						color: var(--gallery-ui-hover);
 					}
 				}
 			}
@@ -140,7 +130,7 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				color: white;
+				color: var(--gallery-ui);
 				font-family: var(--sans-serif-font);
 			}
 		}

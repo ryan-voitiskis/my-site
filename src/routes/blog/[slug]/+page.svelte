@@ -12,7 +12,7 @@
 	const updated = data.updated ? new Date(data.updated).toLocaleDateString(undefined, options) : ''
 </script>
 
-<article>
+<article class={data.format}>
 	<h1>{data.title}</h1>
 
 	<table class="clean">
@@ -32,6 +32,12 @@
 </article>
 
 <style lang="scss">
+	article {
+		&.article {
+			padding-bottom: 300px;
+		}
+	}
+
 	table {
 		border-left: 4px solid var(--secondary) !important;
 		margin: 0 0 40px calc(var(--horizontal-padding) + 20px);

@@ -1,6 +1,6 @@
 ---
 title: Prism theme test
-type: article
+format: article
 published: '2022-12-28'
 updated: '2022-12-30'
 short: An article created for the purpose of testing prism js styling.

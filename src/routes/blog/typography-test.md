@@ -1,6 +1,6 @@
 ---
 title: Typography test
-type: article
+format: article
 published: '2022-12-29'
 updated: '2022-12-30'
 short: A test article created for testing the typography styling of this site.

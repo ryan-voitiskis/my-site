@@ -1,7 +1,7 @@
 export default interface Post {
 	metadata: {
 		title: string
-		type: string
+		format: string
 		published: string
 		updated?: string
 		short?: string

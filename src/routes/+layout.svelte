@@ -10,8 +10,12 @@
 	import '$lib/styles/global.scss'
 
 	// fonts - (css vars are set in style below)
-	import '@fontsource/urbanist' // sans-serif
-	import '@fontsource/crimson-pro' // serif
+	import '@fontsource/urbanist/400.css' // sans-serif
+	import '@fontsource/urbanist/500.css' // sans-serif
+	import '@fontsource/urbanist/600.css' // sans-serif
+	import '@fontsource/crimson-pro/400.css' // serif
+	import '@fontsource/crimson-pro/500.css' // serif
+	import '@fontsource/crimson-pro/600.css' // serif
 	import '@fontsource/source-code-pro' // monospace
 	import '@fontsource/space-mono' // nav
 

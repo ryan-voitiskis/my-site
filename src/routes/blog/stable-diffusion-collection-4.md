@@ -1,6 +1,6 @@
 ---
 title: Stable diffusion collection 4
-type: collection
+format: image_collection
 published: '2022-12-27'
 short: Fourth collection of my favourite results from using stable diffusion.
 image: src/lib/post_images/sd_4/4.jpg
@@ -9,7 +9,7 @@ image_alt: AI generated image
 
 <script lang="ts">
   import ImageGallery from '$lib/components/ImageGallery.svelte';
-	import type Image from '$lib/types/Image';
+	import type ImageData from '$lib/types/ImageData';
 
   import img1 from '$lib/post_images/sd_4/1.jpg';
   import img2 from '$lib/post_images/sd_4/2.jpg';
@@ -18,7 +18,7 @@ image_alt: AI generated image
   import img5 from '$lib/post_images/sd_4/5.jpg';
   import img6 from '$lib/post_images/sd_4/6.jpg';
 
-  const images: Image[] =
+  const images: ImageData[] =
     [
       {src: img1, alt: "AI generated image of an ancient alien."},
       {src: img2, alt: "AI generated image of an ancient alien."},

@@ -1,10 +1,6 @@
 ---
-title: Stable diffusion collection 1
-format: image_collection
-published: '2022-12-12'
-short: First collection of my favourite results from using stable diffusion.
-image: src/lib/post_images/sd_1/2.jpg
-image_alt: AI generated image
+title: Crate Guide
+url: https://crate.guide/
 ---
 
 <script lang="ts">
