@@ -54,7 +54,6 @@
 		column-gap: 30px;
 		margin-bottom: 40px;
 		height: 180px;
-		overflow: hidden;
 		.post-preview-image {
 			grid-column: 1 / 2;
 			img {
