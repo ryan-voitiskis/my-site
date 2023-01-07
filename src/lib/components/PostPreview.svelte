@@ -53,7 +53,6 @@
 		grid-template-columns: minmax(200px, 1fr) 2fr;
 		column-gap: 30px;
 		margin-bottom: 40px;
-		height: 180px;
 		.post-preview-image {
 			grid-column: 1 / 2;
 			img {
@@ -88,13 +87,6 @@
 			.short {
 				grid-area: 3 / 2 / 4 / 3;
 				font-size: 0.9em;
-				text-overflow: ellipsis;
-				overflow: hidden;
-				display: -webkit-box;
-				object-fit: cover;
-				-webkit-line-clamp: 3;
-				-webkit-box-orient: vertical;
-				overflow: hidden;
 			}
 		}
 		&:hover {
@@ -138,7 +130,7 @@
 		}
 	}
 
-	@media (max-width: 380px) {
+	@media (max-width: 460px) {
 		article.post-preview {
 			height: unset;
 			background-color: var(--alt-bg);
@@ -168,13 +160,6 @@
 				.short {
 					grid-area: 3 / 1 / 4 / 2;
 					font-size: 0.9em;
-					text-overflow: ellipsis;
-					overflow: hidden;
-					display: -webkit-box;
-					object-fit: cover;
-					-webkit-line-clamp: 3;
-					-webkit-box-orient: vertical;
-					overflow: hidden;
 				}
 			}
 		}

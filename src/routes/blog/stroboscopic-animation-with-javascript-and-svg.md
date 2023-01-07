@@ -2,6 +2,7 @@
 title: Stroboscopic animation with JavaScript and SVG
 format: article
 published: '2023-01-06'
+updated: '2023-01-08'
 short: Creating an animation mimicking the effect of a stroboscopic light on a turntable using requestAnimationFrame, SVG and Vue.
 image: src/lib/post_images/cover_images/stroboscopic-animation-with-javascript-and-svg.png
 image_alt: Abstract stroboscopic dots lit in red ontop of a record
@@ -240,7 +241,7 @@ A functional requirement of Crate Guide is to run on crap laptops, which it does
 
 ## Summary
 
-Using the refresh rate of monitors with performant `requestAnimationFrame()` animations to create stroboscopic effects is something I hadn't considered before. I was able to mimic the stroboscopic effects of a turntable with some accuracy. Still a lot could be done to improve the animation. I am interested to see whats possible with this technique outside of this use case.
+Using the refresh rate of monitors with performant `requestAnimationFrame()` animations to create stroboscopic effects is something I hadn't considered before. I was able to mimic the stroboscopic effects of a turntable with some accuracy. Still, a lot could be done to improve the animation. I am interested to see whats possible with this technique outside of this use case.
 
 The technique has some issues, the most pressing being the limited target refresh rate. I look forward to continuing work on this one day.
 

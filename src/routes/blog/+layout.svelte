@@ -19,18 +19,6 @@
 		border-radius: 5px;
 	}
 
-	:global(article .side-note) {
-		width: 100%;
-		font-style: italic;
-		font-size: 1.3rem;
-		background: var(--side-note-bg);
-		color: var(--side-note-text);
-		padding: 34px 44px;
-		margin: 40px 0;
-		margin-left: var(--horizontal-padding);
-		margin-right: var(--horizontal-padding);
-	}
-
 	:global(ol) {
 		margin-left: calc(var(--horizontal-padding) + 20px);
 	}

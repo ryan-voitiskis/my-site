@@ -2,24 +2,16 @@
 	import ArrowLeftCircle from '$lib/components/icons/ArrowLeftCircle.svelte'
 	import ArrowRightCircle from '$lib/components/icons/ArrowRightCircle.svelte'
 	import type ImageData from '$lib/types/ImageData'
+	import ModalContainer from './ModalContainer.svelte'
 
 	export let images: ImageData[]
-	let modalIsOpen: boolean = false
+	let modal: ModalContainer
 	let selectedImageIndex: number = 0
 	$: indexLabel = `${selectedImageIndex + 1} / ${images.length}`
 
 	function openInModal(index: number) {
 		selectedImageIndex = index
-		modalIsOpen = true
-		document.addEventListener('keydown', (e) => {
-			if (e.key === 'Escape') {
-				closeModal()
-			}
-		})
-	}
-
-	function closeModal() {
-		modalIsOpen = false
+		modal.openModal()
 	}
 
 	function previousImage() {
@@ -47,16 +39,14 @@
 	{/each}
 </div>
 
-<button class="clean modal-backdrop" class:open={modalIsOpen} on:click={closeModal}>
-	<div class="modal">
-		<img src={images[selectedImageIndex].src} alt={images[selectedImageIndex].alt} />
-		<div class="controls">
-			<button on:click|stopPropagation={previousImage}><ArrowLeftCircle /></button>
-			<div class="index-label">{indexLabel}</div>
-			<button on:click|stopPropagation={nextImage}><ArrowRightCircle /></button>
-		</div>
+<ModalContainer bind:this={modal}>
+	<img class="only" src={images[selectedImageIndex].src} alt={images[selectedImageIndex].alt} />
+	<div class="controls">
+		<button on:click|stopPropagation={previousImage}><ArrowLeftCircle /></button>
+		<div class="index-label">{indexLabel}</div>
+		<button on:click|stopPropagation={nextImage}><ArrowRightCircle /></button>
 	</div>
-</button>
+</ModalContainer>
 
 <style lang="scss">
 	.image-gallery {
@@ -74,64 +64,40 @@
 			}
 		}
 	}
-	.modal-backdrop {
-		position: fixed;
-		background: var(--modal-backdrop);
-		backdrop-filter: blur(10px) grayscale(0.8);
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
+
+	.index-label {
+		font-size: 1.4rem;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		z-index: 99;
-		display: none;
-		&.open {
-			display: flex;
-		}
+		color: var(--gallery-ui);
+		font-family: var(--sans-serif-font);
 	}
 
-	.modal {
-		border-radius: 10px;
-		z-index: 100;
-		display: flex;
-		flex-direction: column;
-		max-width: v-bind(width);
+	img.only {
 		max-width: 100%;
-		margin: 10px;
-		img {
-			max-width: 100%;
-		}
-		.controls {
+	}
+
+	.controls {
+		display: flex;
+		justify-content: space-around;
+		button {
+			height: 160px;
+			width: 160px;
+			background: transparent;
+			border: none;
 			display: flex;
-			justify-content: space-around;
-			button {
-				height: 160px;
-				width: 160px;
-				background: transparent;
-				border: none;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				:global(svg) {
-					height: 60%;
-					width: 60%;
-					color: var(--gallery-ui);
-				}
-				&:hover {
-					:global(svg) {
-						color: var(--gallery-ui-hover);
-					}
-				}
-			}
-			.index-label {
-				font-size: 1.4rem;
-				display: flex;
-				justify-content: center;
-				align-items: center;
+			justify-content: center;
+			align-items: center;
+			:global(svg) {
+				height: 60%;
+				width: 60%;
 				color: var(--gallery-ui);
-				font-family: var(--sans-serif-font);
+			}
+			&:hover {
+				:global(svg) {
+					color: var(--gallery-ui-hover);
+				}
 			}
 		}
 	}
