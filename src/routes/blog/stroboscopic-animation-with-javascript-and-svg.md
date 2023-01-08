@@ -4,13 +4,13 @@ format: article
 published: '2023-01-06'
 updated: '2023-01-08'
 short: Creating an animation mimicking the effect of a stroboscopic light on a turntable using requestAnimationFrame, SVG and Vue.
-image: src/lib/post_images/cover_images/stroboscopic-animation-with-javascript-and-svg.png
+image: cover_images/stroboscopic-animation-with-javascript-and-svg.png
 image_alt: Abstract stroboscopic dots lit in red ontop of a record
 ---
 
 <script lang="ts">
-  import misaligned from '$lib/post_images/stroboscopic-animation/dash-array-misaligned.png';
-  import aligned from '$lib/post_images/stroboscopic-animation/dash-array-aligned.png';
+  import misaligned from '$lib/post_images/stroboscopic_animation/dash-array-misaligned.png';
+  import aligned from '$lib/post_images/stroboscopic_animation/dash-array-aligned.png';
 </script>
 
 ## Introduction

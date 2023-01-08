@@ -3,7 +3,7 @@ title: Stable diffusion collection 1
 format: image_collection
 published: '2022-12-12'
 short: First collection of my favourite results from using stable diffusion.
-image: src/lib/post_images/sd_1/4.jpg
+image: cover_images/sd1.jpg
 image_alt: AI generated image
 ---
 
