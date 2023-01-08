@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Prism from 'prismjs'
 	import TickCircleIcon from '$lib/components/icons/TickCircleIcon.svelte'
 
 	const chainedTernaryExample = `const message = !isError
@@ -23,21 +24,37 @@ if (!isError) {
     message = 'An error has occurred'
   }
 }`
+
+	const chainedHighlighted = Prism.highlight(
+		chainedTernaryExample,
+		Prism.languages.javascript,
+		'javascript'
+	)
+
+	const nestedHighlighted = Prism.highlight(
+		nestedTeraryExample,
+		Prism.languages.javascript,
+		'javascript'
+	)
+
+	const ifHighlighted = Prism.highlight(ifExample, Prism.languages.javascript, 'javascript')
 </script>
 
 <div class="modal-box standard-text">
 	<h2>Chained Ternaries</h2>
 	<span>Chained ternary</span>
 	<div class="correct">
-		<pre class="language-javascript"><code class="language-javascript">{chainedTernaryExample}</code
+		<pre class="language-javascript"><code class="language-javascript"
+				>{@html chainedHighlighted}</code
 			></pre>
 		<TickCircleIcon />
 	</div>
 	<span>Nested ternary</span>
-	<pre class="language-javascript"><code class="language-javascript">{nestedTeraryExample}</code
+	<pre class="language-javascript"><code class="language-javascript">{@html nestedHighlighted}</code
 		></pre>
 	<span>If</span>
-	<pre class="language-javascript"><code class="language-javascript">{ifExample}</code></pre>
+	<pre class="language-javascript"><code class="language-javascript">{@html ifHighlighted}</code
+		></pre>
 </div>
 
 <style lang="scss">
