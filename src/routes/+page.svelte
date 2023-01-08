@@ -7,8 +7,10 @@
 <main>
 	<h1>Ryan Voitiskis</h1>
 
-	<a href="mailto:ryanvoitiskis@pm.me">ryanvoitiskis@pm.me</a> |
-	<a href="https://github.com/ryan-voitiskis">GitHub</a>
+	<div class="links">
+		<a href="mailto:ryanvoitiskis@pm.me">ryanvoitiskis@pm.me</a> |
+		<a href="https://github.com/ryan-voitiskis">GitHub</a>
+	</div>
 
 	<p>
 		G'day, I'm Ryan. I build web apps with JavaScript. I enjoy working with Vue and recently
@@ -23,9 +25,9 @@
 	<h2>I'm looking for work</h2>
 
 	<p>
-		I'm hoping to find a JavaScript/TypeScript developer role that allows me to pursue my passion.
-		Ideally the role involves some face to face time with team members, with also a significant
-		amount of uninterrupted, focused development time, either in an office or at home.
+		I'm hoping to find a JavaScript/TypeScript developer role that allows me to pursue my passion
+		full-time. Ideally the role involves some face to face time with team members, with also a
+		significant amount of uninterrupted, focused development time, either in an office or at home.
 	</p>
 
 	<p>
@@ -69,18 +71,17 @@
 
 	<ul>
 		<li>
-			I prefer TypeScript over JavaScript but am happy to use either. I'm not a TypeScript expert,
-			but I find types to be very helpful and the TS tooling makes my life easier.
+			I prefer TypeScript over JavaScript but I'm happy to use either. I'm not a TypeScript expert,
+			but I find types to be very helpful.
 		</li>
 		<li>
 			I aim to use descriptive, and sometimes long variable and function names. Because of this, I
 			rely less on comments to map out my code.
 		</li>
 		<li>
-			I'm very cautious about adding dependencies, preferring to code out custom solutions where
-			logical to do so.
+			I'm cautious about adding dependencies, preferring to code out custom solutions where logical
+			to do so.
 		</li>
-		<li>I like mutable state.</li>
 		<li>
 			I very much like <button class="inline-subtle" on:click={modal.openModal}
 				>chained ternaries (not nested)</button
@@ -103,7 +104,7 @@
 
 	<ul>
 		<li>Build seamless and elegant UIs.</li>
-		<li>Learn as many techniques and technologies and possible.</li>
+		<li>Learn as many techniques and technologies as possible.</li>
 		<li>Solve complex engineering problems for the pleasure of it.</li>
 		<li>Apply machine learning solutions.</li>
 		<li>Learn rust properly and atleast dabble in systems programming again.</li>
@@ -114,7 +115,9 @@
 	</ul>
 
 	<p>If you have a position available that I'd be suited to, I'd love to hear from you.</p>
-	<a href="mailto:ryanvoitiskis@pm.me">ryanvoitiskis@pm.me</a>
+	<div class="email">
+		<a href="mailto:ryanvoitiskis@pm.me">ryanvoitiskis@pm.me</a>
+	</div>
 </main>
 
 <ModalContainer bind:this={modal}>
@@ -128,6 +131,12 @@
 		margin: 0 auto;
 	}
 
+	.links {
+		margin: 20px 30px;
+		font-family: var(--monospace-font);
+		font-size: 1.1rem;
+	}
+
 	button.inline-subtle {
 		display: inline;
 		color: var(--text);
@@ -139,6 +148,16 @@
 		&:hover {
 			color: var(--text-strong);
 			background-color: var(--alt-alt-bg);
+		}
+	}
+
+	.email {
+		margin: 0 20px;
+	}
+
+	@media (max-width: 740px) {
+		.email {
+			text-align: center;
 		}
 	}
 </style>

@@ -4,12 +4,13 @@
 	import type ImageData from '$lib/types/ImageData'
 	import ModalContainer from './ModalContainer.svelte'
 
+	export let withPreviews: boolean = true
 	export let images: ImageData[]
 	let modal: ModalContainer
 	let selectedImageIndex: number = 0
 	$: indexLabel = `${selectedImageIndex + 1} / ${images.length}`
 
-	function openInModal(index: number) {
+	export function openInModal(index: number) {
 		selectedImageIndex = index
 		modal.openModal()
 	}
@@ -31,16 +32,18 @@
 	}
 </script>
 
-<div class="image-gallery">
-	{#each images as { src, alt }, index}
-		<button class="clean image" on:click={() => openInModal(index)}>
-			<img {src} {alt} />
-		</button>
-	{/each}
-</div>
+{#if withPreviews}
+	<div class="image-gallery">
+		{#each images as { src, alt }, index}
+			<button class="clean image" on:click={() => openInModal(index)}>
+				<img {src} {alt} />
+			</button>
+		{/each}
+	</div>
+{/if}
 
 <ModalContainer bind:this={modal}>
-	<img class="only" src={images[selectedImageIndex].src} alt={images[selectedImageIndex].alt} />
+	<img class="in-modal" src={images[selectedImageIndex].src} alt={images[selectedImageIndex].alt} />
 	<div class="controls">
 		<button on:click|stopPropagation={previousImage}><ArrowLeftCircle /></button>
 		<div class="index-label">{indexLabel}</div>
@@ -65,22 +68,14 @@
 		}
 	}
 
-	.index-label {
-		font-size: 1.4rem;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		color: var(--gallery-ui);
-		font-family: var(--sans-serif-font);
-	}
-
-	img.only {
+	img.in-modal {
 		max-width: 100%;
+		max-height: 80vh;
 	}
 
 	.controls {
 		display: flex;
-		justify-content: space-around;
+		justify-content: center;
 		button {
 			height: 160px;
 			width: 160px;
@@ -99,6 +94,15 @@
 					color: var(--gallery-ui-hover);
 				}
 			}
+		}
+		.index-label {
+			width: 80px;
+			font-size: 1.4rem;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: var(--gallery-ui);
+			font-family: var(--sans-serif-font);
 		}
 	}
 </style>

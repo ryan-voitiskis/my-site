@@ -10,7 +10,7 @@
 	padding for layout. padding inside [slug] articles is done per element.
 -->
 <main>
-	<h1>blog</h1>
+	<h1>Blog</h1>
 	{#each data.posts as post}
 		<PostPreview {post} path={post.path} />
 	{/each}

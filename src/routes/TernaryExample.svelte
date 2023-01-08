@@ -5,22 +5,22 @@
   ? 'Success'
   : errorCode === 404
   ? 'Page not found'
-  : 'An error has occurred';`
+  : 'An error has occurred'`
 
 	const nestedTeraryExample = `const message = isError
   ? errorCode === 404
     ? 'Page not found'
     : 'An error has occurred'
-  : 'Success';`
+  : 'Success'`
 
-	const ifExample = `let message;
+	const ifExample = `let message
 if (!isError) {
-  message = 'Success';
+  message = 'Success'
 } else {
   if (errorCode === 404) {
-    message = 'Page not found';
+    message = 'Page not found'
   } else {
-    message = 'An error has occurred';
+    message = 'An error has occurred'
   }
 }`
 </script>

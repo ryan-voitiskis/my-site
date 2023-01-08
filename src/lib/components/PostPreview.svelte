@@ -51,6 +51,7 @@
 	article.post-preview {
 		display: grid;
 		grid-template-columns: minmax(200px, 1fr) 2fr;
+		grid-template-rows: 1fr;
 		column-gap: 30px;
 		margin-bottom: 40px;
 		.post-preview-image {
@@ -60,6 +61,8 @@
 				height: 100%;
 				max-height: 180px;
 				object-fit: cover;
+				margin: 0;
+				float: left;
 			}
 		}
 		.post-preview-content {

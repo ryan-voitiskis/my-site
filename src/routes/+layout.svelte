@@ -87,4 +87,16 @@
 			}
 		}
 	}
+
+	@media (max-width: 400px) {
+		nav {
+			gap: 10px;
+		}
+	}
+
+	@media (max-width: 360px) {
+		nav {
+			gap: 0;
+		}
+	}
 </style>

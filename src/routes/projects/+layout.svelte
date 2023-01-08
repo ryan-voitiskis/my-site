@@ -10,8 +10,7 @@
 
 <style lang="scss">
 	main {
-		padding: 0 10px;
-		max-width: var(--page-width);
+		max-width: 1400px;
 		margin: 0 auto;
 	}
 </style>
