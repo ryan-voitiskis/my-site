@@ -12,9 +12,9 @@
 		day: 'numeric'
 	}
 
-	const image = post.metadata.image ? post.metadata.image : ''
-	const imageAlt = post.metadata.image_alt ? post.metadata.image_alt : post.metadata.title
-	const published = new Date(post.metadata.published).toLocaleDateString(undefined, options)
+	$: image = post.metadata.image ? post.metadata.image : ''
+	$: imageAlt = post.metadata.image_alt ? post.metadata.image_alt : post.metadata.title
+	$: published = new Date(post.metadata.published).toLocaleDateString(undefined, options)
 </script>
 
 <a href={path} class="title">

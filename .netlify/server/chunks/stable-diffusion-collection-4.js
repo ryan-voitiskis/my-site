@@ -11,7 +11,7 @@ const metadata = {
   "format": "image_collection",
   "published": "2022-12-27",
   "short": "Fourth collection of my favourite results from using stable diffusion.",
-  "image": "src/lib/post_images/sd_4/4.jpg",
+  "image": "cover_images/sd4.jpg",
   "image_alt": "AI generated image"
 };
 const Stable_diffusion_collection_4 = create_ssr_component(($$result, $$props, $$bindings, slots) => {

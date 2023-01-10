@@ -38,8 +38,8 @@
 	</p>
 
 	<p>
-		I'm really hoping to working in a team of experienced developers I can learn from. I feel that
-		is my most crucial requirement now as I haven't had much opportunity to do so.
+		I'm really hoping to working in a team with some experienced developers I can learn from, as I
+		haven't had much opportunity to do so.
 	</p>
 
 	<h2>Technologies</h2>

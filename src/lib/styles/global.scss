@@ -180,6 +180,8 @@ article:not(.post-preview) > h4 {
 
 button {
 	cursor: pointer;
+	font-family: var(--sans-serif-font);
+	font-size: 1rem;
 
 	// allows turning any element into a button to deal with "a11y-click-events-have-key-events" error
 	&.clean {

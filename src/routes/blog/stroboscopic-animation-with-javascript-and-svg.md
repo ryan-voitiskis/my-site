@@ -5,7 +5,7 @@ published: '2023-01-06'
 updated: '2023-01-08'
 short: Creating an animation mimicking the effect of a stroboscopic light on a turntable using requestAnimationFrame, SVG and Vue.
 image: cover_images/stroboscopic-animation-with-javascript-and-svg.png
-image_alt: Abstract stroboscopic dots lit in red ontop of a record
+image_alt: Abstract stroboscopic dots lit in red on top of a record
 ---
 
 <script lang="ts">
@@ -17,9 +17,9 @@ image_alt: Abstract stroboscopic dots lit in red ontop of a record
 
 One of my intentions in the development of [Crate Guide](https://crate.guide/) was to build an interface that resembled closely that of a [Technics SL-1200 turntable](https://www.technics.com/global/home/sl1200/features.html), the most common turntable used by DJs. The idea was that the interface would be intuitive, requiring less learning and cognitive overhead. The web app is intended to be used on a laptop or desktop and only occasionally glanced at and interacted with during a performance.
 
-Most of the interface proved fairly simple to represent in the browser, with the exception of one important feature, the subject of this post, the stroboscopic dots that circumscribe the platter. They provide an accurate visual reference for the pitch adjustment at a glace. The dots are lit by a red strobe light flashing at 50Hz (50 times per second). When the platter spins at +6.4%, +3.3%, 0% and -3.3% one of the four dots will be stationary.
+Most of the interface proved fairly simple to represent in the browser, with the exception of one important feature, the subject of this post, the stroboscopic dots that circumscribe the platter. They provide an accurate visual reference for the pitch adjustment at a glace. The dots are lit by a red strobe light flashing at 50Hz. When the platter spins at +6.4%, +3.3%, 0% and -3.3% one of the four dots will be stationary.
 
-I had several ideas on how to implement this, most of these involved having separate rows of dots rotating at a calculated rate according to the pitch adjustment. It wasn't until I created the dots in the SVG and started playing with a simple spin animation that I realised it was possible to implement a stroboscopic effect with a 60Hz display. This method does have the downside of not working on non 60Hz displays, but is far more interesting, so I pursued it. In the future I'll probably provide a fallback for other refresh rates.
+I had several ideas on how to implement this, most of these involved having separate rows of dots rotating at a calculated rate according to the pitch adjustment. It wasn't until I created the dots in the SVG and started playing with a simple spin animation that I realised it was possible to implement a stroboscopic effect with a 60Hz/120Hz display. This method does have the downside of requiring separate implementations to work on displays with refresh rates other than those multiplied by 60Hz, but is far more interesting, so I pursued it. In the future I'll probably provide implementations for other refresh rates, but I currently do not have the facilities to test them.
 
 A demo of this solution can be viewed in the app, without an account [here](https://crate.guide/).
 The complete Single File Component can be viewed [here](https://github.com/ryan-voitiskis/crate-guide/blob/main/client/src/components/session/deck/RecordPlatter.vue).
@@ -204,7 +204,7 @@ watch(
 
 ## How to achieve the stroboscopic effect
 
-As mentioned earlier, the stroboscopic effect is achieved by the appropriate distancing between the `stroke-dasharray` dashes. In this implentation I am targeting 60Hz displays. The turntable strobe flashes at 50Hz. It would have taken too long to count all the dots on the turntable platter, then count the dots in the dash array for a given spacing and then perform the calculations required to work this problem out mathematically. So I opted for the trial and error method, which didn't take long.
+As mentioned earlier, the stroboscopic effect is relies on the correct distancing between the `stroke-dasharray` dashes. In this implentation I am targeting 60Hz/120Hz displays. The turntable strobe flashes at 50Hz. It would have taken too long to count all the dots on the turntable platter, then count the dots in the dash array for a given spacing and then perform the calculations required to work this problem out mathematically. So I opted for the trial and error method, which didn't take long.
 
 I set the dash array circles to an approximate radius visually, then began approximating the distance between the dashes so that they were similar to that of the turntable. From there I could set the pitch fader control to +6.4%, +3.3%, 0% and -3.3% and adjust the dash array spacing for each so that the appropriate dash array appeared static.
 
@@ -225,7 +225,7 @@ Possible solutions to overcome the stroboscopic functionality breaking on 45 RPM
 - Changing the distance between the dashes when the setting is activated.
 - Running a separate animation for the platter group that is the speed of the animation at 33 RPM, whilst keeping the 45 RPM speed animation active on the record part of the SVG.
 
-Another limitation is the single refresh rate target of 60Hz. A possible solution for this could be to detect common refresh rates and apply adjustments to the animation of the platter ring for non 60Hz displays. I haven't been able to find a built-in way to detect refresh rates in the browser, but [this answer on stack overflow](https://stackoverflow.com/a/6131242/7259172) provides some direction.
+Another limitation is the refresh rate target of 60Hz/120Hz. A possible solution for this could be to detect common refresh rates and apply adjustments to the animation of the platter ring accordingly. I haven't been able to find a built-in way to detect refresh rates in the browser, but [this answer on stack overflow](https://stackoverflow.com/a/6131242/7259172) provides some direction.
 
 ## Performance issues
 

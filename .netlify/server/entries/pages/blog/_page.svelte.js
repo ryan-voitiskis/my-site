@@ -42,12 +42,27 @@ const css = {
 };
 const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { data } = $$props;
+  let posts = data.posts;
+  function sortBy(type) {
+    posts = data.posts.sort((a, b) => {
+      if (a.metadata.format === type && b.metadata.format !== type)
+        return -1;
+      if (a.metadata.format !== type && b.metadata.format === type)
+        return 1;
+      return 0;
+    });
+  }
   if ($$props.data === void 0 && $$bindings.data && data !== void 0)
     $$bindings.data(data);
+  if ($$props.sortBy === void 0 && $$bindings.sortBy && sortBy !== void 0)
+    $$bindings.sortBy(sortBy);
   $$result.css.add(css);
   return `
 <main class="${"svelte-1x762jx"}"><h1>Blog</h1>
-	${each(data.posts, (post) => {
+	<div class="${"sorting-controls"}"><button>Articles first</button>
+		<button>Collections first</button>
+		<button>test</button></div>
+	${each(posts, (post) => {
     return `${validate_component(PostPreview, "PostPreview").$$render($$result, { post, path: post.path }, {}, {})}`;
   })}
 </main>`;

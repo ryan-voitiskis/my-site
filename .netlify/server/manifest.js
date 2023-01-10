@@ -1,10 +1,10 @@
 export const manifest = {
 	appDir: "_app",
 	appPath: "_app",
-	assets: new Set(["favicon.png"]),
-	mimeTypes: {".png":"image/png"},
+	assets: new Set(["cover_images/creating-favicons-with-chatgpt.jpg","cover_images/sd1.jpg","cover_images/sd2.jpg","cover_images/sd3.jpg","cover_images/sd4.jpg","cover_images/stroboscopic-animation-with-javascript-and-svg.png","favicon.svg"]),
+	mimeTypes: {".jpg":"image/jpeg",".png":"image/png",".svg":"image/svg+xml"},
 	_: {
-		entry: {"file":"_app/immutable/start-4bd56ac7.js","imports":["_app/immutable/start-4bd56ac7.js","_app/immutable/chunks/index-a70670bb.js","_app/immutable/chunks/singletons-bd9cc55a.js","_app/immutable/chunks/preload-helper-41c905a7.js"],"stylesheets":[],"fonts":[]},
+		entry: {"file":"_app/immutable/start-de97d68f.js","imports":["_app/immutable/start-de97d68f.js","_app/immutable/chunks/index-1ac052ac.js","_app/immutable/chunks/singletons-e0949029.js","_app/immutable/chunks/preload-helper-41c905a7.js"],"stylesheets":[],"fonts":[]},
 		nodes: [
 			() => import('./nodes/0.js'),
 			() => import('./nodes/1.js'),

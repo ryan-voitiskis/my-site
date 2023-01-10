@@ -7,13 +7,13 @@ const metadata = {
   "published": "2023-01-06",
   "updated": "2023-01-08",
   "short": "Creating an animation mimicking the effect of a stroboscopic light on a turntable using requestAnimationFrame, SVG and Vue.",
-  "image": "src/lib/post_images/cover_images/stroboscopic-animation-with-javascript-and-svg.png",
-  "image_alt": "Abstract stroboscopic dots lit in red ontop of a record"
+  "image": "cover_images/stroboscopic-animation-with-javascript-and-svg.png",
+  "image_alt": "Abstract stroboscopic dots lit in red on top of a record"
 };
 const Stroboscopic_animation_with_javascript_and_svg = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   return `<h2>Introduction</h2>
 <p>One of my intentions in the development of <a href="${"https://crate.guide/"}" rel="${"nofollow"}">Crate Guide</a> was to build an interface that resembled closely that of a <a href="${"https://www.technics.com/global/home/sl1200/features.html"}" rel="${"nofollow"}">Technics SL-1200 turntable</a>, the most common turntable used by DJs. The idea was that the interface would be intuitive, requiring less learning and cognitive overhead. The web app is intended to be used on a laptop or desktop and only occasionally glanced at and interacted with during a performance.</p>
-<p>Most of the interface proved fairly simple to represent in the browser, with the exception of one important feature, the subject of this post, the stroboscopic dots that circumscribe the platter. They provide an accurate visual reference for the pitch adjustment at a glace. The dots are lit by a red strobe light flashing at 50Hz (50 times per second). When the platter spins at +6.4%, +3.3%, 0% and -3.3% one of the four dots will be stationary.</p>
+<p>Most of the interface proved fairly simple to represent in the browser, with the exception of one important feature, the subject of this post, the stroboscopic dots that circumscribe the platter. They provide an accurate visual reference for the pitch adjustment at a glace. The dots are lit by a red strobe light flashing at 50Hz. When the platter spins at +6.4%, +3.3%, 0% and -3.3% one of the four dots will be stationary.</p>
 <p>I had several ideas on how to implement this, most of these involved having separate rows of dots rotating at a calculated rate according to the pitch adjustment. It wasn’t until I created the dots in the SVG and started playing with a simple spin animation that I realised it was possible to implement a stroboscopic effect with a 60Hz display. This method does have the downside of not working on non 60Hz displays, but is far more interesting, so I pursued it. In the future I’ll probably provide a fallback for other refresh rates.</p>
 <p>A demo of this solution can be viewed in the app, without an account <a href="${"https://crate.guide/"}" rel="${"nofollow"}">here</a>.
 The complete Single File Component can be viewed <a href="${"https://github.com/ryan-voitiskis/crate-guide/blob/main/client/src/components/session/deck/RecordPlatter.vue"}" rel="${"nofollow"}">here</a>.</p>

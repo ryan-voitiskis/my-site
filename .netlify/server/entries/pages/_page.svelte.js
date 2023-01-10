@@ -83,8 +83,8 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 		challenging projects that create user value.
 	</p>
 
-	<p>I&#39;m really hoping to working in a team of experienced developers I can learn from. I feel that
-		is my most crucial requirement now as I haven&#39;t had much opportunity to do so.
+	<p>I&#39;m really hoping to working in a team with some experienced developers I can learn from, as I
+		haven&#39;t had much opportunity to do so.
 	</p>
 
 	<h2>Technologies</h2>
