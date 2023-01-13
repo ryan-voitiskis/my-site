@@ -9,6 +9,7 @@
 			}
 		})
 	}
+
 	function closeModal() {
 		modalIsOpen = false
 	}

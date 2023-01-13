@@ -11,21 +11,21 @@ image_alt: AI generated image
   import ImageGallery from '$lib/components/ImageGallery.svelte';
 	import type ImageData from '$lib/types/ImageData';
 
-  import img1 from '$lib/post_images/sd_4/1.jpg';
-  import img2 from '$lib/post_images/sd_4/2.jpg';
-  import img3 from '$lib/post_images/sd_4/3.jpg';
-  import img4 from '$lib/post_images/sd_4/4.jpg';
-  import img5 from '$lib/post_images/sd_4/5.jpg';
-  import img6 from '$lib/post_images/sd_4/6.jpg';
+  import img1 from '$lib/post_images/sd4/1.jpg';
+  import img2 from '$lib/post_images/sd4/2.jpg';
+  import img3 from '$lib/post_images/sd4/3.jpg';
+  import img4 from '$lib/post_images/sd4/4.jpg';
+  import img5 from '$lib/post_images/sd4/5.jpg';
+  import img6 from '$lib/post_images/sd4/6.jpg';
 
   const images: ImageData[] =
     [
-      {src: img1, alt: "AI generated image of an ancient alien."},
-      {src: img2, alt: "AI generated image of an ancient alien."},
-      {src: img3, alt: "AI generated image of an ancient alien."},
-      {src: img4, alt: "AI generated image of an ancient alien."},
-      {src: img5, alt: "AI generated image of an ancient alien."},
-      {src: img6, alt: "AI generated image of an ancient alien."}
+      {src: img1, alt: "Stable Diffusion generated image of an ancient alien."},
+      {src: img2, alt: "Stable Diffusion generated image of an ancient alien."},
+      {src: img3, alt: "Stable Diffusion generated image of an ancient alien."},
+      {src: img4, alt: "Stable Diffusion generated image of an ancient alien."},
+      {src: img5, alt: "Stable Diffusion generated image of an ancient alien."},
+      {src: img6, alt: "Stable Diffusion generated image of an ancient alien."}
     ];
 </script>
 

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ModalContainer from '$lib/components/ModalContainer.svelte'
 	import TernaryExample from './TernaryExample.svelte'
+	import FloralSeparator from '$lib/components/icons/FloralSeparator.svelte'
 	let modal: ModalContainer
 </script>
 
@@ -51,6 +52,8 @@
 		<li>MongoDB and MySQL</li>
 		<li>PHP and WordPress</li>
 		<li>CSS (SCSS) and SVG</li>
+		<li>Jest/Vitest</li>
+		<li>Git, Linux, SSH</li>
 	</ul>
 	<p>I have some experience with:</p>
 	<ul>
@@ -114,8 +117,10 @@
 		</li>
 	</ul>
 
+	<FloralSeparator />
+
 	<p>If you have a position available that I'd be suited to, I'd love to hear from you.</p>
-	<div class="email">
+	<div class="email links">
 		<a href="mailto:ryanvoitiskis@pm.me">ryanvoitiskis@pm.me</a>
 	</div>
 </main>
@@ -150,11 +155,6 @@
 			background-color: var(--alt-alt-bg);
 		}
 	}
-
-	.email {
-		margin: 0 20px;
-	}
-
 	@media (max-width: 740px) {
 		.email {
 			text-align: center;

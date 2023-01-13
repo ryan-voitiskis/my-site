@@ -1,39 +1,8 @@
 <script lang="ts">
 	import type { PageData } from './$types'
-	import ImageGallery from '$lib/components/ImageGallery.svelte'
-	import type ImageData from '$lib/types/ImageData'
-
+	import crateGuideImage from '$lib/images/crate-guide.jpeg'
+	import panelLayoutGeneratorImage from '$lib/images/panel-layout-generator.png'
 	export let data: PageData
-	let crateGuideGallery: ImageGallery
-	let panelLayoutGeneratorGallery: ImageGallery
-
-	import cg1 from '$lib/images/crate-guide/1.png'
-	import cg2 from '$lib/images/crate-guide/2.png'
-	import cg3 from '$lib/images/crate-guide/3.png'
-	import cg4 from '$lib/images/crate-guide/4.png'
-	import cg5 from '$lib/images/crate-guide/5.png'
-	import cg6 from '$lib/images/crate-guide/6.png'
-	import cg7 from '$lib/images/crate-guide/7.png'
-
-	import plg1 from '$lib/images/panel-layout-generator/1.png'
-	import plg2 from '$lib/images/panel-layout-generator/2.png'
-	import plg3 from '$lib/images/panel-layout-generator/3.png'
-
-	const crateGuideImages: ImageData[] = [
-		{ src: cg1, alt: `Crate Guide's turntable interface.` },
-		{ src: cg2, alt: `Crate Guide's session interface with light theme.` },
-		{ src: cg3, alt: `Crate Guide's session interface with dark theme.` },
-		{ src: cg4, alt: `Crate Guide's Spotify audio features interface.` },
-		{ src: cg5, alt: `Crate Guide's progress modal interface.` },
-		{ src: cg6, alt: `Crate Guide's settings modal interface.` },
-		{ src: cg7, alt: `Crate Guide's edit track modal interface.` }
-	]
-
-	const panelLayoutGeneratorImages: ImageData[] = [
-		{ src: plg1, alt: `Panel layout generators main interface.` },
-		{ src: plg2, alt: `Panel layout generators main interface with grid number.` },
-		{ src: plg3, alt: `Panel layout generators add colour interface` }
-	]
 </script>
 
 <div class="intro">
@@ -47,9 +16,9 @@
 </div>
 
 <article class="project">
-	<button class="image-stack clean" on:click={() => crateGuideGallery.openInModal(0)}>
-		<img src={crateGuideImages[0].src} alt={crateGuideImages[0].alt} />
-	</button>
+	<a href="https://crate.guide" class="image-stack clean">
+		<img src={crateGuideImage} alt="Crate Guide's turntable interface." />
+	</a>
 	<div class="preview">
 		<h2><a href="https://crate.guide">Crate Guide</a></h2>
 		<div class="links">
@@ -71,9 +40,9 @@
 </article>
 
 <article class="project flipped">
-	<button class="image-stack clean" on:click={() => panelLayoutGeneratorGallery.openInModal(0)}>
-		<img src={panelLayoutGeneratorImages[0].src} alt={panelLayoutGeneratorImages[0].alt} />
-	</button>
+	<a href="https://panel-layout-generator.com" class="image-stack clean">
+		<img src={panelLayoutGeneratorImage} alt="Panel layout generators main interface." />
+	</a>
 	<div class="preview">
 		<h2><a href="https://panel-layout-generator.com">Panel layout generator</a></h2>
 		<div class="links">
@@ -97,13 +66,6 @@
 		</p>
 	</div>
 </article>
-
-<ImageGallery images={crateGuideImages} withPreviews={false} bind:this={crateGuideGallery} />
-<ImageGallery
-	images={panelLayoutGeneratorImages}
-	withPreviews={false}
-	bind:this={panelLayoutGeneratorGallery}
-/>
 
 <style lang="scss">
 	.intro {
@@ -134,9 +96,9 @@
 				margin-bottom: 10px;
 				color: var(--text-soft);
 				a {
-					color: var(--text-soft);
+					color: var(--project-link-text);
 					&:hover {
-						color: var(--primary);
+						color: var(--link-hover);
 					}
 				}
 			}
@@ -146,6 +108,7 @@
 			img {
 				max-width: 100%;
 				object-fit: contain;
+				transition: box-shadow ease-in-out 0.2s;
 			}
 			&:hover img {
 				box-shadow: -6px 6px 0px 0px var(--primary);
@@ -163,11 +126,9 @@
 			}
 			.image-stack {
 				grid-area: 1 / 2 / 2 / 3;
-				height: auto !important; /* Add this */
 			}
 			.preview {
 				grid-area: 1 / 1 / 2 / 2;
-				height: auto !important; /* Add this */
 			}
 			.image-stack:hover img {
 				box-shadow: 6px 6px 0px 0px var(--primary);
@@ -197,14 +158,9 @@
 			margin: 0 auto 80px;
 			.image-stack {
 				grid-area: 1 / 1 / 2 / 2;
-				height: auto !important; /* Add this */
-				img {
-					height: auto !important; /* Add this */
-				}
 			}
 			.preview {
 				grid-area: 2 / 1 / 3 / 2;
-				height: auto; /* Add this */
 			}
 		}
 	}

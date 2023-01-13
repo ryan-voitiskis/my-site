@@ -18,12 +18,15 @@
 	--nav-text-hover: var(--primary);
 	--nav-underline: var(--primary);
 	--link-text: hsl(40, 92%, 88%);
-	--link-text-hover: hsl(40, 92%, 70%);
+	--link-hover: hsl(40, 92%, 70%);
+	--project-link-text: var(--link-text);
 	--abbr-title: hsl(0, 0%, 100%);
 	--side-note-bg: hsl(216, 14%, 20%);
 	--side-note-text: hsl(216, 8%, 88%);
 	--ul-marker: url('$lib/svg/ul-marker-dark.svg');
 	--marker-color: hsl(40, 80%, 78%); //! also change in ul-marker-dark.svg
+	--separator: var(--secondary);
+	--button-active-text: var(--page-bg);
 
 	--gallery-ui: hsl(40, 20%, 77%);
 	--gallery-ui-hover: hsl(40, 94%, 66%);

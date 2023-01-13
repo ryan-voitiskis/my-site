@@ -30,7 +30,17 @@
 			selectedImageIndex = selectedImageIndex + 1
 		}
 	}
+
+	function handleKeydown(event: KeyboardEvent) {
+		if (event.key === 'ArrowLeft') {
+			previousImage()
+		} else if (event.key === 'ArrowRight') {
+			nextImage()
+		}
+	}
 </script>
+
+<svelte:window on:keydown={handleKeydown} />
 
 {#if withPreviews}
 	<div class="image-gallery">

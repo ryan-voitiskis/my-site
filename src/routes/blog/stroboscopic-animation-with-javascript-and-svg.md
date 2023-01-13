@@ -9,8 +9,8 @@ image_alt: Abstract stroboscopic dots lit in red on top of a record
 ---
 
 <script lang="ts">
-  import misaligned from '$lib/post_images/stroboscopic_animation/dash-array-misaligned.png';
-  import aligned from '$lib/post_images/stroboscopic_animation/dash-array-aligned.png';
+  import misaligned from '$lib/post_images/stroboscopic-animation/dash-array-misaligned.png';
+  import aligned from '$lib/post_images/stroboscopic-animation/dash-array-aligned.png';
 </script>
 
 ## Introduction
