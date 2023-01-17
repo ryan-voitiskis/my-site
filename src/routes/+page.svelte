@@ -14,7 +14,7 @@
 	</div>
 
 	<p>
-		G'day, I'm Ryan. I build web apps with JavaScript. I enjoy working with Vue and recently
+		Hey, I'm Ryan. I build web apps with JavaScript. I enjoy working with Vue and recently
 		SvelteKit. I am interested in front-end and back-end development, focusing on creating intuitive
 		and powerful apps.
 	</p>
@@ -94,7 +94,9 @@
 		<li>
 			In my own JavaScript projects I use tabs and Prettier with <code>"semi": false</code>
 		</li>
-		<li>I code all my styling without css frameworks.</li>
+		<li>
+			I code my styling in my own projects without CSS frameworks, but I am not opposed to them.
+		</li>
 	</ul>
 
 	<div class="side-note">
