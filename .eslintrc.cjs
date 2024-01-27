@@ -6,6 +6,9 @@ module.exports = {
 	},
 	extends: ['@nuxt/eslint-config'],
 	rules: {
-		'vue/html-indent': ['error', 'tab']
+		'vue/html-indent': ['error', 'tab'],
+		'vue/singleline-html-element-content-newline': 'off',
+		'vue/max-attributes-per-line': 'off',
+		'no-mixed-spaces-and-tabs': 'off'
 	}
 }
