@@ -3,7 +3,7 @@ title: Stroboscopic animation with JavaScript and SVG
 format: article
 published: '2023-01-06'
 updated: '2023-01-08'
-description: Creating an animation mimicking the effect of a stroboscopic light on a turntable using requestAnimationFrame, SVG and Vue.
+short: Creating an animation mimicking the effect of a stroboscopic light on a turntable using requestAnimationFrame, SVG and Vue.
 image: cover_images/stroboscopic-animation-with-javascript-and-svg.png
 image_alt: Abstract stroboscopic dots lit in red on top of a record
 ---

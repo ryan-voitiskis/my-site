@@ -2,7 +2,10 @@
 *:before,
 *:after {
 	box-sizing: border-box;
-	transition: background-color 160ms, background 160ms, color 160ms;
+	transition:
+		background-color 160ms,
+		background 160ms,
+		color 160ms;
 }
 
 html {
@@ -104,7 +107,9 @@ form {
 }
 
 pre {
-	margin-bottom: var(--standard-margin-bottom) !important; // override imported prism styles
+	margin-bottom: var(
+		--standard-margin-bottom
+	) !important; // override imported prism styles
 }
 
 hr {
@@ -208,6 +213,7 @@ pre {
 	margin: 40px 0;
 }
 
+// TODO: reassess if these are required
 ::-webkit-scrollbar {
 	width: 6px;
 	height: 11px;
@@ -248,5 +254,37 @@ img.center {
 @media (max-width: 570px) {
 	pre {
 		width: 100vw;
+	}
+}
+
+// TODO: reassess the following (it came from app.vue after port)
+main {
+	padding: 0 10px 300px 10px;
+	max-width: var(--page-width);
+	margin: 0 auto;
+}
+
+.links {
+	margin: 20px 30px;
+	font-family: var(--monospace-font);
+	font-size: 1.1rem;
+}
+
+button.inline-subtle {
+	display: inline;
+	color: var(--text);
+	font-family: var(--serif-font);
+	font-size: 1em;
+	background-color: var(--alt-bg);
+	border: none;
+	text-decoration: underline;
+	&:hover {
+		color: var(--text-strong);
+		background-color: var(--alt-alt-bg);
+	}
+}
+@media (max-width: 740px) {
+	.email {
+		text-align: center;
 	}
 }

@@ -1,6 +1,4 @@
-<script setup lang="ts">
-const showModal = ref(false)
-</script>
+<script setup lang="ts"></script>
 
 <template>
 	<article>
@@ -20,8 +18,5 @@ const showModal = ref(false)
 			Head over to <a href="/projects">projects</a> to see what I've been
 			working on lately.
 		</p>
-		<ModalContainer v-if="showModal">
-			<TernaryExample />
-		</ModalContainer>
 	</article>
 </template>
