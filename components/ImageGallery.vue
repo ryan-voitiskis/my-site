@@ -1,118 +1,84 @@
-<script lang="ts">
-	import ArrowLeftCircle from '$lib/components/icons/ArrowLeftCircle.svelte'
-	import ArrowRightCircle from '$lib/components/icons/ArrowRightCircle.svelte'
-	import type ImageData from '$lib/types/ImageData'
-	import ModalContainer from './ModalContainer.svelte'
-
-	export let withPreviews: boolean = true
-	export let images: ImageData[]
-	let modal: ModalContainer
-	let selectedImageIndex: number = 0
-	$: indexLabel = `${selectedImageIndex + 1} / ${images.length}`
-
-	export function openInModal(index: number) {
-		selectedImageIndex = index
-		modal.openModal()
+<script lang="ts" setup>
+import type { ImageAttrs } from 'types/types'
+const props = defineProps({
+	withPreviews: {
+		type: Boolean,
+		default: true
+	},
+	images: {
+		type: Array as PropType<ImageAttrs[]>,
+		default: () => []
 	}
+})
 
-	function previousImage() {
-		if (selectedImageIndex === 0) {
-			selectedImageIndex = images.length - 1
-		} else {
-			selectedImageIndex = selectedImageIndex - 1
-		}
-	}
+const modal = ref()
+const selectedImageIndex = ref(0)
+const indexLabel = computed(
+	() => `${selectedImageIndex.value + 1} / ${props.images?.length}`
+)
 
-	function nextImage() {
-		if (selectedImageIndex === images.length - 1) {
-			selectedImageIndex = 0
-		} else {
-			selectedImageIndex = selectedImageIndex + 1
-		}
-	}
+function openInModal(index: number) {
+	selectedImageIndex.value = index
+	modal.value.openModal()
+}
 
-	function handleKeydown(event: KeyboardEvent) {
-		if (event.key === 'ArrowLeft') {
-			previousImage()
-		} else if (event.key === 'ArrowRight') {
-			nextImage()
-		}
+function previousImage() {
+	selectedImageIndex.value =
+		selectedImageIndex.value === 0
+			? props.images.length - 1
+			: selectedImageIndex.value - 1
+}
+
+function nextImage() {
+	selectedImageIndex.value =
+		selectedImageIndex.value === props.images.length - 1
+			? 0
+			: selectedImageIndex.value + 1
+}
+
+function handleKeydown(event: KeyboardEvent) {
+	if (event.key === 'ArrowLeft') {
+		previousImage()
+	} else if (event.key === 'ArrowRight') {
+		nextImage()
 	}
+}
+
+onMounted(() => {
+	window.addEventListener('keydown', handleKeydown)
+})
+
+onUnmounted(() => {
+	window.removeEventListener('keydown', handleKeydown)
+})
 </script>
 
-<svelte:window on:keydown={handleKeydown} />
+<template>
+	<div v-if="withPreviews" class="image-gallery">
+		<button
+			v-for="(image, index) in images"
+			:key="index"
+			class="clean image"
+			@click="openInModal(index)"
+		>
+			<img :src="image.src" :alt="image.alt" />
+		</button>
+	</div>
 
-{#if withPreviews}
-	<div class="image-gallery">
-		{#each images as { src, alt }, index}
-			<button class="clean image" on:click={() => openInModal(index)}>
-				<img {src} {alt} />
+	<ModalContainer ref="modal">
+		<img
+			class="in-modal"
+			:src="images[selectedImageIndex].src"
+			:alt="images[selectedImageIndex].alt"
+		/>
+		<div class="controls">
+			<button @click.stop="previousImage">
+				<ArrowCircleIcon />
 			</button>
-		{/each}
-	</div>
-{/if}
-
-<ModalContainer bind:this={modal}>
-	<img class="in-modal" src={images[selectedImageIndex].src} alt={images[selectedImageIndex].alt} />
-	<div class="controls">
-		<button on:click|stopPropagation={previousImage}><ArrowLeftCircle /></button>
-		<div class="index-label">{indexLabel}</div>
-		<button on:click|stopPropagation={nextImage}><ArrowRightCircle /></button>
-	</div>
-</ModalContainer>
-
-<style lang="scss">
-	.image-gallery {
-		display: grid;
-		margin: 10px;
-		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-		grid-gap: 10px;
-		.image {
-			overflow: hidden;
-			border-radius: 10px;
-			img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-			}
-		}
-	}
-
-	img.in-modal {
-		max-width: 100%;
-		max-height: 80vh;
-	}
-
-	.controls {
-		display: flex;
-		justify-content: center;
-		button {
-			height: 160px;
-			width: 160px;
-			background: transparent;
-			border: none;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			:global(svg) {
-				height: 60%;
-				width: 60%;
-				color: var(--gallery-ui);
-			}
-			&:hover {
-				:global(svg) {
-					color: var(--gallery-ui-hover);
-				}
-			}
-		}
-		.index-label {
-			width: 80px;
-			font-size: 1.4rem;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			color: var(--gallery-ui);
-			font-family: var(--sans-serif-font);
-		}
-	}
-</style>
+			<div class="index-label">{{ indexLabel }}</div>
+			<button @click.stop="nextImage">
+				<ArrowCircleIcon class="rotate-90" />
+			</button>
+		</div>
+	</ModalContainer>
+</template>

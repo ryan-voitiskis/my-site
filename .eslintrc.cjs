@@ -9,6 +9,13 @@ module.exports = {
 		'vue/html-indent': ['error', 'tab'],
 		'vue/singleline-html-element-content-newline': 'off',
 		'vue/max-attributes-per-line': 'off',
-		'no-mixed-spaces-and-tabs': 'off'
+		'no-mixed-spaces-and-tabs': 'off',
+		'vue/component-tags-order': [
+			'error',
+			{
+				order: [['script'], ['template'], ['style']]
+			}
+		],
+		'vue/html-self-closing': 'off'
 	}
 }
