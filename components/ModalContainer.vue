@@ -104,7 +104,7 @@ onDeactivated(() => {
 	padding: 20px 40px;
 	width: 100%;
 	display: flex;
-	justify-content: end;
+	justify-content: flex-Modend;
 	border-radius: 0 0 10px 10px;
 	button[type='reset'] {
 		margin-right: auto;
