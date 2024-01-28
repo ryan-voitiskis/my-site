@@ -1,5 +1,6 @@
 <script setup lang="ts">
 // this component is used for code blocks within components that are themselves within a md file
+// TODO: delete this after making redundant with shikiji
 import Prism from 'prismjs'
 
 const props = defineProps({

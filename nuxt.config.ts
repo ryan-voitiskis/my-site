@@ -15,5 +15,8 @@ export default defineNuxtConfig({
 		'~/assets/styles/light-theme.scss',
 		'~/assets/styles/dark-theme.scss',
 		'~/assets/styles/prism-custom.scss'
-	]
+	],
+	content: {
+		// ... options
+	}
 })
