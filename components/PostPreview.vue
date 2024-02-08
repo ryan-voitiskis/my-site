@@ -1,55 +1,38 @@
 <script setup lang="ts">
 import type { Post } from 'types/types'
-import NewspaperIcon from 'components/icons/NewspaperIcon.vue'
-import ImageIcon from 'components/icons/ImageIcon.vue'
+import NewspaperIcon from '~/components/icon/NewspaperIcon.vue'
+import ImageIcon from '~/components/icon/ImageIcon.vue'
 
 const props = defineProps<{
 	post: Post
-	path: string
 }>()
 
-const image = computed(() => props.post.metadata.image || '')
-const imageAlt = computed(
-	() => props.post.metadata.image_alt || props.post.metadata.title
-)
+// TODO: clean this up
 const published = computed(() => {
 	const options: Intl.DateTimeFormatOptions = {
 		year: 'numeric',
 		month: 'long',
 		day: 'numeric'
 	}
-	return new Date(props.post.metadata.published).toLocaleDateString(
-		undefined,
-		options
-	)
-})
-
-const iconComponent = computed(() => {
-	switch (props.post.metadata.format) {
-		case 'article':
-			return NewspaperIcon
-		case 'image_collection':
-			return ImageIcon
-		default:
-			return null
-	}
+	return new Date(props.post.published).toLocaleDateString(undefined, options)
 })
 </script>
 
 <template>
-	<a :href="path" class="title">
+	<a :href="post._path" class="title">
 		<article class="post-preview">
-			<div v-if="image" class="post-preview-image">
-				<img :src="image" :alt="imageAlt" />
+			<div v-if="post.image" class="post-preview-image">
+				<img :src="post.image" :alt="post.image_alt" />
 			</div>
 			<div class="post-preview-content">
 				<h2>
-					<component :is="iconComponent" v-if="iconComponent" />
-					{{ post.metadata.title }}
+					<NewspaperIcon v-if="post.format === 'article'" />
+					<ImageIcon v-if="post.format === 'image_collection'" />
+					{{ post.title }}
 				</h2>
 				<div class="published">Posted on {{ published }}</div>
-				<div v-if="post.metadata.short" class="short">
-					{{ post.metadata.short }}
+				<div v-if="post.short" class="short">
+					{{ post.short }}
 				</div>
 			</div>
 		</article>

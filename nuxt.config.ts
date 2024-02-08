@@ -18,5 +18,6 @@ export default defineNuxtConfig({
 	],
 	content: {
 		// ... options
-	}
+	},
+	components: [{ path: '~/components/content', global: true }]
 })

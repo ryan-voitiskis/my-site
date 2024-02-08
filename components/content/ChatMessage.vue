@@ -1,11 +1,12 @@
 <script setup lang="ts">
-defineProps<{
-	fromHuman: boolean
-}>()
+defineProps({ fromHuman: Boolean })
 </script>
 
 <template>
-	<div :class="['wrapper', fromHuman ? 'from-human' : 'from-bot']">
+	<div
+		class="wrapper"
+		:class="{ 'from-human': fromHuman, 'from-bot': !fromHuman }"
+	>
 		<div class="message">
 			<div v-if="fromHuman" class="icon">
 				<HumanDisplayIcon />
