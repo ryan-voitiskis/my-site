@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-	devtools: { enabled: false },
+	devtools: { enabled: true },
 	telemetry: false,
 	modules: [
 		'@nuxt/content',
@@ -10,13 +10,17 @@ export default defineNuxtConfig({
 		'@nuxtjs/color-mode'
 	],
 	css: [
-		'~/assets/styles/base.scss',
-		'~/assets/styles/typography.scss',
-		'~/assets/styles/dimensions.scss',
-		'~/assets/styles/light-theme.scss',
-		'~/assets/styles/dark-theme.scss',
-		'~/assets/styles/prism-custom.scss'
+		'~/assets/css/main.scss',
+		'~/assets/css/light-theme.scss',
+		'~/assets/css/dark-theme.scss',
+		'~/assets/css/shiki-custom.scss'
 	],
+	postcss: {
+		plugins: {
+			tailwindcss: {},
+			autoprefixer: {}
+		}
+	},
 	content: {
 		highlight: {
 			theme: {
@@ -26,8 +30,8 @@ export default defineNuxtConfig({
 		}
 	},
 	colorMode: {
-		preference: 'light', // default value of $colorMode.preference
-		fallback: 'light', // fallback value if not system preference found
+		preference: 'light',
+		fallback: 'light',
 		hid: 'nuxt-color-mode-script',
 		globalName: '__NUXT_COLOR_MODE__',
 		componentName: 'ColorScheme',

@@ -84,7 +84,7 @@
 <style lang="scss">
 .intro {
 	padding: 0 10px;
-	max-width: var(--page-width);
+	max-width: 860px;
 	margin: 0 auto;
 }
 
@@ -168,7 +168,7 @@
 	.project {
 		grid-template-columns: 1fr;
 		grid-template-rows: auto;
-		max-width: var(--page-width);
+		max-width: 860px;
 		margin: 0 auto 80px;
 		.image-stack {
 			grid-area: 1 / 1 / 2 / 2;

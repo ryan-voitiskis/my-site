@@ -6,8 +6,8 @@ import PostPreview from '~/components/PostPreview.vue'
 	<ContentList v-slot="{ list }" path="/blog">
 		<main>
 			<h1>Blog</h1>
-			<div class="sorting-controls">
-				<button>Articles first</button>
+			<div class="flex flex-end mb-8 gap-4">
+				<button class="py-2 px-4 rounded-sm">Articles first</button>
 				<button>Collections first</button>
 			</div>
 			<PostPreview v-for="post in list" :key="post._path" :post="post" />
@@ -16,18 +16,7 @@ import PostPreview from '~/components/PostPreview.vue'
 </template>
 
 <style lang="scss">
-main {
-	padding: 0 10px;
-	max-width: var(--page-width);
-	margin: 0 auto;
-}
-
 .sorting-controls {
-	display: flex;
-	justify-content: flex-end;
-	margin-bottom: var(--standard-margin-bottom);
-	gap: 10px;
-
 	// move this to global if used more often
 	button {
 		padding: 5px 12px;

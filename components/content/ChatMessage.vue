@@ -34,15 +34,15 @@ defineProps({ fromHuman: Boolean })
 			to right,
 			transparent 0,
 			var(--alt-bg) 100px,
-			var(--alt-bg) calc(var(--page-width) + 100px),
-			transparent calc(var(--page-width) + 200px)
+			var(--alt-bg) calc(860px + 100px),
+			transparent calc(860px + 200px)
 		);
 		.icon {
 			background-color: rgb(16, 163, 127);
 		}
 	}
 	.message {
-		max-width: var(--page-width);
+		max-width: 860px;
 		margin: 0 auto;
 		display: grid;
 		grid-template-columns: 52px 1fr 52px;
