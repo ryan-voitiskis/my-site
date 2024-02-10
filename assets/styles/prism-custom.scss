@@ -1,103 +1,103 @@
-// modified from https://github.com/antfu/prism-theme-vars/blob/master/base.css
+// modified from https://github.com/antfu/shiki-theme-vars/blob/master/base.css
 
 :root,
 :root.light {
 	/* Colors */
-	--prism-foreground: #24292e;
-	--prism-background: var(--alt-bg);
+	--shiki-foreground: #24292e;
+	--shiki-background: var(--alt-bg);
 
 	/* Tokens */
-	--prism-comment: #6a727c;
-	--prism-string: #032f62;
-	--prism-keyword: #d73c4c;
-	--prism-function: #6f42c1;
-	--prism-class: #6f42c1;
-	--prism-builtin: #005cc5;
-	--prism-property: #005cc5;
-	--prism-namespace: #e36209;
-	--prism-punctuation: #032f62;
-	--prism-interpolation-punctuation: #e36209;
-	--prism-decorator: #6f42c1;
-	--prism-operator: #d73a49;
-	--prism-number: #004da4;
-	--prism-boolean: #456992;
-	--prism-constant: #d2009e;
-	--prism-symbol: #005cc5;
-	--prism-regex: #e36209;
-	--prism-json-property: #005cc5;
-	--prism-interpolation: #24292e;
-	--prism-attr-value: #032f62;
-	--prism-selector: #22863a;
-	--prism-tag: #22863a;
-	--prism-attr-name: #6f42c1;
-	--prism-doctype: #22863a;
-	--prism-name: #6f42c1;
-	--prism-atrule: #d73c4c;
-	--prism-variable: #005cc5;
+	--shiki-comment: #6a727c;
+	--shiki-string: #032f62;
+	--shiki-keyword: #d73c4c;
+	--shiki-function: #6f42c1;
+	--shiki-class: #6f42c1;
+	--shiki-builtin: #005cc5;
+	--shiki-property: #005cc5;
+	--shiki-namespace: #e36209;
+	--shiki-punctuation: #032f62;
+	--shiki-interpolation-punctuation: #e36209;
+	--shiki-decorator: #6f42c1;
+	--shiki-operator: #d73a49;
+	--shiki-number: #004da4;
+	--shiki-boolean: #456992;
+	--shiki-constant: #d2009e;
+	--shiki-symbol: #005cc5;
+	--shiki-regex: #e36209;
+	--shiki-json-property: #005cc5;
+	--shiki-interpolation: #24292e;
+	--shiki-attr-value: #032f62;
+	--shiki-selector: #22863a;
+	--shiki-tag: #22863a;
+	--shiki-attr-name: #6f42c1;
+	--shiki-doctype: #22863a;
+	--shiki-name: #6f42c1;
+	--shiki-atrule: #d73c4c;
+	--shiki-variable: #005cc5;
 }
 
 :root.dark {
 	/* Colors */
-	--prism-foreground: #f2fffc;
-	--prism-background: var(--alt-bg);
+	--shiki-foreground: #f2fffc;
+	--shiki-background: var(--alt-bg);
 
 	/* Tokens */
-	--prism-comment: #6a727c;
-	--prism-string: #ffed72;
-	--prism-keyword: #ff6d7e;
-	--prism-function: #a2e57b;
-	--prism-class: #7cd5f1;
-	--prism-builtin: #7cd5f1;
-	--prism-property: #7cd5f1;
-	--prism-namespace: #ffb270;
-	--prism-punctuation: #989b9d;
-	--prism-interpolation-punctuation: #ff6d7e;
-	--prism-decorator: #a2e57b;
-	--prism-operator: #ff6d7e;
-	--prism-number: #baa0f8;
-	--prism-boolean: #baa0f8;
-	--prism-constant: #baa0f8;
-	--prism-symbol: #a2e57b;
-	--prism-regex: #ffb270;
-	--prism-json-property: #f2fffc;
-	--prism-interpolation: #f2fffc;
-	--prism-attr-value: #ffed72;
-	--prism-selector: #ff6d7e;
-	--prism-tag: #ff6d7e;
-	--prism-attr-name: #7cd5f1;
-	--prism-doctype: #ff6d7e;
-	--prism-name: #7cd5f1;
-	--prism-atrule: #ff6d7e;
-	--prism-variable: #baa0f8;
+	--shiki-comment: #6a727c;
+	--shiki-string: #ffed72;
+	--shiki-keyword: #ff6d7e;
+	--shiki-function: #a2e57b;
+	--shiki-class: #7cd5f1;
+	--shiki-builtin: #7cd5f1;
+	--shiki-property: #7cd5f1;
+	--shiki-namespace: #ffb270;
+	--shiki-punctuation: #989b9d;
+	--shiki-interpolation-punctuation: #ff6d7e;
+	--shiki-decorator: #a2e57b;
+	--shiki-operator: #ff6d7e;
+	--shiki-number: #baa0f8;
+	--shiki-boolean: #baa0f8;
+	--shiki-constant: #baa0f8;
+	--shiki-symbol: #a2e57b;
+	--shiki-regex: #ffb270;
+	--shiki-json-property: #f2fffc;
+	--shiki-interpolation: #f2fffc;
+	--shiki-attr-value: #ffed72;
+	--shiki-selector: #ff6d7e;
+	--shiki-tag: #ff6d7e;
+	--shiki-attr-name: #7cd5f1;
+	--shiki-doctype: #ff6d7e;
+	--shiki-name: #7cd5f1;
+	--shiki-atrule: #ff6d7e;
+	--shiki-variable: #baa0f8;
 }
 
 :root {
 	/* Colours */
-	--prism-inline-background: var(--prism-background);
+	--shiki-inline-background: var(--shiki-background);
 
 	/* Token Styles */
-	--prism-comment-style: italic;
-	--prism-url-decoration: underline;
+	--shiki-comment-style: italic;
+	--shiki-url-decoration: underline;
 
 	/* Extension */
-	--prism-line-number: #a5a5a5;
-	--prism-line-number-gutter: #333333;
-	--prism-line-highlight-background: #eeeeee;
-	--prism-selection-background: #dddddd;
-	--prism-marker-opacity: 0.4;
-	--prism-marker-font-size: 0.8rem;
+	--shiki-line-number: #a5a5a5;
+	--shiki-line-number-gutter: #333333;
+	--shiki-line-highlight-background: #eeeeee;
+	--shiki-selection-background: #dddddd;
+	--shiki-marker-opacity: 0.4;
+	--shiki-marker-font-size: 0.8rem;
 
 	/* Sizing */
-	--prism-tab-size: 2;
+	--shiki-tab-size: 2;
 
-	--prism-block-padding-x: 1rem;
-	--prism-block-padding-y: 1rem;
-	--prism-block-margin-x: 0;
-	--prism-block-margin-y: 0.5rem;
-	--prism-block-radius: 8px;
-	--prism-inline-padding-x: 0.3rem;
-	--prism-inline-padding-y: 0.1rem;
-	--prism-inline-radius: 0.3rem;
+	--shiki-block-padding-x: 1rem;
+	--shiki-block-padding-y: 1rem;
+	--shiki-block-margin-x: 0;
+	--shiki-block-margin-y: 0.5rem;
+	--shiki-block-radius: 8px;
+	--shiki-inline-padding-x: 0.3rem;
+	--shiki-inline-padding-y: 0.1rem;
+	--shiki-inline-radius: 0.3rem;
 }
 
 div[class*='language-'],
@@ -111,33 +111,33 @@ code[class*='language-'] {
 	word-spacing: normal;
 	word-break: normal;
 	line-height: 1.5rem;
-	-moz-tab-size: var(--prism-tab-size);
-	-o-tab-size: var(--prism-tab-size);
-	tab-size: var(--prism-tab-size);
+	-moz-tab-size: var(--shiki-tab-size);
+	-o-tab-size: var(--shiki-tab-size);
+	tab-size: var(--shiki-tab-size);
 	-webkit-hyphens: none;
 	-moz-hyphens: none;
 	-ms-hyphens: none;
 	hyphens: none;
-	color: var(--prism-foreground) !important;
+	color: var(--shiki-foreground) !important;
 }
 
 /* Code blocks */
 div[class*='language-'],
 pre[class*='language-'] {
-	padding: var(--prism-block-padding-y) var(--prism-block-padding-x);
-	margin: var(--prism-block-margin-y) var(--prism-block-margin-x);
-	border-radius: var(--prism-block-radius);
+	padding: var(--shiki-block-padding-y) var(--shiki-block-padding-x);
+	margin: var(--shiki-block-margin-y) var(--shiki-block-margin-x);
+	border-radius: var(--shiki-block-radius);
 	overflow: auto;
-	background: var(--prism-background);
+	background: var(--shiki-background);
 }
 
 /* Inline code */
 :not(pre) > code {
 	font-size: 1rem;
 	display: inline;
-	padding: var(--prism-inline-padding-y) var(--prism-inline-padding-x);
-	border-radius: var(--prism-inline-radius);
-	background: var(--prism-inline-background);
+	padding: var(--shiki-inline-padding-y) var(--shiki-inline-padding-x);
+	border-radius: var(--shiki-inline-radius);
+	background: var(--shiki-inline-background);
 }
 
 /* Selection */
@@ -149,7 +149,7 @@ pre[class*='language-']::selection,
 pre[class*='language-'] ::selection,
 code[class*='language-']::selection,
 code[class*='language-'] ::selection {
-	background: var(--prism-selection-background);
+	background: var(--shiki-selection-background);
 }
 
 /* Tokens */
@@ -157,92 +157,92 @@ code[class*='language-'] ::selection {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	color: var(--prism-comment);
-	font-style: var(--prism-comment-style);
+	color: var(--shiki-comment);
+	font-style: var(--shiki-comment-style);
 }
 
 .token.doctype-tag {
-	color: var(--prism-doctype);
+	color: var(--shiki-doctype);
 }
 
 .token.name {
-	color: var(--prism-name);
+	color: var(--shiki-name);
 }
 
 .token.namespace {
-	color: var(--prism-namespace);
+	color: var(--shiki-namespace);
 }
 
 .token.interpolation {
-	color: var(--prism-interpolation);
+	color: var(--shiki-interpolation);
 }
 
 .token.string {
-	color: var(--prism-string);
+	color: var(--shiki-string);
 }
 
 .token.punctuation {
-	color: var(--prism-punctuation);
+	color: var(--shiki-punctuation);
 	&.interpolation-punctuation {
-		color: var(--prism-interpolation-punctuation);
+		color: var(--shiki-interpolation-punctuation);
 	}
 }
 
 .token.operator {
-	color: var(--prism-operator);
+	color: var(--shiki-operator);
 }
 
 .token.keyword.module,
 .token.keyword.control-flow {
-	color: var(--prism-keyword);
+	color: var(--shiki-keyword);
 }
 
 .token.url,
 .token.symbol,
 .token.inserted {
-	color: var(--prism-symbol);
+	color: var(--shiki-symbol);
 }
 
 .token.constant {
-	color: var(--prism-constant);
+	color: var(--shiki-constant);
 }
 
 .token.string.url {
-	text-decoration: var(--prism-url-decoration);
+	text-decoration: var(--shiki-url-decoration);
 }
 
 .token.boolean,
 .language-json .token.boolean {
-	color: var(--prism-boolean);
+	color: var(--shiki-boolean);
 }
 
 .token.number,
 .language-json .token.number {
-	color: var(--prism-number);
+	color: var(--shiki-number);
 }
 
 .token.variable {
-	color: var(--prism-variable);
+	color: var(--shiki-variable);
 }
 
 .token.keyword {
-	color: var(--prism-keyword);
+	color: var(--shiki-keyword);
 }
 
 .token.attr-value {
-	color: var(--prism-attr-value);
+	color: var(--shiki-attr-value);
 }
 
 .token.selector {
-	color: var(--prism-selector);
+	color: var(--shiki-selector);
 }
 
 .token.atrule {
-	color: var(--prism-atrule);
+	color: var(--shiki-atrule);
 }
 
 .token.function {
-	color: var(--prism-function);
+	color: var(--shiki-function);
 }
 
 .token.important,
@@ -255,53 +255,53 @@ code[class*='language-'] ::selection {
 }
 
 .token.class-name {
-	color: var(--prism-class);
+	color: var(--shiki-class);
 }
 
 .token.tag {
-	color: var(--prism-tag);
+	color: var(--shiki-tag);
 }
 
 .token.builtin {
-	color: var(--prism-builtin);
+	color: var(--shiki-builtin);
 }
 
 .token.attr-name {
-	color: var(--prism-attr-name);
+	color: var(--shiki-attr-name);
 }
 
 .token.property,
 .token.entity {
-	color: var(--prism-property);
+	color: var(--shiki-property);
 }
 
 .language-json .token.property {
-	color: var(--prism-json-property);
+	color: var(--shiki-json-property);
 }
 
 .token.regex {
-	color: var(--prism-regex);
+	color: var(--shiki-regex);
 }
 
 .token.decorator,
 .token.annotation {
-	color: var(--prism-decorator);
+	color: var(--shiki-decorator);
 }
 
 /* overrides color-values for the Line Numbers plugin
- * http://prismjs.com/plugins/line-numbers/
+ * http://shikijs.com/plugins/line-numbers/
  */
 .line-numbers .line-numbers-rows {
-	border-right-color: var(--prism-line-number);
+	border-right-color: var(--shiki-line-number);
 }
 
 .line-numbers-rows > span:before {
-	color: var(--prism-line-number-gutter);
+	color: var(--shiki-line-number-gutter);
 }
 
 /* overrides color-values for the Line Highlight plugin
-  * http://prismjs.com/plugins/line-highlight/
+  * http://shikijs.com/plugins/line-highlight/
   */
 .line-highlight {
-	background: var(--prism-line-highlight-background);
+	background: var(--shiki-line-highlight-background);
 }

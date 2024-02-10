@@ -70,13 +70,6 @@ article.post-preview {
 			font-size: 1.2rem;
 			line-height: 36px;
 			margin: 6px 0;
-			:global(svg) {
-				flex-shrink: 0;
-				align-self: center;
-				width: 1.2em;
-				height: 1.2em;
-				margin-right: 14px;
-			}
 		}
 		.published {
 			grid-area: 2 / 2 / 3 / 3;

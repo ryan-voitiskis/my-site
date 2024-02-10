@@ -9,10 +9,10 @@ defineProps({ fromHuman: Boolean })
 	>
 		<div class="message">
 			<div v-if="fromHuman" class="icon">
-				<HumanDisplayIcon />
+				<HumanDisplayIcon class="h-6" />
 			</div>
 			<div v-else class="icon">
-				<ChatbotDisplayIcon />
+				<ChatbotDisplayIcon class="h-6" />
 			</div>
 			<div class="content">
 				<slot />

@@ -6,7 +6,8 @@ export default defineNuxtConfig({
 		'@nuxt/content',
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/eslint-module',
-		'@vueuse/nuxt'
+		'@vueuse/nuxt',
+		'@nuxtjs/color-mode'
 	],
 	css: [
 		'~/assets/styles/base.scss',
@@ -17,7 +18,22 @@ export default defineNuxtConfig({
 		'~/assets/styles/prism-custom.scss'
 	],
 	content: {
-		// ... options
+		highlight: {
+			theme: {
+				default: 'github-light',
+				dark: 'github-dark'
+			}
+		}
+	},
+	colorMode: {
+		preference: 'light', // default value of $colorMode.preference
+		fallback: 'light', // fallback value if not system preference found
+		hid: 'nuxt-color-mode-script',
+		globalName: '__NUXT_COLOR_MODE__',
+		componentName: 'ColorScheme',
+		classPrefix: '',
+		classSuffix: '',
+		storageKey: 'nuxt-color-mode'
 	},
 	components: [{ path: '~/components/content', global: true }]
 })

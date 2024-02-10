@@ -28,117 +28,117 @@ The complete Single File Component can be viewed [here](https://github.com/ryan-
 
 The SVG is placed within a wrapper in a Vue template. I won't cover everything that's going on here. It is a fairly simple SVG, but I will point out that the dots are created using the stroke-dasharray attribute. The dashes appear as dots by applying `stroke-linecap: round;` in the style and setting the first argument of stroke-dasharray to 0. The second argument is the distance between the dashes. This is what I adjusted to get the timing of the stroboscopic effect to function like that of the Technics turntable. More on this later.
 
-```markup
+```vue
 <template>
-  <div class="record-platter-wrapper">
-    <svg
-      width="366"
-      height="366"
-      viewBox="0 0 366 366"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      class="record-platter"
-      ref="platter"
-    >
-      <!-- the platter ring -->
-      <g>
-        <circle r="183" fill="#000" />
-        <circle r="181" fill="#d7d8dd" />
-        <circle r="180" fill="#222" />
-        <circle class="dots" r="177.7" stroke-dasharray="0,3.303" />
-        <circle class="dots large" r="174" stroke-dasharray="0,3.33333" />
-        <circle class="dots" r="170" stroke-dasharray="0,3.3702" />
-        <circle class="dots" r="167" stroke-dasharray="0,3.418" />
-        <circle r="165" fill="#d7d8dd" />
-      </g>
+	<div class="record-platter-wrapper">
+		<svg
+			width="366"
+			height="366"
+			viewBox="0 0 366 366"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			class="record-platter"
+			ref="platter"
+		>
+			<!-- the platter ring -->
+			<g>
+				<circle r="183" fill="#000" />
+				<circle r="181" fill="#d7d8dd" />
+				<circle r="180" fill="#222" />
+				<circle class="dots" r="177.7" stroke-dasharray="0,3.303" />
+				<circle class="dots large" r="174" stroke-dasharray="0,3.33333" />
+				<circle class="dots" r="170" stroke-dasharray="0,3.3702" />
+				<circle class="dots" r="167" stroke-dasharray="0,3.418" />
+				<circle r="165" fill="#d7d8dd" />
+			</g>
 
-      <!-- the record -->
-      <g v-if="session.decks[deckID].loadedTrack?.recordID">
-        <clipPath id="coverClip">
-          <circle r="51" />
-        </clipPath>
-        <circle r="164" fill="#000" />
-        <circle r="162.2" fill="#151515" />
-        <circle r="142" fill="#000" />
-        <circle r="141" fill="#151515" />
-        <circle r="122" fill="#000" />
-        <circle r="121" fill="#151515" />
-        <circle r="100" fill="#000" />
-        <circle r="99" fill="#151515" />
-        <circle r="66" fill="#030303" />
-        <image
-          :href="coverImg"
-          height="104"
-          width="104"
-          clip-path="url(#coverClip)"
-          x="-52"
-          y="-52"
-        />
-      </g>
+			<!-- the record -->
+			<g v-if="session.decks[deckID].loadedTrack?.recordID">
+				<clipPath id="coverClip">
+					<circle r="51" />
+				</clipPath>
+				<circle r="164" fill="#000" />
+				<circle r="162.2" fill="#151515" />
+				<circle r="142" fill="#000" />
+				<circle r="141" fill="#151515" />
+				<circle r="122" fill="#000" />
+				<circle r="121" fill="#151515" />
+				<circle r="100" fill="#000" />
+				<circle r="99" fill="#151515" />
+				<circle r="66" fill="#030303" />
+				<image
+					:href="coverImg"
+					height="104"
+					width="104"
+					clip-path="url(#coverClip)"
+					x="-52"
+					y="-52"
+				/>
+			</g>
 
-      <!-- the slipmat -->
-      <g class="slipmat" v-else>
-        <circle r="164" fill="#222" />
-        <circle r="146" stroke-width="10" stroke="#8c4394" fill="transparent" />
-        <text
-          y="-23"
-          fill="#8c4394"
-          :transform="deckID === 1 ? 'rotate(180)' : ''"
-        >
-          Crate
-        </text>
-        <text
-          y="-23"
-          fill="#b9adda"
-          :transform="deckID === 0 ? 'rotate(180)' : ''"
-        >
-          Guide
-        </text>
-        <circle r="2" fill="#d7d8dd" />
-      </g>
-    </svg>
-  </div>
+			<!-- the slipmat -->
+			<g class="slipmat" v-else>
+				<circle r="164" fill="#222" />
+				<circle r="146" stroke-width="10" stroke="#8c4394" fill="transparent" />
+				<text
+					y="-23"
+					fill="#8c4394"
+					:transform="deckID === 1 ? 'rotate(180)' : ''"
+				>
+					Crate
+				</text>
+				<text
+					y="-23"
+					fill="#b9adda"
+					:transform="deckID === 0 ? 'rotate(180)' : ''"
+				>
+					Guide
+				</text>
+				<circle r="2" fill="#d7d8dd" />
+			</g>
+		</svg>
+	</div>
 </template>
 ```
 
 It is accompanied by the following style in a Single File Component:
 
-```markup
+```vue
 <style scoped lang="scss">
 .record-platter-wrapper {
-  width: 660px;
-  height: 100%;
-  position: absolute;
-  left: 2%;
-  z-index: 1;
+	width: 660px;
+	height: 100%;
+	position: absolute;
+	left: 2%;
+	z-index: 1;
 }
 
 .record-platter {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: 3;
-  g {
-    transform: translate(183px, 183px);
-  }
-  .dots {
-    stroke: #d7d8dd;
-    stroke-width: 1.6;
-    stroke-linecap: round;
-    &.large {
-      stroke-width: 2.2;
-    }
-  }
-  .slipmat {
-    text {
-      font-size: 5rem;
-      font-weight: 600;
-      letter-spacing: 0.1rem;
-      text-anchor: middle;
-      font-family: "Sonsie One", serif;
-      user-select: none;
-    }
-  }
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 3;
+	g {
+		transform: translate(183px, 183px);
+	}
+	.dots {
+		stroke: #d7d8dd;
+		stroke-width: 1.6;
+		stroke-linecap: round;
+		&.large {
+			stroke-width: 2.2;
+		}
+	}
+	.slipmat {
+		text {
+			font-size: 5rem;
+			font-weight: 600;
+			letter-spacing: 0.1rem;
+			text-anchor: middle;
+			font-family: 'Sonsie One', serif;
+			user-select: none;
+		}
+	}
 }
 </style>
 ```
@@ -229,7 +229,7 @@ Another limitation is the refresh rate target of 60Hz/120Hz. A possible solution
 
 ## Performance issues
 
-This method does require a significant amount of compute resources to function seamlessly. With hardware acceleration turned off and both decks running, the animation uses about ~40% of my CPU (AMD 5600X) on chromium and ~30% on Firefox. With hardware acceleration on, the animation is smooth and CPU usage is minimal.
+This method does require use of significant resources to function seamlessly. With hardware acceleration turned off and both decks running, the animation uses about ~40% of my CPU (AMD 5600X) on chromium and ~30% on Firefox. With hardware acceleration on, the animation is smooth and CPU usage is minimal.
 
 A functional requirement of Crate Guide is to run on crap laptops, which it does fine, however this animation may bog down such systems. The animation isn't required for the app to function, and a note about avoiding this feature was left in the documentation.
 

@@ -21,11 +21,12 @@ Here is the conversation:
 ::ChatMessage{:fromHuman=true}
 Please create me an svg of a 3x3 grid of colours using this matrix of colours
 
-```
+<!-- prettier-ignore -->
+```js
 [
-  ["rgb(245, 169, 188)", "rgb(243, 247, 129)", "rgb(169, 188, 245)"],
-  ["rgb(169, 245, 208)", "rgb(245, 169, 188)", "rgb(169, 245, 208)"],
-  ["rgb(169, 188, 245)", "rgb(243, 247, 129)", "rgb(245, 169, 188)"],
+	['rgb(245, 169, 188)', 'rgb(243, 247, 129)', 'rgb(169, 188, 245)'],
+	['rgb(169, 245, 208)', 'rgb(245, 169, 188)', 'rgb(169, 245, 208)'],
+	['rgb(169, 188, 245)', 'rgb(243, 247, 129)', 'rgb(245, 169, 188)']
 ]
 ```
 
@@ -34,17 +35,17 @@ Please create me an svg of a 3x3 grid of colours using this matrix of colours
 ::ChatMessage{:fromHuman=false}
 Sure! Here's an SVG that uses your matrix of colors to create a 3x3 grid:
 
-```
+```html
 <svg width="300" height="300">
-  <rect x="0" y="0" width="100" height="100" fill="rgb(245, 169, 188)" />
-  <rect x="100" y="0" width="100" height="100" fill="rgb(243, 247, 129)" />
-  <rect x="200" y="0" width="100" height="100" fill="rgb(169, 188, 245)" />
-  <rect x="0" y="100" width="100" height="100" fill="rgb(169, 245, 208)" />
-  <rect x="100" y="100" width="100" height="100" fill="rgb(245, 169, 188)" />
-  <rect x="200" y="100" width="100" height="100" fill="rgb(169, 245, 208)" />
-  <rect x="0" y="200" width="100" height="100" fill="rgb(169, 188, 245)" />
-  <rect x="100" y="200" width="100" height="100" fill="rgb(243, 247, 129)" />
-  <rect x="200" y="200" width="100" height="100" fill="rgb(245, 169, 188)" />
+	<rect x="0" y="0" width="100" height="100" fill="rgb(245, 169, 188)" />
+	<rect x="100" y="0" width="100" height="100" fill="rgb(243, 247, 129)" />
+	<rect x="200" y="0" width="100" height="100" fill="rgb(169, 188, 245)" />
+	<rect x="0" y="100" width="100" height="100" fill="rgb(169, 245, 208)" />
+	<rect x="100" y="100" width="100" height="100" fill="rgb(245, 169, 188)" />
+	<rect x="200" y="100" width="100" height="100" fill="rgb(169, 245, 208)" />
+	<rect x="0" y="200" width="100" height="100" fill="rgb(169, 188, 245)" />
+	<rect x="100" y="200" width="100" height="100" fill="rgb(243, 247, 129)" />
+	<rect x="200" y="200" width="100" height="100" fill="rgb(245, 169, 188)" />
 </svg>
 ```
 
@@ -53,19 +54,7 @@ This SVG consists of nine rect elements, each with a fill attribute set to one o
 I hope this helps! Let me know if you have any questions.
 ::
 
-<div class="flex justify-center p-4">
-  <svg width="300" height="300">
-  <rect x="0" y="0" width="100" height="100" fill="rgb(245, 169, 188)" />
-  <rect x="100" y="0" width="100" height="100" fill="rgb(243, 247, 129)" />
-  <rect x="200" y="0" width="100" height="100" fill="rgb(169, 188, 245)" />
-  <rect x="0" y="100" width="100" height="100" fill="rgb(169, 245, 208)" />
-  <rect x="100" y="100" width="100" height="100" fill="rgb(245, 169, 188)" />
-  <rect x="200" y="100" width="100" height="100" fill="rgb(169, 245, 208)" />
-  <rect x="0" y="200" width="100" height="100" fill="rgb(169, 188, 245)" />
-  <rect x="100" y="200" width="100" height="100" fill="rgb(243, 247, 129)" />
-  <rect x="200" y="200" width="100" height="100" fill="rgb(245, 169, 188)" />
-</svg>
-</div>
+![favicon 1](/img/posts/creating-favicons/favicon1.svg){.mx-auto.my-8}
 
 The SVG was exactly what I wanted. I just added the XML Namespace tag <code class="language-markup">xmlns="http://www.w3.org/2000/svg"</code>
 
@@ -82,11 +71,17 @@ Can you please create for me an svg favicon that looks like a vinyl record
 ::ChatMessage{:fromHuman=false}
 Sure! Here is an SVG code snippet that you can use to create a favicon that looks like a vinyl record:
 
-```
-<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="64" cy="64" r="60" fill="#333333"/>
-  <circle cx="64" cy="64" r="56" fill="#EEEEEE"/>
-  <circle cx="64" cy="64" r="45" fill="#333333"/>
+```html
+<svg
+	width="128"
+	height="128"
+	viewBox="0 0 128 128"
+	fill="none"
+	xmlns="http://www.w3.org/2000/svg"
+>
+	<circle cx="64" cy="64" r="60" fill="#333333" />
+	<circle cx="64" cy="64" r="56" fill="#EEEEEE" />
+	<circle cx="64" cy="64" r="45" fill="#333333" />
 </svg>
 ```
 
@@ -99,14 +94,10 @@ To use this SVG as a favicon, you can save it as a file with the .svg extension 
 ```
 
 ::
-
+<br />
 This is the result:
 
-<svg width="300" height="300" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-auto">
-  <circle cx="64" cy="64" r="60" fill="#333333"/>
-  <circle cx="64" cy="64" r="56" fill="#EEEEEE"/>
-  <circle cx="64" cy="64" r="45" fill="#333333"/>
-</svg>
+![favicon 2](/img/posts/creating-favicons/favicon2.svg){.mx-auto.my-8}
 
 ::ChatMessage{:fromHuman=true}
 Can you change the diameter of the inner circle to 60% of what it is now and half the distance between the middle and outer circles by increasing the inner circle?
@@ -115,11 +106,17 @@ Can you change the diameter of the inner circle to 60% of what it is now and hal
 ::ChatMessage{:fromHuman=false}
 Certainly! Here is the modified SVG code snippet that you requested:
 
-```
-<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="64" cy="64" r="60" fill="#333333"/>
-  <circle cx="64" cy="64" r="49" fill="#EEEEEE"/>
-  <circle cx="64" cy="64" r="45" fill="#333333"/>
+```html
+<svg
+	width="128"
+	height="128"
+	viewBox="0 0 128 128"
+	fill="none"
+	xmlns="http://www.w3.org/2000/svg"
+>
+	<circle cx="64" cy="64" r="60" fill="#333333" />
+	<circle cx="64" cy="64" r="49" fill="#EEEEEE" />
+	<circle cx="64" cy="64" r="45" fill="#333333" />
 </svg>
 ```
 
@@ -130,48 +127,38 @@ The inner circle's radius is now 45 pixels, which is 60% of the original radius 
 I hope this helps! Let me know if you have any further questions or need additional assistance.
 
 ::
-
+<br />
 Unfortunately the result still did not resemble a vinyl record:
 
-<svg width="300" height="300" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-auto">
-  <circle cx="64" cy="64" r="60" fill="#333333"/>
-  <circle cx="64" cy="64" r="49" fill="#EEEEEE"/>
-  <circle cx="64" cy="64" r="45" fill="#333333"/>
-</svg>
+![favicon 3](/img/posts/creating-favicons/favicon3.svg){.mx-auto.my-8}
 
 The model performed well this time in providing me with attributes on the SVG tag and the html tag required, however it failed to generate a convincing record svg.
 
 I modified the results to achieve the following:
 
-```
-<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="64" cy="64" r="60" fill="#000"/>
-  <circle cx="64" cy="64" r="59" fill="#181818"/>
-  <circle cx="64" cy="64" r="51" fill="#000"/>
-  <circle cx="64" cy="64" r="50" fill="#181818"/>
-  <circle cx="64" cy="64" r="41" fill="#000"/>
-  <circle cx="64" cy="64" r="40" fill="#181818"/>
-  <circle cx="64" cy="64" r="31" fill="#000"/>
-  <circle cx="64" cy="64" r="30" fill="#181818"/>
-  <circle cx="64" cy="64" r="22" fill="#000"/>
-  <circle cx="64" cy="64" r="20" fill="#f9f2de"/>
-  <circle cx="64" cy="64" r="1" fill="#000"/>
+```html
+<svg
+	width="128"
+	height="128"
+	viewBox="0 0 128 128"
+	fill="none"
+	xmlns="http://www.w3.org/2000/svg"
+>
+	<circle cx="64" cy="64" r="60" fill="#000" />
+	<circle cx="64" cy="64" r="59" fill="#181818" />
+	<circle cx="64" cy="64" r="51" fill="#000" />
+	<circle cx="64" cy="64" r="50" fill="#181818" />
+	<circle cx="64" cy="64" r="41" fill="#000" />
+	<circle cx="64" cy="64" r="40" fill="#181818" />
+	<circle cx="64" cy="64" r="31" fill="#000" />
+	<circle cx="64" cy="64" r="30" fill="#181818" />
+	<circle cx="64" cy="64" r="22" fill="#000" />
+	<circle cx="64" cy="64" r="20" fill="#f9f2de" />
+	<circle cx="64" cy="64" r="1" fill="#000" />
 </svg>
 ```
 
-<svg width="300" height="300" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-auto">
-  <circle cx="64" cy="64" r="60" fill="#000"/>
-  <circle cx="64" cy="64" r="59" fill="#181818"/>
-  <circle cx="64" cy="64" r="51" fill="#000"/>
-  <circle cx="64" cy="64" r="50" fill="#181818"/>
-  <circle cx="64" cy="64" r="41" fill="#000"/>
-  <circle cx="64" cy="64" r="40" fill="#181818"/>
-  <circle cx="64" cy="64" r="31" fill="#000"/>
-  <circle cx="64" cy="64" r="30" fill="#181818"/>
-  <circle cx="64" cy="64" r="22" fill="#000"/>
-  <circle cx="64" cy="64" r="20" fill="#f9f2de"/>
-  <circle cx="64" cy="64" r="1" fill="#000"/>
-</svg>
+![favicon 4](/img/posts/creating-favicons/favicon4.svg){.mx-auto.my-8}
 
 ## Summary
 

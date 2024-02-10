@@ -31,7 +31,7 @@
 	--gallery-ui-hover: hsl(40, 94%, 66%);
 }
 
-:root.dark {
+html.dark {
 	background-color: hsl(216, 15%, 16%);
 	@include dark-theme;
 }
