@@ -210,11 +210,11 @@ I set the dash array circles to an approximate radius visually, then began appro
 
 This worked well, but the spacing that made the dots appear static at their given pitch adjustments left me with the problem of the dash array not joining up perfectly.
 
-<img class="center" src="{misaligned}" alt="misaligned dash array" />
+![dash array misaligned](/img/posts/stroboscopic-animation/dash-array-misaligned.png){.mx-auto.my-8}
 
 From this point I made small adjustments to join the dots perfectly. This was necessary because even very slightly misjoined dash arrays created artefacts in the animation.
 
-<img class="center" src="{aligned}" alt="aligned dash array" />
+![dash array aligned](/img/posts/stroboscopic-animation/dash-array-aligned.png){.mx-auto.my-8}
 
 ## Limitations of this approach
 

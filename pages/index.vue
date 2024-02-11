@@ -1,11 +1,12 @@
-<script setup lang="ts"></script>
-
 <template>
 	<article>
 		<h1>Ryan Voitiskis</h1>
-		<div class="font-mono text-sm mb-4 ml-4">
-			<a href="mailto:ryanvoitiskis@pm.me">ryanvoitiskis@pm.me</a> |
-			<a href="https://github.com/ryan-voitiskis">GitHub</a>
+		<div class="mb-4 ml-4 font-mono text-sm">
+			<a href="mailto:ryanvoitiskis@pm.me">
+				<span class="underline">ryanvoitiskis@pm.me</span>
+			</a>
+			|
+			<a href="https://github.com/ryan-voitiskis" class="underline">GitHub</a>
 		</div>
 
 		<p>

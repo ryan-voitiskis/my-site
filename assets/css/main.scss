@@ -127,12 +127,6 @@ form {
 	margin-bottom: 25px;
 }
 
-pre {
-	margin-bottom: var(
-		--standard-margin-bottom
-	) !important; // override imported prism styles
-}
-
 hr {
 	width: 100%; // flex compatability
 	margin: 10px 0;
@@ -187,36 +181,34 @@ input[type='button']::-moz-focus-inner {
 a,
 .link-text {
 	color: var(--link-text);
-	text-decoration: underline;
 	cursor: pointer;
 	&:hover {
 		color: var(--link-hover);
 	}
 }
 
-// TODO: reassess if these are required
-// ::-webkit-scrollbar {
-// 	width: 6px;
-// 	height: 11px;
-// }
-// ::-webkit-scrollbar-button {
-// 	width: 0px;
-// 	height: 0px;
-// }
-// ::-webkit-scrollbar-thumb {
-// 	background: var(--webkit-scrollbar);
-// 	border-radius: 3px;
-// }
-// ::-webkit-scrollbar-thumb:hover {
-// 	background: var(--webkit-scrollbar-hover);
-// }
-// ::-webkit-scrollbar-track {
-// 	border: 0px none #fff;
-// 	border-radius: 3px;
-// }
-// ::-webkit-scrollbar-track:hover {
-// 	background: hsla(0, 0%, 50%, 0.12);
-// }
-// ::-webkit-scrollbar-track:active {
-// 	background: hsla(0, 0%, 50%, 0.28);
-// }
+::-webkit-scrollbar {
+	width: 6px;
+	height: 11px;
+}
+::-webkit-scrollbar-button {
+	width: 0px;
+	height: 0px;
+}
+::-webkit-scrollbar-thumb {
+	background: var(--webkit-scrollbar);
+	border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: var(--webkit-scrollbar-hover);
+}
+::-webkit-scrollbar-track {
+	border: none;
+	border-radius: 3px;
+}
+::-webkit-scrollbar-track:hover {
+	background: hsla(0, 0%, 50%, 0.12);
+}
+::-webkit-scrollbar-track:active {
+	background: hsla(0, 0%, 50%, 0.28);
+}

@@ -4,6 +4,7 @@ console.log('tailwind.config.js')
 module.exports = {
 	content: [
 		'./components/**/*.{js,vue,ts}',
+		'./content/**/*.md',
 		'./layouts/**/*.vue',
 		'./pages/**/*.vue',
 		'./plugins/**/*.{js,ts}',
