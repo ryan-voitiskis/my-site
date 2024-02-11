@@ -7,32 +7,18 @@ import PostPreview from '~/components/PostPreview.vue'
 		<main>
 			<h1>Blog</h1>
 			<div class="flex flex-end mb-8 gap-4">
-				<button class="py-2 px-4 rounded-sm">Articles first</button>
-				<button>Collections first</button>
+				<button
+					class="py-1 px-4 rounded-md bg-alt-bg hover:bg-alt-alt-bg hover:text-text-strong active:bg-secondary active:text-button-active-text"
+				>
+					Articles first
+				</button>
+				<button
+					class="py-1 px-4 rounded-md bg-alt-bg hover:bg-alt-alt-bg hover:text-text-strong active:bg-secondary active:text-button-active-text"
+				>
+					Collections first
+				</button>
 			</div>
 			<PostPreview v-for="post in list" :key="post._path" :post="post" />
 		</main>
 	</ContentList>
 </template>
-
-<style lang="scss">
-.sorting-controls {
-	// move this to global if used more often
-	button {
-		padding: 5px 12px;
-		border: none;
-		border-radius: 5px;
-		background: var(--alt-bg);
-		color: var(--color-text);
-		cursor: pointer;
-		&:hover {
-			background: var(--alt-alt-bg);
-			color: var(--text-strong);
-		}
-		&.active {
-			background: var(--secondary);
-			color: var(--button-active-text);
-		}
-	}
-}
-</style>

@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+	font-family: 'Xenon';
+	src: url('../fonts/MonaspaceXenonVarVF[wght,wdth,slnt].ttf')
+		format('truetype-variations');
+}
+
+@font-face {
+	font-family: 'Urbanist';
+	src: url('../fonts/Urbanist-VariableFont_wght.ttf')
+		format('truetype-variations');
+}
+
+@font-face {
+	font-family: 'Crimson Pro';
+	src: url('../fonts/CrimsonPro-VariableFont_wght.ttf')
+		format('truetype-variations');
+}
+
 *,
 *:before,
 *:after {
@@ -13,7 +31,7 @@
 }
 
 html {
-	font-size: 16px;
+	font-size: 18px;
 }
 
 body,
@@ -21,7 +39,7 @@ body,
 	margin: 0;
 	color: var(--text);
 	font-family: var(--serif-font);
-	font-size: 1.2rem;
+	font-size: 1rem;
 	font-weight: 400;
 	line-height: 1.4;
 }
