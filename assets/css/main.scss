@@ -20,6 +20,12 @@
 		format('truetype-variations');
 }
 
+:root {
+	--monospace-font: 'Xenon', monospace;
+	--serif-font: 'Crimson Pro', serif;
+	--sans-serif-font: 'Urbanist', sans-serif;
+}
+
 *,
 *:before,
 *:after {
@@ -80,15 +86,12 @@ p {
 }
 
 a {
-	text-decoration: none;
+	text-decoration: underline;
 }
 
 ul {
-	margin-left: 40px;
-	list-style-type: none;
-	&.no-marker {
-		list-style: none;
-	}
+	margin-left: 32px;
+	list-style-type: disc;
 }
 
 ol {
@@ -181,10 +184,17 @@ input[type='button']::-moz-focus-inner {
 a,
 .link-text {
 	color: var(--link-text);
+	text-decoration: underline;
 	cursor: pointer;
 	&:hover {
 		color: var(--link-hover);
 	}
+}
+
+.links {
+	margin: 16px 24px;
+	font-family: var(--monospace-font);
+	font-size: 17px;
 }
 
 ::-webkit-scrollbar {

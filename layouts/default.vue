@@ -3,8 +3,8 @@ import ThemeToggle from '~/components/ThemeToggle.vue'
 </script>
 
 <template>
-	<div class="mx-auto max-w-[820px] !bg-page-bg">
-		<header class="flex w-full justify-between p-4">
+	<div>
+		<header class="mx-auto flex w-full max-w-[820px] justify-between p-4">
 			<nav class="main-nav flex flex-wrap font-mono text-nav-text">
 				<NuxtLink to="/">about</NuxtLink>
 				<NuxtLink to="/blog">blog</NuxtLink>
@@ -13,9 +13,8 @@ import ThemeToggle from '~/components/ThemeToggle.vue'
 			<ThemeToggle />
 		</header>
 
-		<main class="px-4 pb-48 font-serif">
-			<slot />
-		</main>
+		<!-- root node of slot should be <main> -->
+		<slot />
 	</div>
 </template>
 

@@ -3,8 +3,8 @@ import PostPreview from '~/components/PostPreview.vue'
 </script>
 
 <template>
-	<ContentList v-slot="{ list }" path="/blog">
-		<main>
+	<main class="mx-auto w-full max-w-[820px] px-4 pb-48 font-serif">
+		<ContentList v-slot="{ list }" path="/blog">
 			<h1>Blog</h1>
 			<div class="flex-end mb-8 flex gap-4">
 				<button
@@ -19,6 +19,6 @@ import PostPreview from '~/components/PostPreview.vue'
 				</button>
 			</div>
 			<PostPreview v-for="post in list" :key="post._path" :post="post" />
-		</main>
-	</ContentList>
+		</ContentList>
+	</main>
 </template>

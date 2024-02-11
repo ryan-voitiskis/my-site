@@ -1,12 +1,10 @@
 <template>
-	<article>
+	<main class="mx-auto w-full max-w-[820px] px-4 pb-48 font-serif">
 		<h1>Ryan Voitiskis</h1>
-		<div class="mb-4 ml-4 font-mono text-sm">
-			<a href="mailto:ryanvoitiskis@pm.me">
-				<span class="underline">ryanvoitiskis@pm.me</span>
-			</a>
+		<div class="links">
+			<a href="mailto:ryanvoitiskis@pm.me">ryanvoitiskis@pm.me</a>
 			|
-			<a href="https://github.com/ryan-voitiskis" class="underline">GitHub</a>
+			<a href="https://github.com/ryan-voitiskis">GitHub</a>
 		</div>
 
 		<p>
@@ -19,5 +17,5 @@
 			Head over to <a href="/projects"> projects</a> to see what I've been
 			working on lately.
 		</p>
-	</article>
+	</main>
 </template>
