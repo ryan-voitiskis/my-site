@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
 
-console.log('tailwind.config.js')
 module.exports = {
 	content: [
 		'./components/**/*.{js,vue,ts}',
@@ -42,6 +42,10 @@ module.exports = {
 				'gallery-ui': 'var(--gallery-ui)',
 				'gallery-ui-hover': 'var(--gallery-ui-hover)'
 			}
+		},
+		screens: {
+			xs: '475px',
+			...defaultTheme.screens
 		},
 		fontFamily: {
 			sans: ['Urbanist', 'sans-serif'],
