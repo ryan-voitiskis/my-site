@@ -10,8 +10,7 @@ export default defineNuxtConfig({
 	],
 	css: [
 		'~/assets/css/main.scss',
-		'~/assets/css/light-theme.scss',
-		'~/assets/css/dark-theme.scss',
+		'~/assets/css/themes.scss',
 		'~/assets/css/shiki-custom.scss'
 	],
 	postcss: {
