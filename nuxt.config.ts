@@ -4,7 +4,6 @@ export default defineNuxtConfig({
 	telemetry: false,
 	modules: [
 		'@nuxt/content',
-		'@nuxtjs/tailwindcss',
 		'@nuxtjs/eslint-module',
 		'@vueuse/nuxt',
 		'@nuxtjs/color-mode'
@@ -39,5 +38,14 @@ export default defineNuxtConfig({
 		classSuffix: '',
 		storageKey: 'nuxt-color-mode'
 	},
-	components: [{ path: '~/components/content', global: true }]
+	components: [{ path: '~/components/content', global: true }],
+	app: {
+		head: {
+			meta: [],
+			link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+			style: [],
+			script: [],
+			noscript: []
+		}
+	}
 })
