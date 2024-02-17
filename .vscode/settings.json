@@ -2,5 +2,9 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "explicit"
 	},
-	"eslint.validate": ["javascript", "javascriptreact", "vue"]
+	"eslint.validate": ["javascript", "javascriptreact", "vue"],
+	"files.associations": {
+		"*.css": "tailwindcss",
+		"*.scss": "tailwindcss"
+	}
 }

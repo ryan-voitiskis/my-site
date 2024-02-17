@@ -94,9 +94,6 @@ article.post-preview {
 		.post-preview-content {
 			h2 {
 				line-height: 26px;
-				:global(svg) {
-					margin-right: 10px;
-				}
 			}
 			.short {
 				font-size: 1.1rem;

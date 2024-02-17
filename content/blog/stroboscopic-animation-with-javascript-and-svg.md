@@ -8,11 +8,6 @@ image: cover_images/stroboscopic-animation-with-javascript-and-svg.png
 image_alt: Abstract stroboscopic dots lit in red on top of a record
 ---
 
-<script lang="ts">
-  import misaligned from '$lib/post_images/stroboscopic-animation/dash-array-misaligned.png';
-  import aligned from '$lib/post_images/stroboscopic-animation/dash-array-aligned.png';
-</script>
-
 ## Introduction
 
 One of my intentions in the development of [Crate Guide](https://crate.guide/) was to build an interface that resembled closely that of a [Technics SL-1200 turntable](https://www.technics.com/global/home/sl1200/features.html), the most common turntable used by DJs. The idea was that the interface would be intuitive, requiring less learning and cognitive overhead. The web app is intended to be used on a laptop or desktop and only occasionally glanced at and interacted with during a performance.

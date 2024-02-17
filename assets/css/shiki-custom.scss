@@ -1,4 +1,4 @@
-// modified from https://github.com/antfu/shiki-theme-vars/blob/master/base.css
+/* modified from https://github.com/antfu/shiki-theme-vars/blob/master/base.css */
 
 :root,
 :root.light {
@@ -103,14 +103,14 @@
 div[class*='language-'],
 pre[class*='language-'],
 code[class*='language-'] {
-	font-family: 'Xenon', monospace;
-	font-size: 16px;
+	font-family: var(--mono-font);
+	font-size: 13px;
 	direction: ltr;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
 	word-break: normal;
-	line-height: 1.5rem;
+	line-height: 1rem;
 	-moz-tab-size: var(--shiki-tab-size);
 	-o-tab-size: var(--shiki-tab-size);
 	tab-size: var(--shiki-tab-size);

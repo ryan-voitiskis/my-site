@@ -44,11 +44,18 @@ defineProps({ fromHuman: Boolean })
 		margin: 0 auto;
 		display: grid;
 		grid-template-columns: 52px 1fr 52px;
-		padding: 40px 10px;
+		padding: 38px 16px;
 		.content {
 			color: var(--text-strong);
 			grid-column: 2 / 3;
 			overflow: hidden;
+		}
+	}
+	@media screen and (max-width: 828px) {
+		margin: 0 -16px;
+		padding: 0 16px;
+		&.from-bot {
+			background: var(--alt-bg);
 		}
 	}
 }
