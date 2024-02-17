@@ -1,7 +1,7 @@
 <template>
 	<label class="theme-toggle">
 		<input
-			v-model="$colorMode.value"
+			v-model="$colorMode.preference"
 			type="checkbox"
 			true-value="dark"
 			false-value="light"
