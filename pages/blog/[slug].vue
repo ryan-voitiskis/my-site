@@ -5,6 +5,22 @@
 			<template #default="{ doc }">
 				<article v-if="doc">
 					<h1>{{ doc.title }}</h1>
+					<table
+						class="clean ml-8 border-l-4 border-l-secondary font-sans text-sm text-text-soft"
+					>
+						<tbody>
+							<tr>
+								<td class="!pl-5 font-medium">Published</td>
+								<td class="font-light">
+									{{ yyyyMmDdToLocale(doc.published) }}
+								</td>
+							</tr>
+							<tr v-if="doc.updated">
+								<td class="!pl-5 font-medium">Updated</td>
+								<td class="font-light">{{ yyyyMmDdToLocale(doc.updated) }}</td>
+							</tr>
+						</tbody>
+					</table>
 					<ContentRenderer :value="doc" />
 				</article>
 			</template>

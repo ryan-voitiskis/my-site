@@ -1,9 +1,6 @@
 {
-	// https://nuxt.com/docs/guide/concepts/typescript
 	"extends": "./.nuxt/tsconfig.json",
-	// TODO: remove this if its not doing anything
 	"compilerOptions": {
-		"typeRoots": ["node_modules/@types"],
-		"baseUrl": "."
+		"types": ["@nuxt/types"]
 	}
 }

@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import ThemeToggle from '~/components/ThemeToggle.vue'
-</script>
-
 <template>
 	<div>
 		<header class="mb-6 flex w-full justify-between bg-alt-bg">

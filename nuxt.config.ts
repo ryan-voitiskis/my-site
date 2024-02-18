@@ -2,6 +2,11 @@
 export default defineNuxtConfig({
 	devtools: { enabled: true },
 	telemetry: false,
+	alias: {
+		'~': '/',
+		types: '/types/',
+		assets: '/assets/'
+	},
 	modules: [
 		'@nuxt/content',
 		'@nuxtjs/eslint-module',
@@ -9,9 +14,9 @@ export default defineNuxtConfig({
 		'@nuxtjs/color-mode'
 	],
 	css: [
-		'~/assets/css/main.scss',
-		'~/assets/css/themes.scss',
-		'~/assets/css/shiki-custom.scss'
+		'assets/css/main.scss',
+		'assets/css/themes.scss',
+		'assets/css/shiki-custom.scss'
 	],
 	postcss: {
 		plugins: {
@@ -37,7 +42,6 @@ export default defineNuxtConfig({
 		classSuffix: '',
 		storageKey: 'nuxt-color-mode'
 	},
-	components: [{ path: '~/components/content', global: true }],
 	app: {
 		head: {
 			meta: [],

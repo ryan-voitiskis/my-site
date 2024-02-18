@@ -100,13 +100,6 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 		grid-area: 1 / 2 / 2 / 3;
 		display: flex;
 		flex-direction: column;
-		h2 {
-			font-size: 2rem;
-			a {
-				color: var(--heading-text);
-				text-decoration: none;
-			}
-		}
 		.links {
 			margin-bottom: 10px;
 			color: var(--text-soft);

@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import type { Post } from 'types/types'
-import NewspaperIcon from '~/components/icon/NewspaperIcon.vue'
-import ImageIcon from '~/components/icon/ImageIcon.vue'
-
 const props = defineProps<{
 	post: Post
 }>()
@@ -26,8 +22,8 @@ const published = computed(() => {
 			</div>
 			<div class="post-preview-content">
 				<h2>
-					<NewspaperIcon v-if="post.format === 'article'" />
-					<ImageIcon v-if="post.format === 'image_collection'" />
+					<IconNewspaper v-if="post.format === 'article'" />
+					<IconImage v-if="post.format === 'image_collection'" />
 					{{ post.title }}
 				</h2>
 				<div class="published">Posted on {{ published }}</div>

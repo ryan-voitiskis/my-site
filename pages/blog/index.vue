@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import PostPreview from '~/components/PostPreview.vue'
-</script>
-
 <template>
 	<main class="mx-auto w-full max-w-[820px] px-4 pb-48 font-serif">
 		<ContentList v-slot="{ list }" path="/blog">
