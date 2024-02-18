@@ -1,17 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{
-	post: Post
-}>()
-
-// TODO: clean this up
-const published = computed(() => {
-	const options: Intl.DateTimeFormatOptions = {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric'
-	}
-	return new Date(props.post.published).toLocaleDateString(undefined, options)
-})
+defineProps<{ post: Post }>()
 </script>
 
 <template>
@@ -21,15 +9,11 @@ const published = computed(() => {
 				<img :src="post.image" :alt="post.image_alt" />
 			</div>
 			<div class="post-preview-content">
-				<h2>
-					<IconNewspaper v-if="post.format === 'article'" />
-					<IconImage v-if="post.format === 'image_collection'" />
-					{{ post.title }}
-				</h2>
-				<div class="published">Posted on {{ published }}</div>
-				<div v-if="post.short" class="short">
-					{{ post.short }}
+				<h2>{{ post.title }}</h2>
+				<div class="published">
+					Posted on {{ yyyyMmDdToLocale(post.published) }}
 				</div>
+				<div v-if="post.short" class="short">{{ post.short }}</div>
 			</div>
 		</article>
 	</a>
