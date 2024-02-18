@@ -4,59 +4,26 @@ defineProps({ fromHuman: Boolean })
 
 <template>
 	<div
-		class="wrapper"
-		:class="{ 'from-human': fromHuman, 'from-bot': !fromHuman }"
+		class="border-1 mb-4 rounded-xl border p-4"
+		:class="{
+			' border-black/20 bg-[#94a4a6]/5': fromHuman,
+			'border-[rgba(82,144,128,0.4)] bg-[rgba(16,163,126,0.03)]': !fromHuman
+		}"
 	>
-		<div class="message">
-			<div
-				v-if="fromHuman"
-				class="flex h-8 w-8 items-center justify-center rounded-md bg-[#94a4a6]"
-			>
-				<HumanDisplayIcon class="h-6" />
-			</div>
-			<div
-				v-else
-				class="flex h-8 w-8 items-center justify-center rounded-md bg-[rgb(16,163,127)]"
-			>
-				<ChatbotDisplayIcon class="h-6" />
-			</div>
-			<div class="content">
-				<slot />
-			</div>
+		<div
+			v-if="fromHuman"
+			class="mb-4 flex h-7 w-7 items-center justify-center rounded-md bg-[#94a4a6]"
+		>
+			<HumanDisplayIcon class="h-5" />
+		</div>
+		<div
+			v-else
+			class="mb-4 flex h-7 w-7 items-center justify-center rounded-md bg-[rgb(16,163,127)]"
+		>
+			<ChatbotDisplayIcon class="h-5" />
+		</div>
+		<div class="content">
+			<slot />
 		</div>
 	</div>
 </template>
-
-<style scoped lang="scss">
-.wrapper {
-	margin: 0 -110px 0 -110px;
-	&.from-bot {
-		background: linear-gradient(
-			to right,
-			transparent 0,
-			var(--alt-bg) 100px,
-			var(--alt-bg) calc(860px + 72px),
-			transparent calc(860px + 144px)
-		);
-	}
-	.message {
-		max-width: 860px;
-		margin: 0 auto;
-		display: grid;
-		grid-template-columns: 52px 1fr 52px;
-		padding: 38px 16px;
-		.content {
-			color: var(--text-strong);
-			grid-column: 2 / 3;
-			overflow: hidden;
-		}
-	}
-	@media screen and (max-width: 828px) {
-		margin: 0 -16px;
-		padding: 0 16px;
-		&.from-bot {
-			background: var(--alt-bg);
-		}
-	}
-}
-</style>

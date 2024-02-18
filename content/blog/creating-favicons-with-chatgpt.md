@@ -89,8 +89,8 @@ This code creates a 128x128 pixel SVG image with three circles. The outermost ci
 
 To use this SVG as a favicon, you can save it as a file with the .svg extension and then link to it from the **&lt;head&gt;** of your HTML file using the **&lt;link&gt;** element like this:
 
-```
-<link rel="icon" type="image/svg+xml" href="/path/to/favicon.svg">
+```html
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 ```
 
 ::
