@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	devtools: { enabled: true },
 	telemetry: false,
@@ -14,9 +13,9 @@ export default defineNuxtConfig({
 		'@nuxtjs/color-mode'
 	],
 	css: [
-		'assets/css/main.scss',
 		'assets/css/themes.scss',
-		'assets/css/shiki-custom.scss'
+		'assets/css/main.scss',
+		'assets/css/shiki.scss'
 	],
 	postcss: {
 		plugins: {
@@ -28,7 +27,10 @@ export default defineNuxtConfig({
 		highlight: {
 			theme: {
 				default: 'github-light',
-				dark: 'github-dark'
+				// can't add custom themes yet
+				// https://github.com/nuxt/content/issues/2398
+				// TODO: add monokai machine theme when possible
+				dark: 'dracula'
 			}
 		}
 	},

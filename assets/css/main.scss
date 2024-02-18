@@ -243,3 +243,7 @@ a,
 ::-webkit-scrollbar-track:active {
 	background: hsla(0, 0%, 50%, 0.28);
 }
+
+::selection {
+	background: var(--selection);
+}

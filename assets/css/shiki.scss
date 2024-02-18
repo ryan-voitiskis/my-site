@@ -1,0 +1,81 @@
+:root {
+	--shiki-background: var(--alt-bg);
+
+	/* Colours */
+	--shiki-inline-background: var(--shiki-background);
+
+	/* Token Styles */
+	--shiki-comment-style: italic;
+	--shiki-url-decoration: underline;
+
+	/* Extension */
+	--shiki-line-number: #a5a5a5;
+	--shiki-line-number-gutter: #333333;
+	--shiki-line-highlight-background: #eeeeee;
+	--shiki-selection-background: var(--code-selection);
+	--shiki-marker-opacity: 0.4;
+	--shiki-marker-font-size: 0.8rem;
+
+	/* Sizing */
+	--shiki-tab-size: 2;
+	--shiki-block-padding-x: 16px;
+	--shiki-block-padding-y: 16px;
+	--shiki-block-margin-x: 0;
+	--shiki-block-margin-y: 24px;
+	--shiki-block-radius: 8px;
+	--shiki-inline-padding-x: 6px;
+	--shiki-inline-padding-y: 4px;
+	--shiki-inline-radius: 4px;
+}
+
+div[class*='language-'],
+pre[class*='language-'],
+code[class*='language-'] {
+	font-family: var(--mono-font);
+	font-size: 13px;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	line-height: 1rem;
+	-moz-tab-size: var(--shiki-tab-size);
+	-o-tab-size: var(--shiki-tab-size);
+	tab-size: var(--shiki-tab-size);
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	color: var(--shiki-foreground) !important;
+}
+
+/* Code blocks */
+div[class*='language-'],
+pre[class*='language-'] {
+	padding: var(--shiki-block-padding-y) var(--shiki-block-padding-x);
+	margin: var(--shiki-block-margin-y) var(--shiki-block-margin-x);
+	border-radius: var(--shiki-block-radius);
+	overflow: auto;
+	background: var(--shiki-background);
+}
+
+/* Inline code */
+:not(pre) > code {
+	font-size: 13px;
+	display: inline;
+	padding: var(--shiki-inline-padding-y) var(--shiki-inline-padding-x);
+	border-radius: var(--shiki-inline-radius);
+	background: var(--shiki-inline-background);
+}
+
+/* Selection */
+pre[class*='language-']::-moz-selection,
+pre[class*='language-'] ::-moz-selection,
+code[class*='language-']::-moz-selection,
+code[class*='language-'] ::-moz-selection,
+pre[class*='language-']::selection,
+pre[class*='language-'] ::selection,
+code[class*='language-']::selection,
+code[class*='language-'] ::selection {
+	background: var(--shiki-selection-background);
+}

@@ -3,9 +3,5 @@
 		"source.fixAll.eslint": "explicit"
 	},
 	"eslint.validate": ["javascript", "javascriptreact", "vue"],
-	"files.associations": {
-		"*.css": "tailwindcss",
-		"*.scss": "tailwindcss"
-	},
 	"typescript.tsdk": "node_modules/typescript/lib"
 }
