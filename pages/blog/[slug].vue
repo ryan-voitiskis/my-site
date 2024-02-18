@@ -1,5 +1,5 @@
 <template>
-	<main class="mx-auto w-full max-w-[820px] px-4 pb-48 font-serif">
+	<main class="mx-auto w-full max-w-[640px] px-4 pb-48 font-serif">
 		<ContentDoc>
 			<!-- Default slot content wrapped in a template tag with v-slot:default -->
 			<template #default="{ doc }">

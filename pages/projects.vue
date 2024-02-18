@@ -6,7 +6,7 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 </script>
 
 <template>
-	<main class="mx-auto w-full max-w-[1400px] pb-48 font-serif">
+	<main class="mx-auto w-full max-w-[1280px] pb-48 font-serif">
 		<div class="intro mx-auto w-full max-w-[820px] px-4">
 			<h1>Projects</h1>
 			<p>

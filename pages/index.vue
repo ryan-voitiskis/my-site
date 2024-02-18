@@ -1,5 +1,5 @@
 <template>
-	<main class="mx-auto w-full max-w-[820px] px-4 pb-48 font-serif">
+	<main class="mx-auto w-full max-w-[640px] px-4 pb-48 font-serif">
 		<h1>Ryan Voitiskis</h1>
 		<div class="links">
 			<a href="mailto:ryanvoitiskis@pm.me">ryanvoitiskis@pm.me</a>

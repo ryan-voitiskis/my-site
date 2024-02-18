@@ -4,15 +4,17 @@ import ThemeToggle from '~/components/ThemeToggle.vue'
 
 <template>
 	<div>
-		<header class="mx-auto mb-6 flex w-full max-w-[820px] justify-between p-4">
-			<nav
-				class="main-nav xs:flex-row xs:-ml-4 ml-0 flex flex-col gap-y-4 font-mono text-nav-text"
+		<header class="mb-6 flex w-full justify-between bg-alt-bg">
+			<div
+				class="mx-auto flex w-full max-w-[1280px] flex-row justify-between p-4"
 			>
-				<NuxtLink to="/">about</NuxtLink>
-				<NuxtLink to="/blog">blog</NuxtLink>
-				<NuxtLink to="/projects">projects</NuxtLink>
-			</nav>
-			<ThemeToggle />
+				<nav class="main-nav -ml-4 gap-y-4 font-mono text-[17px] text-nav-text">
+					<NuxtLink to="/">about</NuxtLink>
+					<NuxtLink to="/blog">blog</NuxtLink>
+					<NuxtLink to="/projects">projects</NuxtLink>
+				</nav>
+				<ThemeToggle />
+			</div>
 		</header>
 
 		<!-- root node of slot should be <main> -->
