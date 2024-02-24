@@ -48,14 +48,14 @@
 		height: var(--toggle-height);
 		width: var(--toggle-width);
 		border-radius: calc(var(--toggle-height) / 2);
-		background-color: var(--theme-toggle-bg);
+		background-color: var(--bg-toggle);
 		transition: background-color 200ms;
 
 		&:after {
 			content: '';
 			background-image: url('/sun.svg');
 			background-size: 24px 24px;
-			background-color: var(--page-bg);
+			background-color: var(--bg);
 			position: absolute;
 			left: var(--gutter);
 			top: var(--gutter);

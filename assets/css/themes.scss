@@ -1,13 +1,13 @@
 @mixin light-theme {
-	--page-bg: hsl(40, 22%, 96%);
-	--alt-bg: hsl(40, 20%, 91%);
-	--alt-alt-bg: hsl(40, 20%, 88%);
-	--theme-toggle-bg: hsl(40, 12%, 60%);
+	--bg: hsl(40, 22%, 96%);
+	--bg-alt: hsl(40, 20%, 91%);
+	--bg-alt-alt: hsl(40, 20%, 88%);
+	--bg-toggle: hsl(40, 12%, 60%);
 	--primary: hsl(337, 70%, 50%);
 	--secondary: hsl(337, 80%, 90%);
 	--hr: hsl(0, 0%, 80%);
-	--modal-backdrop: hsla(0, 0%, 0%, 0.5);
-	--correct-green: hsl(120, 50%, 50%);
+	--backdrop: hsla(0, 0%, 0%, 0.5);
+	--positive: hsl(120, 50%, 50%);
 
 	// typography
 	--text: hsl(0, 0%, 34%);
@@ -21,11 +21,11 @@
 	--link-hover: var(--primary);
 	--project-link-text: var(--text-soft);
 	--abbr-title: hsla(0, 0%, 5%, 0.74);
-	--side-note-bg: hsl(19, 52%, 93%);
+	--bg-side-note: hsl(19, 52%, 93%);
 	--side-note-text: hsl(19, 12%, 44%);
-	--marker-color: hsl(337, 40%, 55%);
+	--marker: hsl(337, 40%, 55%);
 	--separator: hsl(40, 12%, 60%);
-	--button-active-text: var(--text-strong);
+	--text-active: var(--text-strong);
 	--selection: hsla(337, 80%, 90%, 80%);
 	--code-selection: hsl(200, 11%, 85%);
 
@@ -37,15 +37,15 @@
 }
 
 @mixin dark-theme {
-	--page-bg: hsl(216, 15%, 16%);
-	--alt-bg: hsl(216, 15%, 19%);
-	--alt-alt-bg: hsl(216, 15%, 21%);
-	--theme-toggle-bg: hsl(216, 9%, 60%);
+	--bg: hsl(216, 15%, 16%);
+	--bg-alt: hsl(216, 15%, 19%);
+	--bg-alt-alt: hsl(216, 15%, 21%);
+	--bg-toggle: hsl(216, 9%, 60%);
 	--primary: hsl(40, 80%, 50%);
 	--secondary: hsl(40, 80%, 78%);
 	--hr: hsl(0, 0%, 80%);
-	--modal-backdrop: rgba(0, 0, 0, 0.7);
-	--correct-green: hsl(120, 50%, 66%);
+	--backdrop: rgba(0, 0, 0, 0.7);
+	--positive: hsl(120, 50%, 66%);
 
 	// typography
 	--text: hsl(40, 82%, 92%);
@@ -59,11 +59,11 @@
 	--link-hover: hsl(40, 92%, 70%);
 	--project-link-text: var(--link-text);
 	--abbr-title: hsl(0, 0%, 100%);
-	--side-note-bg: hsl(216, 14%, 20%);
+	--bg-side-note: hsl(216, 14%, 20%);
 	--side-note-text: hsl(216, 8%, 88%);
-	--marker-color: hsl(40, 80%, 78%);
+	--marker: hsl(40, 80%, 78%);
 	--separator: var(--secondary);
-	--button-active-text: var(--page-bg);
+	--text-active: var(--bg);
 	--selection: hsla(40, 100%, 79%, 0.6);
 	--code-selection: hsl(216, 15%, 36%);
 

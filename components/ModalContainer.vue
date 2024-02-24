@@ -46,7 +46,7 @@ onDeactivated(() => {
 <style lang="scss">
 .modal-backdrop {
 	position: fixed;
-	background: hsla(0, 0%, 0%, 0.5);
+	background: var(--backdrop);
 	backdrop-filter: blur(4px);
 	top: 0;
 	left: 0;

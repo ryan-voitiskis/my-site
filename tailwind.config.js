@@ -14,15 +14,15 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				'page-bg': 'var(--page-bg)',
-				'alt-bg': 'var(--alt-bg)',
-				'alt-alt-bg': 'var(--alt-alt-bg)',
-				'theme-toggle-bg': 'var(--theme-toggle-bg)',
+				bg: 'var(--bg)',
+				'bg-alt': 'var(--bg-alt)',
+				'bg-alt-alt': 'var(--bg-alt-alt)',
+				'bg-toggle': 'var(--bg-toggle)',
 				primary: 'var(--primary)',
 				secondary: 'var(--secondary)',
 				hr: 'var(--hr)',
-				'modal-backdrop': 'var(--modal-backdrop)',
-				'correct-green': 'var(--correct-green)',
+				backdrop: 'var(--backdrop)',
+				positive: 'var(--positive)',
 				text: 'var(--text)',
 				'text-strong': 'var(--text-strong)',
 				'text-soft': 'var(--text-soft)',
@@ -34,11 +34,11 @@ module.exports = {
 				'link-hover': 'var(--link-hover)',
 				'project-link-text': 'var(--project-link-text)',
 				'abbr-title': 'var(--abbr-title)',
-				'side-note-bg': 'var(--side-note-bg)',
+				'bg-side-note': 'var(--bg-side-note)',
 				'side-note-text': 'var(--side-note-text)',
-				'marker-color': 'var(--marker-color)',
+				marker: 'var(--marker)',
 				separator: 'var(--separator)',
-				'button-active-text': 'var(--button-active-text)',
+				'text-active': 'var(--text-active)',
 				'gallery-ui': 'var(--gallery-ui)',
 				'gallery-ui-hover': 'var(--gallery-ui-hover)'
 			}

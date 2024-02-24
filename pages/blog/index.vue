@@ -4,12 +4,12 @@
 			<h1>Blog</h1>
 			<div class="flex-end mb-8 flex gap-4">
 				<button
-					class="rounded-md bg-alt-bg px-4 py-1 hover:bg-alt-alt-bg hover:text-text-strong active:bg-secondary active:text-button-active-text"
+					class="bg-bg-alt hover:bg-alt-bg-alt active:text-text-active rounded-md px-4 py-1 hover:text-text-strong active:bg-secondary"
 				>
 					Articles first
 				</button>
 				<button
-					class="rounded-md bg-alt-bg px-4 py-1 hover:bg-alt-alt-bg hover:text-text-strong active:bg-secondary active:text-button-active-text"
+					class="bg-bg-alt hover:bg-alt-bg-alt active:text-text-active rounded-md px-4 py-1 hover:text-text-strong active:bg-secondary"
 				>
 					Collections first
 				</button>
