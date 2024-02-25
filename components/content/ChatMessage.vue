@@ -14,13 +14,13 @@ defineProps({ fromHuman: Boolean })
 			v-if="fromHuman"
 			class="mb-4 flex h-7 w-7 items-center justify-center rounded-md bg-[#94a4a6]"
 		>
-			<HumanDisplayIcon class="h-5" />
+			<IconHuman class="h-5" />
 		</div>
 		<div
 			v-else
 			class="mb-4 flex h-7 w-7 items-center justify-center rounded-md bg-[rgb(16,163,127)]"
 		>
-			<ChatbotDisplayIcon class="h-5" />
+			<IconOpenAi class="h-5" />
 		</div>
 		<div class="content">
 			<slot />

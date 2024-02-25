@@ -2,6 +2,6 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "explicit"
 	},
-	"eslint.validate": ["javascript", "javascriptreact", "vue"],
+	"eslint.validate": ["javascript", "vue"],
 	"typescript.tsdk": "node_modules/typescript/lib"
 }

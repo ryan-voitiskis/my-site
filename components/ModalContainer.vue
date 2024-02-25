@@ -1,43 +1,46 @@
 <script setup lang="ts">
-export interface Props {
+interface Props {
 	width?: string
+	background?: string
 }
 
 withDefaults(defineProps<Props>(), {
-	title: '',
-	width: '440px'
+	width: 'auto',
+	background: 'var(--bg)'
 })
 
-const emit = defineEmits<{
-	(e: 'close'): void
-}>()
+const show = defineModel({ default: false, type: Boolean })
 
 function escapeClose(e: KeyboardEvent) {
-	if (e.key === 'Escape') emit('close')
+	if (e.key === 'Escape') show.value = false
 }
 
-onMounted(() => {
+function onClose() {
+	if (!document) return
+	document.body.style.overflow = 'visible'
+	document.body.removeEventListener('keydown', escapeClose)
+}
+
+function onOpen() {
+	if (!document) return
 	document.body.addEventListener('keydown', escapeClose)
 	document.body.style.overflow = 'hidden' // prevent scrolling of body when modal shown
-})
+}
+
 onBeforeUnmount(() => {
 	document.body.style.overflow = 'visible'
 	document.body.removeEventListener('keydown', escapeClose)
 })
 
-onActivated(() => {
-	document.body.addEventListener('keydown', escapeClose)
-	document.body.style.overflow = 'hidden' // prevent scrolling of body when modal shown
-})
-onDeactivated(() => {
-	document.body.style.overflow = 'visible'
-	document.body.removeEventListener('keydown', escapeClose)
+watchEffect(() => {
+	if (show.value) onOpen()
+	else onClose()
 })
 </script>
 
 <template>
-	<div class="modal-backdrop" @click.self="$emit('close')">
-		<div class="modal">
+	<div v-if="show" class="modal-backdrop" @click.self="show = false">
+		<div class="modal" role="dialog" aria-modal="true">
 			<slot />
 		</div>
 	</div>
@@ -58,7 +61,7 @@ onDeactivated(() => {
 	z-index: 99;
 	.modal {
 		max-height: 100%;
-		background-color: #fff;
+		background-color: v-bind(background);
 		transition:
 			background-color 200ms,
 			color 200ms;
@@ -104,7 +107,7 @@ onDeactivated(() => {
 	padding: 20px 40px;
 	width: 100%;
 	display: flex;
-	justify-content: flex-Modend;
+	justify-content: flex-end;
 	border-radius: 0 0 10px 10px;
 	button[type='reset'] {
 		margin-right: auto;
