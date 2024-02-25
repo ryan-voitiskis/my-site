@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<header class="bg-bg-alt mb-6 flex w-full justify-between">
+		<header class="mb-6 flex w-full justify-between bg-bg-alt">
 			<div
 				class="mx-auto flex w-full max-w-[1280px] flex-row justify-between p-4"
 			>
@@ -9,7 +9,7 @@
 					<NuxtLink to="/blog">blog</NuxtLink>
 					<NuxtLink to="/projects">projects</NuxtLink>
 				</nav>
-				<ThemeToggle />
+				<ThemeToggle class="-mt-0.5" />
 			</div>
 		</header>
 
