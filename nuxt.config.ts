@@ -4,14 +4,21 @@ export default defineNuxtConfig({
 	alias: {
 		'~': '/',
 		types: '/types/',
-		assets: '/assets/'
+		assets: '/assets/',
+		components: '/components',
+		utils: '/utils/'
 	},
 	modules: [
 		'@nuxt/content',
 		'@nuxtjs/eslint-module',
 		'@vueuse/nuxt',
-		'@nuxtjs/color-mode'
+		'@nuxtjs/color-mode',
+		'shadcn-nuxt'
 	],
+	shadcn: {
+		prefix: '',
+		componentDir: './components/ui'
+	},
 	css: [
 		'assets/css/themes.scss',
 		'assets/css/main.scss',
