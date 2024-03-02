@@ -39,7 +39,11 @@ watchEffect(() => {
 </script>
 
 <template>
-	<div v-if="show" class="modal-backdrop" @click.self="show = false">
+	<div
+		class="modal-backdrop"
+		:class="{ '!z-[-1]': !show }"
+		@click.self="show = false"
+	>
 		<div class="modal" role="dialog" aria-modal="true">
 			<slot />
 		</div>
@@ -80,43 +84,6 @@ watchEffect(() => {
 	}
 }
 
-.modal-header {
-	display: grid;
-	grid-template-columns: 1fr auto;
-	padding: 30px 40px;
-	h2 {
-		font-weight: 500;
-		line-height: 38px;
-		margin: 0 20px 0 0;
-	}
-	.close {
-		padding: 0 8px;
-	}
-}
-
-.modal-body {
-	padding: 0 40px;
-	margin-bottom: 40px;
-	overflow-y: scroll;
-	overflow-x: hidden;
-}
-
-.modal-footer {
-	margin-top: -20px;
-	gap: 20px;
-	padding: 20px 40px;
-	width: 100%;
-	display: flex;
-	justify-content: flex-end;
-	border-radius: 0 0 10px 10px;
-	button[type='reset'] {
-		margin-right: auto;
-	}
-	button.primary {
-		margin-top: unset;
-	}
-}
-
 @media screen and (max-width: 768px) {
 	.modal-backdrop {
 		.modal {
@@ -124,18 +91,6 @@ watchEffect(() => {
 			margin: 0;
 			border-radius: 0;
 		}
-	}
-	.modal-header {
-		display: grid;
-		grid-template-columns: 1fr auto;
-		padding: 20px 10px;
-	}
-	.modal-body {
-		margin: 0;
-		padding: 0 10px;
-	}
-	.modal-footer {
-		display: none;
 	}
 }
 </style>

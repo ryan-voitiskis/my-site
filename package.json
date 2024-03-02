@@ -31,8 +31,11 @@
 	"dependencies": {
 		"@nuxtjs/tailwindcss": "^6.11.4",
 		"@radix-icons/vue": "^1.0.0",
+		"@vueuse/core": "^10.9.0",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.0",
+		"embla-carousel": "^8.0.0",
+		"embla-carousel-vue": "^8.0.0",
 		"radix-vue": "^1.4.8",
 		"tailwind-merge": "^2.2.1",
 		"tailwindcss-animate": "^1.0.7"
