@@ -25,6 +25,7 @@ const current = ref(0)
 async function openInModal(index: number) {
 	showModal.value = true
 	carouselContainerRef.value?.carouselApi?.scrollTo(index, true)
+	if (carouselContainerRef.value?.$el) carouselContainerRef.value?.$el.focus()
 }
 
 onMounted(() => {

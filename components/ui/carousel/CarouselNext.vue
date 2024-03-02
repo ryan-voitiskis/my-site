@@ -13,11 +13,12 @@ const { orientation, canScrollNext, scrollNext } = useCarousel()
 		:disabled="!canScrollNext"
 		:class="
 			cn(
-				'flex h-28 w-28 items-center justify-center text-gallery-ui hover:text-gallery-ui-hover',
+				'flex items-center justify-center text-gallery-ui hover:text-gallery-ui-hover',
 				props.class
 			)
 		"
 		variant="blank"
+		size="xl-icon"
 		@click="scrollNext"
 	>
 		<slot>
