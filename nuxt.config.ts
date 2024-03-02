@@ -1,13 +1,6 @@
 export default defineNuxtConfig({
 	devtools: { enabled: true },
 	telemetry: false,
-	alias: {
-		'~': '/',
-		types: '/types/',
-		assets: '/assets/',
-		components: '/components',
-		utils: '/utils/'
-	},
 	modules: [
 		'@nuxt/content',
 		'@nuxtjs/eslint-module',
@@ -20,9 +13,9 @@ export default defineNuxtConfig({
 		componentDir: './components/ui'
 	},
 	css: [
-		'assets/css/themes.scss',
-		'assets/css/main.scss',
-		'assets/css/shiki.scss'
+		'~/assets/css/themes.scss',
+		'~/assets/css/main.scss',
+		'~/assets/css/shiki.scss'
 	],
 	postcss: {
 		plugins: {

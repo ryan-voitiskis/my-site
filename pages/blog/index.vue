@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
+import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group'
 const format = ref(['article', 'image_collection'])
 
 const query: QueryBuilderParams = computed(() => ({
@@ -12,7 +13,7 @@ const query: QueryBuilderParams = computed(() => ({
 
 <template>
 	<main class="mx-auto w-full max-w-[820px] px-4 pb-48 font-serif">
-		<h1>Blog {{ articles }}</h1>
+		<h1>Blog</h1>
 		<div class="flex-end mb-8 flex gap-4">
 			<ToggleGroup v-model="format" type="multiple">
 				<ToggleGroupItem value="article">Articles</ToggleGroupItem>

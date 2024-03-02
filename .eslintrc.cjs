@@ -16,6 +16,8 @@ module.exports = {
 				order: [['script'], ['template'], ['style']]
 			}
 		],
-		'vue/html-self-closing': 'off'
+		'vue/html-self-closing': 'off',
+		'vue/require-default-prop': 'off',
+		'@typescript-eslint/no-unused-vars': 'off'
 	}
 }

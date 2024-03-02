@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { ImageAttrs } from 'types/types'
 const props = defineProps({
 	withPreviews: {
 		type: Boolean,
