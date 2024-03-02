@@ -19,6 +19,7 @@
 </template>
 
 <style lang="scss">
+// if adjusting nav height, also change min-h-[calc(100vh_-_90px)] on <main>
 nav.main-nav {
 	a {
 		padding: 18px;

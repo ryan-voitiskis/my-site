@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 /* -- start of shadcn-vue -- */
-// only the assigning of a var() to a shadcn var is overriden from default
+// only the assigning of a theme var to a shadcn var is modified from default
 // `npx shadcn-vue@latest init` generated file
 @layer base {
 	:root {
-		--background: 0 0% 100%;
-		--foreground: 20 14.3% 4.1%;
+		--background: 40 22% 96%; // modified to var(--bg)
+		--foreground: 0 0% 34%; // modified to var(--text)
 
 		--muted: 60 4.8% 95.9%;
 		--muted-foreground: 25 5.3% 44.7%;
@@ -28,7 +28,7 @@
 		--secondary: 60 4.8% 95.9%;
 		--secondary-foreground: 24 9.8% 10%;
 
-		--accent: 60 4.8% 95.9%;
+		--accent: 337 80% 90%; // var(--selection)
 		--accent-foreground: 24 9.8% 10%;
 
 		--destructive: 0 84.2% 60.2%;
@@ -40,8 +40,8 @@
 	}
 
 	.dark {
-		--background: 20 14.3% 4.1%;
-		--foreground: 60 9.1% 97.8%;
+		--background: 216 15% 16%; // modified to var(--bg)
+		--foreground: 40 82% 92%; // modified to var(--text)
 
 		--muted: 12 6.5% 15.1%;
 		--muted-foreground: 24 5.4% 63.9%;
@@ -61,7 +61,7 @@
 		--secondary: 12 6.5% 15.1%;
 		--secondary-foreground: 60 9.1% 97.8%;
 
-		--accent: 12 6.5% 15.1%;
+		--accent: 40 100% 79%; // modified to var(--selection)
 		--accent-foreground: 60 9.1% 97.8%;
 
 		--destructive: 0 62.8% 30.6%;

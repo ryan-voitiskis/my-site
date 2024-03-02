@@ -20,7 +20,7 @@ defineProps({
 
 const carouselContainerRef = ref<InstanceType<typeof Carousel> | null>(null)
 const showModal = ref(false)
-const selectedIndex = ref(0)
+const current = ref(0)
 
 async function openInModal(index: number) {
 	showModal.value = true
@@ -30,8 +30,7 @@ async function openInModal(index: number) {
 onMounted(() => {
 	carouselContainerRef.value?.carouselApi?.on(
 		'select',
-		(carouselApi) =>
-			(selectedIndex.value = carouselApi.selectedScrollSnap() + 1)
+		(carouselApi) => (current.value = carouselApi.selectedScrollSnap() + 1)
 	)
 })
 </script>
@@ -61,13 +60,15 @@ onMounted(() => {
 						:src="images[index].src"
 						:alt="images[index].alt"
 					/>
-					<span class="text-4xl font-semibold">
-						{{ index + 1 }}/{{ images.length }}
-					</span>
 				</CarouselItem>
 			</CarouselContent>
-			<div class="flex justify-center font-sans text-gallery-ui">
+			<div class="flex justify-center">
 				<CarouselPrevious />
+				<div
+					class="flex w-28 items-center justify-center text-center font-serif text-3xl font-semibold text-gallery-ui"
+				>
+					{{ current }} / {{ images.length }}
+				</div>
 				<CarouselNext />
 			</div>
 		</Carousel>
