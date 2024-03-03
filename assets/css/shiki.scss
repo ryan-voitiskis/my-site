@@ -12,7 +12,7 @@
 	--shiki-line-number: #a5a5a5;
 	--shiki-line-number-gutter: #333333;
 	--shiki-line-highlight-background: #eeeeee;
-	--shiki-selection-background: var(--code-selection);
+	--shiki-selection-background: hsl(var(--code-selection));
 	--shiki-marker-opacity: 0.4;
 	--shiki-marker-font-size: 0.8rem;
 

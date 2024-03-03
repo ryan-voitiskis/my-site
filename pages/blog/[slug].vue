@@ -10,7 +10,7 @@
 				>
 					<h1>{{ doc.title }}</h1>
 					<table
-						class="clean ml-2 border-l-4 border-l-secondary font-sans text-sm text-text-soft sm:ml-6"
+						class="clean ml-2 border-l-4 border-l-secondary font-sans text-sm text-muted-foreground sm:ml-6"
 					>
 						<tbody>
 							<tr>

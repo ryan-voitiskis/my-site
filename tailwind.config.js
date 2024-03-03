@@ -30,21 +30,6 @@ module.exports = {
 				sm: '0.9375rem'
 			},
 			colors: {
-				hr: 'var(--hr)',
-				backdrop: 'var(--backdrop)',
-				text: 'var(--text)',
-				'text-strong': 'var(--text-strong)',
-				'text-soft': 'var(--text-soft)',
-				'heading-text': 'var(--heading-text)',
-				'nav-text': 'var(--nav-text)',
-				'nav-text-hover': 'var(--nav-text-hover)',
-				'nav-underline': 'var(--nav-underline)',
-				'link-text': 'var(--link-text)',
-				'link-hover': 'var(--link-hover)',
-
-				border: 'hsl(var(--border))',
-				input: 'hsl(var(--input))',
-				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
@@ -77,7 +62,11 @@ module.exports = {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
-				}
+				},
+				backdrop: 'var(--backdrop)',
+				border: 'hsl(var(--border))',
+				input: 'hsl(var(--input))',
+				ring: 'hsl(var(--ring))'
 			},
 			borderRadius: {
 				xl: 'calc(var(--radius) + 4px)',

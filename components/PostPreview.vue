@@ -55,7 +55,7 @@ article.post-preview {
 			grid-area: 2 / 2 / 3 / 3;
 			font-size: 0.7em;
 			margin-bottom: 6px;
-			color: var(--text-soft);
+			color: hsl(var(--muted-foreground));
 			font-family: var(--sans-serif-font);
 		}
 		.short {

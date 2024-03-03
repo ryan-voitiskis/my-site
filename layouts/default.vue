@@ -5,7 +5,7 @@
 				class="mx-auto flex w-full max-w-screen-xl flex-row items-center justify-between p-4"
 			>
 				<nav
-					class="main-nav -ml-4 flex flex-wrap gap-y-4 font-mono text-[17px] text-nav-text"
+					class="main-nav -ml-4 flex flex-wrap gap-y-4 font-mono text-[17px]"
 				>
 					<NuxtLink to="/">about</NuxtLink>
 					<NuxtLink to="/blog">blog</NuxtLink>
@@ -25,6 +25,7 @@
 <style lang="scss">
 nav.main-nav {
 	a {
+		color: hsl(var(--nav-text));
 		display: flex;
 		align-items: center;
 		height: 56px; // if adjusting height, change min-h-[calc(100vh_-_56px)]
@@ -33,11 +34,12 @@ nav.main-nav {
 		text-decoration: none;
 		text-decoration-thickness: 0.1rem !important;
 		&:hover {
+			color: hsl(var(--nav-hover));
 			text-decoration: underline;
 		}
 		&.router-link-active {
 			text-decoration: underline;
-			text-decoration-color: var(--nav-underline);
+			text-decoration-color: hsl(var(--nav-underline));
 		}
 	}
 }
