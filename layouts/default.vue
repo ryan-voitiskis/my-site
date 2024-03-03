@@ -2,18 +2,20 @@
 	<div>
 		<header class="mb-6 flex w-full justify-between bg-muted">
 			<div
-				class="mx-auto flex w-full max-w-screen-xl flex-row justify-between p-4"
+				class="mx-auto flex w-full max-w-screen-xl flex-row items-center justify-between p-4"
 			>
-				<nav class="main-nav -ml-4 gap-y-4 font-mono text-[17px] text-nav-text">
+				<nav
+					class="main-nav -ml-4 flex flex-wrap gap-y-4 font-mono text-[17px] text-nav-text"
+				>
 					<NuxtLink to="/">about</NuxtLink>
 					<NuxtLink to="/blog">blog</NuxtLink>
 					<NuxtLink to="/projects">projects</NuxtLink>
 				</nav>
-				<ThemeToggle class="-mt-0.5" />
+				<ThemeToggle class="-my-2" />
 			</div>
 		</header>
 
-		<!-- root node of slot should be <main> -->
+		<!-- root node of slot should be <main> for semantic purpose -->
 		<slot />
 	</div>
 </template>
@@ -22,7 +24,10 @@
 // if adjusting nav height, also change min-h-[calc(100vh_-_90px)] on <main>
 nav.main-nav {
 	a {
-		padding: 18px;
+		display: flex;
+		align-items: center;
+		height: 56px;
+		padding: 16px;
 		margin: -16px 0;
 		text-decoration: none;
 		text-decoration-thickness: 0.1rem !important;
