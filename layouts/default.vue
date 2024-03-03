@@ -2,7 +2,7 @@
 	<div>
 		<header class="mb-6 flex w-full justify-between bg-bg-alt">
 			<div
-				class="mx-auto flex w-full max-w-[1280px] flex-row justify-between p-4"
+				class="mx-auto flex w-full max-w-screen-xl flex-row justify-between p-4"
 			>
 				<nav class="main-nav -ml-4 gap-y-4 font-mono text-[17px] text-nav-text">
 					<NuxtLink to="/">about</NuxtLink>

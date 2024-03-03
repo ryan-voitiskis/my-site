@@ -26,6 +26,9 @@ module.exports = {
 				xs: '475px',
 				...defaultTheme.screens
 			},
+			fontSize: {
+				sm: '0.9375rem'
+			},
 			colors: {
 				bg: 'var(--bg)',
 				'bg-alt': 'var(--bg-alt)',

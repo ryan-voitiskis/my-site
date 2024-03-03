@@ -5,8 +5,8 @@
 			<template #default="{ doc }">
 				<article
 					v-if="doc"
-					class="mx-auto w-full max-w-[640px] px-4 pb-48 font-serif"
-					:class="{ '!max-w-[1280px]': doc.format === 'image_collection' }"
+					class="mx-auto w-full max-w-screen-sm px-4 pb-48 font-serif"
+					:class="{ '!max-w-screen-xl': doc.format === 'image_collection' }"
 				>
 					<h1>{{ doc.title }}</h1>
 					<table

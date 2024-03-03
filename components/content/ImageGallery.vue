@@ -8,10 +8,6 @@ import {
 } from '~/components/ui/carousel'
 
 defineProps({
-	withPreviews: {
-		type: Boolean,
-		default: true
-	},
 	images: {
 		type: Array as PropType<ImageAttrs[]>,
 		default: () => []
@@ -25,7 +21,7 @@ const current = ref(0)
 async function openInModal(index: number) {
 	showModal.value = true
 	carouselContainerRef.value?.carouselApi?.scrollTo(index, true)
-	if (carouselContainerRef.value?.$el) carouselContainerRef.value?.$el.focus()
+	carouselContainerRef.value?.$el?.focus()
 }
 
 onMounted(() => {
@@ -37,7 +33,10 @@ onMounted(() => {
 </script>
 
 <template>
-	<div v-if="withPreviews" class="image-gallery">
+	<div
+		class="grid gap-4"
+		style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))"
+	>
 		<button
 			v-for="(image, index) in images"
 			:key="index"
@@ -50,36 +49,28 @@ onMounted(() => {
 				class="h-full w-full object-cover"
 			/>
 		</button>
-	</div>
 
-	<ModalContainer v-model="showModal" background="transparent">
-		<Carousel ref="carouselContainerRef">
-			<CarouselContent>
-				<CarouselItem v-for="(_, index) in images" :key="index">
-					<img
-						class="mx-auto h-full max-h-[80vh] max-w-full object-contain"
-						:src="images[index].src"
-						:alt="images[index].alt"
-					/>
-				</CarouselItem>
-			</CarouselContent>
-			<div class="flex justify-center">
-				<CarouselPrevious />
-				<div
-					class="flex w-28 items-center justify-center text-center font-serif text-3xl font-semibold text-gallery-ui"
-				>
-					{{ current }} / {{ images.length }}
+		<ModalContainer v-model="showModal">
+			<Carousel ref="carouselContainerRef">
+				<CarouselContent>
+					<CarouselItem v-for="(_, index) in images" :key="index">
+						<img
+							class="mx-auto h-full max-h-[calc(100vh_-_8rem)] max-w-full object-contain"
+							:src="images[index].src"
+							:alt="images[index].alt"
+						/>
+					</CarouselItem>
+				</CarouselContent>
+				<div class="mt-4 flex justify-center">
+					<CarouselPrevious />
+					<div
+						class="flex w-24 items-center justify-center text-center font-serif text-3xl font-semibold text-gallery-ui"
+					>
+						{{ current }} / {{ images.length }}
+					</div>
+					<CarouselNext />
 				</div>
-				<CarouselNext />
-			</div>
-		</Carousel>
-	</ModalContainer>
+			</Carousel>
+		</ModalContainer>
+	</div>
 </template>
-
-<style lang="scss" scoped>
-.image-gallery {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-	grid-gap: 16px;
-}
-</style>
