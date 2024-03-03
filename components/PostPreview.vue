@@ -64,7 +64,7 @@ article.post-preview {
 		}
 	}
 	&:hover {
-		background-color: var(--bg-alt);
+		background-color: burlywood;
 	}
 }
 
@@ -104,13 +104,13 @@ article.post-preview {
 @media (max-width: 460px) {
 	article.post-preview {
 		height: unset;
-		background-color: var(--bg-alt);
+		background-color: antiquewhite;
 		grid-template-columns: 1fr;
 		.post-preview-image {
 			grid-column: 1 / 2;
 		}
 		.post-preview-image {
-			background-color: var(--bg-alt-alt);
+			background-color: paleturquoise;
 			display: flex;
 			grid-column: 1 / 2;
 			justify-content: space-around;

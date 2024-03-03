@@ -13,7 +13,7 @@ const { orientation, canScrollNext, scrollNext } = useCarousel()
 		:disabled="!canScrollNext"
 		:class="
 			cn(
-				'flex items-center justify-center text-gallery-ui hover:text-gallery-ui-hover',
+				'flex items-center justify-center text-yellow-100 hover:text-yellow-300',
 				props.class
 			)
 		"

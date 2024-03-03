@@ -12,11 +12,7 @@ export default defineNuxtConfig({
 		prefix: '',
 		componentDir: './components/ui'
 	},
-	css: [
-		'~/assets/css/themes.scss',
-		'~/assets/css/main.scss',
-		'~/assets/css/shiki.scss'
-	],
+	css: ['~/assets/css/main.scss', '~/assets/css/shiki.scss'],
 	postcss: {
 		plugins: {
 			tailwindcss: {},

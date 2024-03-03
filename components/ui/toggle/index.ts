@@ -7,14 +7,17 @@ export const toggleVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: 'bg-bg-alt hover:bg-bg-alt-alt',
+				default: 'bg-muted hover:bg-vmuted',
 				outline:
-					'border border-input bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground'
+					'border border-input bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground',
+				theme:
+					'bg-transparent hover:bg-vmuted data-[state=on]:bg-vmuted data-[state=on]:hover:bg-background text-foreground data-[state=on]:text-foreground'
 			},
 			size: {
 				default: 'h-9 px-3',
 				sm: 'h-8 px-2',
-				lg: 'h-10 px-3'
+				lg: 'h-10 px-3',
+				icon: 'h-9 w-9'
 			}
 		},
 		defaultVariants: {

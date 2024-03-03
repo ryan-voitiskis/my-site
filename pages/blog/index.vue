@@ -5,8 +5,7 @@ const format = ref(['article', 'image_collection'])
 
 const query: QueryBuilderParams = computed(() => ({
 	path: '/blog',
-	where: [{ format: { $in: format.value } }],
-	limit: 5
+	where: [{ format: { $in: format.value } }]
 	// sort: [{ date: -1 }]
 }))
 </script>

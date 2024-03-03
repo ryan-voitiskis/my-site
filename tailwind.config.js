@@ -30,15 +30,8 @@ module.exports = {
 				sm: '0.9375rem'
 			},
 			colors: {
-				bg: 'var(--bg)',
-				'bg-alt': 'var(--bg-alt)',
-				'bg-alt-alt': 'var(--bg-alt-alt)',
-				'bg-toggle': 'var(--bg-toggle)',
-				primary: 'var(--primary)',
-				secondary: 'var(--secondary)',
 				hr: 'var(--hr)',
 				backdrop: 'var(--backdrop)',
-				positive: 'var(--positive)',
 				text: 'var(--text)',
 				'text-strong': 'var(--text-strong)',
 				'text-soft': 'var(--text-soft)',
@@ -48,28 +41,20 @@ module.exports = {
 				'nav-underline': 'var(--nav-underline)',
 				'link-text': 'var(--link-text)',
 				'link-hover': 'var(--link-hover)',
-				'project-link-text': 'var(--project-link-text)',
-				'abbr-title': 'var(--abbr-title)',
-				'bg-side-note': 'var(--bg-side-note)',
-				'side-note-text': 'var(--side-note-text)',
-				marker: 'var(--marker)',
-				separator: 'var(--separator)',
-				'text-active': 'var(--text-active)',
-				'gallery-ui': 'var(--gallery-ui)',
-				'gallery-ui-hover': 'var(--gallery-ui-hover)',
+
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
-				// primary: {
-				// 	DEFAULT: 'hsl(var(--primary))',
-				// 	foreground: 'hsl(var(--primary-foreground))'
-				// },
-				// secondary: {
-				// 	DEFAULT: 'hsl(var(--secondary))',
-				// 	foreground: 'hsl(var(--secondary-foreground))'
-				// },
+				primary: {
+					DEFAULT: 'hsl(var(--primary))',
+					foreground: 'hsl(var(--primary-foreground))'
+				},
+				secondary: {
+					DEFAULT: 'hsl(var(--secondary))',
+					foreground: 'hsl(var(--secondary-foreground))'
+				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
@@ -77,6 +62,9 @@ module.exports = {
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
 					foreground: 'hsl(var(--muted-foreground))'
+				},
+				vmuted: {
+					DEFAULT: 'hsl(var(--vmuted))'
 				},
 				accent: {
 					DEFAULT: 'hsl(var(--accent))',

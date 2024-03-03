@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<header class="mb-6 flex w-full justify-between bg-bg-alt">
+		<header class="mb-6 flex w-full justify-between bg-muted">
 			<div
 				class="mx-auto flex w-full max-w-screen-xl flex-row justify-between p-4"
 			>

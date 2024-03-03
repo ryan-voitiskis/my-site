@@ -102,11 +102,11 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 		flex-direction: column;
 		.links {
 			margin-bottom: 10px;
-			color: var(--text-soft);
+			color: brown;
 			a {
-				color: var(--project-link-text);
+				color: powderblue;
 				&:hover {
-					color: var(--link-hover);
+					color: lavender;
 				}
 			}
 		}
@@ -119,7 +119,7 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 			transition: box-shadow ease-in-out 0.2s;
 		}
 		&:hover img {
-			box-shadow: -6px 6px 0px 0px var(--primary);
+			box-shadow: -6px 6px 0px 0px red;
 		}
 	}
 }
@@ -139,7 +139,7 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 			grid-area: 1 / 1 / 2 / 2;
 		}
 		.image-stack:hover img {
-			box-shadow: 6px 6px 0px 0px var(--primary);
+			box-shadow: 6px 6px 0px 0px darkorange;
 		}
 	}
 }
