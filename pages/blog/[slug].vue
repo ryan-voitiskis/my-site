@@ -1,5 +1,5 @@
 <template>
-	<main class="min-h-[calc(100vh_-_90px)] w-full">
+	<main class="w-full">
 		<ContentDoc>
 			<!-- Default slot content wrapped in a template tag with v-slot:default -->
 			<template #default="{ doc }">

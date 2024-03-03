@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<header class="mb-6 flex w-full justify-between bg-muted">
+	<div class="bg-background">
+		<header class="flex w-full justify-between bg-muted">
 			<div
 				class="mx-auto flex w-full max-w-screen-xl flex-row items-center justify-between p-4"
 			>
@@ -15,18 +15,19 @@
 			</div>
 		</header>
 
-		<!-- root node of slot should be <main> for semantic purpose -->
-		<slot />
+		<div class="min-h-[calc(100vh_-_56px)] pt-8">
+			<!-- root node of slot should be <main> for semantic purpose -->
+			<slot />
+		</div>
 	</div>
 </template>
 
 <style lang="scss">
-// if adjusting nav height, also change min-h-[calc(100vh_-_90px)] on <main>
 nav.main-nav {
 	a {
 		display: flex;
 		align-items: center;
-		height: 56px;
+		height: 56px; // if adjusting height, change min-h-[calc(100vh_-_56px)]
 		padding: 16px;
 		margin: -16px 0;
 		text-decoration: none;
