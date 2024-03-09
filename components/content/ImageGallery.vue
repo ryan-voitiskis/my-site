@@ -35,7 +35,7 @@ onMounted(() => {
 <template>
 	<div
 		class="grid gap-4"
-		style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))"
+		style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))"
 	>
 		<Button
 			v-for="(image, index) in images"
@@ -61,13 +61,13 @@ onMounted(() => {
 				<CarouselContent>
 					<CarouselItem v-for="(_, index) in images" :key="index">
 						<img
-							class="mx-auto h-full max-h-[calc(100vh_-_8rem)] max-w-full object-contain"
+							class="mx-auto h-full max-h-[calc(100vh_-_16rem)] max-w-full object-contain"
 							:src="images[index].src"
 							:alt="images[index].alt"
 						/>
 					</CarouselItem>
 				</CarouselContent>
-				<div class="mt-4 flex justify-center">
+				<div class="my-4 flex justify-center">
 					<CarouselPrevious />
 					<div
 						class="flex w-24 items-center justify-center text-center font-serif text-3xl font-semibold text-yellow-100"
