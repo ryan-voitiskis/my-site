@@ -37,18 +37,16 @@ onMounted(() => {
 		class="grid gap-4"
 		style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))"
 	>
-		<button
+		<Button
 			v-for="(image, index) in images"
 			:key="index"
-			class="clean overflow-hidden rounded-lg transition-all duration-300 hover:invert"
+			variant="image"
+			size="image"
+			class="overflow-hidden transition-all duration-300 hover:invert"
 			@click="openInModal(index)"
 		>
-			<img
-				:src="image.src"
-				:alt="image.alt"
-				class="h-full w-full object-cover"
-			/>
-		</button>
+			<img :src="image.src" :alt="image.alt" class="" />
+		</Button>
 
 		<ModalContainer v-model="showModal">
 			<Carousel ref="carouselContainerRef">
