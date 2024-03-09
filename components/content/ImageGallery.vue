@@ -45,11 +45,19 @@ onMounted(() => {
 			class="overflow-hidden transition-all duration-300 hover:invert"
 			@click="openInModal(index)"
 		>
-			<img :src="image.src" :alt="image.alt" class="" />
+			<img :src="image.src" :alt="image.alt" />
 		</Button>
 
 		<ModalContainer v-model="showModal">
-			<Carousel ref="carouselContainerRef">
+			<Button
+				variant="blank"
+				size="xl-icon"
+				class="m-4 mx-auto flex items-center justify-center text-yellow-100 hover:text-yellow-300"
+				@click="showModal = false"
+			>
+				<IconCrossCircle class="h-16 w-16" />
+			</Button>
+			<Carousel ref="carouselContainerRef" tabindex="-1">
 				<CarouselContent>
 					<CarouselItem v-for="(_, index) in images" :key="index">
 						<img
