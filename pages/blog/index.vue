@@ -14,7 +14,7 @@ const query: QueryBuilderParams = computed(() => ({
 	<main class="mx-auto w-full max-w-[820px] px-4 pb-48 font-serif">
 		<h1>Blog</h1>
 		<div class="flex-end mb-8 flex gap-4">
-			<ToggleGroup v-model="format" type="multiple">
+			<ToggleGroup v-model="format" type="multiple" :roving-focus="false">
 				<ToggleGroupItem value="article">Articles</ToggleGroupItem>
 				<ToggleGroupItem value="image_collection">Collections</ToggleGroupItem>
 			</ToggleGroup>
