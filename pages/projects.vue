@@ -12,8 +12,21 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 			<p>
 				Here's a couple of projects I've been working on recently. I would love
 				to hear your feeback at
-				<a href="mailto:ryanvoitiskis@pm.me">ryanvoitiskis@pm.me</a>
+				<Button as-child variant="link">
+					<a href="mailto:ryanvoitiskis@pm.me">ryanvoitiskis@pm.me</a>
+				</Button>
 			</p>
+			<Button>Press me!</Button>
+			<br />
+			<br />
+			<Button variant="secondary">Press me again!</Button>
+			<br />
+			<br />
+			<Button variant="outline">Press me again!</Button>
+			<br />
+			<br />
+			<Button variant="ghost">I'm a ghost!</Button>
+			<br />
 			<br />
 		</div>
 
@@ -23,9 +36,14 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 			</a>
 			<div class="preview">
 				<h2><a href="https://crate.guide">Crate Guide</a></h2>
-				<div class="links">
-					<a href="https://crate.guide">crate.guide</a> |
-					<a href="https://github.com/ryan-voitiskis/crate-guide">GitHub</a>
+				<div>
+					<Button as-child variant="link">
+						<a href="https://crate.guide">crate.guide</a>
+					</Button>
+					|
+					<Button as-child variant="link">
+						<a href="https://github.com/ryan-voitiskis/crate-guide">GitHub</a>
+					</Button>
 				</div>
 				<p>
 					Crate Guide is a DJ app designed to assist in finding compatible
@@ -56,14 +74,18 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 						Panel layout generator
 					</a>
 				</h2>
-				<div class="links">
-					<a href="https://panel-layout-generator.com">
-						panel-layout-generator.com
-					</a>
+				<div class="text-right">
+					<Button as-child variant="link">
+						<a href="https://panel-layout-generator.com">
+							panel-layout-generator.com
+						</a>
+					</Button>
 					|
-					<a href="https://github.com/ryan-voitiskis/panel-layout-generator">
-						GitHub
-					</a>
+					<Button as-child variant="link">
+						<a href="https://github.com/ryan-voitiskis/panel-layout-generator">
+							GitHub
+						</a>
+					</Button>
 				</div>
 				<p>
 					Panel layout generator is a simple layout generator for square
@@ -78,10 +100,14 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 				</p>
 				<p>
 					The app was built using Vue.js, with the only other dependencies being
-					<a href="https://pinia.vuejs.org/">Pinia</a> and
-					<a href="https://vue-accessible-color-picker.netlify.app/">
-						vue-accessible-color-picker
-					</a>
+					<Button as-child variant="link">
+						<a href="https://pinia.vuejs.org/">Pinia</a> and
+					</Button>
+					<Button as-child variant="link">
+						<a href="https://vue-accessible-color-picker.netlify.app/">
+							vue-accessible-color-picker
+						</a>
+					</Button>
 				</p>
 			</div>
 		</article>
@@ -100,16 +126,6 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 		grid-area: 1 / 2 / 2 / 3;
 		display: flex;
 		flex-direction: column;
-		.links {
-			margin-bottom: 10px;
-			color: brown;
-			a {
-				color: powderblue;
-				&:hover {
-					color: lavender;
-				}
-			}
-		}
 	}
 	.image-stack {
 		grid-area: 1 / 1 / 2 / 2;
@@ -128,8 +144,7 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 	.project.flipped {
 		grid-template-columns: 1fr 560px;
 		h2,
-		p,
-		.links {
+		p {
 			text-align: right;
 		}
 		.image-stack {

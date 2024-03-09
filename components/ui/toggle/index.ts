@@ -8,9 +8,9 @@ export const toggleVariants = cva(
 		variants: {
 			variant: {
 				default:
-					'bg-muted hover:bg-vmuted data-[state=on]:bg-accent data-[state=on]:text-accent-foreground',
+					'bg-muted hover:bg-vmuted data-[state=on]:bg-secondary data-[state=on]:hover:bg-secondary/80 data-[state=on]:text-secondary-foreground',
 				outline:
-					'border border-input bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground',
+					'border border-input bg-transparent hover:bg-accent hover:text-accent-foreground',
 				theme: 'bg-transparent hover:bg-vmuted text-foreground'
 			},
 			size: {

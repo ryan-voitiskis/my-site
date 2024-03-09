@@ -7,9 +7,15 @@
 				<nav
 					class="main-nav -ml-4 flex flex-wrap gap-y-4 font-mono text-[17px]"
 				>
-					<NuxtLink to="/">about</NuxtLink>
-					<NuxtLink to="/blog">blog</NuxtLink>
-					<NuxtLink to="/projects">projects</NuxtLink>
+					<Button as-child variant="nav-link">
+						<NuxtLink to="/">about</NuxtLink>
+					</Button>
+					<Button as-child variant="nav-link">
+						<NuxtLink to="/blog">blog</NuxtLink>
+					</Button>
+					<Button as-child variant="nav-link">
+						<NuxtLink to="/projects">projects</NuxtLink>
+					</Button>
 				</nav>
 				<ThemeToggle class="-my-2" />
 			</div>
@@ -23,9 +29,8 @@
 </template>
 
 <style lang="scss">
-nav.main-nav {
+nav.main-nav-DELETE {
 	a {
-		color: hsl(var(--nav-text));
 		display: flex;
 		align-items: center;
 		height: 56px; // if adjusting height, change min-h-[calc(100vh_-_56px)]
@@ -39,7 +44,6 @@ nav.main-nav {
 		}
 		&.router-link-active {
 			text-decoration: underline;
-			text-decoration-color: hsl(var(--nav-underline));
 		}
 	}
 }

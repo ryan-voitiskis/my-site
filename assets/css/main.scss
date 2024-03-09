@@ -26,26 +26,21 @@
 		--primary-foreground: 60 9.1% 97.8%;
 
 		--secondary: 337 80% 90%;
-		--secondary-foreground: 24 9.8% 10%;
+		--secondary-foreground: 0 0% 34%;
 
-		--accent: 337 80% 90%;
-		--accent-foreground: 24 9.8% 10%;
+		--accent: 140 80% 90%;
+		--accent-foreground: 0 0% 34%;
 
 		--destructive: 0 84.2% 60.2%;
 		--destructive-foreground: 60 9.1% 97.8%;
 
-		--ring: 337 70% 90%;
+		--ring: 338 75% 73%;
 
 		--radius: 0.5rem;
 
 		--hr: 0 0% 80%;
 		--backdrop: hsla(0, 0%, 0%, 0.5);
 		--heading-text: 216 20% 33%;
-		--nav-text: 0 0% 33%;
-		--nav-text-hover: 337 70% 50%;
-		--nav-underline: 337 70% 50%;
-		--link-text: 0 0% 34%;
-		--link-hover: 337 70% 50%;
 		--selection: hsla(337, 80%, 90%, 80%);
 		--code-selection: 200 11% 85%;
 		--marker: 337 40% 55%;
@@ -68,16 +63,16 @@
 		--card: 216 15% 21%;
 		--card-foreground: 40 82% 92%;
 
-		--border: 12 6.5% 15.1%;
-		--input: 12 6.5% 15.1%;
+		--border: 217 55% 41%; // TODO
+		--input: 11 4% 52%; // TODO
 
-		--primary: 40 80% 50%;
-		--primary-foreground: 40 82% 92%;
+		--primary: 40 100% 71%;
+		--primary-foreground: 216 15% 16%;
 
-		--secondary: 40 80% 78%;
-		--secondary-foreground: 40 82% 92%;
+		--secondary: 40 100% 82%;
+		--secondary-foreground: 216 15% 16%;
 
-		--accent: 40 100% 79%;
+		--accent: 156 100% 79%;
 		--accent-foreground: 216 15% 16%;
 
 		--destructive: 0 62.8% 30.6%;
@@ -87,12 +82,7 @@
 
 		--hr: 0, 0%, 80%;
 		--backdrop: rgba(0, 0, 0, 0.7);
-		--heading-text: 40 80% 78%;
-		--nav-text: 40 80% 78%;
-		--nav-text-hover: 40 80% 50%;
-		--nav-underline: 40 80% 50%;
-		--link-text: 40 92% 88%;
-		--link-hover: 40 92% 70%;
+		--heading-text: var(--secondary);
 		--selection: hsla(40, 100%, 79%, 0.6);
 		--code-selection: 216 15% 36%;
 		--marker: 40 80% 78%;
@@ -212,14 +202,6 @@ h4 {
 	}
 }
 
-p {
-	margin-top: 0;
-}
-
-a {
-	text-decoration: underline;
-}
-
 ul {
 	margin-left: 32px;
 	list-style-type: disc;
@@ -297,30 +279,6 @@ table.clean td:last-child,
 th:last-child,
 td:last-child {
 	padding-right: 0;
-}
-
-*:focus,
-a:hover,
-a:active,
-input[type='submit']::-moz-focus-inner,
-input[type='button']::-moz-focus-inner {
-	outline: none;
-}
-
-a,
-.link-text {
-	color: hsl(var(--link-text));
-	text-decoration: underline;
-	cursor: pointer;
-	&:hover {
-		color: hsl(var(--link-hover));
-	}
-}
-
-.links {
-	margin: 16px 24px;
-	font-family: var(--monospace-font);
-	font-size: 17px;
 }
 
 ::-webkit-scrollbar {

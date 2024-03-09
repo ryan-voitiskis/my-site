@@ -1,7 +1,7 @@
 <template>
 	<main class="mx-auto w-full max-w-screen-sm px-4 pb-48 font-serif">
 		<h1>Ryan Voitiskis</h1>
-		<div class="links">
+		<div>
 			<a href="mailto:ryanvoitiskis@pm.me">ryanvoitiskis@pm.me</a>
 			|
 			<a href="https://github.com/ryan-voitiskis">GitHub</a>
