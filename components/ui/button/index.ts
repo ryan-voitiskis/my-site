@@ -17,7 +17,8 @@ export const buttonVariants = cva(
 					'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
 				ghost: 'hover:bg-accent hover:text-accent-foreground',
 				link: 'text-primary underline-offset-4 hover:underline',
-				'nav-link': 'text-primary underline-offset-4 hover:underline',
+				'nav-link':
+					'text-primary underline-offset-4 hover:underline decoration-2',
 				blank: '',
 				image: 'focus-visible:ring-8'
 			},
