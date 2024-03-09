@@ -11,7 +11,7 @@ defineProps<{ post: Post }>()
 			<div class="post-preview-content">
 				<h2>{{ post.title }}</h2>
 				<div class="published">
-					Posted on {{ yyyyMmDdToLocale(post.published) }}
+					Posted on {{ dateStringToLocale(post.published) }}
 				</div>
 				<div v-if="post.short" class="short">{{ post.short }}</div>
 			</div>

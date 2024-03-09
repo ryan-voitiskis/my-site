@@ -8,7 +8,7 @@
 					class="mx-auto w-full max-w-screen-sm px-4 pb-48 font-serif"
 					:class="{ '!max-w-screen-xl': doc.format === 'image_collection' }"
 				>
-					<h1>{{ doc.title }}</h1>
+					<h1 class="text-balance">{{ doc.title }}</h1>
 					<table
 						class="clean ml-2 border-l-4 border-l-secondary font-sans text-sm text-muted-foreground sm:ml-6"
 					>
@@ -16,12 +16,14 @@
 							<tr>
 								<td class="!pl-4 font-medium">Published</td>
 								<td class="font-light">
-									{{ yyyyMmDdToLocale(doc.published) }}
+									{{ dateStringToLocale(doc.published) }}
 								</td>
 							</tr>
 							<tr v-if="doc.updated">
 								<td class="!pl-4 font-medium">Updated</td>
-								<td class="font-light">{{ yyyyMmDdToLocale(doc.updated) }}</td>
+								<td class="font-light">
+									{{ dateStringToLocale(doc.updated) }}
+								</td>
 							</tr>
 						</tbody>
 					</table>

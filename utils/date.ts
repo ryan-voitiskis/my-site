@@ -1,11 +1,19 @@
 // located in utils folder so it is auto-imported
-
-const options: Intl.DateTimeFormatOptions = {
+const dateOptions: Intl.DateTimeFormatOptions = {
+	timeZone: 'Australia/Melbourne',
 	year: 'numeric',
 	month: 'long',
 	day: 'numeric'
 }
 
-export function yyyyMmDdToLocale(date: string): string {
-	return new Date(date).toLocaleDateString(undefined, options)
+const timeOptions: Intl.DateTimeFormatOptions = {
+	timeZone: 'Australia/Melbourne',
+	hour: '2-digit',
+	minute: '2-digit',
+	hour12: true
+}
+
+export function dateStringToLocale(date: string): string {
+	const isoDate = new Date(date)
+	return new Intl.DateTimeFormat('en-AU', dateOptions).format(isoDate)
 }
