@@ -16,16 +16,16 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 					<a href="mailto:ryanvoitiskis@pm.me">ryanvoitiskis@pm.me</a>
 				</Button>
 			</p>
-			<Button>Press me!</Button>
+			<Button>Primary</Button>
 			<br />
 			<br />
-			<Button variant="secondary">Press me again!</Button>
+			<Button variant="secondary">Secondary</Button>
 			<br />
 			<br />
-			<Button variant="outline">Press me again!</Button>
+			<Button variant="outline">Outline</Button>
 			<br />
 			<br />
-			<Button variant="ghost">I'm a ghost!</Button>
+			<Button variant="ghost">Ghost</Button>
 			<br />
 			<br />
 		</div>

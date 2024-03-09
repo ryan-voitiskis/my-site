@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-// vars defined twice, so color preview is visible (req' color space function)
+/*
+	colour space function not included for colours used in tailwind.
+	this theme doesn't follow 60(primary), 30(secondary), 10(accent) rule,
+	instead I am following the convention outlined in the shadcn ui docs:
+	https://www.shadcn-vue.com/docs/theming.html#list-of-variables
+*/
 @layer base {
 	:root {
 		--background: 40 22% 96%;
@@ -25,7 +30,7 @@
 		--primary: 336 37% 49%;
 		--primary-foreground: 60 9.1% 97.8%;
 
-		--secondary: 337 80% 90%;
+		--secondary: 337 60% 90%;
 		--secondary-foreground: 0 0% 34%;
 
 		--accent: 140 80% 90%;
@@ -43,7 +48,6 @@
 		--heading-text: 216 20% 33%;
 		--selection: hsla(337, 80%, 90%, 80%);
 		--code-selection: 200 11% 85%;
-		--marker: 337 40% 55%;
 		--webkit-scrollbar: hsla(0, 0%, 50%, 0.3);
 		--webkit-scrollbar-hover: hsla(0, 0%, 50%, 0.12);
 	}
@@ -72,19 +76,18 @@
 		--secondary: 40 100% 82%;
 		--secondary-foreground: 216 15% 16%;
 
-		--accent: 168 100% 79%;
+		--accent: 169 100% 60%;
 		--accent-foreground: 216 15% 16%;
 
 		--destructive: 0 62.8% 30.6%;
 		--destructive-foreground: 60 9.1% 97.8%;
 
-		--ring: 168 100% 79%;
+		--ring: 169 100% 60%;
 
-		--hr: 0, 0%, 80%;
+		--hr: 0, 0%, 60%;
 		--heading-text: var(--secondary);
 		--selection: hsla(40, 100%, 79%, 0.6);
 		--code-selection: 216 15% 36%;
-		--marker: 40 80% 78%;
 		--webkit-scrollbar: hsla(0, 0%, 100%, 0.3);
 		--webkit-scrollbar-hover: hsla(0, 0%, 100%, 0.12);
 	}
@@ -215,7 +218,7 @@ ul {
 	padding-left: 0;
 	margin-top: 0;
 	li::marker {
-		color: hsl(var(--marker));
+		color: hsl(var(--primary));
 	}
 }
 
