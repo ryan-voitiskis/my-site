@@ -8,13 +8,15 @@
 					class="main-nav -ml-4 flex flex-wrap gap-y-4 font-mono text-[17px]"
 				>
 					<Button as-child variant="nav-link" class="-my-4">
-						<NuxtLink to="/"> about </NuxtLink>
+						<NuxtLink to="/" active-class="underline">about</NuxtLink>
 					</Button>
 					<Button as-child variant="nav-link" class="-my-4">
-						<NuxtLink to="/blog">blog</NuxtLink>
+						<NuxtLink to="/blog" active-class="underline">blog</NuxtLink>
 					</Button>
 					<Button as-child variant="nav-link" class="-my-4">
-						<NuxtLink to="/projects">projects</NuxtLink>
+						<NuxtLink to="/projects" active-class="underline">
+							projects
+						</NuxtLink>
 					</Button>
 				</nav>
 				<ThemeToggle class="-my-2" />
@@ -27,10 +29,3 @@
 		</div>
 	</div>
 </template>
-
-<style lang="scss">
-.router-link-active {
-	text-decoration: underline;
-	text-decoration-thickness: 2px;
-}
-</style>

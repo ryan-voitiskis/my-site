@@ -30,6 +30,47 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 			<br />
 		</div>
 
+		<article class="project flipped">
+			<PhoneMockup>
+				<iframe
+					src="https://demo--bpm-tap-0.netlify.app/"
+					class="h-full w-full"
+				/>
+			</PhoneMockup>
+			<div class="preview">
+				<h2><a href="https://bpm-tap-0.netlify.app/">bpm-tap</a></h2>
+				<div>
+					<Button as-child variant="link">
+						<a href="https://bpm-tap-0.netlify.app/">bpm-tap-0.netlify.app</a>
+					</Button>
+					|
+					<Button as-child variant="link">
+						<a href="https://github.com/ryan-voitiskis/bpm-tap">GitHub</a>
+					</Button>
+				</div>
+				<p>
+					bpm-tap is an extremely simple web app for tapping out the tempo of a
+					song. I needed a solution for comparing the tempo of two tracks that
+					could be installed on a phone quickly. The app is designed to be used
+					as a PWA on a phone, with the tempo being tapped out by tapping the
+					screen. The tempo is displayed in real-time and can be reset by not
+					tapping for 2 seconds.
+				</p>
+				<p>
+					To save a tempo as a reference for future measurements, the user can
+					lock the most recent bpm by enabling the lock feature with the lock
+					icon button at the top right. My use case for this is to compare the
+					tempo of a track I'm playing to the tempo of the next track I want to
+					mix in.
+				</p>
+				<p>
+					The app uses the D3.js interpolateCubehelixLong() function to
+					represent the tempo as a background colour, providing a visual aid for
+					comparing the currently tapped tempo with the last or lock bpm.
+				</p>
+			</div>
+		</article>
+
 		<article class="project">
 			<a href="https://crate.guide" class="image-stack clean">
 				<img :src="crateGuideImage" alt="Crate Guide's turntable interface." />
@@ -143,8 +184,7 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 @media (min-width: 1061px) {
 	.project.flipped {
 		grid-template-columns: 1fr 560px;
-		h2,
-		p {
+		h2 {
 			text-align: right;
 		}
 		.image-stack {
