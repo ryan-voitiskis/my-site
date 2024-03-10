@@ -15,8 +15,12 @@ const query: QueryBuilderParams = computed(() => ({
 		<h1>Blog</h1>
 		<div class="flex-end mb-8 flex justify-end gap-4">
 			<ToggleGroup v-model="format" type="multiple" :roving-focus="false">
-				<ToggleGroupItem value="article">Articles</ToggleGroupItem>
-				<ToggleGroupItem value="image_collection">Collections</ToggleGroupItem>
+				<ToggleGroupItem value="article" size="badge">
+					Articles
+				</ToggleGroupItem>
+				<ToggleGroupItem value="image_collection" size="badge">
+					Collections
+				</ToggleGroupItem>
 			</ToggleGroup>
 		</div>
 		<ContentList :query="query" path="/blog">
@@ -24,7 +28,7 @@ const query: QueryBuilderParams = computed(() => ({
 				<PostPreview v-for="post in list" :key="post._path" :post="post" />
 			</template>
 			<template #not-found>
-				<p>No articles found.</p>
+				<IconNullSymbol class="mx-auto my-8 h-8 w-8 text-heading-text/40" />
 			</template>
 		</ContentList>
 	</main>

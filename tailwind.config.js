@@ -63,10 +63,15 @@ module.exports = {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				backdrop: 'var(--backdrop)',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
-				ring: 'hsl(var(--ring))'
+				ring: 'hsl(var(--ring))',
+
+				hr: 'hsl(var(--hr))',
+				backdrop: 'var(--backdrop)',
+				'heading-text': 'hsl(var(--heading-text))',
+				selection: 'hsl(var(--selection))',
+				'code-selection': 'hsl(var(--code-selection))'
 			},
 			borderRadius: {
 				xl: 'calc(var(--radius) + 4px)',
