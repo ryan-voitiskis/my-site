@@ -38,7 +38,7 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 				/>
 			</PhoneMockup>
 			<div class="preview">
-				<h2><a href="https://bpm-tap-0.netlify.app/">bpm-tap</a></h2>
+				<h2>bpm tap</h2>
 				<div>
 					<Button as-child variant="link">
 						<a href="https://bpm-tap-0.netlify.app/">bpm-tap-0.netlify.app</a>
@@ -76,7 +76,7 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 				<img :src="crateGuideImage" alt="Crate Guide's turntable interface." />
 			</a>
 			<div class="preview">
-				<h2><a href="https://crate.guide">Crate Guide</a></h2>
+				<h2>Crate Guide</h2>
 				<div>
 					<Button as-child variant="link">
 						<a href="https://crate.guide">crate.guide</a>
@@ -141,14 +141,11 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 				</p>
 				<p>
 					The app was built using Vue.js, with the only other dependencies being
-					<Button as-child variant="link">
-						<a href="https://pinia.vuejs.org/">Pinia</a> and
-					</Button>
-					<Button as-child variant="link">
-						<a href="https://vue-accessible-color-picker.netlify.app/">
-							vue-accessible-color-picker
-						</a>
-					</Button>
+					<a href="https://pinia.vuejs.org/">Pinia</a>
+					and
+					<a href="https://vue-accessible-color-picker.netlify.app/">
+						vue-accessible-color-picker.
+					</a>
 				</p>
 			</div>
 		</article>

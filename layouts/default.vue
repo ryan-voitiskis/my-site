@@ -4,17 +4,15 @@
 			<div
 				class="mx-auto flex w-full max-w-screen-xl flex-row items-center justify-between p-4"
 			>
-				<nav
-					class="main-nav -ml-4 flex flex-wrap gap-y-4 font-mono text-[17px]"
-				>
+				<nav class="-ml-4 flex flex-wrap gap-y-4 font-mono text-[17px]">
 					<Button as-child variant="nav-link" class="-my-4">
-						<NuxtLink to="/" active-class="underline">about</NuxtLink>
+						<NuxtLink to="/" active-class="text-primary">about</NuxtLink>
 					</Button>
 					<Button as-child variant="nav-link" class="-my-4">
-						<NuxtLink to="/blog" active-class="underline">blog</NuxtLink>
+						<NuxtLink to="/blog" active-class="text-primary">blog</NuxtLink>
 					</Button>
 					<Button as-child variant="nav-link" class="-my-4">
-						<NuxtLink to="/projects" active-class="underline">
+						<NuxtLink to="/projects" active-class="text-primary">
 							projects
 						</NuxtLink>
 					</Button>

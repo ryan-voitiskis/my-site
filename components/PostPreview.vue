@@ -3,136 +3,29 @@ defineProps<{ post: Post }>()
 </script>
 
 <template>
-	<a :href="post._path" class="title">
-		<article class="post-preview">
-			<div v-if="post.image" class="post-preview-image">
-				<img :src="post.image" :alt="post.image_alt" />
-			</div>
-			<div class="post-preview-content">
-				<h2>{{ post.title }}</h2>
-				<div class="published">
-					Posted on {{ dateStringToLocale(post.published) }}
+	<Button
+		as-child
+		variant="blank"
+		class="h-auto w-full justify-start overflow-hidden rounded-xl bg-white/50 p-0 shadow-md hover:bg-white/80 hover:no-underline focus-visible:ring-4"
+	>
+		<a :href="post._path">
+			<article class="flex w-full">
+				<img
+					v-if="post.image"
+					:src="post.image"
+					:alt="post.image_alt"
+					class="h-full max-h-64 w-64 max-w-64 object-cover"
+				/>
+				<div class="w-full p-4">
+					<h2>{{ post.title }}</h2>
+					<div class="mb-2 font-sans text-sm font-light text-muted-foreground">
+						Published on {{ dateStringToLocale(post.published) }}
+					</div>
+					<div v-if="post.short" class="w-full text-md text-foreground">
+						{{ post.short }}
+					</div>
 				</div>
-				<div v-if="post.short" class="short">{{ post.short }}</div>
-			</div>
-		</article>
-	</a>
+			</article>
+		</a>
+	</Button>
 </template>
-
-<style scoped lang="scss">
-a {
-	text-decoration: none;
-	&:hover {
-		color: unset;
-	}
-}
-article.post-preview {
-	display: grid;
-	grid-template-columns: minmax(200px, 1fr) 2fr;
-	grid-template-rows: 1fr;
-	column-gap: 30px;
-	margin-bottom: 40px;
-	.post-preview-image {
-		grid-column: 1 / 2;
-		img {
-			width: 100%;
-			height: 100%;
-			max-height: 180px;
-			object-fit: cover;
-			margin: 0;
-			float: left;
-		}
-	}
-	.post-preview-content {
-		grid-column: 2 / 3;
-		h2 {
-			display: inline-flex;
-			font-size: 1.2rem;
-			line-height: 36px;
-			margin: 6px 0;
-		}
-		.published {
-			grid-area: 2 / 2 / 3 / 3;
-			font-size: 0.7em;
-			margin-bottom: 6px;
-			color: hsl(var(--muted-foreground));
-			font-family: var(--sans-serif-font);
-		}
-		.short {
-			grid-area: 3 / 2 / 4 / 3;
-			font-size: 0.9em;
-		}
-	}
-	&:hover {
-		background-color: burlywood;
-	}
-}
-
-@media (max-width: 600px) {
-	article.post-preview {
-		column-gap: 10px;
-		.post-preview-content {
-			h2 {
-				line-height: 26px;
-			}
-			.short {
-				font-size: 1.1rem;
-			}
-		}
-	}
-}
-
-@media (max-width: 520px) {
-	article.post-preview {
-		grid-template-columns: 160px 2fr;
-		.post-preview-image {
-			img {
-				max-width: 160px;
-			}
-		}
-		.post-preview-content {
-			.published {
-				font-size: 0.7rem;
-			}
-			.short {
-				font-size: 1rem;
-			}
-		}
-	}
-}
-
-@media (max-width: 460px) {
-	article.post-preview {
-		height: unset;
-		background-color: antiquewhite;
-		grid-template-columns: 1fr;
-		.post-preview-image {
-			grid-column: 1 / 2;
-		}
-		.post-preview-image {
-			background-color: paleturquoise;
-			display: flex;
-			grid-column: 1 / 2;
-			justify-content: space-around;
-			img {
-				width: unset;
-				max-width: 100%;
-				object-fit: unset;
-			}
-		}
-		.post-preview-content {
-			padding: 20px;
-			grid-column: 1 / 2;
-			.published {
-				grid-area: 2 / 1 / 3 / 2;
-				font-size: 0.8em;
-				margin-bottom: 10px;
-			}
-			.short {
-				grid-area: 3 / 1 / 4 / 2;
-				font-size: 0.9em;
-			}
-		}
-	}
-}
-</style>

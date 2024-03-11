@@ -27,7 +27,14 @@ module.exports = {
 				...defaultTheme.screens
 			},
 			fontSize: {
-				sm: '0.9375rem'
+				sm: '1rem',
+				md: '1.2rem',
+				lg: '1.3rem',
+				xl: '1.5rem',
+				'2xl': '1.75rem',
+				'3xl': '2rem',
+				'4xl': '2.25rem',
+				'5xl': '3rem'
 			},
 			colors: {
 				background: 'hsl(var(--background))',
