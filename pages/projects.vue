@@ -64,9 +64,12 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 					mix in.
 				</p>
 				<p>
-					The app uses the D3.js interpolateCubehelixLong() function to
-					represent the tempo as a background colour, providing a visual aid for
-					comparing the currently tapped tempo with the last or lock bpm.
+					The app uses
+					<a href="https://d3js.org/d3-interpolate/color">
+						D3.js colour interpolation
+					</a>
+					to represent the tempo as a background colour, providing a visual aid
+					for comparing the currently tapped tempo with the last or lock bpm.
 				</p>
 			</div>
 		</article>
