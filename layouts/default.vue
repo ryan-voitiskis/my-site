@@ -35,7 +35,7 @@
 		&.router-link-active {
 			text-decoration: underline;
 			text-decoration-color: hsl(var(--primary));
-			text-decoration-thickness: 0.1rem; // TODO: reassess with different font
+			text-decoration-thickness: 0.0625rem;
 		}
 	}
 }

@@ -14,7 +14,7 @@ const query: QueryBuilderParams = computed(() => ({
 <template>
 	<main class="font-serif">
 		<div class="mx-auto w-full max-w-screen-xl px-4">
-			<h1 class="font-mono text-sm text-foreground">> blog</h1>
+			<h1 class="font-mono text-sm font-[120] text-muted-foreground">> blog</h1>
 		</div>
 		<div class="mx-auto w-full max-w-[820px] px-4 pb-48">
 			<div class="flex-end mb-8 flex justify-end gap-4">

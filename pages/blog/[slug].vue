@@ -10,18 +10,18 @@
 				>
 					<h1 class="text-balance">{{ doc.title }}</h1>
 					<table
-						class="clean ml-2 border-l-4 border-l-secondary font-mono text-sm text-muted-foreground sm:ml-6"
+						class="clean ml-2 border-l-4 border-l-secondary font-mono text-xs text-muted-foreground sm:ml-6"
 					>
 						<tbody>
 							<tr>
-								<td class="!pl-4 font-medium">Published</td>
-								<td class="font-light">
+								<td class="!pl-4">Published</td>
+								<td class="font-thin">
 									{{ dateStringToLocale(doc.published) }}
 								</td>
 							</tr>
 							<tr v-if="doc.updated">
-								<td class="!pl-4 font-medium">Updated</td>
-								<td class="font-light">
+								<td class="!pl-4">Updated</td>
+								<td class="font-thin">
 									{{ dateStringToLocale(doc.updated) }}
 								</td>
 							</tr>

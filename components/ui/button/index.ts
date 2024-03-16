@@ -18,7 +18,7 @@ export const buttonVariants = cva(
 				ghost: 'hover:bg-accent hover:text-accent-foreground',
 				link: 'text-primary underline-offset-4 hover:underline',
 				'nav-link':
-					'font-mono text-foreground dark:text-secondary hover:bg-vmuted',
+					'font-mono font-thin text-foreground dark:text-secondary hover:bg-vmuted',
 				blank: 'whitespace-normal',
 				image: 'focus-visible:ring-8'
 			},

@@ -103,9 +103,17 @@
 }
 
 @font-face {
-	font-family: 'Xenon';
-	src: url('../fonts/MonaspaceXenonVarVF[wght,wdth,slnt].ttf')
-		format('truetype-variations');
+	font-family: 'BerkeleyMono';
+	src: url('../fonts/BerkeleyMonoVariable-Regular.woff2')
+		format('woff2-variations');
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'BerkeleyMono';
+	src: url('../fonts/BerkeleyMonoVariable-Italic.woff2')
+		format('woff2-variations');
+	font-style: italic;
 }
 
 @font-face {
@@ -121,7 +129,7 @@
 }
 
 :root {
-	--monospace-font: 'Xenon', monospace;
+	--monospace-font: 'BerkeleyMono', monospace;
 	--serif-font: 'Crimson Pro', serif;
 	--sans-serif-font: 'Urbanist', sans-serif;
 }

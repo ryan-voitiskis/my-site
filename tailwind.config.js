@@ -20,13 +20,14 @@ module.exports = {
 			fontFamily: {
 				sans: ['Urbanist', 'sans-serif'],
 				serif: ['Crimson Pro', 'serif'],
-				mono: ['Xenon', 'monospace']
+				mono: ['BerkeleyMono', 'monospace'] // only use font-[100] -> font-[150]
 			},
 			screens: {
 				xs: '475px',
 				...defaultTheme.screens
 			},
 			fontSize: {
+				xs: '0.8rem',
 				sm: '1rem',
 				md: '1.2rem',
 				lg: '1.3rem',

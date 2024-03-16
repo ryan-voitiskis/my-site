@@ -7,7 +7,9 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 
 <template>
 	<main class="mx-auto w-full max-w-screen-xl px-4 pb-48 font-serif">
-		<h1 class="font-mono text-sm text-foreground">> projects</h1>
+		<h1 class="font-mono text-sm font-[120] text-muted-foreground">
+			> projects
+		</h1>
 		<article>
 			<PhoneMockup>
 				<iframe
