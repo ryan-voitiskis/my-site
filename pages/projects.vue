@@ -6,39 +6,17 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 </script>
 
 <template>
-	<main class="mx-auto w-full max-w-screen-xl pb-48 font-serif">
-		<div class="intro mx-auto w-full max-w-[820px] px-4">
-			<h1>Projects</h1>
-			<p>
-				Here's a couple of projects I've been working on recently. I would love
-				to hear your feeback at
-				<Button as-child variant="link">
-					<a href="mailto:ryanvoitiskis@pm.me">ryanvoitiskis@pm.me</a>
-				</Button>
-			</p>
-			<Button>Primary</Button>
-			<br />
-			<br />
-			<Button variant="secondary">Secondary</Button>
-			<br />
-			<br />
-			<Button variant="outline">Outline</Button>
-			<br />
-			<br />
-			<Button variant="ghost">Ghost</Button>
-			<br />
-			<br />
-		</div>
-
-		<article class="project flipped">
+	<main class="mx-auto w-full max-w-screen-xl px-4 pb-48 font-serif">
+		<h1 class="font-mono text-sm text-foreground">> projects</h1>
+		<article>
 			<PhoneMockup>
 				<iframe
 					src="https://demo--bpm-tap-0.netlify.app/"
 					class="h-full w-full"
 				/>
 			</PhoneMockup>
-			<div class="preview">
-				<h2>bpm tap</h2>
+			<div>
+				<h2 class="font-mono font-bold">bpm tap</h2>
 				<div>
 					<Button as-child variant="link">
 						<a href="https://bpm-tap-0.netlify.app/">bpm-tap-0.netlify.app</a>
@@ -74,11 +52,11 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 			</div>
 		</article>
 
-		<article class="project">
-			<a href="https://crate.guide" class="image-stack clean">
+		<article>
+			<a href="https://crate.guide">
 				<img :src="crateGuideImage" alt="Crate Guide's turntable interface." />
 			</a>
-			<div class="preview">
+			<div>
 				<h2>Crate Guide</h2>
 				<div>
 					<Button as-child variant="link">
@@ -105,20 +83,20 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 			</div>
 		</article>
 
-		<article class="project flipped">
-			<a href="https://panel-layout-generator.com" class="image-stack clean">
+		<article>
+			<a href="https://panel-layout-generator.com">
 				<img
 					:src="panelLayoutGeneratorImage"
 					alt="Panel layout generators main interface."
 				/>
 			</a>
-			<div class="preview">
+			<div>
 				<h2>
 					<a href="https://panel-layout-generator.com">
 						Panel layout generator
 					</a>
 				</h2>
-				<div class="text-right">
+				<div>
 					<Button as-child variant="link">
 						<a href="https://panel-layout-generator.com">
 							panel-layout-generator.com
@@ -154,83 +132,3 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 		</article>
 	</main>
 </template>
-
-<style lang="scss">
-.project {
-	display: grid;
-	grid-template-columns: 560px 1fr;
-	grid-template-rows: 1fr;
-	grid-gap: 60px;
-	margin-bottom: 100px;
-	padding: 16px;
-	.preview {
-		grid-area: 1 / 2 / 2 / 3;
-		display: flex;
-		flex-direction: column;
-	}
-	.image-stack {
-		grid-area: 1 / 1 / 2 / 2;
-		img {
-			max-width: 100%;
-			object-fit: contain;
-			transition: box-shadow ease-in-out 0.2s;
-		}
-		&:hover img {
-			box-shadow: -6px 6px 0px 0px red;
-		}
-	}
-}
-
-@media (min-width: 1061px) {
-	.project.flipped {
-		grid-template-columns: 1fr 560px;
-		h2 {
-			text-align: right;
-		}
-		.image-stack {
-			grid-area: 1 / 2 / 2 / 3;
-		}
-		.preview {
-			grid-area: 1 / 1 / 2 / 2;
-		}
-		.image-stack:hover img {
-			box-shadow: 6px 6px 0px 0px darkorange;
-		}
-	}
-}
-
-@media (max-width: 1200px) {
-	.project {
-		grid-template-columns: 500px 1fr;
-		grid-gap: 40px;
-	}
-}
-
-@media (max-width: 1120px) {
-	.project {
-		grid-template-columns: 480px 1fr;
-		grid-gap: 20px;
-	}
-}
-
-@media (max-width: 1060px) {
-	.project {
-		grid-template-columns: 1fr;
-		grid-template-rows: auto;
-		max-width: 860px;
-		margin: 0 auto 80px;
-		.image-stack {
-			grid-area: 1 / 1 / 2 / 2;
-		}
-		.preview {
-			grid-area: 2 / 1 / 3 / 2;
-		}
-	}
-}
-
-@media (max-width: 600px) {
-	.project {
-		grid-template-columns: 1fr;
-	}
-}
-</style>

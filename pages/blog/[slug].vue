@@ -10,7 +10,7 @@
 				>
 					<h1 class="text-balance">{{ doc.title }}</h1>
 					<table
-						class="clean ml-2 border-l-4 border-l-secondary font-sans text-sm text-muted-foreground sm:ml-6"
+						class="clean ml-2 border-l-4 border-l-secondary font-mono text-sm text-muted-foreground sm:ml-6"
 					>
 						<tbody>
 							<tr>

@@ -4,7 +4,7 @@
 			<div
 				class="mx-auto flex w-full max-w-screen-xl flex-row items-center justify-between p-4"
 			>
-				<nav class="-ml-4 flex flex-wrap gap-y-4">
+				<nav id="main_nav" class="-ml-4 flex flex-wrap gap-y-4">
 					<Button as-child variant="nav-link" class="-my-4">
 						<NuxtLink to="/">about</NuxtLink>
 					</Button>
@@ -27,14 +27,16 @@
 </template>
 
 <style lang="scss">
-a {
-	&:hover {
-		text-decoration: none;
-	}
-	&.router-link-active {
-		text-decoration: underline;
-		text-decoration-color: hsl(var(--primary));
-		text-decoration-thickness: 0.1rem;
+#main_nav {
+	a {
+		&:hover {
+			text-decoration: none;
+		}
+		&.router-link-active {
+			text-decoration: underline;
+			text-decoration-color: hsl(var(--primary));
+			text-decoration-thickness: 0.1rem; // TODO: reassess with different font
+		}
 	}
 }
 </style>
