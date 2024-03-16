@@ -5,6 +5,8 @@
 				> ryan_voitiskis
 			</h1>
 		</div>
-		<div class="mx-auto w-full max-w-[820px] px-4 pb-48"></div>
+		<div class="mx-auto w-full max-w-[820px] px-4 pb-48">
+			<ContactForm />
+		</div>
 	</main>
 </template>
