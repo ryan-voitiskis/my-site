@@ -6,14 +6,11 @@ import { Label } from '@/components/ui/label'
 
 const props = defineProps<LabelProps & { class?: HTMLAttributes['class'] }>()
 
-const { error, formItemId } = useFormField()
+const { formItemId } = useFormField()
 </script>
 
 <template>
-	<Label
-		:class="cn(error && 'text-destructive', props.class)"
-		:for="formItemId"
-	>
+	<Label :class="cn(props.class)" :for="formItemId">
 		<slot />
 	</Label>
 </template>

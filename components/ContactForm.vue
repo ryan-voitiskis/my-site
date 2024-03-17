@@ -5,12 +5,12 @@ import * as z from 'zod'
 
 const formSchema = toTypedSchema(
 	z.object({
-		name: z.string().min(2).max(100),
-		email: z.string().email(),
-		message: z.string().min(8).max(2000)
+		name: z.string().trim().min(2).max(100),
+		email: z.string().trim().email(),
+		message: z.string().trim().min(10).max(2000)
 	})
 )
-
+// console.log(formSchema)
 const form = useForm({
 	validationSchema: formSchema
 })
@@ -23,7 +23,7 @@ const onSubmit = form.handleSubmit((values) => {
 <template>
 	<form class="font-sans" @submit="onSubmit">
 		<FormField v-slot="{ componentField }" name="name">
-			<FormItem v-auto-animate>
+			<FormItem class="mb-2">
 				<FormLabel>name</FormLabel>
 				<FormControl>
 					<Input type="text" v-bind="componentField" />
@@ -33,7 +33,7 @@ const onSubmit = form.handleSubmit((values) => {
 		</FormField>
 
 		<FormField v-slot="{ componentField }" name="email">
-			<FormItem v-auto-animate>
+			<FormItem class="mb-2">
 				<FormLabel>email</FormLabel>
 				<FormControl>
 					<Input type="text" v-bind="componentField" />
@@ -43,7 +43,7 @@ const onSubmit = form.handleSubmit((values) => {
 		</FormField>
 
 		<FormField v-slot="{ componentField }" name="message">
-			<FormItem v-auto-animate>
+			<FormItem class="mb-2">
 				<FormLabel>message</FormLabel>
 				<FormControl>
 					<Textarea v-bind="componentField" />
@@ -52,6 +52,6 @@ const onSubmit = form.handleSubmit((values) => {
 			</FormItem>
 		</FormField>
 
-		<Button type="submit" class="my-8">Submit</Button>
+		<Button type="submit" class="my-4">Submit</Button>
 	</form>
 </template>
