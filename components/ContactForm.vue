@@ -10,7 +10,7 @@ const formSchema = toTypedSchema(
 		message: z.string().trim().min(10).max(2000)
 	})
 )
-// console.log(formSchema)
+
 const form = useForm({
 	validationSchema: formSchema
 })
@@ -18,6 +18,15 @@ const form = useForm({
 const onSubmit = form.handleSubmit((values) => {
 	console.log('Form submitted!', values)
 })
+
+const nameField = ref<HTMLInputElement | null>(null)
+const { focused: inputFocus } = useFocus(nameField)
+
+function focusNameField() {
+	inputFocus.value = true
+}
+
+defineExpose({ focusNameField })
 </script>
 
 <template>
@@ -26,7 +35,7 @@ const onSubmit = form.handleSubmit((values) => {
 			<FormItem class="mb-2">
 				<FormLabel>name</FormLabel>
 				<FormControl>
-					<Input type="text" v-bind="componentField" />
+					<Input ref="nameField" type="text" v-bind="componentField" />
 				</FormControl>
 				<FormMessage />
 			</FormItem>
