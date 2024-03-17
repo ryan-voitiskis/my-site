@@ -37,7 +37,7 @@
 		"clsx": "^2.1.0",
 		"embla-carousel": "^8.0.0",
 		"embla-carousel-vue": "^8.0.0",
-		"radix-vue": "^1.5.2",
+		"radix-vue": "1.4.9",
 		"tailwind-merge": "^2.2.2",
 		"tailwindcss-animate": "^1.0.7",
 		"zod": "^3.22.4"
