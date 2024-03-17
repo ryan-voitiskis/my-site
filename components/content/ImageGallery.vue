@@ -70,7 +70,7 @@ onMounted(() => {
 				<div class="my-4 flex justify-center">
 					<CarouselPrevious />
 					<div
-						class="flex w-24 items-center justify-center text-center font-serif text-3xl font-semibold text-yellow-100"
+						class="flex w-32 select-none items-center justify-center text-center font-mono text-2xl font-semibold text-yellow-100"
 					>
 						{{ current }} / {{ images.length }}
 					</div>

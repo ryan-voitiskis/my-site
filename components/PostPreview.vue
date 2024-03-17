@@ -16,9 +16,9 @@ defineProps<{ post: Post }>()
 					:alt="post.image_alt"
 					class="h-full max-h-64 w-64 max-w-64 object-cover"
 				/>
-				<div class="w-full p-4">
+				<div class="w-full p-4 font-sans">
 					<h2>{{ post.title }}</h2>
-					<div class="mb-2 font-sans text-sm font-light text-muted-foreground">
+					<div class="mb-2 text-sm text-muted-foreground">
 						Published on {{ dateStringToLocale(post.published) }}
 					</div>
 					<div v-if="post.short" class="w-full text-md text-foreground">

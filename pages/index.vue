@@ -4,16 +4,14 @@ const contactForm = ref<InstanceType<typeof ContactForm>>()
 </script>
 
 <template>
-	<main class="mx-auto w-full px-4 pb-48 font-serif">
+	<main class="mx-auto w-full px-4 pb-48">
 		<div class="mx-auto w-full max-w-screen-xl px-4">
 			<h1 class="font-mono text-sm font-[120] text-muted-foreground">
 				> ryan_voitiskis
 			</h1>
 		</div>
 		<div class="mx-auto flex w-full flex-wrap justify-center gap-8 pb-48">
-			<div
-				class="w-full max-w-64 pt-16 font-sans text-sm text-muted-foreground"
-			>
+			<div class="w-full max-w-64 pt-16 text-sm text-muted-foreground">
 				<p class="mb-2">developer from melbourne, au</p>
 				<p class="mb-2">fullstack, mostly with js/ts</p>
 				<Button

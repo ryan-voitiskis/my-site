@@ -30,7 +30,7 @@ defineExpose({ focusNameField })
 </script>
 
 <template>
-	<form class="font-sans" @submit="onSubmit">
+	<form @submit="onSubmit">
 		<FormField v-slot="{ componentField }" name="name">
 			<FormItem class="mb-2">
 				<FormLabel>name</FormLabel>

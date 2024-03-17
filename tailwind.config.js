@@ -18,8 +18,8 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ['Urbanist', 'sans-serif'],
-				serif: ['Crimson Pro', 'serif'],
+				sans: ['Inter', 'sans-serif'],
+				serif: ['serif'],
 				mono: ['BerkeleyMono', 'monospace'] // only use font-[100] -> font-[150]
 			},
 			screens: {
@@ -27,15 +27,15 @@ module.exports = {
 				...defaultTheme.screens
 			},
 			fontSize: {
-				xs: '0.8rem',
-				sm: '1rem',
-				md: '1.2rem',
-				lg: '1.3rem',
-				xl: '1.5rem',
-				'2xl': '1.75rem',
-				'3xl': '2rem',
-				'4xl': '2.25rem',
-				'5xl': '3rem'
+				xs: '0.875rem', // 14px
+				sm: '1rem', // 16px
+				md: '1.125rem', // 18px
+				lg: '1.25rem', // 20px
+				xl: '1.5rem', // 24px
+				'2xl': '1.75rem', // 28px
+				'3xl': '2rem', // 32px
+				'4xl': '2.25rem', // 36px
+				'5xl': '3rem' // 48px
 			},
 			colors: {
 				background: 'hsl(var(--background))',

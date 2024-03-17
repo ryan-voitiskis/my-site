@@ -12,7 +12,7 @@ const query: QueryBuilderParams = computed(() => ({
 </script>
 
 <template>
-	<main class="font-serif">
+	<main>
 		<div class="mx-auto w-full max-w-screen-xl px-4">
 			<h1 class="font-mono text-sm font-[120] text-muted-foreground">> blog</h1>
 		</div>
