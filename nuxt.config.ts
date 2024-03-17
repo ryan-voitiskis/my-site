@@ -6,6 +6,7 @@ export default defineNuxtConfig({
 		'@nuxtjs/eslint-module',
 		'@vueuse/nuxt',
 		'@nuxtjs/color-mode',
+		'@vee-validate/nuxt',
 		'shadcn-nuxt'
 	],
 	shadcn: {
@@ -48,5 +49,6 @@ export default defineNuxtConfig({
 			script: [],
 			noscript: []
 		}
-	}
+	},
+	plugins: ['~/plugins/vee-validate.ts']
 })
