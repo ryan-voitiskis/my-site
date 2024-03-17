@@ -52,6 +52,6 @@ const onSubmit = form.handleSubmit((values) => {
 			</FormItem>
 		</FormField>
 
-		<Button type="submit" class="my-4">Submit</Button>
+		<Button type="submit" class="my-4">submit</Button>
 	</form>
 </template>
