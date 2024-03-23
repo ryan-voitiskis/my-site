@@ -15,13 +15,13 @@
 						<tbody>
 							<tr>
 								<td class="!pl-4">Published</td>
-								<td class="font-thin">
+								<td class="font-[110]">
 									{{ dateStringToLocale(doc.published) }}
 								</td>
 							</tr>
 							<tr v-if="doc.updated">
 								<td class="!pl-4">Updated</td>
-								<td class="font-thin">
+								<td class="font-[110]">
 									{{ dateStringToLocale(doc.updated) }}
 								</td>
 							</tr>
