@@ -104,7 +104,7 @@
 
 @font-face {
 	font-family: 'BerkeleyMono';
-	src: url('../fonts/BerkeleyMonoVariable-Regular.woff2')
+	src: url('/fonts/BerkeleyMonoVariable-Regular.woff2')
 		format('woff2-variations');
 	font-style: normal;
 	font-weight: 100 150;
@@ -112,7 +112,7 @@
 
 @font-face {
 	font-family: 'BerkeleyMono';
-	src: url('../fonts/BerkeleyMonoVariable-Italic.woff2')
+	src: url('/fonts/BerkeleyMonoVariable-Italic.woff2')
 		format('woff2-variations');
 	font-style: italic;
 	font-weight: 100 150;
@@ -123,7 +123,7 @@
 	font-style: normal;
 	font-weight: 100 900;
 	font-display: swap;
-	src: url('../fonts/InterVariable.woff2') format('woff2-variations');
+	src: url('/fonts/InterVariable.woff2') format('woff2-variations');
 }
 
 @font-face {
@@ -131,7 +131,7 @@
 	font-style: italic;
 	font-weight: 100 900;
 	font-display: swap;
-	src: url('../fonts/InterVariable-Italic.woff2') format('woff2-variations');
+	src: url('/fonts/InterVariable-Italic.woff2') format('woff2-variations');
 }
 
 :root {
