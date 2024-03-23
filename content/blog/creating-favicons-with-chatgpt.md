@@ -5,6 +5,7 @@ published: '2022-12-26'
 short: An attempt at creating web app SVG favicons quickly using ChatGPT.
 image: cover_images/creating-favicons-with-chatgpt.jpg
 image_alt: Stable Diffusion generated image of a pink circuit board
+tags: ['SVG', 'ChatGPT']
 ---
 
 Creating favicons is a task that in the past I have found to take hours. It's not a task I wish to spend so much time on. I attempted to speed up this process using ChatGPT.

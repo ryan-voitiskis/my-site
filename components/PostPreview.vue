@@ -17,6 +17,10 @@ defineProps<{ post: Post }>()
 			<table class="clean mx-auto mb-0 font-mono text-xs text-muted-foreground">
 				<tbody>
 					<tr>
+						<td class="!pl-4">Type</td>
+						<td class="font-thin">{{ post.format }}</td>
+					</tr>
+					<tr>
 						<td class="!pl-4">Published</td>
 						<td class="font-thin">
 							{{ dateStringToLocale(post.published) }}
@@ -34,7 +38,9 @@ defineProps<{ post: Post }>()
 				>
 					{{ post.title }}
 				</h2>
-				<div class="flex text-orange-400">badge badge badge</div>
+				<div class="mb-2 flex gap-2">
+					<Badge v-for="(tag, i) in post.tags" :key="i" :text="tag" />
+				</div>
 				<div v-if="post.short" class="w-full">
 					{{ post.short }}
 				</div>
