@@ -68,13 +68,13 @@ onMounted(() => {
 					</CarouselItem>
 				</CarouselContent>
 				<div class="my-4 flex justify-center">
-					<CarouselPrevious />
+					<CarouselPrevious variant="modal" />
 					<div
 						class="flex w-32 select-none items-center justify-center text-center font-mono text-2xl font-semibold text-yellow-100"
 					>
 						{{ current }} / {{ images.length }}
 					</div>
-					<CarouselNext />
+					<CarouselNext variant="modal" />
 				</div>
 			</Carousel>
 		</ModalContainer>

@@ -108,35 +108,25 @@ const panelLayoutImages = [
 		</article>
 
 		<article
-			class="mx-auto flex max-w-[1120px] flex-col items-center gap-4 border-b py-16 md:flex-row md:gap-16"
+			class="mx-auto flex max-w-[1120px] flex-col items-center gap-4 border-b py-16 lg:flex-row lg:gap-16"
 		>
-			<Carousel
-				class="max-w-screen-xs focus-visible:!ring-8 focus-visible:ring-ring"
-			>
-				<CarouselContent>
-					<CarouselItem v-for="(image, index) in crateGuideImages" :key="index">
-						<img
-							class="aspect-square w-full object-contain"
-							:src="image.src"
-							:alt="image.alt"
-						/>
-					</CarouselItem>
-				</CarouselContent>
-				<div class="my-4 flex justify-center">
-					<CarouselPrevious />
-					<CarouselNext />
-				</div>
-			</Carousel>
-			<div>
+			<div class="lg:order-last">
 				<h2 class="font-mono font-bold">Crate Guide</h2>
-				<div>
-					<Button as-child variant="link">
-						<a href="https://crate.guide">crate.guide</a>
-					</Button>
-					|
-					<Button as-child variant="link">
-						<a href="https://github.com/ryan-voitiskis/crate-guide">GitHub</a>
-					</Button>
+				<div class="my-2 flex flex-wrap gap-2">
+					<Badge text="Vue.js" />
+					<Badge text="PWA" />
+					<Badge text="SPA" />
+				</div>
+				<div class="mb-2 text-sm">
+					<!-- prettier-ignore -->
+					<a href="https://crate.guide" class="font-mono font-[130]">crate.guide</a>
+					&nbsp;|&nbsp;
+					<a
+						href="https://github.com/ryan-voitiskis/crate-guide"
+						class="font-mono font-[130]"
+					>
+						GitHub
+					</a>
 				</div>
 				<p>
 					Crate Guide is a DJ app designed to assist in finding compatible
@@ -152,25 +142,44 @@ const panelLayoutImages = [
 					Spotify API.
 				</p>
 			</div>
+			<Carousel
+				class="max-w-screen-xs focus-visible:!ring-8 focus-visible:ring-ring"
+			>
+				<CarouselContent>
+					<CarouselItem v-for="(image, index) in crateGuideImages" :key="index">
+						<img
+							class="w-full self-center object-contain"
+							:src="image.src"
+							:alt="image.alt"
+						/>
+					</CarouselItem>
+				</CarouselContent>
+				<div class="flex justify-center gap-4">
+					<CarouselPrevious />
+					<CarouselNext />
+				</div>
+			</Carousel>
 		</article>
 
 		<article
-			class="mx-auto flex max-w-[1120px] flex-col items-center gap-4 py-16 md:flex-row md:gap-16"
+			class="mx-auto flex max-w-[1120px] flex-col items-center gap-4 py-16 lg:flex-row lg:gap-16"
 		>
 			<div>
 				<h2 class="font-mono font-bold">Panel layout generator</h2>
-				<div>
-					<Button as-child variant="link">
-						<a href="https://panel-layout-generator.com">
-							panel-layout-generator.com
-						</a>
-					</Button>
-					|
-					<Button as-child variant="link">
-						<a href="https://github.com/ryan-voitiskis/panel-layout-generator">
-							GitHub
-						</a>
-					</Button>
+				<div class="my-2 flex flex-wrap gap-2">
+					<Badge text="Vue.js" />
+					<Badge text="SPA" />
+				</div>
+				<div class="mb-2 text-sm">
+					<!-- prettier-ignore -->
+					<a href="https://panel-layout-generator.com" class="font-mono font-[130]">panel-layout-generator.com</a>
+					&nbsp;|&nbsp;
+					<a
+						href="https://github.com/ryan-voitiskis/panel-layout-generator"
+						class="font-mono font-[130]"
+					>
+						GitHub
+					</a>
 				</div>
 				<p>
 					Panel layout generator is a simple layout generator for square
@@ -201,13 +210,13 @@ const panelLayoutImages = [
 						:key="index"
 					>
 						<img
-							class="mx-auto h-full max-h-[calc(100vh_-_16rem)] max-w-full object-contain"
+							class="w-full object-contain"
 							:src="image.src"
 							:alt="image.alt"
 						/>
 					</CarouselItem>
 				</CarouselContent>
-				<div class="my-4 flex justify-center">
+				<div class="flex justify-center gap-4">
 					<CarouselPrevious />
 					<CarouselNext />
 				</div>

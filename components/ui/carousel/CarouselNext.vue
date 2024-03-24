@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import { useCarousel } from './useCarousel'
-import type { WithClassAsProps } from './interface'
 import { Button } from '~/components/ui/button'
+import { carouselButtonVariants } from '.'
+import type { CarouselButtonVariants } from '.'
+import type { HTMLAttributes } from 'vue'
 
-const props = defineProps<WithClassAsProps>()
+const props = defineProps<{
+	variant?: CarouselButtonVariants['variant']
+	class?: HTMLAttributes['class']
+}>()
 
 const { orientation, canScrollNext, scrollNext } = useCarousel()
 </script>
@@ -11,14 +16,9 @@ const { orientation, canScrollNext, scrollNext } = useCarousel()
 <template>
 	<Button
 		:disabled="!canScrollNext"
-		:class="
-			cn(
-				'flex items-center justify-center text-yellow-100 hover:text-yellow-300',
-				props.class
-			)
-		"
+		:class="cn(carouselButtonVariants({ variant }), props.class)"
 		variant="blank"
-		size="xl-icon"
+		:size="props.variant === 'modal' ? 'xl-icon' : 'lg-icon'"
 		@click="scrollNext"
 	>
 		<slot>
