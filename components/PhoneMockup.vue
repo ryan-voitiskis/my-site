@@ -1,6 +1,9 @@
 <template>
+	<div class="h-[600px] w-full sm:hidden">
+		<slot />
+	</div>
 	<div
-		class="relative mx-auto h-[600px] w-[300px] rounded-[2.5rem] border-[14px] border-gray-800 bg-gray-800 shadow-[0_6px_36px_0_hsl(var(--primary))] dark:border-vmuted dark:bg-vmuted dark:shadow-[0_6px_30px_-5px_#ffffffaa]"
+		class="relative mx-auto hidden h-[600px] w-[300px] rounded-[2.5rem] border-[14px] border-gray-800 bg-gray-800 shadow-[0_6px_36px_0_hsl(var(--primary))] dark:border-vmuted dark:bg-vmuted dark:shadow-[0_6px_30px_-5px_#ffffffaa] sm:block"
 	>
 		<div
 			class="absolute -start-[17px] top-[72px] h-[32px] w-[3px] rounded-s-lg bg-gray-800 dark:bg-vmuted"

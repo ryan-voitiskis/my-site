@@ -1,8 +1,51 @@
 <script setup lang="ts">
-import crateGuideImage from '../assets/img/crate-guide.jpeg'
-import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
+import crateGuideImage from '../assets/img/crate_guide_screenshot_0.jpeg'
 
 // TODO: preload lcp
+useHead({
+	link: [
+		{
+			rel: 'preload',
+			fetchpriority: 'high',
+			href: crateGuideImage,
+			as: 'image'
+		}
+	]
+})
+
+const crateGuideImages = [
+	{
+		src: crateGuideImage,
+		alt: 'Crate Guide single deck interface.'
+	},
+	{
+		src: '/img/projects/crate_guide_screenshot_1.png',
+		alt: 'Crate Guide login interface.'
+	},
+	{
+		src: '/img/projects/crate_guide_screenshot_2.png',
+		alt: 'Crate Guide track select interface.'
+	},
+	{
+		src: '/img/projects/crate_guide_screenshot_3.png',
+		alt: 'Crate Guide empty deck interface.'
+	}
+]
+
+const panelLayoutImages = [
+	{
+		src: '/img/projects/panel-layout-generator_screenshot_0.png',
+		alt: 'panel-layout-generator interface.'
+	},
+	{
+		src: '/img/projects/panel-layout-generator_screenshot_1.png',
+		alt: 'panel-layout-generator interface with numbers.'
+	},
+	{
+		src: '/img/projects/panel-layout-generator_screenshot_2.png',
+		alt: 'panel-layout-generator interface with 960 panels.'
+	}
+]
 </script>
 
 <template>
@@ -10,23 +53,27 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 		<h1 class="font-mono text-sm font-[120] text-muted-foreground">
 			> projects
 		</h1>
-		<article>
-			<PhoneMockup>
-				<iframe
-					src="https://demo--bpm-tap-0.netlify.app/"
-					class="h-full w-full"
-				/>
-			</PhoneMockup>
+
+		<article
+			class="mx-auto flex max-w-[1120px] flex-col items-center gap-4 border-b py-16 md:flex-row md:gap-16"
+		>
 			<div>
-				<h2 class="font-mono font-bold">bpm tap</h2>
-				<div>
-					<Button as-child variant="link">
-						<a href="https://bpm-tap-0.netlify.app/">bpm-tap-0.netlify.app</a>
-					</Button>
-					|
-					<Button as-child variant="link">
-						<a href="https://github.com/ryan-voitiskis/bpm-tap">GitHub</a>
-					</Button>
+				<h2 class="mb-4 font-mono font-bold">bpm tap</h2>
+				<div class="my-2 flex flex-wrap gap-2">
+					<Badge text="Vue.js" />
+					<Badge text="PWA" />
+					<Badge text="D3.js" />
+				</div>
+				<div class="mb-2 text-sm">
+					<!-- prettier-ignore -->
+					<a href="https://bpm-tap-0.netlify.app/" class="font-mono font-[130]">bpm-tap-0.netlify.app</a>
+					&nbsp;|&nbsp;
+					<a
+						href="https://github.com/ryan-voitiskis/bpm-tap"
+						class="font-mono font-[130]"
+					>
+						GitHub
+					</a>
 				</div>
 				<p>
 					bpm-tap is an extremely simple web app for tapping out the tempo of a
@@ -52,14 +99,36 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 					for comparing the currently tapped tempo with the last or lock bpm.
 				</p>
 			</div>
+			<PhoneMockup>
+				<iframe
+					src="https://demo--bpm-tap-0.netlify.app/"
+					class="h-full w-full"
+				/>
+			</PhoneMockup>
 		</article>
 
-		<article>
-			<a href="https://crate.guide">
-				<img :src="crateGuideImage" alt="Crate Guide's turntable interface." />
-			</a>
+		<article
+			class="mx-auto flex max-w-[1120px] flex-col items-center gap-4 border-b py-16 md:flex-row md:gap-16"
+		>
+			<Carousel
+				class="max-w-screen-xs focus-visible:!ring-8 focus-visible:ring-ring"
+			>
+				<CarouselContent>
+					<CarouselItem v-for="(image, index) in crateGuideImages" :key="index">
+						<img
+							class="aspect-square w-full object-contain"
+							:src="image.src"
+							:alt="image.alt"
+						/>
+					</CarouselItem>
+				</CarouselContent>
+				<div class="my-4 flex justify-center">
+					<CarouselPrevious />
+					<CarouselNext />
+				</div>
+			</Carousel>
 			<div>
-				<h2>Crate Guide</h2>
+				<h2 class="font-mono font-bold">Crate Guide</h2>
 				<div>
 					<Button as-child variant="link">
 						<a href="https://crate.guide">crate.guide</a>
@@ -85,19 +154,11 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 			</div>
 		</article>
 
-		<article>
-			<a href="https://panel-layout-generator.com">
-				<img
-					:src="panelLayoutGeneratorImage"
-					alt="Panel layout generators main interface."
-				/>
-			</a>
+		<article
+			class="mx-auto flex max-w-[1120px] flex-col items-center gap-4 py-16 md:flex-row md:gap-16"
+		>
 			<div>
-				<h2>
-					<a href="https://panel-layout-generator.com">
-						Panel layout generator
-					</a>
-				</h2>
+				<h2 class="font-mono font-bold">Panel layout generator</h2>
 				<div>
 					<Button as-child variant="link">
 						<a href="https://panel-layout-generator.com">
@@ -131,6 +192,26 @@ import panelLayoutGeneratorImage from '../assets/img/panel-layout-generator.png'
 					</a>
 				</p>
 			</div>
+			<Carousel
+				class="max-w-screen-sm focus-visible:!ring-8 focus-visible:ring-ring"
+			>
+				<CarouselContent>
+					<CarouselItem
+						v-for="(image, index) in panelLayoutImages"
+						:key="index"
+					>
+						<img
+							class="mx-auto h-full max-h-[calc(100vh_-_16rem)] max-w-full object-contain"
+							:src="image.src"
+							:alt="image.alt"
+						/>
+					</CarouselItem>
+				</CarouselContent>
+				<div class="my-4 flex justify-center">
+					<CarouselPrevious />
+					<CarouselNext />
+				</div>
+			</Carousel>
 		</article>
 	</main>
 </template>
