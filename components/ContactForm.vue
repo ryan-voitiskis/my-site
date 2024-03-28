@@ -1,22 +1,19 @@
 <script setup lang="ts">
+import * as z from 'zod'
+import { toast } from 'vue-sonner'
 import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
-import * as z from 'zod'
 
 const formSchema = toTypedSchema(
 	z.object({
 		name: z.string().trim().min(2).max(100),
-		email: z.string().trim().email(),
+		email: z.string().trim().email().max(420),
 		message: z.string().trim().min(10).max(2000)
 	})
 )
 
 const form = useForm({
 	validationSchema: formSchema
-})
-
-const onSubmit = form.handleSubmit((values) => {
-	console.log('Form submitted!', values)
 })
 
 const nameField = ref<HTMLInputElement | null>(null)
@@ -27,10 +24,29 @@ function focusNameField() {
 }
 
 defineExpose({ focusNameField })
+
+const onSubmit = form.handleSubmit(async (values) => {
+	const res = await fetch('/', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+		body: new URLSearchParams(values).toString()
+	})
+	if (res.ok) {
+		toast.success(`thanks for getting in touch ${values.name}!`)
+		form.resetForm()
+		return
+	}
+	await navigator.clipboard.writeText('ryanvoitiskis@pm.me')
+	toast.error(
+		`sorry, something went wrong. please email me instead at 'ryanvoitiskis@pm.me' which has been copied to your clipboard.`,
+		{ duration: 30000 }
+	)
+})
 </script>
 
 <template>
 	<form @submit="onSubmit">
+		<input type="hidden" name="form-name" value="contact" />
 		<FormField v-slot="{ componentField }" name="name">
 			<FormItem class="mb-2">
 				<FormLabel>name</FormLabel>
