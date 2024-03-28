@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import ContactForm from '~/components/ContactForm.vue'
+import { toast } from 'vue-sonner'
 const contactForm = ref<InstanceType<typeof ContactForm>>()
+
+function emailToClipboard() {
+	navigator.clipboard.writeText('ryanvoitiskis@pm.me').then(() => {
+		toast.success(`copied 'ryanvoitiskis@pm.me' to clipboard`, {
+			duration: 300000
+		})
+	})
+}
 </script>
 
 <template>
@@ -21,6 +30,15 @@ const contactForm = ref<InstanceType<typeof ContactForm>>()
 				>
 					talk to me
 					<IconArrow class="mx-2 h-5 w-5" />
+				</Button>
+				<p class="text-foreground/50">________or________</p>
+				<Button
+					variant="blank"
+					class="font-sans font-medium"
+					@click="emailToClipboard"
+				>
+					ryanvoitiskis@pm.me
+					<IconClipboardCopy class="mx-2 h-5 w-5" />
 				</Button>
 			</div>
 			<ContactForm ref="contactForm" class="w-full max-w-screen-xs" />
