@@ -1,12 +1,3 @@
 [build]
-  command = "npm run generate"
-  publish = ".output/public"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[dev]
-  framework = "nuxt"
-  autoLaunch = false
+  command = "npm run build"
+  publish = "dist"
