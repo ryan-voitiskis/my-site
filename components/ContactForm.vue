@@ -4,6 +4,9 @@ import { toast } from 'vue-sonner'
 import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 
+const contactForm = ref<HTMLFormElement | null>(null)
+const nameField = ref<HTMLInputElement | null>(null)
+
 const formSchema = toTypedSchema(
 	z.object({
 		name: z.string().trim().min(2).max(100),
@@ -12,28 +15,13 @@ const formSchema = toTypedSchema(
 	})
 )
 
-const form = useForm({
-	validationSchema: formSchema
-})
-
-const nameField = ref<HTMLInputElement | null>(null)
-const { focused: inputFocus } = useFocus(nameField)
-
-function focusNameField() {
-	inputFocus.value = true
-}
-
-defineExpose({ focusNameField })
+const form = useForm({ validationSchema: formSchema })
 
 const onSubmit = form.handleSubmit(async (values) => {
-	const formData = new FormData()
-	formData.append('form-name', 'contact')
-	Object.entries(values).forEach(([key, value]) => {
-		formData.append(key, value)
-	})
+	if (!contactForm.value) return
 	const res = await fetch('/', {
 		method: 'POST',
-		body: formData
+		body: new FormData(contactForm.value)
 	})
 	if (res.ok) {
 		toast.success(`thanks for getting in touch ${values.name}!`)
@@ -42,14 +30,23 @@ const onSubmit = form.handleSubmit(async (values) => {
 	}
 	await navigator.clipboard.writeText('ryanvoitiskis@pm.me')
 	toast.error(
-		`sorry, something went wrong. please email me instead at 'ryanvoitiskis@pm.me' which has been copied to your clipboard.`,
+		`sorry, something went wrong. please email me instead at: 
+		'ryanvoitiskis@pm.me' which has been copied to your clipboard.`,
 		{ duration: 30000 }
 	)
 })
+
+const { focused: inputFocus } = useFocus(nameField)
+
+function focusNameField() {
+	inputFocus.value = true
+}
+
+defineExpose({ focusNameField })
 </script>
 
 <template>
-	<form name="contact" netlify @submit="onSubmit">
+	<form ref="contactForm" name="contact" netlify @submit="onSubmit">
 		<input type="hidden" name="form-name" value="contact" />
 		<FormField v-slot="{ componentField }" name="name">
 			<FormItem class="mb-2">
