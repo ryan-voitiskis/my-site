@@ -1,13 +1,6 @@
 <script setup lang="ts">
-import { toast } from 'vue-sonner'
-
-function emailToClipboard() {
-	navigator.clipboard.writeText('ryanvoitiskis@pm.me').then(() => {
-		toast.success(`copied 'ryanvoitiskis@pm.me' to clipboard`, {
-			duration: 300000
-		})
-	})
-}
+import ContactForm from '~/components/ContactForm.vue'
+const contactForm = ref<InstanceType<typeof ContactForm>>()
 </script>
 
 <template>
@@ -17,19 +10,24 @@ function emailToClipboard() {
 				> ryan_voitiskis
 			</h1>
 		</div>
-		<div class="mx-auto flex w-full flex-wrap justify-center gap-8 pb-48">
-			<div class="w-full max-w-64 text-sm text-muted-foreground">
-				<p class="mb-2">developer from melbourne, au</p>
-				<p class="mb-2">fullstack, mostly with js/ts</p>
-			</div>
-			<Button
-				variant="blank"
-				class="font-sans font-medium"
-				@click="emailToClipboard"
+		<div
+			class="mx-auto flex w-full flex-col items-center justify-center gap-8 pb-48 md:flex-row"
+		>
+			<div
+				class="w-full max-w-64 pt-16 text-sm text-muted-foreground md:self-start"
 			>
-				ryanvoitiskis@pm.me
-				<IconClipboardCopy class="mx-2 h-5 w-5" />
-			</Button>
+				<p class="mb-2">developer from melbourne, au</p>
+				<p class="mb-2">fullstack, mostly with js</p>
+				<Button
+					variant="blank"
+					class="pl-0 font-sans font-medium"
+					@click="contactForm?.focusNameField"
+				>
+					talk to me
+					<IconChevronsDown class="ml-1 mt-[1px] h-5 w-5 md:-rotate-90" />
+				</Button>
+			</div>
+			<ContactForm ref="contactForm" class="w-full max-w-screen-xs" />
 		</div>
 	</main>
 </template>
