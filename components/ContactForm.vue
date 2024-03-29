@@ -11,7 +11,7 @@ const formSchema = toTypedSchema(
 	z.object({
 		name: z.string().trim().min(2).max(100),
 		email: z.string().trim().email().max(420),
-		message: z.string().trim().min(10).max(2000)
+		message: z.string().trim().min(10).max(9000)
 	})
 )
 
@@ -52,7 +52,12 @@ defineExpose({ focusNameField })
 			<FormItem class="mb-2">
 				<FormLabel>name</FormLabel>
 				<FormControl>
-					<Input ref="nameField" type="text" v-bind="componentField" />
+					<Input
+						ref="nameField"
+						type="text"
+						v-bind="componentField"
+						autocomplete="off"
+					/>
 				</FormControl>
 				<FormMessage />
 			</FormItem>
@@ -62,7 +67,7 @@ defineExpose({ focusNameField })
 			<FormItem class="mb-2">
 				<FormLabel>email</FormLabel>
 				<FormControl>
-					<Input type="text" v-bind="componentField" />
+					<Input type="text" v-bind="componentField" autocomplete="off" />
 				</FormControl>
 				<FormMessage />
 			</FormItem>
@@ -72,7 +77,7 @@ defineExpose({ focusNameField })
 			<FormItem class="mb-2">
 				<FormLabel>message</FormLabel>
 				<FormControl>
-					<Textarea v-bind="componentField" />
+					<Textarea v-bind="componentField" spellcheck="false" />
 				</FormControl>
 				<FormMessage />
 			</FormItem>

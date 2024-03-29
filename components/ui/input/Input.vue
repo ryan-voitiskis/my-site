@@ -6,6 +6,7 @@ const props = defineProps<{
 	defaultValue?: string | number
 	modelValue?: string | number
 	class?: HTMLAttributes['class']
+	name: string
 }>()
 
 const emits = defineEmits<{
@@ -16,6 +17,20 @@ const modelValue = useVModel(props, 'modelValue', emits, {
 	passive: true,
 	defaultValue: props.defaultValue
 })
+
+// validate on blur until invalid, then validate on input
+// https://vee-validate.logaretm.com/v4/guide/composition-api/custom-inputs#handling-events
+const { errorMessage, handleChange, handleBlur } = useField(
+	() => props.name,
+	undefined,
+	{ validateOnValueUpdate: false }
+)
+
+const validationListeners = {
+	blur: (evt: Event) => handleBlur(evt, true),
+	change: handleChange,
+	input: (evt: Event) => handleChange(evt, !!errorMessage.value)
+}
 </script>
 
 <template>
@@ -27,5 +42,6 @@ const modelValue = useVModel(props, 'modelValue', emits, {
 				props.class
 			)
 		"
+		v-on="validationListeners"
 	/>
 </template>

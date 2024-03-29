@@ -49,6 +49,5 @@ export default defineNuxtConfig({
 			script: [],
 			noscript: []
 		}
-	},
-	plugins: ['~/plugins/vee-validate.ts']
+	}
 })
