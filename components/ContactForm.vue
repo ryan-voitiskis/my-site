@@ -45,7 +45,7 @@ const onSubmit = form.handleSubmit(async (values) => {
 </script>
 
 <template>
-	<form netlify @submit="onSubmit">
+	<form name="contact" netlify @submit="onSubmit">
 		<input type="hidden" name="form-name" value="contact" />
 		<FormField v-slot="{ componentField }" name="name">
 			<FormItem class="mb-2">
