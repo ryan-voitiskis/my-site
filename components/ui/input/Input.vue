@@ -18,19 +18,7 @@ const modelValue = useVModel(props, 'modelValue', emits, {
 	defaultValue: props.defaultValue
 })
 
-// validate on blur until invalid, then validate on input
-// https://vee-validate.logaretm.com/v4/guide/composition-api/custom-inputs#handling-events
-const { errorMessage, handleChange, handleBlur } = useField(
-	() => props.name,
-	undefined,
-	{ validateOnValueUpdate: false }
-)
-
-const validationListeners = {
-	blur: (evt: Event) => handleBlur(evt, true),
-	change: handleChange,
-	input: (evt: Event) => handleChange(evt, !!errorMessage.value)
-}
+const { validationListeners } = useValidation(() => props.name)
 </script>
 
 <template>
