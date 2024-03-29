@@ -31,11 +31,10 @@ const onSubmit = form.handleSubmit(async (values) => {
 	Object.entries(values).forEach(([key, value]) => {
 		formData.append(key, value)
 	})
-	console.log('formData', formData)
 	const res = await fetch('/', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-		body: new URLSearchParams(formData).toString()
+		body: formData
 	})
 	if (res.ok) {
 		toast.success(`thanks for getting in touch ${values.name}!`)
