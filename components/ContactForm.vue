@@ -4,7 +4,6 @@ import { toast } from 'vue-sonner'
 import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 
-const contactForm = ref<HTMLFormElement | null>(null)
 const nameField = ref<HTMLInputElement | null>(null)
 
 const formSchema = toTypedSchema(
@@ -18,10 +17,12 @@ const formSchema = toTypedSchema(
 const form = useForm({ validationSchema: formSchema })
 
 const onSubmit = form.handleSubmit(async (values) => {
-	if (!contactForm.value) return
+	const formData = new FormData()
+	formData.append('form-name', 'contact')
+	Object.entries(values).forEach(([key, value]) => formData.append(key, value))
 	const res = await fetch('/', {
 		method: 'POST',
-		body: new FormData(contactForm.value)
+		body: formData
 	})
 	if (res.ok) {
 		toast.success(`thanks for getting in touch ${values.name}!`)
@@ -46,7 +47,7 @@ defineExpose({ focusNameField })
 </script>
 
 <template>
-	<form ref="contactForm" name="contact" netlify @submit="onSubmit">
+	<form name="contact" netlify @submit="onSubmit">
 		<input type="hidden" name="form-name" value="contact" />
 		<FormField v-slot="{ componentField }" name="name">
 			<FormItem class="mb-2">

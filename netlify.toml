@@ -1,3 +1,8 @@
 [build]
   command = "nuxi generate"
   publish = "dist"
+
+[[redirects]]
+  from = "/contact_form.html"
+  to = "/"
+  status = 301
