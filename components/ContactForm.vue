@@ -26,10 +26,16 @@ function focusNameField() {
 defineExpose({ focusNameField })
 
 const onSubmit = form.handleSubmit(async (values) => {
+	const formData = new FormData()
+	formData.append('form-name', 'contact')
+	Object.entries(values).forEach(([key, value]) => {
+		formData.append(key, value)
+	})
+	console.log('formData', formData)
 	const res = await fetch('/', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-		body: new URLSearchParams(values).toString()
+		body: new URLSearchParams(formData).toString()
 	})
 	if (res.ok) {
 		toast.success(`thanks for getting in touch ${values.name}!`)
