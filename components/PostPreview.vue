@@ -15,6 +15,7 @@ defineProps<{ post: Post; index: number }>()
 				width="256"
 				height="256"
 				:preload="index === 0"
+				:loading="index !== 0 ? 'lazy' : 'eager'"
 				class="transition-hue-rotate-200 mx-auto h-64 w-64 rounded-full object-cover font-sans sepia transition duration-300 group-hover:sepia-0 group-focus:sepia-0"
 			/>
 			<div
