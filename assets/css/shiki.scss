@@ -63,6 +63,8 @@ pre[class*='language-'] {
 /* Inline code */
 :not(pre) > code {
 	font-size: 13px;
+	font-weight: 130;
+	line-height: 1rem;
 	display: inline;
 	padding: var(--shiki-inline-padding-y) var(--shiki-inline-padding-x);
 	border-radius: var(--shiki-inline-radius);
