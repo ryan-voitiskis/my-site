@@ -45,7 +45,12 @@ const query: QueryBuilderParams = computed(() => ({
 			<ContentList :query="query" path="/blog">
 				<template #default="{ list }">
 					<div class="flex flex-col">
-						<PostPreview v-for="post in list" :key="post._path" :post="post" />
+						<PostPreview
+							v-for="(post, i) in list"
+							:key="post._path"
+							:post="post"
+							:index="i"
+						/>
 					</div>
 				</template>
 				<template #not-found>
