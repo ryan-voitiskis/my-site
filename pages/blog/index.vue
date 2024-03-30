@@ -13,10 +13,8 @@ const query: QueryBuilderParams = computed(() => ({
 
 <template>
 	<main>
-		<div class="mx-auto w-full max-w-screen-xl px-4">
+		<div class="mx-auto w-full max-w-[1120px] px-4 pb-48">
 			<h1 class="font-mono text-sm font-[120] text-muted-foreground">> blog</h1>
-		</div>
-		<div class="mx-auto w-full max-w-screen-xl px-4 pb-48">
 			<div class="flex-end mb-8 flex justify-end gap-4">
 				<ToggleGroup v-model="format" type="multiple" :roving-focus="false">
 					<ToggleGroupItem value="article" size="badge">

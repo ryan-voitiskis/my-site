@@ -49,13 +49,13 @@ const panelLayoutImages = [
 </script>
 
 <template>
-	<main class="mx-auto w-full max-w-screen-xl px-4 pb-48">
+	<main class="mx-auto w-full max-w-[1120px] px-4 pb-48">
 		<h1 class="font-mono text-sm font-[120] text-muted-foreground">
 			> projects
 		</h1>
 
 		<article
-			class="mx-auto flex max-w-[1120px] flex-col items-center gap-4 border-b py-16 md:flex-row md:gap-16"
+			class="mx-auto flex flex-col items-center gap-4 border-b py-16 md:flex-row md:gap-16"
 		>
 			<div>
 				<h2 class="mb-4 font-mono font-bold">bpm tap</h2>
@@ -108,14 +108,14 @@ const panelLayoutImages = [
 		</article>
 
 		<article
-			class="mx-auto flex max-w-[1120px] flex-col items-center gap-4 border-b py-16 lg:flex-row lg:gap-16"
+			class="mx-auto flex flex-col items-center gap-4 border-b py-16 lg:flex-row lg:gap-16"
 		>
 			<div class="lg:order-last">
 				<h2 class="font-mono font-bold">Crate Guide</h2>
 				<div class="my-2 flex flex-wrap gap-2">
 					<Badge text="Vue.js" />
 					<Badge text="PWA" />
-					<Badge text="SPA" />
+					<Badge text="desktop" />
 				</div>
 				<div class="mb-2 text-sm">
 					<!-- prettier-ignore -->
@@ -130,7 +130,7 @@ const panelLayoutImages = [
 				</div>
 				<p>
 					Crate Guide is a DJ app designed to assist in finding compatible
-					tracks within a users vinyl record collection. Records can be added
+					tracks within a users physical record collection. Records can be added
 					manually or imported from your Discogs collection. Audio features from
 					your tracks can then be imported from Spotify through a mostly
 					automated process.
@@ -162,7 +162,7 @@ const panelLayoutImages = [
 		</article>
 
 		<article
-			class="mx-auto flex max-w-[1120px] flex-col items-center gap-4 py-16 lg:flex-row lg:gap-16"
+			class="mx-auto flex flex-col items-center gap-4 py-16 lg:flex-row lg:gap-16"
 		>
 			<div>
 				<h2 class="font-mono font-bold">Panel layout generator</h2>

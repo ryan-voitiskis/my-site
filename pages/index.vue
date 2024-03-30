@@ -5,7 +5,7 @@ const contactForm = ref<InstanceType<typeof ContactForm>>()
 
 <template>
 	<main class="mx-auto w-full px-4 pb-48">
-		<div class="mx-auto w-full max-w-screen-xl px-4">
+		<div class="mx-auto w-full max-w-[1120px] px-4">
 			<h1 class="font-mono text-sm font-[120] text-muted-foreground">
 				> ryan_voitiskis
 			</h1>

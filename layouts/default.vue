@@ -2,7 +2,7 @@
 	<div class="bg-background">
 		<header class="flex h-14 w-full justify-between bg-muted">
 			<div
-				class="mx-auto flex w-full max-w-screen-xl flex-row items-center justify-between p-4"
+				class="mx-auto flex w-full max-w-[1120px] flex-row items-center justify-between p-4"
 			>
 				<nav id="main_nav" class="-ml-4 flex flex-wrap gap-y-4">
 					<Button as-child variant="nav-link" class="-my-4">
