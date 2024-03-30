@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
 import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group'
+import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
 
 const description =
 	'my blog posts about software development and how I utilise AI in my projects.'

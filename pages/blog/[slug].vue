@@ -1,19 +1,21 @@
 <script setup lang="ts">
-const { page } = useContent()
+const page = await queryContent('blog')
+	.where({ _path: `/blog/${useRoute().params.slug}` })
+	.findOne()
 
-const url = `https://ryanvoitiskis.com${page.value._path}`
-const imgUrl = `https://ryanvoitiskis.com${page.value.image}`
+const url = `https://ryanvoitiskis.com${page._path}`
+const imgUrl = `https://ryanvoitiskis.com${page.image}`
 useHead({
-	title: page.value.title,
+	title: page.title,
 	meta: [
-		{ name: 'description', content: page.value.short },
-		{ property: 'og:title', content: page.value.title },
-		{ property: 'og:description', content: page.value.short },
+		{ name: 'description', content: page.short },
+		{ property: 'og:title', content: page.title },
+		{ property: 'og:description', content: page.short },
 		{ property: 'og:url', content: url },
 		{ property: 'og:image', content: imgUrl },
 		{ property: 'twitter:card', content: 'summary_large_image' },
-		{ property: 'twitter:title', content: page.value.title },
-		{ property: 'twitter:description', content: page.value.short },
+		{ property: 'twitter:title', content: page.title },
+		{ property: 'twitter:description', content: page.short },
 		{ property: 'twitter:image', content: imgUrl }
 	],
 	link: [
@@ -21,7 +23,7 @@ useHead({
 		{
 			rel: 'preload',
 			fetchpriority: 'high',
-			href: page.value.image, // TODO: preload with nuxt-image attribute
+			href: page.image, // TODO: preload with nuxt-image attribute
 			as: 'image'
 		}
 	]

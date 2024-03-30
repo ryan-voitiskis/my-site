@@ -26,7 +26,6 @@ export default defineNuxtConfig({
 		densities: [1, 2]
 	},
 	content: {
-		documentDriven: true,
 		highlight: {
 			theme: {
 				default: 'github-light',
