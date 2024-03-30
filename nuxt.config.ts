@@ -26,6 +26,7 @@ export default defineNuxtConfig({
 		densities: [1, 2]
 	},
 	content: {
+		documentDriven: true,
 		highlight: {
 			theme: {
 				default: 'github-light',
@@ -48,11 +49,14 @@ export default defineNuxtConfig({
 	},
 	app: {
 		head: {
-			meta: [],
-			link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
-			style: [],
-			script: [],
-			noscript: []
+			charset: 'utf-8',
+			viewport: 'width=device-width, initial-scale=1',
+			meta: [
+				{ property: 'og:type', content: 'website' },
+				{ property: 'twitter:site', content: '@ryanvoitiskis' },
+				{ property: 'twitter:creator', content: '@ryanvoitiskis' }
+			],
+			link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }]
 		}
 	}
 })

@@ -1,6 +1,23 @@
 <script setup lang="ts">
 import ContactForm from '~/components/ContactForm.vue'
 const contactForm = ref<InstanceType<typeof ContactForm>>()
+
+const description = 'developer from melbourne, au. fullstack, mostly with js.'
+const title = 'ryan voitiskis - about'
+const url = 'https://ryanvoitiskis.com'
+useHead({
+	title: title,
+	meta: [
+		{ name: 'description', content: description },
+		{ property: 'og:title', content: title },
+		{ property: 'og:description', content: description },
+		{ property: 'og:url', content: url },
+		{ property: 'twitter:card', content: 'summary' },
+		{ property: 'twitter:title', content: title },
+		{ property: 'twitter:description', content: description }
+	],
+	link: [{ rel: 'canonical', href: url }]
+})
 </script>
 
 <template>

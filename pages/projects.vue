@@ -1,9 +1,24 @@
 <script setup lang="ts">
 import crateGuideImage from '../assets/img/crate_guide_screenshot_1.png'
 
-// TODO: preload lcp, maybe need to swap crate guide w bpm-tap to avoid iframe LCP
+const description = `some of my projects i've been working on recently.`
+const title = 'ryan voitiskis - projects'
+const url = 'https://ryanvoitiskis.com/projects'
 useHead({
+	title: title,
+	meta: [
+		{ name: 'description', content: description },
+		{ property: 'og:title', content: title },
+		{ property: 'og:description', content: description },
+		{ property: 'og:url', content: url },
+		{ property: 'og:image', content: crateGuideImage },
+		{ property: 'twitter:card', content: 'summary_large_image' },
+		{ property: 'twitter:title', content: title },
+		{ property: 'twitter:description', content: description },
+		{ property: 'twitter:image', content: crateGuideImage }
+	],
 	link: [
+		{ rel: 'canonical', href: url },
 		{
 			rel: 'preload',
 			fetchpriority: 'high',
@@ -50,6 +65,8 @@ const panelLayoutImages = [
 		alt: 'panel-layout-generator interface with 960 panels.'
 	}
 ]
+
+// TODO: maybe need to swap crate guide w bpm-tap to avoid iframe LCP
 </script>
 
 <template>

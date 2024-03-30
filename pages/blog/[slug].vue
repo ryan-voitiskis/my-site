@@ -1,3 +1,33 @@
+<script setup lang="ts">
+const { page } = useContent()
+
+const url = `https://ryanvoitiskis.com${page.value._path}`
+const imgUrl = `https://ryanvoitiskis.com${page.value.image}`
+useHead({
+	title: page.value.title,
+	meta: [
+		{ name: 'description', content: page.value.short },
+		{ property: 'og:title', content: page.value.title },
+		{ property: 'og:description', content: page.value.short },
+		{ property: 'og:url', content: url },
+		{ property: 'og:image', content: imgUrl },
+		{ property: 'twitter:card', content: 'summary_large_image' },
+		{ property: 'twitter:title', content: page.value.title },
+		{ property: 'twitter:description', content: page.value.short },
+		{ property: 'twitter:image', content: imgUrl }
+	],
+	link: [
+		{ rel: 'canonical', href: url },
+		{
+			rel: 'preload',
+			fetchpriority: 'high',
+			href: page.value.image, // TODO: preload with nuxt-image attribute
+			as: 'image'
+		}
+	]
+})
+</script>
+
 <template>
 	<main class="w-full">
 		<ContentDoc>

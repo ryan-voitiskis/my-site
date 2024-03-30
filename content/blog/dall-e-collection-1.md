@@ -3,7 +3,7 @@ title: DALL·E 2 collection 1
 format: image_collection
 published: '2023-01-13'
 short: Some interesting DALL·E 2 results.
-image: cover_images/dall-e1.png
+image: /cover_images/dall-e1.png
 image_"alt": AI generated image
 tags: ['DALL·E 2']
 ---
