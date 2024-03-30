@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import crateGuideImage from '../assets/img/crate_guide_screenshot_1.png'
 
-// TODO: preload lcp
+// TODO: preload lcp, maybe need to swap crate guide w bpm-tap to avoid iframe LCP
 useHead({
 	link: [
 		{

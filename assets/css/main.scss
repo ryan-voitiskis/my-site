@@ -37,7 +37,7 @@
 		--destructive-foreground: 60 9.1% 97.8%;
 
 		--border: 20 5.9% 84%;
-		--input: 20 5.9% 90%;
+		--input: var(--muted);
 		--ring: 338 75% 73%;
 
 		--radius: 0.5rem;
@@ -79,8 +79,8 @@
 		--destructive: 0 65% 65%;
 		--destructive-foreground: 60 9.1% 97.8%;
 
-		--border: 217 10% 32%; // TODO
-		--input: 11 4% 52%; // TODO
+		--border: 217 10% 32%;
+		--input: var(--muted);
 		--ring: 169 100% 60%;
 
 		--hr: 0, 0%, 60%;

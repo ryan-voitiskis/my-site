@@ -9,10 +9,12 @@ defineProps<{ post: Post }>()
 		class="group flex h-auto w-full flex-col gap-12 overflow-hidden rounded-none border-b p-0 py-12 text-md font-normal text-foreground hover:no-underline focus-visible:ring-4 sm:flex-row"
 	>
 		<a :href="post._path">
-			<img
+			<NuxtImg
 				:src="post.image"
 				:alt="post.image_alt"
-				class="transition-hue-rotate-200 mx-auto h-64 w-64 rounded-full object-cover sepia transition duration-300 group-hover:sepia-0 group-focus:sepia-0"
+				width="256"
+				height="256"
+				class="transition-hue-rotate-200 mx-auto h-64 w-64 rounded-full object-cover font-sans sepia transition duration-300 group-hover:sepia-0 group-focus:sepia-0"
 			/>
 			<div
 				class="flex w-full flex-col items-start gap-4 lg:flex-row lg:!items-center lg:justify-items-start lg:gap-12"

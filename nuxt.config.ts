@@ -3,10 +3,11 @@ export default defineNuxtConfig({
 	telemetry: false,
 	modules: [
 		'@nuxt/content',
-		'@nuxtjs/eslint-module',
-		'@vueuse/nuxt',
+		'@nuxt/image',
 		'@nuxtjs/color-mode',
+		'@nuxtjs/eslint-module',
 		'@vee-validate/nuxt',
+		'@vueuse/nuxt',
 		'shadcn-nuxt'
 	],
 	shadcn: {
@@ -19,6 +20,10 @@ export default defineNuxtConfig({
 			tailwindcss: {},
 			autoprefixer: {}
 		}
+	},
+	image: {
+		format: ['webp'],
+		densities: [1, 2]
 	},
 	content: {
 		highlight: {

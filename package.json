@@ -29,6 +29,7 @@
 		"vue-router": "^4.3.0"
 	},
 	"dependencies": {
+		"@nuxt/image": "^1.4.0",
 		"@nuxtjs/tailwindcss": "^6.11.4",
 		"@vee-validate/nuxt": "^4.12.6",
 		"@vee-validate/zod": "^4.12.6",
