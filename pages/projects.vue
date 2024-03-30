@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import crateGuideImage from '../assets/img/crate_guide_screenshot_0.jpeg'
+import crateGuideImage from '../assets/img/crate_guide_screenshot_1.png'
 
 // TODO: preload lcp
 useHead({
@@ -16,11 +16,11 @@ useHead({
 const crateGuideImages = [
 	{
 		src: crateGuideImage,
-		alt: 'Crate Guide single deck interface.'
+		alt: 'Crate Guide empty deck interface.'
 	},
 	{
-		src: '/img/projects/crate_guide_screenshot_1.png',
-		alt: 'Crate Guide empty deck interface.'
+		src: '/img/projects/crate_guide_screenshot_0.jpeg',
+		alt: 'Crate Guide loaded single deck interface.'
 	},
 	{
 		src: '/img/projects/crate_guide_screenshot_2.png',
