@@ -46,7 +46,13 @@ onMounted(() => {
 			class="overflow-hidden transition-all duration-300 hover:invert"
 			@click="openInModal(index)"
 		>
-			<img :src="image.src" :alt="image.alt" />
+			<NuxtImg
+				:src="image.src"
+				:alt="image.alt"
+				:preload="index === 0"
+				:loading="index === 0 ? 'eager' : 'lazy'"
+				format="webp"
+			/>
 		</Button>
 
 		<ModalContainer v-model="showModal">
@@ -61,10 +67,12 @@ onMounted(() => {
 			<Carousel ref="carouselContainerRef" tabindex="-1">
 				<CarouselContent>
 					<CarouselItem v-for="(_, index) in images" :key="index">
-						<img
+						<NuxtImg
 							class="mx-auto h-full max-h-[calc(100vh_-_16rem)] max-w-full object-contain"
 							:src="images[index].src"
 							:alt="images[index].alt"
+							:loading="index === 0 ? 'eager' : 'lazy'"
+							format="webp"
 						/>
 					</CarouselItem>
 				</CarouselContent>

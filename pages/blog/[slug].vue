@@ -18,15 +18,7 @@ useHead({
 		{ property: 'twitter:description', content: page.short },
 		{ property: 'twitter:image', content: imgUrl }
 	],
-	link: [
-		{ rel: 'canonical', href: url },
-		{
-			rel: 'preload',
-			fetchpriority: 'high',
-			href: page.image, // TODO: preload with nuxt-image attribute
-			as: 'image'
-		}
-	]
+	link: [{ rel: 'canonical', href: url }]
 })
 </script>
 
