@@ -31,9 +31,9 @@ defineProps<{ post: Post }>()
 								{{ dateStringToLocale(post.published) }}
 							</td>
 						</tr>
-						<tr>
+						<tr v-if="post.reading_time">
 							<td>Reading time</td>
-							<td class="font-thin">10 mins</td>
+							<td class="font-thin">{{ post.reading_time }}</td>
 						</tr>
 					</tbody>
 				</table>

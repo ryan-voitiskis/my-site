@@ -6,6 +6,7 @@ updated: '2023-01-08'
 short: Creating an animation mimicking the effect of a stroboscopic light on a turntable using requestAnimationFrame, SVG and Vue.
 image: cover_images/stroboscopic-animation-with-javascript-and-svg.png
 image_alt: Abstract stroboscopic dots lit in red on top of a record
+reading_time: 7 mins
 tags: ['SVG', 'animation', 'Vue.js']
 ---
 
@@ -13,7 +14,7 @@ tags: ['SVG', 'animation', 'Vue.js']
 
 One of my intentions in the development of [Crate Guide](https://crate.guide/) was to build an interface that resembled closely that of a [Technics SL-1200 turntable](https://www.technics.com/global/home/sl1200/features.html), the most common turntable used by DJs. The idea was that the interface would be intuitive, requiring less learning and cognitive overhead. The web app is intended to be used on a laptop or desktop and only occasionally glanced at and interacted with during a performance.
 
-Most of the interface proved fairly simple to represent in the browser, with the exception of one important feature, the subject of this post, the stroboscopic dots that circumscribe the platter. They provide an accurate visual reference for the pitch adjustment at a glace. The dots are lit by a red strobe light flashing at 50Hz. When the platter spins at +6.4%, +3.3%, 0% and -3.3% one of the four dots will be stationary.
+Most of the interface proved fairly simple to represent in the browser, with the exception of one important feature: the stroboscopic dots that circumscribe the platter. They provide an accurate visual reference for the pitch adjustment at a glace. The dots are lit by a red strobe light flashing at 50Hz. When the platter spins at +6.4%, +3.3%, 0% and -3.3% one of the four dots will be stationary.
 
 I had several ideas on how to implement this, most of these involved having separate rows of dots rotating at a calculated rate according to the pitch adjustment. It wasn't until I created the dots in the SVG and started playing with a simple spin animation that I realised it was possible to implement a stroboscopic effect with a 60Hz/120Hz display. This method does have the downside of requiring separate implementations to work on displays with refresh rates not a multiple 60Hz, but is far more interesting, so I pursued it. In the future I'll probably provide implementations for other refresh rates, but I currently do not have the facilities to test them.
 
