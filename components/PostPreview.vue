@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{ post: Post; index: number }>()
+defineProps<{ post: Post; i: number }>()
 </script>
 
 <template>
@@ -14,8 +14,8 @@ defineProps<{ post: Post; index: number }>()
 				:alt="post.image_alt"
 				width="256"
 				height="256"
-				:preload="index === 0"
-				:loading="index === 0 ? 'eager' : 'lazy'"
+				:preload="i === 0"
+				:loading="i === 0 ? 'eager' : 'lazy'"
 				format="webp"
 				class="transition-hue-rotate-200 mx-auto h-64 w-64 rounded-full object-cover font-sans sepia transition duration-300 group-hover:sepia-0 group-focus:sepia-0"
 			/>

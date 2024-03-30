@@ -18,11 +18,11 @@ const carouselContainerRef = ref<InstanceType<typeof Carousel> | null>(null)
 const showModal = ref(false)
 const current = ref(0)
 
-async function openInModal(index: number) {
+async function openInModal(i: number) {
 	showModal.value = true
-	carouselContainerRef.value?.carouselApi?.scrollTo(index, true)
+	carouselContainerRef.value?.carouselApi?.scrollTo(i, true)
 	carouselContainerRef.value?.$el?.focus()
-	current.value = index + 1
+	current.value = i + 1
 }
 
 onMounted(() => {
@@ -39,20 +39,20 @@ onMounted(() => {
 		style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))"
 	>
 		<Button
-			v-for="(image, index) in images"
-			:key="index"
+			v-for="(img, i) in images"
+			:key="i"
 			variant="image"
 			size="image"
 			class="overflow-hidden transition-all duration-300 hover:invert"
 			aria-label="Open image in modal"
-			@click="openInModal(index)"
+			@click="openInModal(i)"
 		>
 			<NuxtImg
 				class="h-full w-full object-cover"
-				:src="image.src"
-				:alt="image.alt"
-				:preload="index === 0"
-				:loading="index === 0 ? 'eager' : 'lazy'"
+				:src="img.src"
+				:alt="img.alt"
+				:preload="i === 0"
+				:loading="i === 0 ? 'eager' : 'lazy'"
 				format="webp"
 			/>
 		</Button>
@@ -69,11 +69,11 @@ onMounted(() => {
 			</Button>
 			<Carousel ref="carouselContainerRef" tabindex="-1">
 				<CarouselContent>
-					<CarouselItem v-for="(_, index) in images" :key="index">
+					<CarouselItem v-for="(_, i) in images" :key="i">
 						<img
 							class="mx-auto h-full max-h-[calc(100vh_-_16rem)] max-w-full object-contain"
-							:src="images[index].src"
-							:alt="images[index].alt"
+							:src="images[i].src"
+							:alt="images[i].alt"
 							loading="lazy"
 						/>
 					</CarouselItem>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import crateGuideImage from '../assets/img/crate_guide_screenshot_1.png'
-
 const description = `some of my projects i've been working on recently.`
 const title = 'ryan voitiskis - projects'
 const url = 'https://ryanvoitiskis.com/projects'
+const crateGuideImage =
+	'https://ryanvoitiskis.com/img/projects/crate_guide_screenshot_1.png'
 useHead({
 	title: title,
 	meta: [
@@ -17,20 +17,12 @@ useHead({
 		{ property: 'twitter:description', content: description },
 		{ property: 'twitter:image', content: crateGuideImage }
 	],
-	link: [
-		{ rel: 'canonical', href: url },
-		{
-			rel: 'preload',
-			fetchpriority: 'high',
-			href: crateGuideImage,
-			as: 'image'
-		}
-	]
+	link: [{ rel: 'canonical', href: url }]
 })
 
 const crateGuideImages = [
 	{
-		src: crateGuideImage,
+		src: '/img/projects/crate_guide_screenshot_1.png',
 		alt: 'Crate Guide empty deck interface.'
 	},
 	{
@@ -65,8 +57,6 @@ const panelLayoutImages = [
 		alt: 'panel-layout-generator interface with 960 panels.'
 	}
 ]
-
-// TODO: maybe need to swap crate guide w bpm tap to avoid iframe LCP
 </script>
 
 <template>
@@ -168,11 +158,13 @@ const panelLayoutImages = [
 				class="max-w-screen-xs focus-visible:!ring-8 focus-visible:ring-ring"
 			>
 				<CarouselContent>
-					<CarouselItem v-for="(image, index) in crateGuideImages" :key="index">
-						<img
+					<CarouselItem v-for="(img, i) in crateGuideImages" :key="i">
+						<NuxtImg
 							class="w-full self-center object-contain"
-							:src="image.src"
-							:alt="image.alt"
+							:src="img.src"
+							:alt="img.alt"
+							:preload="i === 0"
+							format="webp"
 						/>
 					</CarouselItem>
 				</CarouselContent>
@@ -227,14 +219,12 @@ const panelLayoutImages = [
 				class="max-w-screen-sm focus-visible:!ring-8 focus-visible:ring-ring"
 			>
 				<CarouselContent>
-					<CarouselItem
-						v-for="(image, index) in panelLayoutImages"
-						:key="index"
-					>
-						<img
+					<CarouselItem v-for="(img, i) in panelLayoutImages" :key="i">
+						<NuxtImg
 							class="w-full object-contain"
-							:src="image.src"
-							:alt="image.alt"
+							:src="img.src"
+							:alt="img.alt"
+							format="webp"
 						/>
 					</CarouselItem>
 				</CarouselContent>

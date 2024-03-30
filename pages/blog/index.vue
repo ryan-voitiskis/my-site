@@ -49,7 +49,7 @@ const query: QueryBuilderParams = computed(() => ({
 							v-for="(post, i) in list"
 							:key="post._path"
 							:post="post"
-							:index="i"
+							:i="i"
 						/>
 					</div>
 				</template>
