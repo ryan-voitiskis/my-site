@@ -22,6 +22,7 @@ async function openInModal(index: number) {
 	showModal.value = true
 	carouselContainerRef.value?.carouselApi?.scrollTo(index, true)
 	carouselContainerRef.value?.$el?.focus()
+	current.value = index + 1
 }
 
 onMounted(() => {

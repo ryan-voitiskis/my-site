@@ -6,7 +6,7 @@
 				<article
 					v-if="doc"
 					class="mx-auto w-full max-w-screen-sm px-4 pb-48 text-md"
-					:class="{ '!max-w-screen-xl': doc.format === 'image_collection' }"
+					:class="{ '!max-w-[1120px]': doc.format === 'image_collection' }"
 				>
 					<h1 class="text-balance">{{ doc.title }}</h1>
 					<table
