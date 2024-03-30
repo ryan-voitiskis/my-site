@@ -242,7 +242,7 @@ Using the refresh rate of monitors with performant `requestAnimationFrame()` ani
 
 The technique has some issues, the most pressing being the limited target refresh rate. I look forward to continuing work on this one day.
 
-Thanks for getting this far. I'd be interested to hear your feedback at [ryanvoitiskis@pm.me](mailto:ryanvoitiskis@pm.me)
+Thanks for getting this far. I'd be interested to hear your feedback at [ryanvoitiskis@pm.me](mailto:ryanvoitiskis@pm.me).
 
 <hr />
 

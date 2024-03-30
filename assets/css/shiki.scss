@@ -24,7 +24,7 @@
 	--shiki-block-margin-y: 24px;
 	--shiki-block-radius: 8px;
 	--shiki-inline-padding-x: 6px;
-	--shiki-inline-padding-y: 4px;
+	--shiki-inline-padding-y: 2px;
 	--shiki-inline-radius: 4px;
 }
 
@@ -33,7 +33,7 @@ pre[class*='language-'],
 code[class*='language-'] {
 	font-family: var(--mono-font);
 	font-weight: 110;
-	font-size: 13px;
+	font-size: 14px;
 	direction: ltr;
 	text-align: left;
 	white-space: pre;
@@ -53,6 +53,7 @@ code[class*='language-'] {
 /* Code blocks */
 div[class*='language-'],
 pre[class*='language-'] {
+	border: 1px solid hsl(var(--vmuted));
 	padding: var(--shiki-block-padding-y) var(--shiki-block-padding-x);
 	margin: var(--shiki-block-margin-y) var(--shiki-block-margin-x);
 	border-radius: var(--shiki-block-radius);
@@ -62,10 +63,11 @@ pre[class*='language-'] {
 
 /* Inline code */
 :not(pre) > code {
-	font-size: 13px;
+	font-size: 14px;
 	font-weight: 130;
 	line-height: 1rem;
 	display: inline;
+	border: 1px solid hsl(var(--vmuted));
 	padding: var(--shiki-inline-padding-y) var(--shiki-inline-padding-x);
 	border-radius: var(--shiki-inline-radius);
 	background: var(--shiki-inline-background);
