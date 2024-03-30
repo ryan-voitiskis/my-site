@@ -44,6 +44,7 @@ onMounted(() => {
 			variant="image"
 			size="image"
 			class="overflow-hidden transition-all duration-300 hover:invert"
+			aria-label="Open image in modal"
 			@click="openInModal(index)"
 		>
 			<NuxtImg
@@ -60,6 +61,7 @@ onMounted(() => {
 				variant="blank"
 				size="xl-icon"
 				class="m-4 mx-auto flex items-center justify-center text-yellow-100 hover:text-yellow-300"
+				aria-label="Close modal"
 				@click="showModal = false"
 			>
 				<IconCrossCircle class="h-16 w-16" />

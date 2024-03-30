@@ -66,7 +66,7 @@ const panelLayoutImages = [
 	}
 ]
 
-// TODO: maybe need to swap crate guide w bpm-tap to avoid iframe LCP
+// TODO: maybe need to swap crate guide w bpm tap to avoid iframe LCP
 </script>
 
 <template>
@@ -97,7 +97,7 @@ const panelLayoutImages = [
 					</a>
 				</div>
 				<p>
-					bpm-tap is an extremely simple web app for tapping out the tempo of a
+					bpm tap is an extremely simple web app for tapping out the tempo of a
 					song. I needed a solution for comparing the tempo of two tracks that
 					could be installed on a phone quickly. The app is designed to be used
 					as a PWA on a phone, with the tempo being tapped out by tapping the
@@ -122,6 +122,7 @@ const panelLayoutImages = [
 			</div>
 			<PhoneMockup>
 				<iframe
+					title="bpm-tap-0.netlify.app"
 					src="https://demo--bpm-tap-0.netlify.app/"
 					class="h-full w-full"
 				/>

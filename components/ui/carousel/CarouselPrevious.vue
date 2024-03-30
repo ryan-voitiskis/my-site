@@ -10,7 +10,7 @@ const props = defineProps<{
 	class?: HTMLAttributes['class']
 }>()
 
-const { orientation, canScrollPrev, scrollPrev } = useCarousel()
+const { canScrollPrev, scrollPrev } = useCarousel()
 </script>
 
 <template>
@@ -19,6 +19,7 @@ const { orientation, canScrollPrev, scrollPrev } = useCarousel()
 		:class="cn(carouselButtonVariants({ variant }), props.class)"
 		variant="blank"
 		:size="props.variant === 'modal' ? 'xl-icon' : 'lg-icon'"
+		aria-label="Previous"
 		@click="scrollPrev"
 	>
 		<slot>
