@@ -48,6 +48,7 @@ onMounted(() => {
 			@click="openInModal(index)"
 		>
 			<NuxtImg
+				class="h-full w-full object-cover"
 				:src="image.src"
 				:alt="image.alt"
 				:preload="index === 0"
@@ -69,12 +70,11 @@ onMounted(() => {
 			<Carousel ref="carouselContainerRef" tabindex="-1">
 				<CarouselContent>
 					<CarouselItem v-for="(_, index) in images" :key="index">
-						<NuxtImg
+						<img
 							class="mx-auto h-full max-h-[calc(100vh_-_16rem)] max-w-full object-contain"
 							:src="images[index].src"
 							:alt="images[index].alt"
-							:loading="index === 0 ? 'eager' : 'lazy'"
-							format="webp"
+							loading="lazy"
 						/>
 					</CarouselItem>
 				</CarouselContent>
