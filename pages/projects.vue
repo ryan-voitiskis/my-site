@@ -20,15 +20,19 @@ const crateGuideImages = [
 	},
 	{
 		src: '/img/projects/crate_guide_screenshot_1.png',
-		alt: 'Crate Guide login interface.'
+		alt: 'Crate Guide empty deck interface.'
 	},
 	{
 		src: '/img/projects/crate_guide_screenshot_2.png',
-		alt: 'Crate Guide track select interface.'
+		alt: 'Crate Guide empty deck interface.'
 	},
 	{
 		src: '/img/projects/crate_guide_screenshot_3.png',
-		alt: 'Crate Guide empty deck interface.'
+		alt: 'Crate Guide track select interface.'
+	},
+	{
+		src: '/img/projects/crate_guide_screenshot_4.png',
+		alt: 'Crate Guide login interface.'
 	}
 ]
 
