@@ -13,16 +13,16 @@
 						class="clean ml-2 border-l-4 border-l-secondary font-mono text-xs text-muted-foreground sm:ml-6"
 					>
 						<tbody>
-							<tr>
-								<td class="!pl-4">Published</td>
-								<td class="font-[110]">
-									{{ dateStringToLocale(doc.published) }}
-								</td>
-							</tr>
 							<tr v-if="doc.updated">
 								<td class="!pl-4">Updated</td>
 								<td class="font-[110]">
 									{{ dateStringToLocale(doc.updated) }}
+								</td>
+							</tr>
+							<tr>
+								<td class="!pl-4">Published</td>
+								<td class="font-[110]">
+									{{ dateStringToLocale(doc.published) }}
 								</td>
 							</tr>
 						</tbody>
