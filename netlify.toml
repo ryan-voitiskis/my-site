@@ -1,5 +1,5 @@
 [build]
-  command = "nuxi generate"
+  command = "nuxt build"
   publish = "dist"
 
 [[redirects]]
