@@ -16,7 +16,7 @@ onMounted(() => (pathname.value = window.location.pathname))
 	<Button
 		as-child
 		variant="nav-link"
-		class="-my-4 hover:no-underline !decoration-primary !decoration-[0.1rem]"
+		class="-my-4 !decoration-primary !decoration-[0.1rem] hover:no-underline"
 		:class="{ '!underline': pathname === href }"
 	>
 		<a :href="href">{{ label }}</a>
