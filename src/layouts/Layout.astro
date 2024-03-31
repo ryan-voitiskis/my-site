@@ -1,6 +1,7 @@
 ---
 import '@/styles/main.scss'
 import { Button } from "@/components/ui/button"
+import ThemeToggle from "@/components/ThemeToggle.vue"
 interface Props {
 	title: string;
 }
@@ -34,7 +35,7 @@ const { title } = Astro.props;
 						<a href="/projects">projects</a>
 					</Button>
 				</nav>
-				<!-- <ThemeToggle class="-my-2" /> -->
+				<ThemeToggle class="-my-2" client:load />
 			</div>
 		</header>
 
