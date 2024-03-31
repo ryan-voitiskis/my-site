@@ -1,78 +1,344 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
+/*
+	colour space function not included for colours used in tailwind.
+	this theme doesn't follow 60(primary), 30(secondary), 10(accent) rule,
+	instead I am following the convention outlined in the shadcn ui docs:
+	https://www.shadcn-vue.com/docs/theming.html#list-of-variables
+*/
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
- 
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
- 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
- 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
- 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
- 
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
- 
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
- 
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
- 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
- 
-    --ring: 240 10% 3.9%;
- 
-    --radius: 0.5rem;
-  }
- 
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
- 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
- 
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
- 
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
- 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
- 
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
- 
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
- 
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
- 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
- 
-    --ring: 240 4.9% 83.9%;
-  }
+	:root {
+		--background: 40 25% 95%;
+		--foreground: 216 13% 34%;
+
+		--muted: 40 20% 91%;
+		--muted-foreground: 0 0% 43.5%;
+
+		--vmuted: 40 20% 87%;
+
+		--popover: 0 0% 100%;
+		--popover-foreground: 0 0% 34%;
+
+		--card: 40 22% 98%;
+		--card-foreground: 0 0% 34%;
+
+		--primary: 336 37% 49%;
+		--primary-foreground: 60 9.1% 97.8%;
+
+		--secondary: 337 60% 90%;
+		--secondary-foreground: 0 0% 34%;
+
+		--accent: 140 80% 90%;
+		--accent-foreground: 0 0% 34%;
+
+		--destructive: 355 56% 57%;
+		--destructive-foreground: 60 9.1% 97.8%;
+
+		--border: 20 5.9% 84%;
+		--input: var(--muted);
+		--ring: 338 75% 73%;
+
+		--radius: 0.5rem;
+
+		--hr: 0 0% 80%;
+		--backdrop: hsla(0, 0%, 0%, 0.7);
+		--heading-text: 216 40% 38%;
+		--selection: hsla(337, 80%, 90%, 80%);
+		--code-selection: 200 11% 85%;
+
+		--webkit-scrollbar: hsla(0, 0%, 50%, 0.3);
+		--webkit-scrollbar-hover: hsla(0, 0%, 50%, 0.12);
+	}
+
+	.dark {
+		--background: 216 15% 16%;
+		--foreground: 40 82% 92%;
+
+		--muted: 216 15% 19%;
+		--muted-foreground: 40 82% 92%;
+
+		--vmuted: 216 15% 23%;
+
+		--popover: 216 15% 21%;
+		--popover-foreground: 40 82% 92%;
+
+		--card: 216 15% 21%;
+		--card-foreground: 40 82% 92%;
+
+		--primary: 40 100% 71%;
+		--primary-foreground: 216 15% 16%;
+
+		--secondary: 40 100% 82%;
+		--secondary-foreground: 216 15% 16%;
+
+		--accent: 169 100% 60%;
+		--accent-foreground: 216 15% 16%;
+
+		--destructive: 0 65% 65%;
+		--destructive-foreground: 60 9.1% 97.8%;
+
+		--border: 217 10% 32%;
+		--input: var(--muted);
+		--ring: 169 100% 60%;
+
+		--hr: 0, 0%, 60%;
+		--heading-text: var(--secondary);
+		--selection: hsla(40, 100%, 79%, 0.6);
+		--code-selection: 216 15% 36%;
+
+		--webkit-scrollbar: hsla(0, 0%, 100%, 0.3);
+		--webkit-scrollbar-hover: hsla(0, 0%, 100%, 0.12);
+	}
 }
- 
+
 @layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
+@font-face {
+	font-family: 'BerkeleyMono';
+	font-style: normal;
+	font-weight: 100 150;
+	font-display: swap;
+	src: url('/fonts/BerkeleyMonoVariable-Regular.woff2')
+		format('woff2-variations');
+}
+
+@font-face {
+	font-family: 'BerkeleyMono';
+	font-style: italic;
+	font-weight: 100 150;
+	font-display: swap;
+	src: url('/fonts/BerkeleyMonoVariable-Italic.woff2')
+		format('woff2-variations');
+}
+
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url('/fonts/InterVariable.woff2') format('woff2-variations');
+}
+
+@font-face {
+	font-family: 'Inter';
+	font-style: italic;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url('/fonts/InterVariable-Italic.woff2') format('woff2-variations');
+}
+
+:root {
+	--monospace-font: 'BerkeleyMono', monospace;
+	--serif-font: serif;
+	--sans-serif-font: 'Inter', sans-serif;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+	transition:
+		background-color 160ms,
+		background 160ms,
+		color 160ms;
+}
+
+html {
+	font-size: 16px; // 1rem = 16px
+	body {
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+		font-family: var(--sans-serif-font);
+		font-size: 1.125rem; // 18px
+		line-height: 1.5em;
+		font-weight: 400;
+		margin: 0;
+	}
+}
+
+h1,
+h1 a,
+h2,
+h2 a,
+h3,
+h3 a,
+h4,
+h4 a {
+	line-height: 1.3;
+	color: hsl(var(--heading-text));
+	font-family: Inter, sans-serif;
+	font-weight: 500;
+	letter-spacing: 0.0625rem;
+	margin-top: 0;
+	a {
+		text-decoration: none;
+	}
+}
+
+h1,
+h1 a {
+	font-size: 2.25rem;
+	font-weight: 600;
+	margin-bottom: 1rem;
+}
+
+h2,
+h2 a {
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+}
+
+h3,
+h3 a {
+	font-size: 1.4rem;
+	margin-bottom: 0.5rem;
+}
+
+h4,
+h4 a {
+	font-size: 1.3rem;
+	margin-bottom: 0.25rem;
+}
+
+@media screen and (max-width: 768px) {
+	h1 {
+		font-size: 1.75rem;
+	}
+	h2 {
+		font-size: 1.3rem;
+	}
+	h3 {
+		font-size: 1.5rem;
+	}
+	h4 {
+		font-size: 1.5rem;
+	}
+}
+
+a {
+	color: hsl(var(--primary));
+	text-decoration: none;
+	font-weight: 500;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+ul {
+	margin-left: 2rem;
+	list-style-type: disc;
+}
+
+ol {
+	list-style: decimal inside;
+}
+
+ol,
+ul {
+	padding-left: 0;
+	margin-top: 0;
+	li::marker {
+		color: hsl(var(--heading-text));
+	}
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+	margin: 15px 0 15px 30px;
+	font-size: 90%;
+}
+
+li {
+	margin-bottom: 8px;
+}
+
+blockquote,
+dl,
+figure,
+table,
+p,
+ul,
+ol,
+form {
+	margin-bottom: 24px;
+}
+
+hr {
+	width: 100%; // flex compatability
+	margin: 16px 0;
+	border-width: 0;
+	border-top: 1px solid hsl(var(--hr));
+}
+
+th {
+	font-weight: 500;
+}
+
+th,
+td {
+	padding: 12px 15px;
+	text-align: left;
+	border-bottom: 1px solid var(--table-border);
+}
+
+table.clean td,
+table.clean th {
+	border: none;
+	padding: 0 8px;
+}
+
+table.clean th:first-child,
+table.clean td:first-child,
+th:first-child,
+td:first-child {
+	padding-left: 0;
+}
+
+table.clean th:last-child,
+table.clean td:last-child,
+th:last-child,
+td:last-child {
+	padding-right: 0;
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+	height: 11px;
+}
+::-webkit-scrollbar-button {
+	width: 0px;
+	height: 0px;
+}
+::-webkit-scrollbar-thumb {
+	background: var(--webkit-scrollbar);
+	border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: var(--webkit-scrollbar-hover);
+}
+::-webkit-scrollbar-track {
+	border: none;
+	border-radius: 3px;
+}
+::-webkit-scrollbar-track:hover {
+	background: hsla(0, 0%, 50%, 0.12);
+}
+::-webkit-scrollbar-track:active {
+	background: hsla(0, 0%, 50%, 0.28);
+}
+
+::selection {
+	background: var(--selection);
 }
