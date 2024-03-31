@@ -3,7 +3,7 @@ const description = `some of my projects i've been working on recently.`
 const title = 'ryan voitiskis - projects'
 const url = 'https://ryanvoitiskis.com/projects'
 const crateGuideImage =
-	'https://ryanvoitiskis.com/img/projects/crate_guide_screenshot_1.png'
+	'https://ryanvoitiskis.com/img/projects/crate-guide/0.png'
 useHead({
 	title: title,
 	meta: [
@@ -22,38 +22,38 @@ useHead({
 
 const crateGuideImages = [
 	{
-		src: '/img/projects/crate_guide_screenshot_1.png',
+		src: '/img/projects/crate-guide/0.png',
 		alt: 'Crate Guide empty deck interface.'
 	},
 	{
-		src: '/img/projects/crate_guide_screenshot_0.jpeg',
+		src: '/img/projects/crate-guide/1.jpeg',
 		alt: 'Crate Guide loaded single deck interface.'
 	},
 	{
-		src: '/img/projects/crate_guide_screenshot_2.png',
+		src: '/img/projects/crate-guide/2.png',
 		alt: 'Crate Guide empty deck interface.'
 	},
 	{
-		src: '/img/projects/crate_guide_screenshot_3.png',
+		src: '/img/projects/crate-guide/3.png',
 		alt: 'Crate Guide track select interface.'
 	},
 	{
-		src: '/img/projects/crate_guide_screenshot_4.png',
+		src: '/img/projects/crate-guide/4.png',
 		alt: 'Crate Guide login interface.'
 	}
 ]
 
 const panelLayoutImages = [
 	{
-		src: '/img/projects/panel-layout-generator_screenshot_0.png',
+		src: '/img/projects/panel-layout-generator/0.png',
 		alt: 'panel-layout-generator interface.'
 	},
 	{
-		src: '/img/projects/panel-layout-generator_screenshot_1.png',
+		src: '/img/projects/panel-layout-generator/1.png',
 		alt: 'panel-layout-generator interface with numbers.'
 	},
 	{
-		src: '/img/projects/panel-layout-generator_screenshot_2.png',
+		src: '/img/projects/panel-layout-generator/2.png',
 		alt: 'panel-layout-generator interface with 960 panels.'
 	}
 ]
