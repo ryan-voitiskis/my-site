@@ -53,7 +53,7 @@ code[class*='language-'] {
 /* Code blocks */
 div[class*='language-'],
 pre[class*='language-'] {
-	border: 1px solid hsl(var(--vmuted));
+	border: 1px solid hsl(var(--border));
 	padding: var(--shiki-block-padding-y) var(--shiki-block-padding-x);
 	margin: var(--shiki-block-margin-y) var(--shiki-block-margin-x);
 	border-radius: var(--shiki-block-radius);
@@ -67,7 +67,7 @@ pre[class*='language-'] {
 	font-weight: 130;
 	line-height: 1rem;
 	display: inline;
-	border: 1px solid hsl(var(--vmuted));
+	border: 1px solid hsl(var(--border));
 	padding: var(--shiki-inline-padding-y) var(--shiki-inline-padding-x);
 	border-radius: var(--shiki-inline-radius);
 	background: var(--shiki-inline-background);

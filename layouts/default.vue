@@ -1,6 +1,6 @@
 <template>
 	<div class="bg-background">
-		<header class="flex h-14 w-full justify-between bg-muted">
+		<header class="flex h-14 w-full justify-between border-b bg-muted">
 			<div
 				class="mx-auto flex w-full max-w-[1120px] flex-row items-center justify-between p-4"
 			>
