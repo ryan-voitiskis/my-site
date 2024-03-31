@@ -1,9 +1,3 @@
-// TODO: is there a better solution for this?
-export type ImageAttrs = {
-	src: string
-	alt: string
-}
-
 // TODO: use astro's built in
 export type Post = {
 	_path: string
