@@ -1,4 +1,5 @@
 ---
+import { Button } from "@/components/ui/button"
 interface Props {
 	title: string;
 }
@@ -17,35 +18,43 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<slot />
+		<header class="flex h-14 w-full justify-between bg-muted">
+			<div
+				class="mx-auto flex w-full max-w-[1120px] flex-row items-center justify-between p-4"
+			>
+				<nav id="main_nav" class="-ml-4 flex flex-wrap gap-y-4">
+					<Button as-child variant="nav-link" class="-my-4">
+						<a href="/">about</a>
+					</Button>
+					<Button as-child variant="nav-link" class="-my-4">
+						<a href="/blog">blog</a>
+					</Button>
+					<Button as-child variant="nav-link" class="-my-4">
+						<a href="/projects">projects</a>
+					</Button>
+				</nav>
+				<!-- <ThemeToggle class="-my-2" /> -->
+			</div>
+		</header>
+
+		<div class="min-h-[calc(100vh_-_56px)] pt-8">
+			<!-- root node of slot should be <main> for semantic purpose -->
+			<slot />
+		</div>
 	</body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+
+<style is:global lang="scss">
+	#main_nav {
+		a {
+			&:hover {
+				text-decoration: none;
+			}
+			&.router-link-active {
+				text-decoration: underline;
+				text-decoration-color: hsl(var(--primary));
+				text-decoration-thickness: 0.1rem;
+			}
+		}
 	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>
+	</style>
