@@ -1,32 +1,30 @@
 <script setup lang="ts">
-import { ArrowRightIcon } from '@radix-icons/vue'
+import IconArrowCircle from '@/components/icons/IconArrowCircle.vue'
 import { useCarousel } from './useCarousel'
-import type { WithClassAsProps } from './interface'
-import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+import { type CarouselButtonVariants, carouselButtonVariants } from '.'
+import type { HTMLAttributes } from 'vue'
 
-const props = defineProps<WithClassAsProps>()
+const props = defineProps<{
+	variant?: CarouselButtonVariants['variant']
+	class?: HTMLAttributes['class']
+}>()
 
-const { orientation, canScrollNext, scrollNext } = useCarousel()
+const { canScrollNext, scrollNext } = useCarousel()
 </script>
 
 <template>
 	<Button
 		:disabled="!canScrollNext"
-		:class="
-			cn(
-				'absolute h-8 w-8 touch-manipulation rounded-full p-0',
-				orientation === 'horizontal'
-					? '-right-12 top-1/2 -translate-y-1/2'
-					: '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
-				props.class
-			)
-		"
-		variant="outline"
+		:class="cn(carouselButtonVariants({ variant }), props.class)"
+		variant="blank"
+		:size="props.variant === 'modal' ? 'xl-icon' : 'lg-icon'"
+		aria-label="Next"
 		@click="scrollNext"
 	>
 		<slot>
-			<ArrowRightIcon class="h-4 w-4 text-current" />
+			<IconArrowCircle class="h-16 w-16 rotate-180" />
 		</slot>
 	</Button>
 </template>
