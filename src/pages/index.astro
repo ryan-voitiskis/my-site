@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button"
 import ContactForm from "@/components/ContactForm.vue";
 import Layout from '../layouts/Layout.astro';
+import IconChevronsDown from '@/components/icons/IconChevronsDown.vue';
 ---
 
 <Layout title="Welcome to Astro.">
@@ -25,10 +26,10 @@ import Layout from '../layouts/Layout.astro';
 					@click="contactForm?.focusNameField"
 				>
 					talk to me
-					<!-- <IconChevronsDown class="ml-1 mt-[1px] h-5 w-5 md:-rotate-90" /> -->
+					<IconChevronsDown class="ml-1 mt-[1px] h-5 w-5 md:-rotate-90" />
 				</Button>
 			</div>
-			<ContactForm ref="contactForm" class="w-full max-w-screen-xs" />
+			<ContactForm ref="contactForm" class="w-full max-w-screen-xs" client:load />
 		</div>
 	</main>
 </Layout>
