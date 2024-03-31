@@ -5,26 +5,26 @@ import { cn } from '@/lib/utils'
 import { useValidation } from '@/composables/useValidation'
 
 const props = defineProps<{
-  class?: HTMLAttributes['class']
-  defaultValue?: string | number
-  modelValue?: string | number
+	class?: HTMLAttributes['class']
+	defaultValue?: string | number
+	modelValue?: string | number
 	name: string
 }>()
 
 const emits = defineEmits<{
-  (e: 'update:modelValue', payload: string | number): void
+	(e: 'update:modelValue', payload: string | number): void
 }>()
 
 const modelValue = useVModel(props, 'modelValue', emits, {
-  passive: true,
-  defaultValue: props.defaultValue,
+	passive: true,
+	defaultValue: props.defaultValue
 })
 
 const { validationListeners } = useValidation(() => props.name)
 </script>
 
 <template>
-  <textarea
+	<textarea
 		v-model="modelValue"
 		:class="
 			cn(
