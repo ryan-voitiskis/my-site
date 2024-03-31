@@ -66,61 +66,7 @@ const panelLayoutImages = [
 		</h1>
 
 		<article
-			class="mx-auto flex flex-col items-center gap-4 border-b py-16 md:flex-row md:gap-16"
-		>
-			<div>
-				<h2 class="mb-4 font-mono font-bold">bpm tap</h2>
-				<div class="my-2 flex flex-wrap gap-2">
-					<Badge text="Vue.js" />
-					<Badge text="PWA" />
-					<Badge text="D3.js" />
-				</div>
-				<div class="mb-2 text-sm">
-					<!-- prettier-ignore -->
-					<a href="https://bpm-tap-0.netlify.app/" class="font-mono font-[130]">bpm-tap-0.netlify.app</a>
-					&nbsp;|&nbsp;
-					<a
-						href="https://github.com/ryan-voitiskis/bpm-tap"
-						class="font-mono font-[130]"
-					>
-						GitHub
-					</a>
-				</div>
-				<p>
-					bpm tap is an extremely simple web app for tapping out the tempo of a
-					song. I needed a solution for comparing the tempo of two tracks that
-					could be installed on a phone quickly. The app is designed to be used
-					as a PWA on a phone, with the tempo being tapped out by tapping the
-					screen. The tempo is displayed in real-time and can be reset by not
-					tapping for 2 seconds.
-				</p>
-				<p>
-					To save a tempo as a reference for future measurements, the user can
-					lock the most recent bpm by enabling the lock feature with the lock
-					icon button at the top right. My use case for this is to compare the
-					tempo of a track I'm playing to the tempo of the next track I want to
-					mix in.
-				</p>
-				<p>
-					The app uses
-					<a href="https://d3js.org/d3-interpolate/color">
-						D3.js colour interpolation
-					</a>
-					to represent the tempo as a background colour, providing a visual aid
-					for comparing the currently tapped tempo with the last or lock bpm.
-				</p>
-			</div>
-			<PhoneMockup>
-				<iframe
-					title="bpm-tap-0.netlify.app"
-					src="https://demo--bpm-tap-0.netlify.app/"
-					class="h-full w-full"
-				/>
-			</PhoneMockup>
-		</article>
-
-		<article
-			class="mx-auto flex flex-col items-center gap-4 border-b py-16 lg:flex-row lg:gap-16"
+			class="mx-auto flex flex-col items-center gap-4 border-b py-16 lg:flex-row lg:gap-16 lg:py-24"
 		>
 			<div class="lg:order-last">
 				<h2 class="font-mono font-bold">Crate Guide</h2>
@@ -176,9 +122,63 @@ const panelLayoutImages = [
 		</article>
 
 		<article
-			class="mx-auto flex flex-col items-center gap-4 py-16 lg:flex-row lg:gap-16"
+			class="mx-auto flex flex-col items-center gap-4 border-b py-16 md:flex-row md:gap-16 lg:py-24"
 		>
 			<div>
+				<h2 class="mb-4 font-mono font-bold">bpm tap</h2>
+				<div class="my-2 flex flex-wrap gap-2">
+					<Badge text="Vue.js" />
+					<Badge text="PWA" />
+					<Badge text="D3.js" />
+				</div>
+				<div class="mb-2 text-sm">
+					<!-- prettier-ignore -->
+					<a href="https://bpm-tap-0.netlify.app/" class="font-mono font-[130]">bpm-tap-0.netlify.app</a>
+					&nbsp;|&nbsp;
+					<a
+						href="https://github.com/ryan-voitiskis/bpm-tap"
+						class="font-mono font-[130]"
+					>
+						GitHub
+					</a>
+				</div>
+				<p>
+					bpm tap is an extremely simple web app for tapping out the tempo of a
+					song. I needed a solution for comparing the tempo of two tracks that
+					could be installed on a phone quickly. The app is designed to be used
+					as a PWA on a phone, with the tempo being tapped out by tapping the
+					screen. The tempo is displayed in real-time and can be reset by not
+					tapping for 2 seconds.
+				</p>
+				<p>
+					To save a tempo as a reference for future measurements, the user can
+					lock the most recent bpm by enabling the lock feature with the lock
+					icon button at the top right. My use case for this is to compare the
+					tempo of a track I'm playing to the tempo of the next track I want to
+					mix in.
+				</p>
+				<p>
+					The app uses
+					<a href="https://d3js.org/d3-interpolate/color">
+						D3.js colour interpolation
+					</a>
+					to represent the tempo as a background colour, providing a visual aid
+					for comparing the currently tapped tempo with the last or lock bpm.
+				</p>
+			</div>
+			<PhoneMockup>
+				<iframe
+					title="bpm-tap-0.netlify.app"
+					src="https://demo--bpm-tap-0.netlify.app/"
+					class="h-full w-full"
+				/>
+			</PhoneMockup>
+		</article>
+
+		<article
+			class="mx-auto flex flex-col items-center gap-4 py-16 lg:flex-row lg:gap-16 lg:py-24"
+		>
+			<div class="lg:order-last">
 				<h2 class="font-mono font-bold">Panel layout generator</h2>
 				<div class="my-2 flex flex-wrap gap-2">
 					<Badge text="Vue.js" />
