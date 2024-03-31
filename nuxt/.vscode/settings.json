@@ -1,9 +1,0 @@
-{
-	"editor.codeActionsOnSave": {
-		"source.fixAll.eslint": "explicit"
-	},
-	"eslint.validate": ["javascript", "vue"],
-	"typescript.tsdk": "node_modules/typescript/lib",
-	"inlineFold.unfoldOnLineSelect": false,
-	"inlineFold.autoFold": false
-}
