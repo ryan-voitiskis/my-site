@@ -9,14 +9,10 @@ import {
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { ref } from 'vue'
-import { useFocus } from '@vueuse/core'
 import * as z from 'zod'
 import { toast } from 'vue-sonner'
 import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
-
-const nameField = ref<HTMLInputElement | null>(null)
 
 const formSchema = toTypedSchema(
 	z.object({
@@ -48,14 +44,6 @@ const onSubmit = form.handleSubmit(async (values) => {
 		{ duration: 30000 }
 	)
 })
-
-const { focused: inputFocus } = useFocus(nameField)
-
-function focusNameField() {
-	inputFocus.value = true
-}
-
-defineExpose({ focusNameField })
 </script>
 
 <template>
@@ -66,10 +54,10 @@ defineExpose({ focusNameField })
 				<FormLabel>name</FormLabel>
 				<FormControl>
 					<Input
-						ref="nameField"
 						type="text"
 						v-bind="componentField"
 						autocomplete="off"
+						class="name_input"
 					/>
 				</FormControl>
 				<FormMessage />

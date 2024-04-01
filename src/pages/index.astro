@@ -21,9 +21,10 @@ import IconChevronsDown from '@/components/icons/IconChevronsDown.vue'
 				<p class="mb-2">developer from melbourne, au</p>
 				<p class="mb-2">fullstack, mostly with js</p>
 				<Button
+					id={'talk_to_me'}
 					variant="blank"
 					class="pl-0 font-sans font-medium"
-					@click="contactForm?.focusNameField"
+					aria-label="focus on name input field"
 				>
 					talk to me
 					<IconChevronsDown class="ml-1 mt-[1px] h-5 w-5 md:-rotate-90" />
@@ -33,3 +34,11 @@ import IconChevronsDown from '@/components/icons/IconChevronsDown.vue'
 		</div>
 	</main>
 </Layout>
+
+<script>
+	document
+		.getElementById('talk_to_me')
+		?.addEventListener('click', () =>
+			(document.getElementsByClassName('name_input')[0] as HTMLElement).focus()
+		)
+</script>

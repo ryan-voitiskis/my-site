@@ -9,6 +9,7 @@ interface Props extends PrimitiveProps {
 	size?: ButtonVariants['size']
 	as?: string
 	class?: HTMLAttributes['class']
+	id?: HTMLAttributes['id']
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -18,6 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 <template>
 	<Primitive
+		:id="id"
 		:as="as"
 		:as-child="asChild"
 		:class="cn(buttonVariants({ variant, size }), props.class)"
