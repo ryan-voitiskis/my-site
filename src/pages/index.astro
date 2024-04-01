@@ -29,11 +29,7 @@ import IconChevronsDown from '@/components/icons/IconChevronsDown.vue'
 					<IconChevronsDown class="ml-1 mt-[1px] h-5 w-5 md:-rotate-90" />
 				</Button>
 			</div>
-			<ContactForm
-				ref="contactForm"
-				class="w-full max-w-screen-xs"
-				client:load
-			/>
+			<ContactForm class="w-full max-w-screen-xs" client:only="vue" />
 		</div>
 	</main>
 </Layout>
