@@ -51,6 +51,9 @@ useHead({
 						</tbody>
 					</table>
 					<ContentRenderer :value="doc" />
+					<Button as-child class="mx-auto my-16 flex w-fit" variant="outline">
+						<NuxtLink to="/blog">back to other posts</NuxtLink>
+					</Button>
 				</article>
 			</template>
 		</ContentDoc>
