@@ -66,10 +66,12 @@ const panelLayoutImages = [
 		</h1>
 
 		<article
-			class="mx-auto flex flex-col items-center gap-4 border-b py-16 lg:flex-row lg:gap-16 lg:py-24"
+			class="mx-auto flex flex-col gap-4 border-b py-16 lg:flex-row lg:gap-16 lg:py-24"
 		>
 			<div class="lg:order-last">
-				<h2 class="font-mono font-bold">Crate Guide</h2>
+				<h2 class="mb-4 font-mono text-2xl font-[150] leading-none">
+					Crate Guide
+				</h2>
 				<div class="my-2 flex flex-wrap gap-2">
 					<Badge text="Vue.js" />
 					<Badge text="PWA" />
@@ -122,10 +124,10 @@ const panelLayoutImages = [
 		</article>
 
 		<article
-			class="mx-auto flex flex-col items-center gap-4 border-b py-16 md:flex-row md:gap-16 lg:py-24"
+			class="mx-auto flex flex-col gap-4 border-b py-16 md:flex-row md:gap-16 lg:py-24"
 		>
 			<div>
-				<h2 class="mb-4 font-mono font-bold">bpm tap</h2>
+				<h2 class="mb-4 font-mono text-2xl font-[150] leading-none">bpm tap</h2>
 				<div class="my-2 flex flex-wrap gap-2">
 					<Badge text="Vue.js" />
 					<Badge text="PWA" />
@@ -176,10 +178,12 @@ const panelLayoutImages = [
 		</article>
 
 		<article
-			class="mx-auto flex flex-col items-center gap-4 py-16 lg:flex-row lg:gap-16 lg:py-24"
+			class="mx-auto flex flex-col gap-4 py-16 lg:flex-row lg:gap-16 lg:py-24"
 		>
 			<div class="lg:order-last">
-				<h2 class="font-mono font-bold">Panel layout generator</h2>
+				<h2 class="mb-4 font-mono text-2xl font-[150] leading-none">
+					Panel layout generator
+				</h2>
 				<div class="my-2 flex flex-wrap gap-2">
 					<Badge text="Vue.js" />
 					<Badge text="SPA" />
