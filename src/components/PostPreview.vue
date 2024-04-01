@@ -1,5 +1,10 @@
 <script setup lang="ts">
-defineProps<{ post: Post; index: number }>()
+import { dateStringToLocale } from '@/lib/date'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import type { CollectionEntry } from 'astro:content'
+
+const props = defineProps<{ post: CollectionEntry<'blog'>; index: number }>()
 </script>
 
 <template>
@@ -8,15 +13,12 @@ defineProps<{ post: Post; index: number }>()
 		variant="blank"
 		class="group flex h-auto w-full flex-col gap-12 overflow-hidden rounded-none border-b p-0 py-12 text-md font-normal text-foreground hover:no-underline focus-visible:ring-4 sm:flex-row"
 	>
-		<a :href="post._path">
-			<NuxtImg
-				:src="post.image"
-				:alt="post.image_alt"
+		<a :href="`/blog/${props.post.slug}`">
+			<img
+				:src="post.data.image"
+				:alt="post.data.image_alt"
 				width="256"
 				height="256"
-				:preload="index === 0"
-				:loading="index === 0 ? 'eager' : 'lazy'"
-				format="webp"
 				class="transition-hue-rotate-200 mx-auto h-64 w-64 rounded-full object-cover font-sans sepia transition duration-300 group-hover:sepia-0 group-focus:sepia-0"
 			/>
 			<div
@@ -28,17 +30,17 @@ defineProps<{ post: Post; index: number }>()
 					<tbody>
 						<tr>
 							<td>Type</td>
-							<td class="font-thin">{{ post.format }}</td>
+							<td class="font-thin">{{ post.data.format }}</td>
 						</tr>
 						<tr>
 							<td>Published</td>
 							<td class="font-thin">
-								{{ dateStringToLocale(post.published) }}
+								{{ dateStringToLocale(post.data.published) }}
 							</td>
 						</tr>
-						<tr v-if="post.reading_time">
+						<tr v-if="post.data.reading_time">
 							<td>Reading time</td>
-							<td class="font-thin">{{ post.reading_time }}</td>
+							<td class="font-thin">{{ post.data.reading_time }}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -46,13 +48,13 @@ defineProps<{ post: Post; index: number }>()
 					<h2
 						class="mb-4 text-balance underline decoration-transparent transition duration-300 group-hover:decoration-heading-text group-focus:decoration-heading-text"
 					>
-						{{ post.title }}
+						{{ post.data.title }}
 					</h2>
 					<div class="mb-2 flex flex-wrap gap-2">
-						<Badge v-for="(tag, i) in post.tags" :key="i" :text="tag" />
+						<Badge v-for="(tag, i) in post.data.tags" :key="i" :text="tag" />
 					</div>
-					<div v-if="post.short" class="w-full">
-						{{ post.short }}
+					<div v-if="post.data.short" class="w-full">
+						{{ post.data.short }}
 					</div>
 				</div>
 			</div>
