@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content'
 import Layout from '../../layouts/Layout.astro'
+import { dateStringToLocale } from '@/lib/date'
 
 export async function getStaticPaths() {
 	const blogEntries = await getCollection('blog')
@@ -15,6 +16,39 @@ const { Content } = await entry.render()
 ---
 
 <Layout title="TODO: title">
-	<h1>{entry.data.title}</h1>
-	<Content />
+	<main class="w-full">
+		<article
+			class:list={[
+				'mx-auto w-full px-4 pb-48 text-md',
+				entry.data.format === 'image_collection'
+					? 'max-w-[1120px]'
+					: 'max-w-screen-sm'
+			]}
+		>
+			<h1 class="text-balance">{entry.data.title}</h1>
+			<table
+				class="clean ml-2 border-l-4 border-l-secondary font-mono text-xs text-muted-foreground sm:ml-6"
+			>
+				<tbody>
+					{
+						entry.data.updated && (
+							<tr>
+								<td class="!pl-4">Updated</td>
+								<td class="font-[110]">
+									{dateStringToLocale(entry.data.updated)}
+								</td>
+							</tr>
+						)
+					}
+					<tr>
+						<td class="!pl-4">Published</td>
+						<td class="font-[110]">
+							{dateStringToLocale(entry.data.published)}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<Content />
+		</article>
+	</main>
 </Layout>
