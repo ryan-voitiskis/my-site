@@ -24,6 +24,7 @@ const onSubmit = form.handleSubmit(async (values) => {
 	formData.append('message', values.message)
 	const res = await fetch('/', {
 		method: 'POST',
+		headers: { 'Content-Type': 'multipart/form-data' },
 		body: formData
 	})
 	if (res.ok) {
