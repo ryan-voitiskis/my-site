@@ -19,7 +19,9 @@ const form = useForm({ validationSchema: formSchema })
 const onSubmit = form.handleSubmit(async (values) => {
 	const formData = new FormData()
 	formData.append('form-name', 'contact')
-	Object.entries(values).forEach(([key, value]) => formData.append(key, value))
+	formData.append('name', values.name)
+	formData.append('email', values.email)
+	formData.append('message', values.message)
 	const res = await fetch('/', {
 		method: 'POST',
 		body: formData
