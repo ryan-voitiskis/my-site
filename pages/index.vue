@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import ContactForm from '~/components/ContactForm.vue'
-const contactForm = ref<InstanceType<typeof ContactForm>>()
+import { toast } from 'vue-sonner'
 
 const description = 'developer from melbourne, au. fullstack, mostly with js.'
 const title = 'ryan voitiskis - about'
@@ -18,6 +17,14 @@ useHead({
 	],
 	link: [{ rel: 'canonical', href: url }]
 })
+
+function emailToClipboard() {
+	navigator.clipboard.writeText('ryanvoitiskis@pm.me').then(() => {
+		toast.success(`copied 'ryanvoitiskis@pm.me' to clipboard`, {
+			duration: 300000
+		})
+	})
+}
 </script>
 
 <template>
@@ -28,23 +35,20 @@ useHead({
 			</h1>
 		</div>
 		<div
-			class="mx-auto flex w-full flex-col items-center justify-center gap-8 pb-48 md:flex-row"
+			class="mx-auto flex w-full flex-col items-center justify-center gap-8 pb-48 pt-12 md:flex-row"
 		>
-			<div
-				class="w-full max-w-64 pt-16 text-sm text-muted-foreground md:self-start"
-			>
+			<div class="w-full max-w-64 text-sm text-muted-foreground">
 				<p class="mb-2">developer from melbourne, au</p>
 				<p class="mb-2">fullstack, mostly with js</p>
-				<Button
-					variant="blank"
-					class="pl-0 font-sans font-medium"
-					@click="contactForm?.focusNameField"
-				>
-					talk to me
-					<IconChevronsDown class="ml-1 mt-[1px] h-5 w-5 md:-rotate-90" />
-				</Button>
 			</div>
-			<ContactForm ref="contactForm" class="w-full max-w-screen-xs" />
+			<Button
+				variant="blank"
+				class="font-sans font-medium"
+				@click="emailToClipboard"
+			>
+				ryanvoitiskis@pm.me
+				<IconClipboardCopy class="mx-2 h-5 w-5" />
+			</Button>
 		</div>
 	</main>
 </template>
