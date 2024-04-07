@@ -10,8 +10,8 @@ const blogCollection = defineCollection({
 		published: z.string(),
 		updated: z.string().optional(),
 		short: z.string(),
-		image: z.string().optional(),
-		image_alt: z.string().optional(),
+		image: z.string(),
+		image_alt: z.string(),
 		reading_time: z.string().optional(),
 		images: z
 			.array(
