@@ -1,8 +1,0 @@
-[build]
-  command = "nuxt build"
-  publish = "dist"
-
-[[redirects]]
-  from = "/contact_form.html"
-  to = "/"
-  status = 301

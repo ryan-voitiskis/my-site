@@ -1,7 +1,9 @@
 ---
 import { getCollection } from 'astro:content'
+import ImageGallery from '@/components/ImageGallery.vue'
 import Layout from '@/layouts/Layout.astro'
 import { dateStringToLocale } from '@/lib/date'
+import { getImage } from 'astro:assets'
 
 export async function getStaticPaths() {
 	const blogEntries = await getCollection('blog')
@@ -13,9 +15,26 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props
 const { Content } = await entry.render()
+
+const optimisedImages = entry.data.images
+	? await Promise.all(
+			entry.data.images.map(async (image) => {
+				const src = import(`../../assets/posts/${image.src}`)
+				const optimisedImage = await getImage({
+					src: src,
+					format: 'webp',
+					width: 256,
+					height: 256
+				})
+				optimisedImage.attributes.alt = image.alt
+				return optimisedImage
+			})
+		)
+	: []
+console.log(optimisedImages[0])
 ---
 
-<Layout title="TODO: title">
+<Layout title={entry.data.title}>
 	<main class="w-full">
 		<article
 			class:list={[
@@ -49,6 +68,7 @@ const { Content } = await entry.render()
 				</tbody>
 			</table>
 			<Content />
+			<ImageGallery images={optimisedImages} client:load />
 		</article>
 	</main>
 </Layout>

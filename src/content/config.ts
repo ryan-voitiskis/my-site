@@ -1,5 +1,7 @@
 import { z, defineCollection } from 'astro:content'
 
+// TODO: after testing astro v nuxt perf, separate into article, image_collection + future types
+// TODO: after that, remove optional from images
 const blogCollection = defineCollection({
 	type: 'content',
 	schema: z.object({
@@ -11,6 +13,14 @@ const blogCollection = defineCollection({
 		image: z.string().optional(),
 		image_alt: z.string().optional(),
 		reading_time: z.string().optional(),
+		images: z
+			.array(
+				z.object({
+					src: z.string(),
+					alt: z.string()
+				})
+			)
+			.optional(),
 		tags: z.array(z.string()).optional()
 	})
 })
