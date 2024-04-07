@@ -6,7 +6,23 @@ short: Third collection of my favourite results from using stable diffusion.
 image: /img/posts/sd3/3.jpg
 image_alt: AI generated image
 tags: ['Stable Diffusion']
+images:
+  - src: sd3/1.jpg
+    alt: table Diffusion generated image of an ancient alien.
+  - src: sd3/2.jpg
+    alt: table Diffusion generated image of an ancient alien.
+  - src: sd3/3.jpg
+    alt: table Diffusion generated image of an ancient alien.
+  - src: sd3/4.jpg
+    alt: table Diffusion generated image of an ancient alien.
+  - src: sd3/5.jpg
+    alt: table Diffusion generated image of an ancient alien.
+  - src: sd3/6.jpg
+    alt: table Diffusion generated image of an ancient alien.
+  - src: sd3/7.jpg
+    alt: tale Diffusion generated image of an ancient alien.
+  - src: sd3/8.jpg
+    alt: table Diffusion generated image of an ancient alien.
+  - src: sd3/9.jpg
+    alt: table Diffusion generated image of an ancient alien.
 ---
-
-::ImageGallery{:images='[{"src": "/img/posts/sd3/1.jpg", "alt": "Stable Diffusion generated image of an ancient alien."}, {"src": "/img/posts/sd3/2.jpg", "alt": "Stable Diffusion generated image of an ancient alien."}, {"src": "/img/posts/sd3/3.jpg", "alt": "Stable Diffusion generated image of an ancient alien."}, {"src": "/img/posts/sd3/4.jpg", "alt": "Stable Diffusion generated image of an ancient alien."}, {"src": "/img/posts/sd3/5.jpg", "alt": "Stable Diffusion generated image of an ancient alien."} , {"src": "/img/posts/sd3/6.jpg", "alt": "Stable Diffusion generated image of an ancient alien."} , {"src": "/img/posts/sd3/7.jpg", "alt": "Stable Diffusion generated image of an ancient alien."} , {"src": "/img/posts/sd3/8.jpg", "alt": "Stable Diffusion generated image of an ancient alien."} , {"src": "/img/posts/sd3/9.jpg", "alt": "Stable Diffusion generated image of an ancient alien."}]'}
-::
