@@ -11,6 +11,7 @@ tags: ['DALL·E 2']
 import { Image, getImage } from 'astro:assets'
 import ImageGallery from '@/components/ImageGallery.vue'
 import ImageGalleryButton from '@/components/ImageGalleryButton.vue'
+import ImageGalleryWrapper from '@/components/ImageGalleryWrapper.astro'
 import img0 from '@/assets/posts/dall-e2-1/0.png'
 import img1 from '@/assets/posts/dall-e2-1/1.png'
 import img2 from '@/assets/posts/dall-e2-1/2.png'
@@ -65,102 +66,18 @@ export const optimisedImages = [
 	}
 ]
 
-<>
-	<div
-		class="grid gap-4"
-		style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))"
-	>
-		<ImageGalleryButton index={0} client:load>
+<ImageGalleryWrapper>
+	{optimisedImages.map((optimisedImage, index) => (
+		<ImageGalleryButton index={index} client:load>
 			<Image
-				src={optimisedImages[0].rawOptions.src}
-				alt={optimisedImages[0].alt}
+				src={optimisedImage.rawOptions.src}
+				alt={optimisedImage.alt}
 				quality={100}
 				densities={[1.5, 2, 3]}
 				class="h-full w-full object-cover"
 			/>
 		</ImageGalleryButton>
-		<ImageGalleryButton index={1} client:load>
-			<Image
-				src={img1}
-				alt={optimisedImages[1].alt}
-				quality={100}
-				densities={[1.5, 2, 3]}
-				class="h-full w-full object-cover"
-			/>
-		</ImageGalleryButton>
-		<ImageGalleryButton index={2} client:load>
-			<Image
-				src={img2}
-				alt={optimisedImages[2].alt}
-				quality={100}
-				densities={[1.5, 2, 3]}
-				class="h-full w-full object-cover"
-			/>
-		</ImageGalleryButton>
-		<ImageGalleryButton index={3} client:load>
-			<Image
-				src={img3}
-				alt={optimisedImages[3].alt}
-				quality={100}
-				densities={[1.5, 2, 3]}
-				class="h-full w-full object-cover"
-			/>
-		</ImageGalleryButton>
-		<ImageGalleryButton index={4} client:load>
-			<Image
-				src={img4}
-				alt={optimisedImages[4].alt}
-				quality={100}
-				densities={[1.5, 2, 3]}
-				class="h-full w-full object-cover"
-			/>
-		</ImageGalleryButton>
-		<ImageGalleryButton index={5} client:load>
-			<Image
-				src={img5}
-				alt={optimisedImages[5].alt}
-				quality={100}
-				densities={[1.5, 2, 3]}
-				class="h-full w-full object-cover"
-			/>
-		</ImageGalleryButton>
-		<ImageGalleryButton index={6} client:load>
-			<Image
-				src={img6}
-				alt={optimisedImages[6].alt}
-				quality={100}
-				densities={[1.5, 2, 3]}
-				class="h-full w-full object-cover"
-			/>
-		</ImageGalleryButton>
-		<ImageGalleryButton index={7} client:load>
-			<Image
-				src={img7}
-				alt={optimisedImages[7].alt}
-				quality={100}
-				densities={[1.5, 2, 3]}
-				class="h-full w-full object-cover"
-			/>
-		</ImageGalleryButton>
-		<ImageGalleryButton index={8} client:load>
-			<Image
-				src={img8}
-				alt={optimisedImages[8].alt}
-				quality={100}
-				densities={[1.5, 2, 3]}
-				class="h-full w-full object-cover"
-			/>
-		</ImageGalleryButton>
-		<ImageGalleryButton index={9} client:load>
-			<Image
-				src={img9}
-				alt={optimisedImages[9].alt}
-				quality={100}
-				densities={[1.5, 2, 3]}
-				class="h-full w-full object-cover"
-			/>
-		</ImageGalleryButton>
-	</div>
-</>
+	))}
+</ImageGalleryWrapper>
 
 <ImageGallery images={optimisedImages} client:load />
