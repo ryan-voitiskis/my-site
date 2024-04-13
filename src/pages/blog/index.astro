@@ -1,7 +1,6 @@
 ---
-import { getCollection, getEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
 import Layout from '@/layouts/Layout.astro'
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import PostPreview from '@/components/PostPreview.astro'
 
 // const description =
@@ -23,22 +22,20 @@ import PostPreview from '@/components/PostPreview.astro'
 // })
 
 const posts = await getCollection('blog')
+posts.sort((a, b) => {
+	const dateA = new Date(a.data.published)
+	const dateB = new Date(b.data.published)
+
+	if (dateA.getTime() !== dateB.getTime())
+		return dateB.getTime() - dateA.getTime()
+	else return b.data.title.localeCompare(a.data.title)
+})
 ---
 
 <Layout title="ryan_voitiskis | blog">
 	<main>
 		<div class="mx-auto w-full max-w-[1120px] px-4 pb-48">
 			<h1 class="font-mono text-sm font-[120] text-muted-foreground">> blog</h1>
-			<div class="flex-end mb-8 flex justify-end gap-4">
-				<!-- <ToggleGroup v-model="format" type="multiple" :roving-focus="false">
-				<ToggleGroupItem value="article" size="badge">
-					Articles
-				</ToggleGroupItem>
-				<ToggleGroupItem value="image_collection" size="badge">
-					Collections
-				</ToggleGroupItem>
-			</ToggleGroup> -->
-			</div>
 			<div class="flex flex-col">
 				{posts.map((p, i) => <PostPreview post={p} index={i} />)}
 			</div>
