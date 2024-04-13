@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group'
 import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
 
 const description =
@@ -20,28 +19,16 @@ useHead({
 	link: [{ rel: 'canonical', href: url }]
 })
 
-const format = ref(['article', 'image_collection'])
-const query: QueryBuilderParams = computed(() => ({
+const query: QueryBuilderParams = {
 	path: '/blog',
-	where: [{ format: { $in: format.value } }],
 	sort: [{ published: -1 }]
-}))
+}
 </script>
 
 <template>
 	<main>
 		<div class="mx-auto w-full max-w-[1120px] px-4 pb-48">
 			<h1 class="font-mono text-sm font-[120] text-muted-foreground">> blog</h1>
-			<div class="flex-end mb-8 flex justify-end gap-4">
-				<ToggleGroup v-model="format" type="multiple" :roving-focus="false">
-					<ToggleGroupItem value="article" size="badge">
-						Articles
-					</ToggleGroupItem>
-					<ToggleGroupItem value="image_collection" size="badge">
-						Collections
-					</ToggleGroupItem>
-				</ToggleGroup>
-			</div>
 			<ContentList :query="query" path="/blog">
 				<template #default="{ list }">
 					<div class="flex flex-col">
@@ -49,7 +36,7 @@ const query: QueryBuilderParams = computed(() => ({
 							v-for="(post, i) in list"
 							:key="post._path"
 							:post="post"
-							:i="i"
+							:index="i"
 						/>
 					</div>
 				</template>
