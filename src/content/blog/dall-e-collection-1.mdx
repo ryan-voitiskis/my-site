@@ -3,14 +3,14 @@ title: DALL·E 2 collection 1
 format: image_collection
 published: '2023-01-13'
 short: Some interesting DALL·E 2 results.
-image: dall-e2-1/2.png
-image_alt: AI generated image
+cover: ../../assets/posts/dall-e2-1/2.png
+coverAlt: AI generated image
 tags: ['DALL·E 2']
 ---
 
+import { Image, getImage } from 'astro:assets'
 import ImageGallery from '@/components/ImageGallery.vue'
 import ImageGalleryButton from '@/components/ImageGalleryButton.vue'
-import { Image, getImage } from 'astro:assets'
 import img0 from '@/assets/posts/dall-e2-1/0.png'
 import img1 from '@/assets/posts/dall-e2-1/1.png'
 import img2 from '@/assets/posts/dall-e2-1/2.png'
@@ -72,7 +72,7 @@ export const optimisedImages = [
 	>
 		<ImageGalleryButton index={0} client:load>
 			<Image
-				src={img0}
+				src={optimisedImages[0].rawOptions.src}
 				alt={optimisedImages[0].alt}
 				quality={100}
 				densities={[1.5, 2, 3]}

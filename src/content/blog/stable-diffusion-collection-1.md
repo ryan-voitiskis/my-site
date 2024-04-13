@@ -3,8 +3,8 @@ title: Stable diffusion collection 1
 format: image_collection
 published: '2022-12-12'
 short: First collection of my favourite results from using stable diffusion.
-image: sd1/4.jpg
-image_alt: AI generated image
+cover: ../../assets/posts/sd1/4.jpg
+coverAlt: AI generated image
 tags: ['Stable Diffusion']
 images:
   - src: sd1/1.jpg

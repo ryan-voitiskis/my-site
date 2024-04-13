@@ -10,11 +10,6 @@ interface Props {
 }
 
 const { post, index } = Astro.props
-
-// TODO if index === 0 preload lcp image
-const coverImg = await import(`../assets/posts/${post.data.image}`).then(
-	(module) => module.default
-)
 ---
 
 <a
@@ -23,8 +18,8 @@ const coverImg = await import(`../assets/posts/${post.data.image}`).then(
 	class="group flex h-auto w-full flex-col gap-12 overflow-hidden rounded-none border-b p-0 py-12 font-mono text-md font-normal text-foreground transition-colors hover:no-underline focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring sm:flex-row"
 >
 	<Image
-		src={coverImg}
-		alt={post.data.image_alt}
+		src={post.data.cover}
+		alt={post.data.coverAlt}
 		width="256"
 		height="256"
 		quality={100}
@@ -48,9 +43,9 @@ const coverImg = await import(`../assets/posts/${post.data.image}`).then(
 						{dateStringToLocale(post.data.published)}
 					</td>
 				</tr>
-				<tr v-if="post.data.reading_time">
+				<tr v-if="post.data.readingTime">
 					<td>Reading time</td>
-					<td class="font-thin">{post.data.reading_time}</td>
+					<td class="font-thin">{post.data.readingTime}</td>
 				</tr>
 			</tbody>
 		</table>

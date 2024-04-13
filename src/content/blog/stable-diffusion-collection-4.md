@@ -3,8 +3,8 @@ title: Stable diffusion collection 4
 format: image_collection
 published: '2022-12-27'
 short: Fourth collection of my favourite results from using stable diffusion.
-image: sd4/3.jpg
-image_alt: AI generated image
+cover: ../../assets/posts/sd4/3.jpg
+coverAlt: AI generated image
 tags: ['Stable Diffusion']
 images:
   - src: sd4/1.jpg
