@@ -1,0 +1,78 @@
+---
+title: Stable diffusion collection 3
+format: image_collection
+published: '2022-12-27'
+short: Third collection of my favourite results from using stable diffusion.
+cover: ../../assets/posts/sd3/2.jpg
+coverAlt: AI generated image
+tags: ['Stable Diffusion']
+---
+
+import { Image, getImage } from 'astro:assets'
+import ImageGallery from '@/components/ImageGallery.vue'
+import ImageGalleryButton from '@/components/ImageGalleryButton.vue'
+import ImageGalleryWrapper from '@/components/ImageGalleryWrapper.astro'
+import img0 from '@/assets/posts/sd3/0.jpg'
+import img1 from '@/assets/posts/sd3/1.jpg'
+import img2 from '@/assets/posts/sd3/2.jpg'
+import img3 from '@/assets/posts/sd3/3.jpg'
+import img4 from '@/assets/posts/sd3/4.jpg'
+import img5 from '@/assets/posts/sd3/5.jpg'
+import img6 from '@/assets/posts/sd3/6.jpg'
+import img7 from '@/assets/posts/sd3/7.jpg'
+import img8 from '@/assets/posts/sd3/8.jpg'
+
+export const optimisedImages = [
+	{
+		...(await getImage({ src: img0, format: 'webp' })),
+		alt: 'Stable Diffusion generated image of an ancient alien.'
+	},
+	{
+		...(await getImage({ src: img1, format: 'webp' })),
+		alt: 'Stable Diffusion generated image of an ancient alien.'
+	},
+	{
+		...(await getImage({ src: img2, format: 'webp' })),
+		alt: 'Stable Diffusion generated image of an ancient alien.'
+	},
+	{
+		...(await getImage({ src: img3, format: 'webp' })),
+		alt: 'Stable Diffusion generated image of an ancient alien.'
+	},
+	{
+		...(await getImage({ src: img4, format: 'webp' })),
+		alt: 'Stable Diffusion generated image of an ancient alien.'
+	},
+	{
+		...(await getImage({ src: img5, format: 'webp' })),
+		alt: 'Stable Diffusion generated image of an ancient alien.'
+	},
+	{
+		...(await getImage({ src: img6, format: 'webp' })),
+		alt: 'Stable Diffusion generated image of an ancient alien.'
+	},
+	{
+		...(await getImage({ src: img7, format: 'webp' })),
+		alt: 'Stable Diffusion generated image of an ancient alien.'
+	},
+	{
+		...(await getImage({ src: img8, format: 'webp' })),
+		alt: 'Stable Diffusion generated image of an ancient alien.'
+	}
+]
+
+<ImageGalleryWrapper>
+	{optimisedImages.map((optimisedImage, index) => (
+		<ImageGalleryButton index={index} client:load>
+			<Image
+				src={optimisedImage.rawOptions.src}
+				alt={optimisedImage.alt}
+				quality={100}
+				densities={[1.5, 2, 3]}
+				class="h-full w-full object-cover"
+			/>
+		</ImageGalleryButton>
+	))}
+</ImageGalleryWrapper>
+
+<ImageGallery images={optimisedImages} client:load />
