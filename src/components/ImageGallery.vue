@@ -75,10 +75,10 @@ onMounted(() => {
 					<CarouselItem v-for="(_, i) in images" :key="i">
 						<img
 							class="mx-auto h-full max-h-[calc(100vh_-_16rem)] max-w-full object-contain"
-							:src="images[i].options.src.src"
+							:src="(images[i].options.src as ImageMetadata).src"
 							:alt="images[i].attributes.alt"
-							:width="images[i].options.src.width"
-							:height="images[i].options.src.height"
+							:width="(images[i].options.src as ImageMetadata).width"
+							:height="(images[i].options.src as ImageMetadata).height"
 						/>
 					</CarouselItem>
 				</CarouselContent>
