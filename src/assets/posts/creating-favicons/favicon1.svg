@@ -1,11 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300">
-  <rect x="0" y="0" width="100" height="100" fill="rgb(245, 169, 188)" />
-  <rect x="100" y="0" width="100" height="100" fill="rgb(243, 247, 129)" />
-  <rect x="200" y="0" width="100" height="100" fill="rgb(169, 188, 245)" />
-  <rect x="0" y="100" width="100" height="100" fill="rgb(169, 245, 208)" />
-  <rect x="100" y="100" width="100" height="100" fill="rgb(245, 169, 188)" />
-  <rect x="200" y="100" width="100" height="100" fill="rgb(169, 245, 208)" />
-  <rect x="0" y="200" width="100" height="100" fill="rgb(169, 188, 245)" />
-  <rect x="100" y="200" width="100" height="100" fill="rgb(243, 247, 129)" />
-  <rect x="200" y="200" width="100" height="100" fill="rgb(245, 169, 188)" />
+<svg width="300" height="300" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="64" cy="64" r="60" fill="#333333"/>
+  <circle cx="64" cy="64" r="56" fill="#EEEEEE"/>
+  <circle cx="64" cy="64" r="45" fill="#333333"/>
 </svg>

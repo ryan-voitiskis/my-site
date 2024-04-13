@@ -9,6 +9,12 @@ reading_time: 2 mins
 tags: ['SVG', 'ChatGPT']
 ---
 
+import ChatMessage from 'src/components/ChatMessage.vue'
+import favicon0 from '@/assets/posts/creating-favicons/favicon0.svg'
+import favicon1 from '@/assets/posts/creating-favicons/favicon1.svg'
+import favicon2 from '@/assets/posts/creating-favicons/favicon2.svg'
+import favicon3 from '@/assets/posts/creating-favicons/favicon3.svg'
+
 Creating favicons is a task that in the past I have found to take hours. It's not a task I wish to spend so much time on. I attempted to speed up this process using ChatGPT.
 
 Two apps I have developed recently were in need of favicons:
@@ -20,10 +26,10 @@ The design I had in mind for Panel layout generator was a simple 3×3 grid of co
 
 Here is the conversation:
 
-::ChatMessage{:fromHuman=true}
+<ChatMessage fromHuman={true}>
 Please create me an svg of a 3x3 grid of colours using this matrix of colours
 
-<!-- prettier-ignore -->
+{/* prettier-ignore-start */}
 ```js
 [
 	['rgb(245, 169, 188)', 'rgb(243, 247, 129)', 'rgb(169, 188, 245)'],
@@ -31,10 +37,11 @@ Please create me an svg of a 3x3 grid of colours using this matrix of colours
 	['rgb(169, 188, 245)', 'rgb(243, 247, 129)', 'rgb(245, 169, 188)']
 ]
 ```
+{/* prettier-ignore-end */}
 
-::
+</ChatMessage>
 
-::ChatMessage{:fromHuman=false}
+<ChatMessage fromHuman={false}>
 Sure! Here's an SVG that uses your matrix of colors to create a 3x3 grid:
 
 ```html
@@ -54,9 +61,12 @@ Sure! Here's an SVG that uses your matrix of colors to create a 3x3 grid:
 This SVG consists of nine rect elements, each with a fill attribute set to one of the colors in your matrix. The x and y attributes determine the position of each rectangle within the SVG, and the width and height attributes determine the size of each rectangle.
 
 I hope this helps! Let me know if you have any questions.
-::
 
-![favicon 1](/img/posts/creating-favicons/favicon1.svg){.mx-auto.my-8}
+</ChatMessage>
+
+<>
+	<img src={favicon0.src} alt="favicon 0" class="mx-auto my-8" />
+</>
 
 The SVG was exactly what I wanted. I just added the XML Namespace tag <code class="language-markup">xmlns="http://www.w3.org/2000/svg"</code>
 
@@ -66,11 +76,11 @@ My second attempt at generating a favicon with ChatGPT was for Crate Guide. The 
 
 Here is the conversation:
 
-::ChatMessage{:fromHuman=true}
-Can you please create for me an svg favicon that looks like a vinyl record
-::
+<ChatMessage fromHuman={true}>
+	Can you please create for me an svg favicon that looks like a vinyl record
+</ChatMessage>
 
-::ChatMessage{:fromHuman=false}
+<ChatMessage fromHuman={false}>
 Sure! Here is an SVG code snippet that you can use to create a favicon that looks like a vinyl record:
 
 ```html
@@ -95,17 +105,22 @@ To use this SVG as a favicon, you can save it as a file with the .svg extension 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 ```
 
-::
+</ChatMessage>
+
 <br />
 This is the result:
 
-![favicon 2](/img/posts/creating-favicons/favicon2.svg){.mx-auto.my-8}
+<>
+	<img src={favicon1.src} alt="favicon 1" class="mx-auto my-8" />
+</>
 
-::ChatMessage{:fromHuman=true}
-Can you change the diameter of the inner circle to 60% of what it is now and half the distance between the middle and outer circles by increasing the inner circle?
-::
+<ChatMessage fromHuman={true}>
+	Can you change the diameter of the inner circle to 60% of what it is now and
+	half the distance between the middle and outer circles by increasing the inner
+	circle?
+</ChatMessage>
 
-::ChatMessage{:fromHuman=false}
+<ChatMessage fromHuman={false}>
 Certainly! Here is the modified SVG code snippet that you requested:
 
 ```html
@@ -128,11 +143,14 @@ The inner circle's radius is now 45 pixels, which is 60% of the original radius 
 
 I hope this helps! Let me know if you have any further questions or need additional assistance.
 
-::
+</ChatMessage>
+
 <br />
 Unfortunately the result still did not resemble a vinyl record:
 
-![favicon 3](/img/posts/creating-favicons/favicon3.svg){.mx-auto.my-8}
+<>
+	<img src={favicon2.src} alt="favicon 2" class="mx-auto my-8" />
+</>
 
 The model performed well this time in providing me with attributes on the SVG tag and the html tag required, however it failed to generate a convincing record svg.
 
@@ -160,7 +178,9 @@ I modified the results to achieve the following:
 </svg>
 ```
 
-![favicon 4](/img/posts/creating-favicons/favicon4.svg){.mx-auto.my-8}
+<>
+	<img src={favicon3.src} alt="favicon 3" class="mx-auto my-8" />
+</>
 
 ## Summary
 

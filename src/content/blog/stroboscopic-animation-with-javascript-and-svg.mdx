@@ -10,6 +10,9 @@ reading_time: 7 mins
 tags: ['SVG', 'animation', 'Vue.js']
 ---
 
+import misaligned from '@/assets/posts/stroboscopic-animation/dash-array-misaligned.png'
+import aligned from '@/assets/posts/stroboscopic-animation/dash-array-aligned.png'
+
 ## Introduction
 
 One of my intentions in the development of [Crate Guide](https://crate.guide/) was to build an interface that resembled closely that of a [Technics SL-1200 turntable](https://www.technics.com/global/home/sl1200/features.html), the most common turntable used by DJs. The idea was that the interface would be intuitive, requiring less learning and cognitive overhead. The web app is intended to be used on a laptop or desktop and only occasionally glanced at and interacted with during a performance.
@@ -207,11 +210,15 @@ I set the dash array circles to an approximate radius visually, then began appro
 
 This worked well, but the spacing that made the dots appear static at their given pitch adjustments left me with the problem of the dash array not joining up perfectly.
 
-![dash array misaligned](/img/posts/stroboscopic-animation/dash-array-misaligned.png){.mx-auto.my-8}
+<>
+	<img src={misaligned.src} alt="dash array misaligned" class="mx-auto my-8" />
+</>
 
 From this point I made small adjustments to join the dots perfectly. This was necessary because even very slightly misjoined dash arrays created artefacts in the animation.
 
-![dash array aligned](/img/posts/stroboscopic-animation/dash-array-aligned.png){.mx-auto.my-8}
+<>
+	<img src={aligned.src} alt="dash array aligned" class="mx-auto my-8" />
+</>
 
 ## Limitations of this approach
 
