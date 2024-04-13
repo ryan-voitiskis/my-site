@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/check": "^0.5.10",
     "@astrojs/mdx": "^2.3.0",
+    "@astrojs/netlify": "^5.2.0",
     "@astrojs/tailwind": "^5.1.0",
     "@astrojs/vue": "^4.0.9",
     "@radix-icons/vue": "^1.0.0",

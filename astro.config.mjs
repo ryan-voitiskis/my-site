@@ -3,6 +3,7 @@ import vue from '@astrojs/vue'
 import tailwind from '@astrojs/tailwind'
 import githubLightCustom from './themes/github-light-custom.json'
 import mdx from '@astrojs/mdx'
+import netlify from '@astrojs/netlify'
 
 export default defineConfig({
 	integrations: [
@@ -20,5 +21,6 @@ export default defineConfig({
 				dark: 'dracula' // TODO: custom dark
 			}
 		}
-	}
+	},
+	adapter: netlify()
 })
