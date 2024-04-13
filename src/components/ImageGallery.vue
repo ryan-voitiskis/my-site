@@ -9,15 +9,20 @@ import {
 import { Button } from '@/components/ui/button'
 import IconCrossCircle from '@/components/icons/IconCrossCircle.vue'
 import ModalContainer from './ModalContainer.vue'
-import { defineProps, ref, onMounted, type PropType } from 'vue'
-import type { GetImageResult } from 'astro'
+import { defineProps, ref, onMounted, type PropType, onUnmounted } from 'vue'
+import { useEventBus } from '@vueuse/core'
+import type { OptimisedImg } from '@/types'
 
 defineProps({
 	images: {
-		type: Array as PropType<GetImageResult[]>,
+		type: Array as PropType<OptimisedImg[]>,
 		required: true
 	}
 })
+
+const bus = useEventBus<number>('openInModal')
+const unsubscribe = bus.on(openInModal)
+onUnmounted(() => unsubscribe())
 
 const carouselContainerRef = ref<InstanceType<typeof Carousel> | null>(null)
 const showModal = ref(false)
@@ -39,59 +44,36 @@ onMounted(() => {
 </script>
 
 <template>
-	<div
-		class="grid gap-4"
-		style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))"
-	>
+	<ModalContainer v-model="showModal">
 		<Button
-			v-for="(img, i) in images"
-			:key="i"
-			variant="image"
-			size="image"
-			class="overflow-hidden transition-all duration-300 hover:invert"
-			aria-label="Open image in modal"
-			@click="openInModal(i)"
+			variant="blank"
+			size="xl-icon"
+			class="m-4 mx-auto flex items-center justify-center text-yellow-100 hover:text-yellow-300"
+			aria-label="Close modal"
+			@click="showModal = false"
 		>
-			<img
-				:src="img.src"
-				:alt="img.attributes.alt"
-				v-bind="img.attributes"
-				class="h-full w-full object-cover"
-			/>
+			<IconCrossCircle class="h-16 w-16" />
 		</Button>
-
-		<ModalContainer v-model="showModal">
-			<Button
-				variant="blank"
-				size="xl-icon"
-				class="m-4 mx-auto flex items-center justify-center text-yellow-100 hover:text-yellow-300"
-				aria-label="Close modal"
-				@click="showModal = false"
-			>
-				<IconCrossCircle class="h-16 w-16" />
-			</Button>
-			<Carousel ref="carouselContainerRef" tabindex="-1">
-				<CarouselContent>
-					<CarouselItem v-for="(_, i) in images" :key="i">
-						<img
-							class="mx-auto h-full max-h-[calc(100vh_-_16rem)] max-w-full object-contain"
-							:src="(images[i].options.src as ImageMetadata).src"
-							:alt="images[i].attributes.alt"
-							:width="(images[i].options.src as ImageMetadata).width"
-							:height="(images[i].options.src as ImageMetadata).height"
-						/>
-					</CarouselItem>
-				</CarouselContent>
-				<div class="my-4 flex justify-center">
-					<CarouselPrevious variant="modal" />
-					<div
-						class="flex w-32 select-none items-center justify-center text-center font-mono text-2xl font-semibold text-yellow-100"
-					>
-						{{ current }} / {{ images.length }}
-					</div>
-					<CarouselNext variant="modal" />
+		<Carousel ref="carouselContainerRef" tabindex="-1">
+			<CarouselContent>
+				<CarouselItem v-for="image in images" :key="image.src">
+					<img
+						v-bind="image.attributes"
+						class="mx-auto h-full max-h-[calc(100vh_-_16rem)] max-w-full object-contain"
+						:src="image.src"
+						:alt="image.alt"
+					/>
+				</CarouselItem>
+			</CarouselContent>
+			<div class="my-4 flex justify-center">
+				<CarouselPrevious variant="modal" />
+				<div
+					class="flex w-32 select-none items-center justify-center text-center font-mono text-2xl font-semibold text-yellow-100"
+				>
+					{{ current }} / {{ images.length }}
 				</div>
-			</Carousel>
-		</ModalContainer>
-	</div>
+				<CarouselNext variant="modal" />
+			</div>
+		</Carousel>
+	</ModalContainer>
 </template>
