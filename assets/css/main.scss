@@ -313,6 +313,12 @@ td:last-child {
 	padding-right: 0;
 }
 
+.hover-sepia-invert {
+	&:hover {
+		filter: sepia(1) invert(1);
+	}
+}
+
 ::-webkit-scrollbar {
 	width: 6px;
 	height: 11px;

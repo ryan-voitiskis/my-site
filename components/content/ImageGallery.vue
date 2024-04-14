@@ -43,12 +43,12 @@ onMounted(() => {
 			:key="i"
 			variant="image"
 			size="image"
-			class="overflow-hidden transition-all duration-300 hover:invert"
+			class="overflow-hidden"
 			aria-label="Open image in modal"
 			@click="openInModal(i)"
 		>
 			<NuxtImg
-				class="h-full w-full object-cover"
+				class="hover-sepia-invert h-full w-full object-cover transition duration-300"
 				:src="img.src"
 				:alt="img.alt"
 				:preload="i === 0"
