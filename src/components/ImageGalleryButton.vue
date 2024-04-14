@@ -11,7 +11,7 @@ const bus = useEventBus<number>('openInModal')
 	<Button
 		variant="image"
 		size="image"
-		class="overflow-hidden transition-all duration-300 hover:invert"
+		class="hover-sepia-invert overflow-hidden transition duration-300"
 		aria-label="Open image in modal"
 		@click="bus.emit(index)"
 	>
