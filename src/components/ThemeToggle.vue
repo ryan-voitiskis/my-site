@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue'
 import { useColorMode } from '@vueuse/core'
-import { Toggle } from '@/components/ui/toggle'
-import IconSun from '@/components/icons/IconSun.vue'
+import { onMounted, ref, watch } from 'vue'
+
 import IconMoon from '@/components/icons/IconMoon.vue'
+import IconSun from '@/components/icons/IconSun.vue'
+import { Toggle } from '@/components/ui/toggle'
 
 const mode = useColorMode()
 const state = ref(undefined as boolean | undefined)

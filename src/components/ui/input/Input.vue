@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
 import { useVModel } from '@vueuse/core'
-import { cn } from '@/lib/utils'
+import type { HTMLAttributes } from 'vue'
+
 import { useValidation } from '@/composables/useValidation'
+import { cn } from '@/lib/utils'
 
 const props = defineProps<{
 	defaultValue?: string | number

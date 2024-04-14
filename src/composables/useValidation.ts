@@ -1,5 +1,5 @@
-import { computed } from 'vue'
 import { useField } from 'vee-validate'
+import { computed } from 'vue'
 
 // validate on blur until invalid, then validate on input
 // https://vee-validate.logaretm.com/v4/guide/composition-api/custom-inputs#handling-events

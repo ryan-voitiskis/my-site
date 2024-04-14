@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import { useEventBus } from '@vueuse/core'
+import { type PropType, defineProps, onMounted, onUnmounted, ref } from 'vue'
+
+import IconCrossCircle from '@/components/icons/IconCrossCircle.vue'
+import { Button } from '@/components/ui/button'
 import {
 	Carousel,
 	CarouselContent,
@@ -6,12 +11,9 @@ import {
 	CarouselNext,
 	CarouselPrevious
 } from '@/components/ui/carousel'
-import { Button } from '@/components/ui/button'
-import IconCrossCircle from '@/components/icons/IconCrossCircle.vue'
-import ModalContainer from './ModalContainer.vue'
-import { defineProps, ref, onMounted, type PropType, onUnmounted } from 'vue'
-import { useEventBus } from '@vueuse/core'
 import type { OptimisedImg } from '@/types'
+
+import ModalContainer from './ModalContainer.vue'
 
 defineProps({
 	images: {

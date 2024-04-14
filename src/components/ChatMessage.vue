@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import IconHuman from '@/components/icons/IconHuman.vue'
 import IconOpenAi from '@/components/icons/IconOpenAi.vue'
+
 defineProps({ fromHuman: Boolean })
 </script>
 

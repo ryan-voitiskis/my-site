@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { toTypedSchema } from '@vee-validate/zod'
+import { useForm } from 'vee-validate'
+import { toast } from 'vue-sonner'
+import * as z from 'zod'
+
+import { Button } from '@/components/ui/button'
 import {
 	FormControl,
 	FormField,
@@ -6,13 +12,8 @@ import {
 	FormLabel,
 	FormMessage
 } from '@/components/ui/form'
-import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import * as z from 'zod'
-import { toast } from 'vue-sonner'
-import { useForm } from 'vee-validate'
-import { toTypedSchema } from '@vee-validate/zod'
 
 const formSchema = toTypedSchema(
 	z.object({

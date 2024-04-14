@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
 import { useEventBus } from '@vueuse/core'
+
+import { Button } from '@/components/ui/button'
 
 defineProps<{ index: number }>()
 

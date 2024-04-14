@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import type { HTMLAttributes } from 'vue'
+
 import IconArrowCircle from '@/components/icons/IconArrowCircle.vue'
-import { useCarousel } from './useCarousel'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+
 import { type CarouselButtonVariants, carouselButtonVariants } from '.'
-import type { HTMLAttributes } from 'vue'
+import { useCarousel } from './useCarousel'
 
 const props = defineProps<{
 	variant?: CarouselButtonVariants['variant']
