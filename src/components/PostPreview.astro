@@ -1,8 +1,9 @@
 ---
-import { dateStringToLocale } from '@/lib/date'
-import { Badge } from '@/components/ui/badge'
 import { Image } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
+
+import { Badge } from '@/components/ui/badge'
+import { dateStringToLocale } from '@/lib/date'
 
 interface Props {
 	post: CollectionEntry<'blog'>
