@@ -24,6 +24,7 @@ const { post, index } = Astro.props
 		width="256"
 		height="256"
 		quality={100}
+		loading={index < 3 ? 'eager' : 'lazy'}
 		densities={[1.5, 2, 3]}
 		class="transition-hue-rotate-200 mx-auto h-64 w-64 shrink-0 rounded-full bg-slate-300 object-cover font-sans sepia transition duration-300 group-hover:sepia-0 group-focus:sepia-0"
 	/>
