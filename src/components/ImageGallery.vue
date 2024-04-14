@@ -11,7 +11,7 @@ import {
 	CarouselNext,
 	CarouselPrevious
 } from '@/components/ui/carousel'
-import type { OptimisedImg } from '@/types'
+import type { OptimisedImg } from '@/lib/image'
 
 import ModalContainer from './ModalContainer.vue'
 

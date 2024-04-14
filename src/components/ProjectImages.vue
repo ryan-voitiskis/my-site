@@ -6,18 +6,9 @@ import {
 	CarouselNext,
 	CarouselPrevious
 } from '@/components/ui/carousel'
+import type { OptimisedImg } from '@/lib/image'
 
-defineProps<{
-	images: {
-		img: {
-			src: string
-			width: number
-			height: number
-			format: string
-		}
-		alt: string
-	}[]
-}>()
+defineProps<{ images: OptimisedImg[] }>()
 </script>
 
 <template>
@@ -28,9 +19,8 @@ defineProps<{
 			<CarouselItem v-for="(image, i) in images" :key="i">
 				<img
 					class="w-full self-center object-contain"
-					:src="image.img.src"
+					:src="image.src"
 					:alt="image.alt"
-					:preload="i === 0"
 				/>
 			</CarouselItem>
 		</CarouselContent>

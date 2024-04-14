@@ -3,6 +3,7 @@ import PhoneMockup from '@/components/PhoneMockup.vue'
 import ProjectImages from '@/components/ProjectImages.vue'
 import { Badge } from '@/components/ui/badge'
 import Layout from '@/layouts/Layout.astro'
+import { optimiseImages } from '@/lib/image'
 
 import cg0 from '@/assets/projects/crate-guide/0.png'
 import cg1 from '@/assets/projects/crate-guide/1.jpeg'
@@ -14,20 +15,20 @@ import plg1 from '@/assets/projects/panel-layout-generator/1.png'
 import plg2 from '@/assets/projects/panel-layout-generator/2.png'
 import plg3 from '@/assets/projects/panel-layout-generator/3.png'
 
-const crateGuideImages = [
-	{ img: cg0, alt: 'Crate Guide empty deck interface.' },
-	{ img: cg1, alt: 'Crate Guide loaded single deck interface.' },
-	{ img: cg2, alt: 'Crate Guide track select interface.' },
-	{ img: cg3, alt: 'Crate Guide login interface.' },
-	{ img: cg4, alt: 'Crate Guide track import interface.' }
-]
+const crateGuideImages = await optimiseImages([
+	{ src: cg0, alt: 'Crate Guide empty deck interface.' },
+	{ src: cg1, alt: 'Crate Guide loaded single deck interface.' },
+	{ src: cg2, alt: 'Crate Guide track select interface.' },
+	{ src: cg3, alt: 'Crate Guide login interface.' },
+	{ src: cg4, alt: 'Crate Guide track import interface.' }
+])
 
-const panelLayoutGeneratorImages = [
-	{ img: plg0, alt: 'Panel layout generator interface.' },
-	{ img: plg1, alt: 'Panel layout generator interface with numbers.' },
-	{ img: plg2, alt: 'Panel layout generator interface with 960 panels.' },
-	{ img: plg3, alt: 'Panel layout generator interface with pastel panels.' }
-]
+const panelLayoutGeneratorImages = await optimiseImages([
+	{ src: plg0, alt: 'Panel layout generator interface.' },
+	{ src: plg1, alt: 'Panel layout generator interface with numbers.' },
+	{ src: plg2, alt: 'Panel layout generator interface with 960 panels.' },
+	{ src: plg3, alt: 'Panel layout generator interface with pastel panels.' }
+])
 ---
 
 <Layout title="ryan_voitiskis | projects">
