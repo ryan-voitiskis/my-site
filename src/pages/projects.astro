@@ -16,7 +16,7 @@ import plg2 from '@/assets/projects/panel-layout-generator/2.png'
 import plg3 from '@/assets/projects/panel-layout-generator/3.png'
 
 const crateGuideImages = await optimiseImages([
-	{ src: cg0, alt: 'Crate Guide empty deck interface.' },
+	{ src: cg0, alt: 'Crate Guide empty deck interface.', isLCP: true },
 	{ src: cg1, alt: 'Crate Guide loaded single deck interface.' },
 	{ src: cg2, alt: 'Crate Guide track select interface.' },
 	{ src: cg3, alt: 'Crate Guide login interface.' },
@@ -32,6 +32,10 @@ const panelLayoutGeneratorImages = await optimiseImages([
 ---
 
 <Layout title="ryan_voitiskis | projects">
+	<Fragment slot="head">
+		<link rel="preload" href={crateGuideImages[0].src} as="image" />
+	</Fragment>
+
 	<main class="mx-auto w-full max-w-[1120px] px-4 pb-48">
 		<h1 class="font-mono text-sm font-[120] text-muted-foreground">
 			> projects
@@ -74,7 +78,9 @@ const panelLayoutGeneratorImages = await optimiseImages([
 					Spotify API.
 				</p>
 			</div>
-			<ProjectImages images={crateGuideImages} client:load />
+			<div class="mx-auto w-full max-w-screen-xs shrink-0">
+				<ProjectImages images={crateGuideImages} client:load />
+			</div>
 		</article>
 
 		<article
@@ -172,7 +178,9 @@ const panelLayoutGeneratorImages = await optimiseImages([
 					</a>
 				</p>
 			</div>
-			<ProjectImages images={panelLayoutGeneratorImages} client:load />
+			<div class="mx-auto w-full max-w-screen-xs shrink-0">
+				<ProjectImages images={panelLayoutGeneratorImages} client:load />
+			</div>
 		</article>
 	</main>
 </Layout>

@@ -10,16 +10,8 @@ import Layout from '@/layouts/Layout.astro'
 			</h1>
 		</div>
 		<div class="mx-auto w-full max-w-[1120px] px-4">
-			<h2
-				v-if="error.statusCode"
-				class="text-balance font-mono text-5xl font-[140]"
-			>
-				404
-			</h2>
-			<p
-				v-if="error.message"
-				class="break-words font-mono font-[110] text-muted-foreground"
-			>
+			<h2 class="text-balance font-mono text-5xl font-[140]">404</h2>
+			<p class="break-words font-mono font-[110] text-muted-foreground">
 				Page not found
 			</p>
 		</div>

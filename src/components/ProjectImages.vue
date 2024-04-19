@@ -6,9 +6,9 @@ import {
 	CarouselNext,
 	CarouselPrevious
 } from '@/components/ui/carousel'
-import type { OptimisedImg } from '@/lib/image'
+import type { OptimisedImage } from '@/lib/image'
 
-defineProps<{ images: OptimisedImg[] }>()
+defineProps<{ images: OptimisedImage[] }>()
 </script>
 
 <template>
@@ -20,7 +20,7 @@ defineProps<{ images: OptimisedImg[] }>()
 				<img
 					class="w-full self-center object-contain"
 					:src="image.src"
-					:alt="image.alt"
+					v-bind="image.attributes"
 				/>
 			</CarouselItem>
 		</CarouselContent>
