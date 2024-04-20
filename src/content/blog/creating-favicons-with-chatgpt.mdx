@@ -9,6 +9,8 @@ readingTime: 2 mins
 tags: ['SVG', 'ChatGPT']
 ---
 
+import { Image } from 'astro:assets'
+
 import ChatMessage from 'src/components/ChatMessage.vue'
 
 import favicon0 from '@/assets/posts/creating-favicons/favicon0.svg'
@@ -65,9 +67,7 @@ I hope this helps! Let me know if you have any questions.
 
 </ChatMessage>
 
-<>
-	<img src={favicon0.src} alt="favicon 0" class="mx-auto my-8" />
-</>
+<Image src={favicon0} alt="favicon 0" class="mx-auto my-8" />
 
 The SVG was exactly what I wanted. I just added the XML Namespace tag <code class="language-markup">xmlns="http://www.w3.org/2000/svg"</code>
 
@@ -111,9 +111,7 @@ To use this SVG as a favicon, you can save it as a file with the .svg extension 
 <br />
 This is the result:
 
-<>
-	<img src={favicon1.src} alt="favicon 1" class="mx-auto my-8" />
-</>
+<Image src={favicon1} alt="favicon 1" class="mx-auto my-8" />
 
 <ChatMessage fromHuman={true}>
 	Can you change the diameter of the inner circle to 60% of what it is now and
@@ -149,9 +147,7 @@ I hope this helps! Let me know if you have any further questions or need additio
 <br />
 Unfortunately the result still did not resemble a vinyl record:
 
-<>
-	<img src={favicon2.src} alt="favicon 2" class="mx-auto my-8" />
-</>
+<Image src={favicon2} alt="favicon 2" class="mx-auto my-8" />
 
 The model performed well this time in providing me with attributes on the SVG tag and the html tag required, however it failed to generate a convincing record svg.
 
@@ -179,9 +175,7 @@ I modified the results to achieve the following:
 </svg>
 ```
 
-<>
-	<img src={favicon3.src} alt="favicon 3" class="mx-auto my-8" />
-</>
+<Image src={favicon3} alt="favicon 3" class="mx-auto my-8" />
 
 ## Summary
 
