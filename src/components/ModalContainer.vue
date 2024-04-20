@@ -40,7 +40,7 @@ watchEffect(() => {
 <template>
 	<div
 		class="fixed left-0 top-0 flex h-full w-full items-center justify-center bg-backdrop backdrop-blur"
-		:style="{ zIndex: show ? '50' : '-1' }"
+		v-show="show"
 		@click.self="show = false"
 	>
 		<div class="max-h-screen" role="dialog" aria-modal="true">
