@@ -3,10 +3,13 @@ import { getImage } from 'astro:assets'
 
 export type OptimisedImage = GetImageResult & { attributes: { alt: string } }
 
-export type OptimisedGallery = {
+export type OptimisedGalleryItem = {
 	preview: OptimisedImage
 	full: OptimisedImage
-}[]
+	isLCP?: boolean
+}
+
+export type OptimisedGallery = OptimisedGalleryItem[]
 
 export async function optimiseImages(
 	images: { src: ImageMetadata; alt: string; isLCP?: boolean }[]
@@ -63,7 +66,8 @@ export async function optimiseGallery(
 							alt,
 							loading: 'lazy'
 						}
-					}
+					},
+					isLCP: isLCP
 				}
 			})
 		)
