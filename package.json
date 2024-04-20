@@ -12,33 +12,33 @@
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.5.10",
-		"@astrojs/mdx": "^2.3.0",
+		"@astrojs/mdx": "^2.3.1",
 		"@astrojs/netlify": "^5.2.0",
 		"@astrojs/tailwind": "^5.1.0",
-		"@astrojs/vue": "^4.0.9",
+		"@astrojs/vue": "^4.1.0",
 		"@radix-icons/vue": "^1.0.0",
 		"@vee-validate/zod": "^4.12.6",
 		"@vueuse/core": "^10.9.0",
-		"astro": "^4.5.12",
+		"astro": "^4.6.3",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.0",
-		"embla-carousel": "^8.0.0",
-		"embla-carousel-vue": "^8.0.0",
-		"radix-vue": "^1.6.1",
-		"tailwind-merge": "^2.2.2",
+		"embla-carousel": "^8.0.2",
+		"embla-carousel-vue": "^8.0.2",
+		"radix-vue": "^1.7.1",
+		"tailwind-merge": "^2.3.0",
 		"tailwindcss": "^3.4.3",
 		"tailwindcss-animate": "^1.0.7",
 		"vee-validate": "^4.12.6",
-		"vue": "^3.4.21",
+		"vue": "^3.4.23",
 		"vue-sonner": "^1.1.2",
-		"zod": "^3.22.4"
+		"zod": "^3.22.5"
 	},
 	"devDependencies": {
 		"@trivago/prettier-plugin-sort-imports": "^4.3.0",
 		"prettier": "^3.2.5",
 		"prettier-plugin-astro": "^0.13.0",
-		"prettier-plugin-tailwindcss": "^0.5.13",
-		"sass": "^1.72.0",
-		"typescript": "^5.4.3"
+		"prettier-plugin-tailwindcss": "^0.5.14",
+		"sass": "^1.75.0",
+		"typescript": "^5.4.5"
 	}
 }
