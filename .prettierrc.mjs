@@ -13,7 +13,10 @@ export default {
 	overrides: [
 		{
 			files: '*.astro',
-			options: { parser: 'astro' }
+			options: {
+				parser: 'astro',
+				astroAllowShorthand: true
+			}
 		}
 	],
 	importOrder: [
