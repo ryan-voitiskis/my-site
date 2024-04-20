@@ -10,6 +10,8 @@ tags: ['DALL·E 2']
 
 import { Image, getImage } from 'astro:assets'
 
+import { optimiseImages } from '@/lib/image'
+
 import ImageGallery from '@/components/ImageGallery.vue'
 import ImageGalleryButton from '@/components/ImageGalleryButton.vue'
 import ImageGalleryWrapper from '@/components/ImageGalleryWrapper.astro'
@@ -25,55 +27,57 @@ import img7 from '@/assets/posts/dall-e2-1/7.png'
 import img8 from '@/assets/posts/dall-e2-1/8.png'
 import img9 from '@/assets/posts/dall-e2-1/9.png'
 
-export const optimisedImages = [
+export const altPrefix = `DALL·E 2 generated image of`
+
+export const optimisedImages = await optimiseImages([
 	{
-		...(await getImage({ src: img0, format: 'webp' })),
-		alt: 'DALL·E 2 generated image of two humanoid robots creating human life.'
+		src: img0,
+		alt: ' two humanoid robots creating human life.'
 	},
 	{
-		...(await getImage({ src: img1, format: 'webp' })),
-		alt: 'DALL·E 2 generated image of two monkeys with glasses building neural networks.'
+		src: img1,
+		alt: `${altPrefix} two monkeys with glasses building neural networks.`
 	},
 	{
-		...(await getImage({ src: img2, format: 'webp' })),
-		alt: 'DALL·E 2 generated image of two monkeys manipulating a large physical network by hand.'
+		src: img2,
+		alt: `${altPrefix} two monkeys manipulating a large physical network by hand.`
 	},
 	{
-		...(await getImage({ src: img3, format: 'webp' })),
-		alt: 'DALL·E 2 generated image of a drawing of two monkeys manipulating a large physical network by hand.'
+		src: img3,
+		alt: `${altPrefix} a drawing of two monkeys manipulating a large physical network by hand.`
 	},
 	{
-		...(await getImage({ src: img4, format: 'webp' })),
-		alt: 'DALL·E 2 generated image of a mycelium ghost.'
+		src: img4,
+		alt: `${altPrefix} a mycelium ghost.`
 	},
 	{
-		...(await getImage({ src: img5, format: 'webp' })),
-		alt: 'DALL·E 2 generated image of a mycelium ghost.'
+		src: img5,
+		alt: `${altPrefix} a mycelium ghost.`
 	},
 	{
-		...(await getImage({ src: img6, format: 'webp' })),
-		alt: 'DALL·E 2 generated image of an ancient tribesman walking through a jungle portal.'
+		src: img6,
+		alt: `${altPrefix} an ancient tribesman walking through a jungle portal.`
 	},
 	{
-		...(await getImage({ src: img7, format: 'webp' })),
-		alt: 'DALL·E 2 generated image of a painting of an evil horned monster.'
+		src: img7,
+		alt: `${altPrefix} a painting of an evil horned monster.`
 	},
 	{
-		...(await getImage({ src: img8, format: 'webp' })),
-		alt: 'DALL·E 2 generated image of a painting of bipedal, white rat like creatures in a dark room.'
+		src: img8,
+		alt: `${altPrefix} a painting of bipedal, white rat like creatures in a dark room.`
 	},
 	{
-		...(await getImage({ src: img9, format: 'webp' })),
-		alt: 'DALL·E 2 generated image of a powerful witch performing a ritual.'
+		src: img9,
+		alt: `${altPrefix} a powerful witch performing a ritual.`
 	}
-]
+])
 
 <ImageGalleryWrapper>
 	{optimisedImages.map((optimisedImage, index) => (
 		<ImageGalleryButton index={index} client:load>
 			<Image
-				src={optimisedImage.rawOptions.src}
-				alt={optimisedImage.alt}
+				src={optimisedImage.rawOptions.src} // uses the original image path
+				alt={optimisedImage.attributes.alt}
 				quality={100}
 				densities={[1.5, 2, 3]}
 				class="h-full w-full object-cover"

@@ -10,6 +10,8 @@ tags: ['Stable Diffusion']
 
 import { Image, getImage } from 'astro:assets'
 
+import { optimiseImages } from '@/lib/image'
+
 import ImageGallery from '@/components/ImageGallery.vue'
 import ImageGalleryButton from '@/components/ImageGalleryButton.vue'
 import ImageGalleryWrapper from '@/components/ImageGalleryWrapper.astro'
@@ -20,35 +22,22 @@ import img2 from '@/assets/posts/sd2/2.jpg'
 import img3 from '@/assets/posts/sd2/3.jpg'
 import img4 from '@/assets/posts/sd2/4.jpg'
 
-export const optimisedImages = [
-	{
-		...(await getImage({ src: img0, format: 'webp' })),
-		alt: 'Stable Diffusion generated image of alien abduction circuitboard hieroglyph.'
-	},
-	{
-		...(await getImage({ src: img1, format: 'webp' })),
-		alt: 'Stable Diffusion generated image of alien abduction circuitboard hieroglyph.'
-	},
-	{
-		...(await getImage({ src: img2, format: 'webp' })),
-		alt: 'Stable Diffusion generated image of alien abduction circuitboard hieroglyph.'
-	},
-	{
-		...(await getImage({ src: img3, format: 'webp' })),
-		alt: 'Stable Diffusion generated image of alien abduction circuitboard hieroglyph.'
-	},
-	{
-		...(await getImage({ src: img4, format: 'webp' })),
-		alt: 'Stable Diffusion generated image of alien abduction circuitboard hieroglyph.'
-	}
-]
+export const alt = `Stable Diffusion generated image of alien abduction circuitboard hieroglyph.`
+
+export const optimisedImages = await optimiseImages([
+	{ src: img0, alt },
+	{ src: img1, alt },
+	{ src: img2, alt },
+	{ src: img3, alt },
+	{ src: img4, alt }
+])
 
 <ImageGalleryWrapper>
 	{optimisedImages.map((optimisedImage, index) => (
 		<ImageGalleryButton index={index} client:load>
 			<Image
-				src={optimisedImage.rawOptions.src}
-				alt={optimisedImage.alt}
+				src={optimisedImage.rawOptions.src} // uses the original image path
+				alt={optimisedImage.attributes.alt}
 				quality={100}
 				densities={[1.5, 2, 3]}
 				class="h-full w-full object-cover"

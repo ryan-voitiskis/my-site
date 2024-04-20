@@ -11,13 +11,13 @@ import {
 	CarouselNext,
 	CarouselPrevious
 } from '@/components/ui/carousel'
-import type { OptimisedImg } from '@/lib/image'
+import type { OptimisedImage } from '@/lib/image'
 
 import ModalContainer from './ModalContainer.vue'
 
 defineProps({
 	images: {
-		type: Array as PropType<OptimisedImg[]>,
+		type: Array as PropType<OptimisedImage[]>,
 		required: true
 	}
 })
@@ -60,10 +60,9 @@ onMounted(() => {
 			<CarouselContent>
 				<CarouselItem v-for="image in images" :key="image.src">
 					<img
+						:src="image.src"
 						v-bind="image.attributes"
 						class="mx-auto h-full max-h-[calc(100vh_-_16rem)] max-w-full object-contain"
-						:src="image.src"
-						:alt="image.alt"
 					/>
 				</CarouselItem>
 			</CarouselContent>
