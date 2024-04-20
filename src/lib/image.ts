@@ -56,7 +56,8 @@ export async function optimiseGallery(
 							...preview.attributes,
 							alt,
 							loading: isLCP ? 'eager' : preview.attributes.loading,
-							fetchpriority: isLCP ? 'high' : 'low'
+							fetchpriority: isLCP ? 'high' : 'low',
+							decoding: isLCP ? 'sync' : 'async'
 						}
 					},
 					full: {
