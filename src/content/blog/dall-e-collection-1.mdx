@@ -78,6 +78,7 @@ export const optimisedImages = await optimiseImages([
 			<Image
 				src={optimisedImage.rawOptions.src} // uses the original image path
 				alt={optimisedImage.attributes.alt}
+				loading={index === 0 ? 'eager' : 'lazy'}
 				quality={100}
 				densities={[1.5, 2, 3]}
 				class="h-full w-full object-cover"
