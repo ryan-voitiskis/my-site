@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 const { entry, mdxEntry } = Astro.props
 const { Content } = await entry.render()
 
-const lcp = mdxEntry.optimisedGallery.find(
+const lcp = mdxEntry.optimisedGallery?.find(
 	(item: OptimisedGalleryItem) => item.isLCP
 )?.preview.src
 ---
