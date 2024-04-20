@@ -45,10 +45,14 @@ const { post, index } = Astro.props
 						{dateStringToLocale(post.data.published)}
 					</td>
 				</tr>
-				<tr v-if="post.data.readingTime">
-					<td>Reading time</td>
-					<td class="font-thin">{post.data.readingTime}</td>
-				</tr>
+				{
+					post.data.readingTime && (
+						<tr>
+							<td>Reading time</td>
+							<td class="font-thin">{post.data.readingTime}</td>
+						</tr>
+					)
+				}
 			</tbody>
 		</table>
 		<div class="w-full font-sans">
