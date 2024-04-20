@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { useEventBus } from '@vueuse/core'
-import { type PropType, defineProps, onMounted, onUnmounted, ref } from 'vue'
+import { type PropType, defineProps, onMounted, ref } from 'vue'
 
 import IconCrossCircle from '@/components/icons/IconCrossCircle.vue'
 import { Button } from '@/components/ui/button'
@@ -11,20 +10,16 @@ import {
 	CarouselNext,
 	CarouselPrevious
 } from '@/components/ui/carousel'
-import type { OptimisedImage } from '@/lib/image'
+import type { OptimisedGallery } from '@/lib/image'
 
 import ModalContainer from './ModalContainer.vue'
 
 defineProps({
-	images: {
-		type: Array as PropType<OptimisedImage[]>,
+	gallery: {
+		type: Array as PropType<OptimisedGallery>,
 		required: true
 	}
 })
-
-const bus = useEventBus<number>('openInModal')
-const unsubscribe = bus.on(openInModal)
-onUnmounted(() => unsubscribe())
 
 const carouselContainerRef = ref<InstanceType<typeof Carousel> | null>(null)
 const showModal = ref(false)
@@ -46,6 +41,26 @@ onMounted(() => {
 </script>
 
 <template>
+	<div
+		class="grid gap-4"
+		style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))"
+	>
+		<Button
+			v-for="(image, i) in gallery"
+			variant="image"
+			size="image"
+			class="hover-sepia-invert overflow-hidden transition duration-300"
+			aria-label="Open image in modal"
+			@click="openInModal(i)"
+		>
+			<img
+				:src="image.preview.src"
+				v-bind="image.preview.attributes"
+				class="h-full w-full object-cover"
+			/>
+		</Button>
+	</div>
+
 	<ModalContainer v-model="showModal">
 		<Button
 			variant="blank"
@@ -58,10 +73,10 @@ onMounted(() => {
 		</Button>
 		<Carousel ref="carouselContainerRef" tabindex="-1">
 			<CarouselContent>
-				<CarouselItem v-for="image in images" :key="image.src">
+				<CarouselItem v-for="image in gallery" :key="image.full.src">
 					<img
-						:src="image.src"
-						v-bind="image.attributes"
+						:src="image.full.src"
+						v-bind="image.full.attributes"
 						class="mx-auto h-full max-h-[calc(100vh_-_16rem)] max-w-full object-contain"
 					/>
 				</CarouselItem>
@@ -71,7 +86,7 @@ onMounted(() => {
 				<div
 					class="flex w-32 select-none items-center justify-center text-center font-mono text-2xl font-semibold text-yellow-100"
 				>
-					{{ current }} / {{ images.length }}
+					{{ current }} / {{ gallery.length }}
 				</div>
 				<CarouselNext variant="modal" />
 			</div>

@@ -10,7 +10,7 @@ tags: ['DALL·E 2']
 
 import { Image, getImage } from 'astro:assets'
 
-import { optimiseImages } from '@/lib/image'
+import { optimiseGallery } from '@/lib/image'
 
 import ImageGallery from '@/components/ImageGallery.vue'
 import ImageGalleryButton from '@/components/ImageGalleryButton.vue'
@@ -29,7 +29,7 @@ import img9 from '@/assets/posts/dall-e2-1/9.png'
 
 export const altPrefix = `DALL·E 2 generated image of`
 
-export const optimisedImages = await optimiseImages([
+export const optimisedGallery = await optimiseGallery([
 	{
 		src: img0,
 		alt: ' two humanoid robots creating human life.'
@@ -72,19 +72,4 @@ export const optimisedImages = await optimiseImages([
 	}
 ])
 
-<ImageGalleryWrapper>
-	{optimisedImages.map((optimisedImage, index) => (
-		<ImageGalleryButton index={index} client:load>
-			<Image
-				src={optimisedImage.rawOptions.src} // uses the original image path
-				alt={optimisedImage.attributes.alt}
-				loading={index === 0 ? 'eager' : 'lazy'}
-				quality={100}
-				densities={[1.5, 2, 3]}
-				class="h-full w-full object-cover"
-			/>
-		</ImageGalleryButton>
-	))}
-</ImageGalleryWrapper>
-
-<ImageGallery images={optimisedImages} client:load />
+<ImageGallery images={optimisedGallery} client:load />
