@@ -41,6 +41,9 @@ onMounted(() => {
 </script>
 
 <template>
+	<p class="italic text-center text-muted-foreground text-sm">
+		click an image to view fullsize
+	</p>
 	<div
 		class="grid gap-4"
 		style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))"
