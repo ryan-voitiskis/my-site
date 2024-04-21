@@ -56,6 +56,7 @@ onMounted(() => {
 				:alt="img.alt"
 				:preload="i === 0"
 				:loading="i === 0 ? 'eager' : 'lazy'"
+				:decoding="i === 0 ? 'sync' : 'async'"
 				width="512"
 				height="512"
 				format="webp"
