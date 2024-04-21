@@ -56,6 +56,8 @@ onMounted(() => {
 				:alt="img.alt"
 				:preload="i === 0"
 				:loading="i === 0 ? 'eager' : 'lazy'"
+				width="512"
+				height="512"
 				format="webp"
 			/>
 		</Button>
@@ -72,11 +74,18 @@ onMounted(() => {
 			</Button>
 			<Carousel ref="carouselContainerRef" tabindex="-1">
 				<CarouselContent>
-					<CarouselItem v-for="(_, i) in images" :key="i">
-						<img
+					<CarouselItem v-for="(img, i) in images" :key="i + 'n'">
+						<!-- 
+							src.endsWith('.png') is a hack to get around passing in width and 
+							height. don't use this in production site.
+						-->
+						<NuxtImg
 							class="mx-auto h-full max-h-[calc(100vh_-_16rem)] max-w-full object-contain"
-							:src="images[i].src"
-							:alt="images[i].alt"
+							:src="img.src"
+							:alt="img.alt"
+							:width="images[i].src.endsWith('.png') ? 1024 : 512"
+							:height="images[i].src.endsWith('.png') ? 1024 : 512"
+							format="webp"
 							loading="lazy"
 						/>
 					</CarouselItem>
