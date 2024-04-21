@@ -1,0 +1,32 @@
+---
+import IconHuman from '@/components/icons/IconHuman.vue'
+import IconOpenAi from '@/components/icons/IconOpenAi.vue'
+
+interface Props {
+	fromHuman: boolean
+}
+
+const { fromHuman } = Astro.props
+---
+
+<div
+	class:list={[
+		'border-1 mb-4 rounded-xl border p-4',
+		{
+			'border-black/20 bg-[#94a4a6]/5': fromHuman,
+			'border-[rgba(82,144,128,0.4)] bg-[rgba(16,163,126,0.03)]': !fromHuman
+		}
+	]}
+>
+	<div
+		class:list={[
+			'mb-4 flex h-7 w-7 items-center justify-center rounded-md',
+			{ 'bg-[#94a4a6]': fromHuman, 'bg-[rgb(16,163,127)]': !fromHuman }
+		]}
+	>
+		{fromHuman ? <IconHuman class="h-5" /> : <IconOpenAi class="h-5" />}
+	</div>
+	<div class="content">
+		<slot />
+	</div>
+</div>
