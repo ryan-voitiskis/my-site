@@ -6,7 +6,7 @@ import ThemeToggle from '@/components/ThemeToggle.vue'
 import { renderHeadTags, type HeadMeta } from '@/lib/head'
 
 interface Props {
-	head: HeadMeta
+	head: HeadMeta // page specific head tags
 	navItem?: string // current nav item to highlight (must match the label)
 }
 
@@ -17,9 +17,13 @@ const headTags = renderHeadTags(head)
 <!doctype html>
 <html lang="en">
 	<head>
+		<!-- global head tags here -->
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<Fragment set:html={headTags} />
+		<meta property="og:type" content="website" />
+		<meta property="twitter:creator" content="@ryanvoitiskis" />
+		<meta property="twitter:site" content="@ryanvoitiskis" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 	</head>
 	<body>

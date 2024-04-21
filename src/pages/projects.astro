@@ -34,6 +34,7 @@ const panelLayoutGeneratorImages = await optimiseImages([
 const description = `some of my projects i've been working on recently.`
 const title = 'ryan_voitiskis | projects'
 const url = 'https://ryanvoitiskis.com/projects'
+const coverImg = `https://ryanvoitiskis.com/${crateGuideImages[0].src}`
 const head: HeadMeta = {
 	title: title,
 	meta: [
@@ -41,11 +42,11 @@ const head: HeadMeta = {
 		{ property: 'og:title', content: title },
 		{ property: 'og:description', content: description },
 		{ property: 'og:url', content: url },
-		{ property: 'og:image', content: crateGuideImages[0].src },
+		{ property: 'og:image', content: coverImg },
 		{ property: 'twitter:card', content: 'summary_large_image' },
 		{ property: 'twitter:title', content: title },
 		{ property: 'twitter:description', content: description },
-		{ property: 'twitter:image', content: crateGuideImages[0].src }
+		{ property: 'twitter:image', content: coverImg }
 	],
 	link: [
 		{ rel: 'canonical', href: url },
