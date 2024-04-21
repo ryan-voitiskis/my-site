@@ -4,6 +4,7 @@ import ProjectImages from '@/components/ProjectImages.vue'
 import { Badge } from '@/components/ui/badge'
 import Layout from '@/layouts/Layout.astro'
 import { optimiseImages } from '@/lib/image'
+import type { HeadMeta } from '@/lib/head'
 
 import cg0 from '@/assets/projects/crate-guide/0.png'
 import cg1 from '@/assets/projects/crate-guide/1.jpeg'
@@ -29,13 +30,31 @@ const panelLayoutGeneratorImages = await optimiseImages([
 	{ src: plg2, alt: 'Panel layout generator interface with 960 panels.' },
 	{ src: plg3, alt: 'Panel layout generator interface with pastel panels.' }
 ])
+
+const description = `some of my projects i've been working on recently.`
+const title = 'ryan_voitiskis | projects'
+const url = 'https://ryanvoitiskis.com/projects'
+const head: HeadMeta = {
+	title: title,
+	meta: [
+		{ name: 'description', content: description },
+		{ property: 'og:title', content: title },
+		{ property: 'og:description', content: description },
+		{ property: 'og:url', content: url },
+		{ property: 'og:image', content: crateGuideImages[0].src },
+		{ property: 'twitter:card', content: 'summary_large_image' },
+		{ property: 'twitter:title', content: title },
+		{ property: 'twitter:description', content: description },
+		{ property: 'twitter:image', content: crateGuideImages[0].src }
+	],
+	link: [
+		{ rel: 'canonical', href: url },
+		{ rel: 'preload', href: crateGuideImages[0].src, as: 'image' }
+	]
+}
 ---
 
-<Layout title="ryan_voitiskis | projects" navItem="projects">
-	<Fragment slot="head">
-		<link rel="preload" href={crateGuideImages[0].src} as="image" />
-	</Fragment>
-
+<Layout {head} navItem="projects">
 	<main class="mx-auto w-full max-w-[1120px] px-4 pb-48">
 		<h1 class="font-mono text-sm font-[120] text-muted-foreground">
 			> projects

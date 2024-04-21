@@ -3,9 +3,27 @@ import ContactForm from '@/components/ContactForm.vue'
 import IconChevronsDown from '@/components/icons/IconChevronsDown.vue'
 import { Button } from '@/components/ui/button'
 import Layout from '@/layouts/Layout.astro'
+import type { HeadMeta } from '@/lib/head'
+
+const description = 'developer from melbourne, au. fullstack, mostly with js.'
+const title = 'ryan_voitiskis'
+const url = 'https://ryanvoitiskis.com'
+const head: HeadMeta = {
+	title: title,
+	meta: [
+		{ name: 'description', content: description },
+		{ property: 'og:title', content: title },
+		{ property: 'og:description', content: description },
+		{ property: 'og:url', content: url },
+		{ property: 'twitter:card', content: 'summary' },
+		{ property: 'twitter:title', content: title },
+		{ property: 'twitter:description', content: description }
+	],
+	link: [{ rel: 'canonical', href: url }]
+}
 ---
 
-<Layout title="ryan_voitiskis" navItem="about">
+<Layout {head} navItem="about">
 	<main class="mx-auto w-full px-4 pb-48">
 		<div class="mx-auto w-full max-w-[1120px] px-4">
 			<h1 class="font-mono text-sm font-[120] text-muted-foreground">
