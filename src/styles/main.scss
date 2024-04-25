@@ -45,7 +45,6 @@
 		--code-selection: 200 11% 85%;
 
 		--webkit-scrollbar: hsla(0, 0%, 50%, 0.3);
-		--webkit-scrollbar-hover: hsla(0, 0%, 50%, 0.12);
 	}
 
 	.dark {
@@ -84,12 +83,9 @@
 		--selection: hsla(40, 100%, 79%, 0.6);
 		--code-selection: 216 15% 36%;
 
-		--webkit-scrollbar: hsla(0, 0%, 100%, 0.3);
-		--webkit-scrollbar-hover: hsla(0, 0%, 100%, 0.12);
+		--scrollbar: hsla(0, 0%, 100%, 0.3);
 	}
-}
 
-@layer base {
 	* {
 		@apply border-border;
 	}
@@ -136,6 +132,18 @@
 	--monospace-font: 'BerkeleyMono', monospace;
 	--serif-font: serif;
 	--sans-serif-font: 'Inter', sans-serif;
+}
+
+::selection {
+	background: var(--selection);
+}
+
+// this is the least compromise solution
+// webkit scrollbar either causes a layout shift or
+// if scrollbar-gutter: stable - gutter has wrong colour in header
+// so get rid of it until browsers fix it
+::-webkit-scrollbar {
+	width: 0 !important;
 }
 
 html {
@@ -303,34 +311,4 @@ td:last-child {
 	&:hover {
 		filter: sepia(1) invert(1);
 	}
-}
-
-::-webkit-scrollbar {
-	width: 6px;
-	height: 11px;
-}
-::-webkit-scrollbar-button {
-	width: 0px;
-	height: 0px;
-}
-::-webkit-scrollbar-thumb {
-	background: var(--webkit-scrollbar);
-	border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-	background: var(--webkit-scrollbar-hover);
-}
-::-webkit-scrollbar-track {
-	border: none;
-	border-radius: 3px;
-}
-::-webkit-scrollbar-track:hover {
-	background: hsla(0, 0%, 50%, 0.12);
-}
-::-webkit-scrollbar-track:active {
-	background: hsla(0, 0%, 50%, 0.28);
-}
-
-::selection {
-	background: var(--selection);
 }
