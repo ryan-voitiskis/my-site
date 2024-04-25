@@ -9,7 +9,7 @@ export default (() => {
 			requestIdleCallback(() => {
 				setTimeout(() => {
 					lazyImages.forEach((img) => img.setAttribute('loading', 'auto'))
-				}, 700)
+				}, 300)
 			})
 	})
 })()
