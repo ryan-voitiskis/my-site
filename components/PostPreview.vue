@@ -8,7 +8,7 @@ defineProps<{ post: Post; index: number }>()
 		variant="blank"
 		class="group flex h-auto w-full flex-col gap-12 overflow-hidden rounded-none border-b p-0 py-12 text-md font-normal text-foreground hover:no-underline focus-visible:ring-4 sm:flex-row"
 	>
-		<a :href="post._path">
+		<NuxtLink :to="post._path">
 			<NuxtImg
 				:src="post.image"
 				:alt="post.image_alt"
@@ -56,6 +56,6 @@ defineProps<{ post: Post; index: number }>()
 					</div>
 				</div>
 			</div>
-		</a>
+		</NuxtLink>
 	</Button>
 </template>

@@ -10,6 +10,11 @@ reading_time: 7 mins
 tags: ['SVG', 'animation', 'Vue.js']
 ---
 
+<video autoplay muted playsinline loop class="mb-8 w-full">
+	<source src="/strobo-0-720p.mp4" type="video/mp4" />
+	Your browser does not support the video tag.
+</video>
+
 ## Introduction
 
 One of my intentions in the development of [Crate Guide](https://crate.guide/) was to build an interface that resembled closely that of a [Technics SL-1200 turntable](https://www.technics.com/global/home/sl1200/features.html), the most common turntable used by DJs. The idea was that the interface would be intuitive, requiring less learning and cognitive overhead. The web app is intended to be used on a laptop or desktop and only occasionally glanced at and interacted with during a performance.
@@ -18,8 +23,7 @@ Most of the interface proved fairly simple to represent in the browser, with the
 
 I had several ideas on how to implement this, most of these involved having separate rows of dots rotating at a calculated rate according to the pitch adjustment. It wasn't until I created the dots in the SVG and started playing with a simple spin animation that I realised it was possible to implement a stroboscopic effect with a 60Hz/120Hz display. This method does have the downside of requiring separate implementations to work on displays with refresh rates not a multiple 60Hz, but is far more interesting, so I pursued it. In the future I'll probably provide implementations for other refresh rates, but I currently do not have the facilities to test them.
 
-A demo of this solution can be viewed in the app, without an account [here](https://crate.guide/).
-The complete Single File Component can be viewed [here](https://github.com/ryan-voitiskis/crate-guide/blob/main/client/src/components/session/deck/RecordPlatter.vue).
+A demo of this solution can be [viewed in the app](https://crate.guide/) without an account and the complete Single File Component [is hosted on GitHub](https://github.com/ryan-voitiskis/crate-guide/blob/main/client/src/components/session/deck/RecordPlatter.vue).
 
 ## The SVG
 

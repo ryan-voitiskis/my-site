@@ -5,7 +5,7 @@ import {
 	CarouselItem,
 	CarouselNext,
 	CarouselPrevious
-} from '~/components/ui/carousel'
+} from '@/components/ui/carousel'
 
 defineProps({
 	images: {
@@ -34,6 +34,9 @@ onMounted(() => {
 </script>
 
 <template>
+	<p class="text-center text-sm italic text-muted-foreground">
+		click an image to view fullsize
+	</p>
 	<div
 		class="grid gap-4"
 		style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))"
@@ -53,6 +56,9 @@ onMounted(() => {
 				:alt="img.alt"
 				:preload="i === 0"
 				:loading="i === 0 ? 'eager' : 'lazy'"
+				:decoding="i === 0 ? 'sync' : 'async'"
+				width="512"
+				height="512"
 				format="webp"
 			/>
 		</Button>
@@ -69,11 +75,18 @@ onMounted(() => {
 			</Button>
 			<Carousel ref="carouselContainerRef" tabindex="-1">
 				<CarouselContent>
-					<CarouselItem v-for="(_, i) in images" :key="i">
-						<img
+					<CarouselItem v-for="(img, i) in images" :key="i + 'n'">
+						<!-- 
+							src.endsWith('.png') is a hack to get around passing in width and 
+							height. don't use this in production site.
+						-->
+						<NuxtImg
 							class="mx-auto h-full max-h-[calc(100vh_-_16rem)] max-w-full object-contain"
-							:src="images[i].src"
-							:alt="images[i].alt"
+							:src="img.src"
+							:alt="img.alt"
+							:width="images[i].src.endsWith('.png') ? 1024 : 512"
+							:height="images[i].src.endsWith('.png') ? 1024 : 512"
+							format="webp"
 							loading="lazy"
 						/>
 					</CarouselItem>

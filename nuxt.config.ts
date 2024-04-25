@@ -21,10 +21,6 @@ export default defineNuxtConfig({
 			autoprefixer: {}
 		}
 	},
-	image: {
-		format: ['webp'],
-		densities: [1, 2]
-	},
 	content: {
 		highlight: {
 			theme: {

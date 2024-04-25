@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import * as z from 'zod'
 import { toast } from 'vue-sonner'
-import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
+import { useForm } from 'vee-validate'
+import * as z from 'zod'
 
 const nameField = ref<HTMLInputElement | null>(null)
 

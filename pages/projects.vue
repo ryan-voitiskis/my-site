@@ -102,25 +102,27 @@ const panelLayoutImages = [
 					Spotify API.
 				</p>
 			</div>
-			<Carousel
-				class="max-w-screen-xs focus-visible:!ring-8 focus-visible:ring-ring"
-			>
-				<CarouselContent>
-					<CarouselItem v-for="(img, i) in crateGuideImages" :key="i">
-						<NuxtImg
-							class="w-full self-center object-contain"
-							:src="img.src"
-							:alt="img.alt"
-							:preload="i === 0"
-							format="webp"
-						/>
-					</CarouselItem>
-				</CarouselContent>
-				<div class="flex justify-center gap-4">
-					<CarouselPrevious />
-					<CarouselNext />
-				</div>
-			</Carousel>
+			<div class="mx-auto w-full max-w-screen-xs shrink-0">
+				<Carousel
+					class="max-w-screen-xs focus-visible:!ring-8 focus-visible:ring-ring"
+				>
+					<CarouselContent>
+						<CarouselItem v-for="(img, i) in crateGuideImages" :key="i">
+							<NuxtImg
+								class="w-full self-center object-contain"
+								:src="img.src"
+								:alt="img.alt"
+								:preload="i === 0"
+								format="webp"
+							/>
+						</CarouselItem>
+					</CarouselContent>
+					<div class="flex justify-center gap-4">
+						<CarouselPrevious />
+						<CarouselNext />
+					</div>
+				</Carousel>
+			</div>
 		</article>
 
 		<article
@@ -219,24 +221,26 @@ const panelLayoutImages = [
 					</a>
 				</p>
 			</div>
-			<Carousel
-				class="max-w-screen-sm focus-visible:!ring-8 focus-visible:ring-ring"
-			>
-				<CarouselContent>
-					<CarouselItem v-for="(img, i) in panelLayoutImages" :key="i">
-						<NuxtImg
-							class="w-full object-contain"
-							:src="img.src"
-							:alt="img.alt"
-							format="webp"
-						/>
-					</CarouselItem>
-				</CarouselContent>
-				<div class="flex justify-center gap-4">
-					<CarouselPrevious />
-					<CarouselNext />
-				</div>
-			</Carousel>
+			<div class="mx-auto w-full max-w-screen-xs shrink-0">
+				<Carousel
+					class="max-w-screen-sm focus-visible:!ring-8 focus-visible:ring-ring"
+				>
+					<CarouselContent>
+						<CarouselItem v-for="(img, i) in panelLayoutImages" :key="i">
+							<NuxtImg
+								class="w-full object-contain"
+								:src="img.src"
+								:alt="img.alt"
+								format="webp"
+							/>
+						</CarouselItem>
+					</CarouselContent>
+					<div class="flex justify-center gap-4">
+						<CarouselPrevious />
+						<CarouselNext />
+					</div>
+				</Carousel>
+			</div>
 		</article>
 	</main>
 </template>
