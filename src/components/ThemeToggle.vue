@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { useColorMode } from '@vueuse/core'
-import { onMounted, ref, watch } from 'vue'
+// only toggles 'dark' class in <html> element classList
+// see @/lib/persistTheme.js for rest of implementation
+import { ref, watch } from 'vue'
 
 import IconMoon from '@/components/icons/IconMoon.vue'
 import IconSun from '@/components/icons/IconSun.vue'
 import { Toggle } from '@/components/ui/toggle'
 
-const mode = useColorMode()
-const state = ref(undefined as boolean | undefined)
+const state = ref(
+	document.documentElement.classList.contains('dark') ? true : false
+)
 
-watch(state, (val) => (mode.value = val ? 'dark' : 'light'))
-onMounted(() => (state.value = mode.value === 'dark' ? true : false))
+watch(state, (val) => document.documentElement.classList.toggle('dark', val))
 </script>
 
 <template>
@@ -20,7 +21,7 @@ onMounted(() => (state.value = mode.value === 'dark' ? true : false))
 		variant="theme"
 		aria-label="Toggle light and dark mode"
 	>
-		<IconSun v-if="state === false" class="h-6 w-6" />
-		<IconMoon v-else-if="state === true" class="h-6 w-6" />
+		<IconSun v-show="state === false" class="h-6 w-6" />
+		<IconMoon v-show="state === true" class="h-6 w-6" />
 	</Toggle>
 </template>

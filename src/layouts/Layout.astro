@@ -4,6 +4,7 @@ import '@/styles/shiki.scss'
 import ButtonLink from '@/components/ButtonLink.astro'
 import ThemeToggle from '@/components/ThemeToggle.vue'
 import { renderHeadTags, type HeadMeta } from '@/lib/head'
+import persistTheme from '@/lib/persistTheme'
 
 interface Props {
 	head: HeadMeta // page specific head tags
@@ -24,10 +25,13 @@ const headTags = renderHeadTags(head)
 		<meta property="og:type" content="website" />
 		<meta property="twitter:creator" content="@ryanvoitiskis" />
 		<meta property="twitter:site" content="@ryanvoitiskis" />
+		<script is:inline set:html={persistTheme} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 	</head>
 	<body>
-		<header class="flex h-14 w-full justify-between border-b bg-muted">
+		<header
+			class="flex h-14 w-full justify-between border-b bg-muted transition-colors duration-420"
+		>
 			<div
 				class="mx-auto flex w-full max-w-[1120px] flex-row items-center justify-between p-4"
 			>
@@ -36,11 +40,13 @@ const headTags = renderHeadTags(head)
 					<ButtonLink href="/blog" label="blog" current={navItem} />
 					<ButtonLink href="/projects" label="projects" current={navItem} />
 				</nav>
-				<ThemeToggle class="-my-2" client:load />
+				<ThemeToggle class="-my-2" client:only="vue" />
 			</div>
 		</header>
 
-		<div class="min-h-[calc(100vh_-_56px)] bg-background pt-8">
+		<div
+			class="min-h-[calc(100vh_-_56px)] bg-background pt-8 transition-colors duration-420"
+		>
 			<!-- root node of slot should be <main> for semantic purpose -->
 			<slot />
 		</div>

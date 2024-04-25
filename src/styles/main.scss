@@ -2,13 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-	colour space function not included for colours used in tailwind.
-	this theme doesn't follow 60(primary), 30(secondary), 10(accent) rule,
-	instead I am following the convention outlined in the shadcn ui docs:
-	https://www.shadcn-vue.com/docs/theming.html#list-of-variables
-*/
 @layer base {
+	// i am following the convention outlined in the shadcn ui docs:
+	// https://www.shadcn-vue.com/docs/theming.html#list-of-variable
 	:root {
 		--background: 40 25% 95%;
 		--foreground: 216 13% 34%;
@@ -140,16 +136,6 @@
 	--monospace-font: 'BerkeleyMono', monospace;
 	--serif-font: serif;
 	--sans-serif-font: 'Inter', sans-serif;
-}
-
-*,
-*:before,
-*:after {
-	box-sizing: border-box;
-	transition:
-		background-color 160ms,
-		background 160ms,
-		color 160ms;
 }
 
 html {
