@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useCarousel } from './useCarousel'
-import { Button } from '~/components/ui/button'
+import type { HTMLAttributes } from 'vue'
+import { Button } from '@/components/ui/button'
 import { carouselButtonVariants } from '.'
 import type { CarouselButtonVariants } from '.'
-import type { HTMLAttributes } from 'vue'
+import { useCarousel } from './useCarousel'
 
 const props = defineProps<{
 	variant?: CarouselButtonVariants['variant']
