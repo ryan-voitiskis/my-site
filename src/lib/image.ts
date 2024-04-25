@@ -21,7 +21,8 @@ export async function optimiseProjectImages(
 					src,
 					format: 'webp',
 					width: 475,
-					densities: [1, 2]
+					densities: [1.5, 2, 3],
+					quality: 70
 				})
 				return {
 					...image,
