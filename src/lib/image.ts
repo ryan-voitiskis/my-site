@@ -29,7 +29,7 @@ export async function optimiseProjectImages(
 					attributes: {
 						...image.attributes,
 						alt,
-						loading: isLCP ? 'eager' : image.attributes.loading,
+						loading: isLCP ? 'eager' : 'lazy',
 						fetchpriority: isLCP ? 'high' : 'low'
 					}
 				}
