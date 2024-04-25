@@ -19,7 +19,7 @@ defineProps<{ images: OptimisedImage[] }>()
 			<CarouselItem v-for="(image, i) in images" :key="i">
 				<img
 					class="w-full self-center object-contain"
-					:src="image.src"
+					:srcset="image.srcSet.attribute"
 					v-bind="image.attributes"
 				/>
 			</CarouselItem>

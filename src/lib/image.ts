@@ -11,13 +11,18 @@ export type OptimisedGalleryItem = {
 
 export type OptimisedGallery = OptimisedGalleryItem[]
 
-export async function optimiseImages(
+export async function optimiseProjectImages(
 	images: { src: ImageMetadata; alt: string; isLCP?: boolean }[]
 ): Promise<OptimisedImage[]> {
 	try {
 		return await Promise.all(
 			images.map(async ({ src, alt, isLCP }) => {
-				const image = await getImage({ src, format: 'webp' })
+				const image = await getImage({
+					src,
+					format: 'webp',
+					width: 475,
+					densities: [1, 2]
+				})
 				return {
 					...image,
 					attributes: {

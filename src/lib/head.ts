@@ -8,6 +8,7 @@ export interface HeadMeta {
 	link?: {
 		rel: string
 		href: string
+		imagesrcset?: string
 		as?: string
 	}[]
 	style?: {

@@ -3,7 +3,7 @@ import PhoneMockup from '@/components/PhoneMockup.astro'
 import ProjectImages from '@/components/ProjectImages.vue'
 import { Badge } from '@/components/ui/badge'
 import Layout from '@/layouts/Layout.astro'
-import { optimiseImages } from '@/lib/image'
+import { optimiseProjectImages } from '@/lib/image'
 import type { HeadMeta } from '@/lib/head'
 
 import cg0 from '@/assets/projects/crate-guide/0.png'
@@ -16,7 +16,7 @@ import plg1 from '@/assets/projects/panel-layout-generator/1.png'
 import plg2 from '@/assets/projects/panel-layout-generator/2.png'
 import plg3 from '@/assets/projects/panel-layout-generator/3.png'
 
-const crateGuideImages = await optimiseImages([
+const crateGuideImages = await optimiseProjectImages([
 	{ src: cg0, alt: 'Crate Guide empty deck interface.', isLCP: true },
 	{ src: cg1, alt: 'Crate Guide loaded single deck interface.' },
 	{ src: cg2, alt: 'Crate Guide track select interface.' },
@@ -24,7 +24,7 @@ const crateGuideImages = await optimiseImages([
 	{ src: cg4, alt: 'Crate Guide track import interface.' }
 ])
 
-const panelLayoutGeneratorImages = await optimiseImages([
+const panelLayoutGeneratorImages = await optimiseProjectImages([
 	{ src: plg0, alt: 'Panel layout generator interface.' },
 	{ src: plg1, alt: 'Panel layout generator interface with numbers.' },
 	{ src: plg2, alt: 'Panel layout generator interface with 960 panels.' },
@@ -50,7 +50,12 @@ const head: HeadMeta = {
 	],
 	link: [
 		{ rel: 'canonical', href: url },
-		{ rel: 'preload', href: crateGuideImages[0].src, as: 'image' }
+		{
+			rel: 'preload',
+			href: crateGuideImages[0].src,
+			imagesrcset: crateGuideImages[0].srcSet.attribute,
+			as: 'image'
+		}
 	]
 }
 ---
