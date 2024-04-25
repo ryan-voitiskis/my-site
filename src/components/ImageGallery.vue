@@ -57,7 +57,7 @@ onMounted(() => {
 			@click="openInModal(i)"
 		>
 			<img
-				:src="image.preview.src"
+				:srcset="image.preview.srcSet.attribute"
 				v-bind="image.preview.attributes"
 				class="h-full w-full object-cover"
 			/>

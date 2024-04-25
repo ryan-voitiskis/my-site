@@ -50,9 +50,8 @@ export async function optimiseGallery(
 				const preview = await getImage({
 					src,
 					format: 'webp',
-					quality: 80,
-					width: 512,
-					height: 512
+					width: 256,
+					densities: [1.5, 2, 3]
 				})
 				const full = await getImage({ src, format: 'webp' })
 				return {
