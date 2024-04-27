@@ -22,6 +22,7 @@
 
 		--primary: 336 37% 49%;
 		--primary-foreground: 60 9.1% 97.8%;
+		--primary-on-vmuted: 336 37% 47%; // accessibility fix for contrast w vmuted
 
 		--secondary: 337 60% 90%;
 		--secondary-foreground: 0 0% 34%;
@@ -64,6 +65,7 @@
 
 		--primary: 40 100% 71%;
 		--primary-foreground: 216 15% 16%;
+		--primary-on-vmuted: 40 100% 71%; // same as primary
 
 		--secondary: 40 100% 82%;
 		--secondary-foreground: 216 15% 16%;

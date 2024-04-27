@@ -21,6 +21,7 @@
 
 pre.astro-code,
 code.astro-code {
+	color: #626a73;
 	font-family: var(--mono-font);
 	font-weight: 110;
 	font-size: 14px;
@@ -49,6 +50,10 @@ pre.astro-code {
 	border-radius: var(--shiki-block-radius);
 	overflow: auto;
 	background: var(--shiki-background);
+}
+
+a code {
+	color: hsl(var(--primary-on-vmuted)); // accessibility fix
 }
 
 // inline code
