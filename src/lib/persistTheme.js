@@ -10,25 +10,19 @@
  * the 'dark' class is toggled in the <html> classList from ThemeToggle.vue
  */
 
-function dontRun() {
-	//        ^ so we dont run at compile, but can look at it unminified
+// const preference =
+// 	localStorage.getItem('theme') ??
+// 	(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+// document.documentElement.classList.toggle('dark', preference === 'dark')
 
-	const preference =
-		localStorage.getItem('theme') ??
-		(window.matchMedia('(prefers-color-scheme: dark)').matches
-			? 'dark'
-			: 'light')
-	document.documentElement.classList.toggle('dark', preference === 'dark')
-
-	const observer = new MutationObserver(() => {
-		const isDark = document.documentElement.classList.contains('dark')
-		localStorage.setItem('theme', isDark ? 'dark' : 'light')
-	})
-	observer.observe(document.documentElement, {
-		attributes: true,
-		attributeFilter: ['class']
-	})
-}
+// const observer = new MutationObserver(() => {
+// 	const isDark = document.documentElement.classList.contains('dark')
+// 	localStorage.setItem('theme', isDark ? 'dark' : 'light')
+// })
+// observer.observe(document.documentElement, {
+// 	attributes: true,
+// 	attributeFilter: ['class']
+// })
 
 // a minified version of the above code in an IIFE
 export default `(()=>{const t=localStorage.getItem('theme')??(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.classList.toggle('dark',t==='dark');const o=new MutationObserver(()=>{localStorage.setItem('theme',document.documentElement.classList.contains('dark')?'dark':'light')});o.observe(document.documentElement,{attributes:true,attributeFilter:['class']})})();`
