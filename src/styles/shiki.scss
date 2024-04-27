@@ -52,7 +52,8 @@ pre.astro-code {
 	background: var(--shiki-background);
 }
 
-a code {
+a code,
+code a {
 	color: hsl(var(--primary-on-vmuted)); // accessibility fix
 }
 
