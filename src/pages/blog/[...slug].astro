@@ -57,7 +57,7 @@ const lcp = mdxEntry.optimisedGallery?.find(
 	(item: OptimisedGalleryItem) => item.isLCP
 )
 
-if (lcp) {
+if (lcp)
 	head.link!.push({
 		rel: 'preload',
 		href: lcp.preview.src,
@@ -66,7 +66,6 @@ if (lcp) {
 			: undefined,
 		as: 'image'
 	})
-}
 ---
 
 <script src="../../lib/idleLoadImages.ts"></script>
