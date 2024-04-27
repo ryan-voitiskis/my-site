@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { toTypedSchema } from '@vee-validate/zod'
 import { useForm } from 'vee-validate'
+import { computed } from 'vue'
 import { toast } from 'vue-sonner'
 import * as z from 'zod'
 
@@ -45,6 +46,11 @@ const onSubmit = form.handleSubmit(async (values) => {
 		{ duration: 30000 }
 	)
 })
+
+// useValidation doesn't function correctly on chrome ∴ workaround
+const showNameError = computed(() => form.isFieldTouched('name'))
+const showEmailError = computed(() => form.isFieldTouched('email'))
+const showMessageError = computed(() => form.isFieldTouched('message'))
 </script>
 
 <template>
@@ -61,7 +67,7 @@ const onSubmit = form.handleSubmit(async (values) => {
 						class="name_input"
 					/>
 				</FormControl>
-				<FormMessage />
+				<FormMessage v-if="showNameError" />
 			</FormItem>
 		</FormField>
 
@@ -71,7 +77,7 @@ const onSubmit = form.handleSubmit(async (values) => {
 				<FormControl>
 					<Input type="text" v-bind="componentField" autocomplete="off" />
 				</FormControl>
-				<FormMessage />
+				<FormMessage v-if="showEmailError" />
 			</FormItem>
 		</FormField>
 
@@ -81,7 +87,7 @@ const onSubmit = form.handleSubmit(async (values) => {
 				<FormControl>
 					<Textarea v-bind="componentField" spellcheck="false" />
 				</FormControl>
-				<FormMessage />
+				<FormMessage v-if="showMessageError" />
 			</FormItem>
 		</FormField>
 
