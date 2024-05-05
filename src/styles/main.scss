@@ -259,7 +259,6 @@ li {
 	margin-bottom: 8px;
 }
 
-blockquote,
 dl,
 figure,
 table,
@@ -315,7 +314,7 @@ td:last-child {
 }
 
 blockquote {
-	margin: 16px 0;
+	margin-bottom: 24px;
 	padding-left: 16px;
 	color: hsl(var(--muted-foreground));
 	border-left: 4px solid hsl(var(--secondary));

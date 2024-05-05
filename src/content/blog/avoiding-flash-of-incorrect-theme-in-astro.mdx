@@ -1,20 +1,15 @@
 ---
-title: Avoiding flash of incorrect theme in Astro
+title: Avoiding a flash of incorrect theme in Astro
 format: article
 published: '2024-05-05'
-short: 'TODO'
-cover: './covers/an-ai-love-letter.png'
-coverAlt: 'TODO'
-readingTime: 'TODO'
-tags: ['TODO']
+short: How to fix a flash of an incorrect theme in Astro on page load, using an inline script in the head.
+readingTime: 2 mins
+tags: ['Astro']
 ---
 
-If you apply a users theme preference from localStorage or from the prefers-color-scheme media query in Astro, you will probably notice a flash of the incorrect theme being applied on page load. This effect will be exaggerated by a transition on colours.
+If you apply a users theme preference from localStorage or from the prefers-color-scheme media query in Astro, you will probably notice a flash of the incorrect theme being applied on page load. This flash of an incorrect theme will be even more noticeable if you have transitions applied to colour changes.
 
-This is happening because the page content is being rendered with the default theme before your JavaScript can apply the correct theme. A solution to the flash of incorrect theme problem in Astro is to apply the correct theme from a script in the `<head>`, before the browser renders the page. This ensures that the correct theme is applied as early as possible, preventing the brief flash of the incorrect theme.
-
-My dark theme is applied by adding a `"dark"` class to my `<html>` element. For a simple way to toggle dark mode in this way with an `.astro` component, see this tutorial from the Astro docs:  
-[Back on dry land. Take your blog from day to night, no island required!](https://docs.astro.build/en/tutorial/6-islands/2/)
+This happens because the page content is being rendered with the default theme before your JavaScript can apply the correct theme. A solution to this problem is to apply the correct theme from a script in the `<head>` before the browser renders the page. This ensures that the correct theme is applied as early as possible, preventing the brief flash of the incorrect theme.
 
 Here is the script we will put in the head:
 
@@ -42,9 +37,13 @@ Here is the script we will put in the head:
 })()
 ```
 
-This will run before the `<body>` is parsed and rendered, ensuring that the correct theme is applied as early as possible.
+This script needs to be placed in the `<head>` of your HTML document and executed inline using the `is:inline` directive. Here's why:
 
-To minify, you can run:
+When a web page is loaded, the browser parses the HTML document from top to bottom. As it encounters each element in the `<head>`, it parses and executes them in order. By placing our persistTheme script in the `<head>` with the `is:inline` directive, we ensure that it is executed as soon as the browser encounters it, while still in the process of parsing the `<head>`. This happens before the browser moves on to parse and render the `<body>`.
+
+Executing the script at this early stage allows it to apply the correct theme before any content is visually rendered to the user, avoiding the flash of incorrect theme that would occur if the theme was applied later in the page load process.
+
+To minify the script, you can run:
 
 ```bash
 terser src/lib/persistTheme.js --mangle --output src/lib/persistTheme.min.js
@@ -59,8 +58,6 @@ or copy:
 {/* prettier-ignore-end */}
 
 ## Including the script
-
-To include this script in the head, in your Astro layout:
 
 - Import the minified script as a string using the [`?raw`](https://vitejs.dev/guide/assets#importing-asset-as-string) suffix.
 - Add the script to the `<head>` using the [`is:inline`](https://docs.astro.build/en/reference/directives-reference/#isinline) directive.
@@ -83,21 +80,14 @@ import persistTheme from '@/lib/persistTheme.min.js?raw'
 ```
 {/* prettier-ignore-end */}
 
----
+## Theme toggle UI
 
-### Additional Resources
+This script relies on the dark theme being applied by adding a `"dark"` class to the `<html>` element. For a simple way to toggle dark mode in this way with an `.astro` component, see this tutorial from the Astro docs:  
+[Back on dry land. Take your blog from day to night, no island required!](https://docs.astro.build/en/tutorial/6-islands/2/)
 
-For more information about implementing dark mode, read:  
-[A Complete Guide to Dark Mode on the Web](https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/)
+Below is my implementation of a theme toggle button. It is a Vue component designed to simply toggle the `"dark"` class on the `<html>` element. It uses the [`<Toggle>`](https://www.shadcn-vue.com/docs/components/toggle.html) component from [shadcn-vue](https://www.shadcn-vue.com/).
 
-My solution was inspired by this comment on reddit:  
-[/r/webdev/comments/16iu3uf/comment/k0n4ds2](https://www.reddit.com/r/webdev/comments/16iu3uf/comment/k0n4ds2)
-
-### Supplementary Material
-
-Below is my implementation of a theme toggle button. It is a Vue component designed to simply toggle the `"dark"` class on the `<html>` element. I am using the [`<Toggle>`](https://www.shadcn-vue.com/docs/components/toggle.html) component is from [shadcn-vue](https://www.shadcn-vue.com/).
-
-```vue
+```vue title="src/components/ThemeToggle.vue"
 <script setup lang="ts">
 // only toggles 'dark' class in <html> element classList
 // see @/lib/persistTheme.js for rest of implementation
@@ -126,3 +116,11 @@ watch(state, (val) => document.documentElement.classList.toggle('dark', val))
 	</Toggle>
 </template>
 ```
+
+### Additional Resources
+
+For more information about implementing dark mode, read:  
+[A Complete Guide to Dark Mode on the Web](https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/)
+
+My solution was inspired by this comment on Reddit:  
+[/r/webdev/comments/16iu3uf/comment/k0n4ds2](https://www.reddit.com/r/webdev/comments/16iu3uf/comment/k0n4ds2)

@@ -23,15 +23,6 @@ export async function getStaticPaths() {
 const { entry, mdxEntry } = Astro.props
 const { Content } = await entry.render()
 
-const ogImage = await getImage({
-	src: entry.data.cover,
-	format: 'webp',
-	width: 1200,
-	height: 630
-})
-
-const twitterImage = await getImage({ src: entry.data.cover, format: 'webp' })
-
 const url = `https://ryanvoitiskis.com/blog/${entry.slug}`
 const head: HeadMeta = {
 	title: entry.data.title,
@@ -40,17 +31,31 @@ const head: HeadMeta = {
 		{ property: 'og:url', content: url },
 		{ property: 'og:title', content: entry.data.title },
 		{ property: 'og:description', content: entry.data.short },
-		{ property: 'og:image', content: ogImage.src }, // TODO: check this works
-		{ property: 'og:image:width', content: '1200' },
-		{ property: 'og:image:height', content: '630' },
-		{ property: 'og:image:alt', content: entry.data.coverAlt },
 		{ property: 'twitter:card', content: 'summary_large_image' },
 		{ property: 'twitter:title', content: entry.data.title },
-		{ property: 'twitter:description', content: entry.data.short },
-		{ property: 'twitter:image', content: twitterImage.src }, // TODO: check this works
-		{ property: 'twitter:image:alt', content: entry.data.coverAlt }
+		{ property: 'twitter:description', content: entry.data.short }
 	],
 	link: [{ rel: 'canonical', href: url }]
+}
+
+if (entry.data.cover && entry.data.coverAlt) {
+	const ogImage = await getImage({
+		src: entry.data.cover,
+		format: 'webp',
+		width: 1200,
+		height: 630
+	})
+
+	const twitterImage = await getImage({ src: entry.data.cover, format: 'webp' })
+
+	head.meta?.push(
+		{ property: 'og:image', content: ogImage.src }, // TODO: check this works
+		{ property: 'og:image:alt', content: entry.data.coverAlt },
+		{ property: 'og:image:width', content: '1200' },
+		{ property: 'og:image:height', content: '630' },
+		{ property: 'twitter:image', content: twitterImage.src }, // TODO: check this works
+		{ property: 'twitter:image:alt', content: entry.data.coverAlt }
+	)
 }
 
 const lcp = mdxEntry.optimisedGallery?.find(
