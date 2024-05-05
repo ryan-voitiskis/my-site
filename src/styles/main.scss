@@ -224,7 +224,6 @@ h4 a {
 a {
 	color: hsl(var(--primary));
 	text-decoration: none;
-	font-weight: 500;
 	&:hover {
 		text-decoration: underline;
 	}
@@ -267,8 +266,14 @@ table,
 p,
 ul,
 ol,
-form {
+form,
+.expressive-code {
 	margin-bottom: 24px;
+}
+
+p:has(+ ul),
+p:has(+ ol) {
+	margin-bottom: 8px;
 }
 
 hr {
@@ -286,7 +291,7 @@ th,
 td {
 	padding: 12px 15px;
 	text-align: left;
-	border-bottom: 1px solid var(--table-border);
+	border-bottom: 1px solid hsl(var(--border));
 }
 
 table.clean td,
@@ -309,8 +314,36 @@ td:last-child {
 	padding-right: 0;
 }
 
+blockquote {
+	margin: 16px 0;
+	padding-left: 16px;
+	color: hsl(var(--muted-foreground));
+	border-left: 4px solid hsl(var(--secondary));
+	font-style: italic;
+	p {
+		margin: 0;
+	}
+}
+
 .hover-sepia-invert {
 	&:hover {
 		filter: sepia(1) invert(1);
 	}
+}
+
+// inline code
+:not(pre) > code {
+	font-size: 14px;
+	font-weight: 130;
+	line-height: 1rem;
+	display: inline;
+	border: 1px solid hsl(var(--vmuted));
+	padding: 2px 6px;
+	border-radius: 4px;
+	background: hsl(var(--muted));
+}
+
+a code,
+code a {
+	color: hsl(var(--primary-on-vmuted)); // accessibility fix
 }

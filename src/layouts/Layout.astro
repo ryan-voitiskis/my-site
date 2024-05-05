@@ -1,10 +1,9 @@
 ---
 import '@/styles/main.scss'
-import '@/styles/shiki.scss'
 import ButtonLink from '@/components/ButtonLink.astro'
 import ThemeToggle from '@/components/ThemeToggle.vue'
 import { renderHeadTags, type HeadMeta } from '@/lib/head'
-import persistTheme from '@/lib/persistTheme'
+import persistTheme from '@/lib/persistTheme.min.js?raw'
 
 interface Props {
 	head: HeadMeta // page specific head tags
@@ -18,16 +17,15 @@ const headTags = renderHeadTags(head)
 <!doctype html>
 <html lang="en">
 	<head>
-		<!-- global head tags here -->
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script is:inline set:html={persistTheme} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
 		<Fragment set:html={headTags} />
 		<meta property="og:type" content="website" />
 		<meta property="twitter:creator" content="@ryanvoitiskis" />
 		<meta property="twitter:site" content="@ryanvoitiskis" />
-		<script is:inline set:html={persistTheme} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="sitemap" href="/sitemap-index.xml" />
 	</head>
 	<body>
 		<header

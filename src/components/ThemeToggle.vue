@@ -19,7 +19,7 @@ watch(state, (val) => document.documentElement.classList.toggle('dark', val))
 		v-model:pressed="state"
 		size="icon"
 		variant="theme"
-		aria-label="Toggle light and dark mode"
+		aria-label="Toggle dark mode"
 	>
 		<IconSun v-show="state === false" class="h-6 w-6" />
 		<IconMoon v-show="state === true" class="h-6 w-6" />
