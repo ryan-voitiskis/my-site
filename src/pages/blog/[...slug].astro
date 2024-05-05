@@ -1,0 +1,119 @@
+---
+import { getCollection } from 'astro:content'
+
+import Layout from '@/layouts/Layout.astro'
+import { dateStringToLocale } from '@/lib/date'
+import type { OptimisedGalleryItem } from '@/lib/image'
+import type { HeadMeta } from '@/lib/head'
+import { getImage } from 'astro:assets'
+
+export async function getStaticPaths() {
+	const blogEntries = await getCollection('blog')
+	const mdxEntries: any = await Astro.glob('@/content/blog/*.mdx')
+
+	return blogEntries.map((entry) => ({
+		params: { slug: entry.slug },
+		props: {
+			entry,
+			mdxEntry: mdxEntries.find((mdx: any) => mdx.file.includes(entry.slug))
+		}
+	}))
+}
+
+const { entry, mdxEntry } = Astro.props
+const { Content } = await entry.render()
+
+const url = `https://ryanvoitiskis.com/blog/${entry.slug}`
+const head: HeadMeta = {
+	title: entry.data.title,
+	meta: [
+		{ name: 'description', content: entry.data.short },
+		{ property: 'og:url', content: url },
+		{ property: 'og:title', content: entry.data.title },
+		{ property: 'og:description', content: entry.data.short },
+		{ property: 'twitter:card', content: 'summary_large_image' },
+		{ property: 'twitter:title', content: entry.data.title },
+		{ property: 'twitter:description', content: entry.data.short }
+	],
+	link: [{ rel: 'canonical', href: url }]
+}
+
+if (entry.data.cover && entry.data.coverAlt) {
+	const ogImage = await getImage({
+		src: entry.data.cover,
+		format: 'webp',
+		width: 1200,
+		height: 630
+	})
+
+	const twitterImage = await getImage({ src: entry.data.cover, format: 'webp' })
+
+	head.meta?.push(
+		{ property: 'og:image', content: ogImage.src }, // TODO: check this works
+		{ property: 'og:image:alt', content: entry.data.coverAlt },
+		{ property: 'og:image:width', content: '1200' },
+		{ property: 'og:image:height', content: '630' },
+		{ property: 'twitter:image', content: twitterImage.src }, // TODO: check this works
+		{ property: 'twitter:image:alt', content: entry.data.coverAlt }
+	)
+}
+
+const lcp = mdxEntry.optimisedGallery?.find(
+	(item: OptimisedGalleryItem) => item.isLCP
+)
+
+if (lcp)
+	head.link!.push({
+		rel: 'preload',
+		href: lcp.preview.src,
+		imagesrcset: lcp.preview.srcSet?.attribute
+			? lcp.preview.srcSet.attribute
+			: undefined,
+		as: 'image'
+	})
+---
+
+<script src="../../lib/idleLoadImages.ts"></script>
+
+<Layout {head}>
+	<main class="w-full">
+		<article
+			class:list={[
+				'mx-auto w-full px-4 pb-48 text-md',
+				entry.data.format === 'image_collection'
+					? 'max-w-[1120px]'
+					: 'max-w-screen-sm'
+			]}
+		>
+			<h1 class="text-balance">{entry.data.title}</h1>
+			<table
+				class="clean ml-2 border-l-4 border-l-secondary font-mono text-xs text-muted-foreground sm:ml-6"
+			>
+				<tbody>
+					{
+						entry.data.updated && (
+							<tr>
+								<td class="!pl-4">Updated</td>
+								<td class="font-[110]">
+									{dateStringToLocale(entry.data.updated)}
+								</td>
+							</tr>
+						)
+					}
+					<tr>
+						<td class="!pl-4">Published</td>
+						<td class="font-[110]">
+							{dateStringToLocale(entry.data.published)}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<Content />
+			<a
+				href="/blog"
+				class="mx-auto my-16 flex h-9 w-fit items-center justify-center whitespace-nowrap rounded-md border px-4 py-2 font-mono text-sm font-[120] text-primary shadow-sm transition-colors duration-420 hover:border-primary hover:bg-foreground/10 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+				>back to other posts</a
+			>
+		</article>
+	</main>
+</Layout>

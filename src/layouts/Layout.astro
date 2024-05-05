@@ -1,0 +1,53 @@
+---
+import '@/styles/main.scss'
+import ButtonLink from '@/components/ButtonLink.astro'
+import ThemeToggle from '@/components/ThemeToggle.vue'
+import { renderHeadTags, type HeadMeta } from '@/lib/head'
+import persistTheme from '@/lib/persistTheme.min.js?raw'
+
+interface Props {
+	head: HeadMeta // page specific head tags
+	navItem?: string // current nav item to highlight (must match the label)
+}
+
+const { head, navItem } = Astro.props
+const headTags = renderHeadTags(head)
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script is:inline set:html={persistTheme} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<Fragment set:html={headTags} />
+		<meta property="og:type" content="website" />
+		<meta property="twitter:creator" content="@ryanvoitiskis" />
+		<meta property="twitter:site" content="@ryanvoitiskis" />
+	</head>
+	<body>
+		<header
+			class="flex h-14 w-full justify-between border-b bg-muted transition-colors duration-420"
+		>
+			<div
+				class="mx-auto flex w-full max-w-[1120px] flex-row items-center justify-between p-4"
+			>
+				<nav class="-ml-4 flex flex-wrap gap-y-4">
+					<ButtonLink href="/" label="about" current={navItem} />
+					<ButtonLink href="/blog" label="blog" current={navItem} />
+					<ButtonLink href="/projects" label="projects" current={navItem} />
+				</nav>
+				<ThemeToggle class="-my-2" client:only="vue" />
+			</div>
+		</header>
+
+		<div
+			class="min-h-[calc(100vh_-_56px)] bg-background pt-8 transition-colors duration-420"
+		>
+			<!-- root node of slot should be <main> for semantic purpose -->
+			<slot />
+		</div>
+	</body>
+</html>

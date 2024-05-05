@@ -1,0 +1,74 @@
+---
+title: DALL·E 2 collection 1
+format: image_collection
+published: '2023-01-13'
+short: Some interesting DALL·E 2 results.
+cover: ../../assets/posts/dall-e2-1/2.png
+coverAlt: AI generated image
+tags: ['DALL·E 2']
+---
+
+import { Image, getImage } from 'astro:assets'
+
+import { optimiseGallery } from '@/lib/image'
+
+import ImageGallery from '@/components/ImageGallery.vue'
+
+import img0 from '@/assets/posts/dall-e2-1/0.png'
+import img1 from '@/assets/posts/dall-e2-1/1.png'
+import img2 from '@/assets/posts/dall-e2-1/2.png'
+import img3 from '@/assets/posts/dall-e2-1/3.png'
+import img4 from '@/assets/posts/dall-e2-1/4.png'
+import img5 from '@/assets/posts/dall-e2-1/5.png'
+import img6 from '@/assets/posts/dall-e2-1/6.png'
+import img7 from '@/assets/posts/dall-e2-1/7.png'
+import img8 from '@/assets/posts/dall-e2-1/8.png'
+import img9 from '@/assets/posts/dall-e2-1/9.png'
+
+export const altPrefix = `DALL·E 2 generated image of`
+
+export const optimisedGallery = await optimiseGallery([
+	{
+		src: img0,
+		alt: ' two humanoid robots creating human life.',
+		isLCP: true
+	},
+	{
+		src: img1,
+		alt: `${altPrefix} two monkeys with glasses building neural networks.`
+	},
+	{
+		src: img2,
+		alt: `${altPrefix} two monkeys manipulating a large physical network by hand.`
+	},
+	{
+		src: img3,
+		alt: `${altPrefix} a drawing of two monkeys manipulating a large physical network by hand.`
+	},
+	{
+		src: img4,
+		alt: `${altPrefix} a mycelium ghost.`
+	},
+	{
+		src: img5,
+		alt: `${altPrefix} a mycelium ghost.`
+	},
+	{
+		src: img6,
+		alt: `${altPrefix} an ancient tribesman walking through a jungle portal.`
+	},
+	{
+		src: img7,
+		alt: `${altPrefix} a painting of an evil horned monster.`
+	},
+	{
+		src: img8,
+		alt: `${altPrefix} a painting of bipedal, white rat like creatures in a dark room.`
+	},
+	{
+		src: img9,
+		alt: `${altPrefix} a powerful witch performing a ritual.`
+	}
+])
+
+<ImageGallery gallery={optimisedGallery} client:load />

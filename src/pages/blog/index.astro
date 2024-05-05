@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content'
+
+import PostPreview from '@/components/PostPreview.astro'
+import Layout from '@/layouts/Layout.astro'
+import type { HeadMeta } from '@/lib/head'
+
+const posts = await getCollection('blog')
+posts.sort((a, b) => {
+	const dateA = new Date(a.data.published)
+	const dateB = new Date(b.data.published)
+
+	if (dateA.getTime() !== dateB.getTime())
+		return dateB.getTime() - dateA.getTime()
+	else return b.data.title.localeCompare(a.data.title)
+})
+
+const description =
+	'my blog posts about software development and how I utilise AI in my projects.'
+const title = 'ryan_voitiskis | blog'
+const url = 'https://ryanvoitiskis.com/blog'
+const head: HeadMeta = {
+	title: title,
+	meta: [
+		{ name: 'description', content: description },
+		{ property: 'og:title', content: title },
+		{ property: 'og:description', content: description },
+		{ property: 'og:url', content: url },
+		{ property: 'twitter:card', content: 'summary' },
+		{ property: 'twitter:title', content: title },
+		{ property: 'twitter:description', content: description }
+	],
+	link: [{ rel: 'canonical', href: url }]
+}
+---
+
+<Layout {head} navItem="blog">
+	<main>
+		<div class="mx-auto w-full max-w-[1120px] px-4 pb-48">
+			<h1 class="font-mono text-sm font-[120] text-muted-foreground">> blog</h1>
+			<div class="flex flex-col">
+				{posts.map((p, i) => <PostPreview post={p} index={i} />)}
+			</div>
+		</div>
+	</main>
+</Layout>

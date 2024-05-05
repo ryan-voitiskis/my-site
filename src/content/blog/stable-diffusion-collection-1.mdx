@@ -1,0 +1,35 @@
+---
+title: Stable diffusion collection 1
+format: image_collection
+published: '2022-12-12'
+short: First collection of my favourite results from using stable diffusion.
+cover: ../../assets/posts/sd1/3.jpg
+coverAlt: AI generated image
+tags: ['Stable Diffusion']
+---
+
+import { Image, getImage } from 'astro:assets'
+
+import { optimiseGallery } from '@/lib/image'
+
+import ImageGallery from '@/components/ImageGallery.vue'
+
+import img0 from '@/assets/posts/sd1/0.jpg'
+import img1 from '@/assets/posts/sd1/1.jpg'
+import img2 from '@/assets/posts/sd1/2.jpg'
+import img3 from '@/assets/posts/sd1/3.jpg'
+
+export const prefix = `Stable Diffusion generated image of an`
+
+export const optimisedGallery = await optimiseGallery([
+	{
+		src: img0,
+		alt: `${prefix} interdimensional alien woman casting a spell.`,
+		isLCP: true
+	},
+	{ src: img1, alt: `${prefix} alien abduction.` },
+	{ src: img2, alt: `${prefix} interdimensional alien woman casting a spell.` },
+	{ src: img3, alt: `${prefix} alien dance party.` }
+])
+
+<ImageGallery gallery={optimisedGallery} client:load />

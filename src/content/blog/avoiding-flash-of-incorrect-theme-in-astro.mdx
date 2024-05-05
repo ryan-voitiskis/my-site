@@ -1,0 +1,126 @@
+---
+title: Avoiding a flash of incorrect theme in Astro
+format: article
+published: '2024-05-05'
+short: How to fix a flash of an incorrect theme in Astro on page load, using an inline script in the head.
+readingTime: 2 mins
+tags: ['Astro']
+---
+
+If you apply a users theme preference from localStorage or from the prefers-color-scheme media query in Astro, you will probably notice a flash of the incorrect theme being applied on page load. This flash of an incorrect theme will be even more noticeable if you have transitions applied to colour changes.
+
+This happens because the page content is being rendered with the default theme before your JavaScript can apply the correct theme. A solution to this problem is to apply the correct theme from a script in the `<head>` before the browser renders the page. This ensures that the correct theme is applied as early as possible, preventing the brief flash of the incorrect theme.
+
+Here is the script we will put in the head:
+
+```js title="src/lib/persistTheme.js"
+;(() => {
+	const preference =
+		// if localStorage theme already exists, use that
+		localStorage.getItem('theme') ??
+		// else use user's system preference
+		(window.matchMedia('(prefers-color-scheme: dark)').matches
+			? 'dark'
+			: 'light')
+
+	document.documentElement.classList.toggle('dark', preference === 'dark')
+
+	// persist theme to localStorage when mutation observed on <html>
+	const themeObserver = new MutationObserver(() => {
+		const isDark = document.documentElement.classList.contains('dark')
+		localStorage.setItem('theme', isDark ? 'dark' : 'light')
+	})
+	themeObserver.observe(document.documentElement, {
+		attributes: true,
+		attributeFilter: ['class']
+	})
+})()
+```
+
+This script needs to be placed in the `<head>` of your HTML document and executed inline using the `is:inline` directive. Here's why:
+
+When a web page is loaded, the browser parses the HTML document from top to bottom. As it encounters each element in the `<head>`, it parses and executes them in order. By placing our persistTheme script in the `<head>` with the `is:inline` directive, we ensure that it is executed as soon as the browser encounters it, while still in the process of parsing the `<head>`. This happens before the browser moves on to parse and render the `<body>`.
+
+Executing the script at this early stage allows it to apply the correct theme before any content is visually rendered to the user, avoiding the flash of incorrect theme that would occur if the theme was applied later in the page load process.
+
+To minify the script, you can run:
+
+```bash
+terser src/lib/persistTheme.js --mangle --output src/lib/persistTheme.min.js
+```
+
+or copy:
+
+{/* prettier-ignore-start */}
+```js title="src/lib/persistTheme.min.js"
+(()=>{const e=localStorage.getItem("theme")??(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.classList.toggle("dark",e==="dark");const t=new MutationObserver((()=>{const e=document.documentElement.classList.contains("dark");localStorage.setItem("theme",e?"dark":"light")}));t.observe(document.documentElement,{attributes:true,attributeFilter:["class"]})})();
+```
+{/* prettier-ignore-end */}
+
+## Including the script
+
+- Import the minified script as a string using the [`?raw`](https://vitejs.dev/guide/assets#importing-asset-as-string) suffix.
+- Add the script to the `<head>` using the [`is:inline`](https://docs.astro.build/en/reference/directives-reference/#isinline) directive.
+
+> `is:inline` tells Astro to leave the `<script>` or `<style>` tag as-is in the final output HTML. The contents will not be processed, optimized, or bundled.
+
+{/* prettier-ignore-start */}
+```astro title="src/layouts/Layout.astro" ins={2, 10}
+---
+import persistTheme from '@/lib/persistTheme.min.js?raw'
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script is:inline set:html={persistTheme} />
+		...
+```
+{/* prettier-ignore-end */}
+
+## Theme toggle UI
+
+This script relies on the dark theme being applied by adding a `"dark"` class to the `<html>` element. For a simple way to toggle dark mode in this way with an `.astro` component, see this tutorial from the Astro docs:  
+[Back on dry land. Take your blog from day to night, no island required!](https://docs.astro.build/en/tutorial/6-islands/2/)
+
+Below is my implementation of a theme toggle button. It is a Vue component designed to simply toggle the `"dark"` class on the `<html>` element. It uses the [`<Toggle>`](https://www.shadcn-vue.com/docs/components/toggle.html) component from [shadcn-vue](https://www.shadcn-vue.com/).
+
+```vue title="src/components/ThemeToggle.vue"
+<script setup lang="ts">
+// only toggles 'dark' class in <html> element classList
+// see @/lib/persistTheme.js for rest of implementation
+import { ref, watch } from 'vue'
+
+import IconMoon from '@/components/icons/IconMoon.vue'
+import IconSun from '@/components/icons/IconSun.vue'
+import { Toggle } from '@/components/ui/toggle'
+
+const state = ref(
+	document.documentElement.classList.contains('dark') ? true : false
+)
+
+watch(state, (val) => document.documentElement.classList.toggle('dark', val))
+</script>
+
+<template>
+	<Toggle
+		v-model:pressed="state"
+		size="icon"
+		variant="theme"
+		aria-label="Toggle dark mode"
+	>
+		<IconSun v-show="state === false" class="h-6 w-6" />
+		<IconMoon v-show="state === true" class="h-6 w-6" />
+	</Toggle>
+</template>
+```
+
+### Additional Resources
+
+For more information about implementing dark mode, read:  
+[A Complete Guide to Dark Mode on the Web](https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/)
+
+My solution was inspired by this comment on Reddit:  
+[/r/webdev/comments/16iu3uf/comment/k0n4ds2](https://www.reddit.com/r/webdev/comments/16iu3uf/comment/k0n4ds2)

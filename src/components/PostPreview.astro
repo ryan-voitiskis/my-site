@@ -1,0 +1,75 @@
+---
+import { Image } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
+
+import { Badge } from '@/components/ui/badge'
+import { dateStringToLocale } from '@/lib/date'
+
+interface Props {
+	post: CollectionEntry<'blog'>
+	index: number
+}
+
+const { post, index } = Astro.props
+---
+
+<a
+	href={`/blog/${post.slug}`}
+	tabindex="0"
+	class="group flex h-auto w-full flex-col gap-12 overflow-hidden rounded-none border-b p-0 py-12 font-mono text-md font-normal text-foreground transition-colors duration-420 hover:no-underline focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring sm:flex-row"
+>
+	{
+		post.data.cover && post.data.coverAlt && (
+			<Image
+				src={post.data.cover}
+				alt={post.data.coverAlt}
+				width={256}
+				height={256}
+				densities={[1.5, 2, 3]}
+				loading={index < 3 ? 'eager' : 'lazy'}
+				class="transition-hue-rotate-200 mx-auto h-64 w-64 shrink-0 rounded-full bg-slate-300 object-cover font-sans sepia transition duration-300 group-hover:sepia-0 group-focus:sepia-0"
+			/>
+		)
+	}
+	<div
+		class="flex w-full flex-col items-start gap-4 lg:flex-row lg:!items-center lg:justify-items-start lg:gap-12"
+	>
+		<table
+			class="clean mb-0 h-fit w-[260px] shrink-0 font-mono text-xs text-muted-foreground"
+		>
+			<tbody>
+				<tr>
+					<td>Type</td>
+					<td class="font-thin">{post.data.format}</td>
+				</tr>
+				<tr>
+					<td>Published</td>
+					<td class="font-thin">
+						{dateStringToLocale(post.data.published)}
+					</td>
+				</tr>
+				{
+					post.data.readingTime && (
+						<tr>
+							<td>Reading time</td>
+							<td class="font-thin">{post.data.readingTime}</td>
+						</tr>
+					)
+				}
+			</tbody>
+		</table>
+		<div class="w-full font-sans">
+			<h2
+				class="mb-4 text-pretty underline decoration-transparent transition duration-100 group-hover:decoration-heading-text group-focus:decoration-heading-text"
+			>
+				{post.data.title}
+			</h2>
+			<div class="mb-2 flex flex-wrap gap-2">
+				{post.data.tags?.map((tag) => <Badge text={tag} />)}
+				<div v-if="post.data.short" class="w-full text-pretty">
+					{post.data.short}
+				</div>
+			</div>
+		</div>
+	</div>
+</a>
