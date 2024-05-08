@@ -224,6 +224,7 @@ h4 a {
 a {
 	color: hsl(var(--primary));
 	text-decoration: none;
+	font-weight: 500;
 	&:hover {
 		text-decoration: underline;
 	}
@@ -321,6 +322,10 @@ blockquote {
 	font-style: italic;
 	p {
 		margin: 0;
+	}
+	// inline code
+	:not(pre) > code {
+		color: hsl(var(--foreground));
 	}
 }
 
