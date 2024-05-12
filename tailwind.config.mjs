@@ -3,7 +3,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 const animate = require('tailwindcss-animate')
 
 module.exports = {
-	darkMode: ['class'],
+	darkMode: 'selector',
 	safelist: ['dark'],
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
