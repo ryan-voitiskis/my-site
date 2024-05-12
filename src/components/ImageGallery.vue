@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type PropType, defineProps, onMounted, ref } from 'vue'
+import { type PropType, defineProps, nextTick, onMounted, ref } from 'vue'
 
 import IconCrossCircle from '@/components/icons/IconCrossCircle.vue'
 import { Button } from '@/components/ui/button'
@@ -27,6 +27,7 @@ const current = ref(0)
 
 async function openInModal(i: number) {
 	showModal.value = true
+	await nextTick()
 	carouselContainerRef.value?.carouselApi?.scrollTo(i, true)
 	carouselContainerRef.value?.$el?.focus()
 	current.value = i + 1
@@ -74,7 +75,7 @@ onMounted(() => {
 		>
 			<IconCrossCircle class="h-16 w-16" />
 		</Button>
-		<Carousel ref="carouselContainerRef" tabindex="-1">
+		<Carousel ref="carouselContainerRef" tabindex="-1" class="outline-none">
 			<CarouselContent>
 				<CarouselItem v-for="image in gallery" :key="image.full.src">
 					<img
