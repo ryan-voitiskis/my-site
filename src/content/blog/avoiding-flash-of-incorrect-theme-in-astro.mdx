@@ -120,13 +120,13 @@ watch(isDark, (val) => document.documentElement.classList.toggle('dark', val))
 </template>
 ```
 
+The icons are conditionally displayed with CSS. Since we are setting the dark theme with the script in the head, by the time the ThemeToggle is rendered the correct theme will already be applied, so the correct icon will be visible.
+
 Add this to your Layout with `client:load` so that it can be rendered on the server and hydrated immediately on page load.
 
 ```astro
 <ThemeToggle client:load />
 ```
-
-The icons are conditionally displayed with CSS. Since we are setting the dark theme with the script in the head, by the time the ThemeToggle is rendered the correct theme will already be applied, so the correct icon will be visible.
 
 You could also use `client:idle`, but using `client:only="vue"` will result in a flash where the ThemeToggle isn't visible as it will be skipped at build time.
 
