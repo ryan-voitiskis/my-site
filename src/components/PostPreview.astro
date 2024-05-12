@@ -16,7 +16,10 @@ const { post, index } = Astro.props
 <a
 	href={`/blog/${post.slug}`}
 	tabindex="0"
-	class="group flex h-auto w-full flex-col gap-12 overflow-hidden rounded-none border-b p-0 py-12 font-mono text-md font-normal text-foreground transition-colors duration-420 hover:no-underline focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring sm:flex-row"
+	class:list={[
+		'group flex h-auto w-full flex-col gap-12 overflow-hidden rounded-none border-b p-0 py-12 font-mono text-md font-normal text-foreground transition-colors duration-420 hover:no-underline focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring sm:flex-row',
+		!post.data.cover && !post.data.coverAlt && 'md:px-24'
+	]}
 >
 	{
 		post.data.cover && post.data.coverAlt && (
