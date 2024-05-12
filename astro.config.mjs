@@ -22,6 +22,7 @@ export default defineConfig({
 			themes: [githubLightCustom, 'github-dark'],
 			themeCssSelector: (theme) =>
 				`[class="${theme.name === 'github-dark' ? 'dark' : 'light'}"]`,
+			useDarkModeMediaQuery: false,
 			styleOverrides: {
 				borderColor: 'hsl(var(--border))',
 				borderRadius: '8px',
