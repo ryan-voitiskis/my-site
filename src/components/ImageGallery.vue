@@ -42,7 +42,7 @@ onMounted(() => {
 </script>
 
 <template>
-	<p class="italic text-center text-muted-foreground text-sm">
+	<p class="text-center text-sm italic text-muted-foreground">
 		click an image to view fullsize
 	</p>
 	<div

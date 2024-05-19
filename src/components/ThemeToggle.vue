@@ -23,7 +23,7 @@ watch(isDark, (val) => document.documentElement.classList.toggle('dark', val))
 		variant="theme"
 		aria-label="Toggle dark mode"
 	>
-		<IconSun class="block dark:hidden h-6 w-6" />
-		<IconMoon class="hidden dark:block h-6 w-6" />
+		<IconSun class="block h-6 w-6 dark:hidden" />
+		<IconMoon class="hidden h-6 w-6 dark:block" />
 	</Toggle>
 </template>

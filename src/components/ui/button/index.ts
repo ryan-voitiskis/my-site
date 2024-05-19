@@ -3,7 +3,7 @@ import { type VariantProps, cva } from 'class-variance-authority'
 export { default as Button } from './Button.vue'
 
 export const buttonVariants = cva(
-	'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-[120] transition-colors duration-420 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 font-mono',
+	'inline-flex items-center justify-center whitespace-nowrap rounded-md font-mono text-sm font-[120] transition-colors duration-420 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
 	{
 		variants: {
 			variant: {
@@ -12,13 +12,13 @@ export const buttonVariants = cva(
 				destructive:
 					'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90',
 				outline:
-					'border text-primary hover:no-underline shadow-sm hover:bg-foreground/10 hover:border-primary',
+					'border text-primary shadow-sm hover:border-primary hover:bg-foreground/10 hover:no-underline',
 				secondary:
 					'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
 				ghost: 'hover:bg-accent hover:text-accent-foreground',
 				link: 'text-primary underline-offset-4 hover:underline',
 				'nav-link':
-					'font-[130] text-foreground dark:text-secondary hover:bg-vmuted',
+					'font-[130] text-foreground hover:bg-vmuted dark:text-secondary',
 				blank: 'whitespace-normal',
 				image: 'focus-visible:ring-8'
 			},

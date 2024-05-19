@@ -7,8 +7,8 @@ export default {
 	semi: false,
 	plugins: [
 		'prettier-plugin-astro',
-		'prettier-plugin-tailwindcss',
-		'@trivago/prettier-plugin-sort-imports'
+		'@trivago/prettier-plugin-sort-imports',
+		'prettier-plugin-tailwindcss' // MUST come last
 	],
 	overrides: [
 		{
@@ -26,5 +26,6 @@ export default {
 		'^@/assets/(.*)$' // assets imports
 	],
 	importOrderSeparation: true,
-	importOrderSortSpecifiers: true
+	importOrderSortSpecifiers: true,
+	tailwindFunctions: ['clsx', 'cva', 'cn']
 }
