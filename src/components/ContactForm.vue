@@ -14,13 +14,14 @@ import {
 	FormMessage
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { Toaster } from '@/components/ui/sonner'
 import { Textarea } from '@/components/ui/textarea'
 
 const formSchema = toTypedSchema(
 	z.object({
 		name: z.string().trim().min(2).max(100),
 		email: z.string().trim().email().max(420),
-		message: z.string().trim().min(10).max(9000)
+		message: z.string().trim().min(8).max(9000)
 	})
 )
 
@@ -66,6 +67,7 @@ const showMessageError = computed(() => form.isFieldTouched('message'))
 					<Input
 						type="text"
 						v-bind="componentField"
+						spellcheck="false"
 						autocomplete="off"
 						class="name_input"
 					/>
@@ -78,7 +80,12 @@ const showMessageError = computed(() => form.isFieldTouched('message'))
 			<FormItem class="mb-2">
 				<FormLabel>email</FormLabel>
 				<FormControl>
-					<Input type="text" v-bind="componentField" autocomplete="off" />
+					<Input
+						type="text"
+						v-bind="componentField"
+						spellcheck="false"
+						autocomplete="off"
+					/>
 				</FormControl>
 				<FormMessage v-if="showEmailError" />
 			</FormItem>
@@ -94,6 +101,7 @@ const showMessageError = computed(() => form.isFieldTouched('message'))
 			</FormItem>
 		</FormField>
 
-		<Button type="submit" class="my-4">submit</Button>
+		<Button type="submit" class="my-4">submit</Button>3
+		<Toaster position="bottom-center" />
 	</form>
 </template>
