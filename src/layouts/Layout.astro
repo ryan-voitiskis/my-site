@@ -2,16 +2,21 @@
 import '@/styles/main.scss'
 import ButtonLink from '@/components/ButtonLink.astro'
 import ThemeToggle from '@/components/ThemeToggle.vue'
-import { renderHeadTags, type HeadMeta } from '@/lib/head'
+import { renderHeadItems, type HeadItems } from '@/lib/head'
 import persistTheme from '@/lib/persistTheme.min.js?raw'
 
 interface Props {
-	head: HeadMeta // page specific head tags
+	headItems: HeadItems // page specific head tags
 	navItem?: string // current nav item to highlight (must match the label)
 }
 
-const { head, navItem } = Astro.props
-const headTags = renderHeadTags(head)
+const layoutHeadItems: HeadItems = {
+	title: 'test',
+	meta: [{ name: 'description', content: 'test description - shouldnt show' }]
+}
+
+const { headItems, navItem } = Astro.props
+const renderedHead = renderHeadItems([layoutHeadItems, headItems])
 ---
 
 <!doctype html>
@@ -36,7 +41,7 @@ const headTags = renderHeadTags(head)
 			type="font/woff2"
 			crossorigin="anonymous"
 		/>
-		<Fragment set:html={headTags} />
+		<Fragment set:html={renderedHead} />
 		<meta property="og:type" content="website" />
 		<meta property="twitter:creator" content="@ryanvoitiskis" />
 		<meta property="twitter:site" content="@ryanvoitiskis" />

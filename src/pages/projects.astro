@@ -4,7 +4,7 @@ import ProjectImages from '@/components/ProjectImages.vue'
 import { Badge } from '@/components/ui/badge'
 import Layout from '@/layouts/Layout.astro'
 import { optimiseProjectImages } from '@/lib/image'
-import type { HeadMeta } from '@/lib/head'
+import type { HeadItems } from '@/lib/head'
 import { getImage } from 'astro:assets'
 
 import cg0 from '@/assets/projects/crate-guide/0.png'
@@ -44,7 +44,7 @@ const twitterImage = await getImage({ src: cg0, format: 'webp' })
 const description = `some of my projects i've been working on recently.`
 const title = 'ryan_voitiskis | projects'
 const url = 'https://ryanvoitiskis.com/projects'
-const head: HeadMeta = {
+const headItems: HeadItems = {
 	title: title,
 	meta: [
 		{ name: 'description', content: description },
@@ -78,7 +78,7 @@ const head: HeadMeta = {
 
 <script src="../lib/idleLoadImages.ts"></script>
 
-<Layout {head} navItem="projects">
+<Layout {headItems} navItem="projects">
 	<main class="mx-auto w-full max-w-[1120px] px-4 pb-48">
 		<h1 class="font-mono text-sm font-[120] text-muted-foreground">
 			> projects

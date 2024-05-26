@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content'
 
 import PostPreview from '@/components/PostPreview.astro'
 import Layout from '@/layouts/Layout.astro'
-import type { HeadMeta } from '@/lib/head'
+import type { HeadItems } from '@/lib/head'
 
 const posts = await getCollection('blog')
 posts.sort((a, b) => {
@@ -19,7 +19,7 @@ const description =
 	'my blog posts about software development and how I utilise AI in my projects.'
 const title = 'ryan_voitiskis | blog'
 const url = 'https://ryanvoitiskis.com/blog'
-const head: HeadMeta = {
+const headItems: HeadItems = {
 	title: title,
 	meta: [
 		{ name: 'description', content: description },
@@ -34,7 +34,7 @@ const head: HeadMeta = {
 }
 ---
 
-<Layout {head} navItem="blog">
+<Layout {headItems} navItem="blog">
 	<main>
 		<div class="mx-auto w-full max-w-[1120px] px-4 pb-48">
 			<h1 class="font-mono text-sm font-[120] text-muted-foreground">> blog</h1>

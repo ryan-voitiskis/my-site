@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content'
 import Layout from '@/layouts/Layout.astro'
 import { dateStringToLocale } from '@/lib/date'
 import type { OptimisedGalleryItem } from '@/lib/image'
-import type { HeadMeta } from '@/lib/head'
+import type { HeadItems } from '@/lib/head'
 import { getImage } from 'astro:assets'
 
 export async function getStaticPaths() {
@@ -24,7 +24,7 @@ const { entry, mdxEntry } = Astro.props
 const { Content } = await entry.render()
 
 const url = `https://ryanvoitiskis.com/blog/${entry.slug}`
-const head: HeadMeta = {
+const headItems: HeadItems = {
 	title: entry.data.title,
 	meta: [
 		{ name: 'description', content: entry.data.short },
@@ -48,7 +48,7 @@ if (entry.data.cover && entry.data.coverAlt) {
 
 	const twitterImage = await getImage({ src: entry.data.cover, format: 'webp' })
 
-	head.meta?.push(
+	headItems.meta?.push(
 		{ property: 'og:image', content: ogImage.src }, // TODO: check this works
 		{ property: 'og:image:alt', content: entry.data.coverAlt },
 		{ property: 'og:image:width', content: '1200' },
@@ -63,7 +63,7 @@ const lcp = mdxEntry.optimisedGallery?.find(
 )
 
 if (lcp)
-	head.link!.push({
+	headItems.link!.push({
 		rel: 'preload',
 		href: lcp.preview.src,
 		imagesrcset: lcp.preview.srcSet?.attribute
@@ -75,7 +75,7 @@ if (lcp)
 
 <script src="../../lib/idleLoadImages.ts"></script>
 
-<Layout {head}>
+<Layout {headItems}>
 	<main class="w-full">
 		<article
 			class:list={[
