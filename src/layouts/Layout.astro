@@ -10,13 +10,10 @@ interface Props {
 	navItem?: string // current nav item to highlight (must match the label)
 }
 
-const layoutHeadItems: HeadItems = {
-	title: 'test',
-	meta: [{ name: 'description', content: 'test description - shouldnt show' }]
-}
+const layoutHeadItems: HeadItems = {}
 
-const { headItems, navItem } = Astro.props
-const renderedHead = renderHeadItems([layoutHeadItems, headItems])
+const { headItems: pageHeadItems, navItem } = Astro.props
+const renderedHead = renderHeadItems([layoutHeadItems, pageHeadItems])
 ---
 
 <!doctype html>

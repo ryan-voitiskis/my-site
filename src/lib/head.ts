@@ -23,9 +23,13 @@ export interface HeadItems {
 	}[]
 }
 
+/*
+	there is no limit to the number of HeadItems objects that can be passed in to 
+	the function. later objects will override earlier objects in the case of 
+	duplicates. for this reason, order global first, then page specific in the [].
+*/
 export function renderHeadItems(headItems: HeadItems[]): string {
 	const items = mergeHeadItems(headItems)
-	// TODO: dedupe meta tags
 	validateHeadItems(items)
 
 	const tags: string[] = []
@@ -86,7 +90,23 @@ function mergeHeadItems(headItems: HeadItems[]): HeadItems {
 		if (item.noscript) mergedHeadItems.noscript?.push(...item.noscript)
 	})
 
+	mergedHeadItems.meta = deduplicateMetaTags(mergedHeadItems.meta)
+
 	return mergedHeadItems
+}
+
+function deduplicateMetaTags(metaTags: HeadItems['meta']): HeadItems['meta'] {
+	const metaMap = new Map<
+		string,
+		{ name?: string; property?: string; content: string }
+	>()
+
+	metaTags?.forEach((meta) => {
+		const key = meta.property || meta.name
+		if (key) metaMap.set(key, meta)
+	})
+
+	return Array.from(metaMap.values())
 }
 
 function validateHeadItems(headItems: HeadItems) {
