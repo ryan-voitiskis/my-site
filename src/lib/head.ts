@@ -21,8 +21,6 @@ export interface HeadMeta {
 	noscript?: {
 		innerHTML: string
 	}[]
-	htmlAttrs?: Record<string, string>
-	bodyAttrs?: Record<string, string>
 }
 
 export function renderHeadTags(headMeta: HeadMeta): string {
@@ -62,20 +60,6 @@ export function renderHeadTags(headMeta: HeadMeta): string {
 		headMeta.noscript.forEach((noscript) => {
 			tags.push(`<noscript>${noscript.innerHTML}</noscript>`)
 		})
-
-	if (headMeta.htmlAttrs) {
-		const attrs = Object.entries(headMeta.htmlAttrs)
-			.map(([key, value]) => `${key}="${value}"`)
-			.join(' ')
-		tags.push(`<html ${attrs}>`)
-	}
-
-	if (headMeta.bodyAttrs) {
-		const attrs = Object.entries(headMeta.bodyAttrs)
-			.map(([key, value]) => `${key}="${value}"`)
-			.join(' ')
-		tags.push(`<body ${attrs}>`)
-	}
 
 	return tags.join('\n')
 }
