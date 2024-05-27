@@ -10,7 +10,24 @@ interface Props {
 	navItem?: string // current nav item to highlight (must match the label)
 }
 
-const layoutHeadItems: HeadItems = {}
+const layoutHeadItems: HeadItems = {
+	link: [
+		{
+			rel: 'preload',
+			href: '/fonts/InterVariable.woff2',
+			as: 'font',
+			type: 'font/woff2',
+			crossorigin: 'anonymous'
+		},
+		{
+			rel: 'preload',
+			href: '/fonts/BerkeleyMonoVariable-Regular.woff2',
+			as: 'font',
+			type: 'font/woff2',
+			crossorigin: 'anonymous'
+		}
+	]
+}
 
 const { headItems: pageHeadItems, navItem } = Astro.props
 const renderedHead = renderHeadItems([layoutHeadItems, pageHeadItems])
@@ -24,20 +41,6 @@ const renderedHead = renderHeadItems([layoutHeadItems, pageHeadItems])
 		<script is:inline set:html={persistTheme} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="sitemap" href="/sitemap-index.xml" />
-		<link
-			rel="preload"
-			href="/fonts/InterVariable.woff2"
-			as="font"
-			type="font/woff2"
-			crossorigin="anonymous"
-		/>
-		<link
-			rel="preload"
-			href="/fonts/BerkeleyMonoVariable-Regular.woff2"
-			as="font"
-			type="font/woff2"
-			crossorigin="anonymous"
-		/>
 		<Fragment set:html={renderedHead} />
 		<meta property="og:type" content="website" />
 		<meta property="twitter:creator" content="@ryanvoitiskis" />

@@ -10,6 +10,8 @@ export interface HeadItems {
 		href: string
 		imagesrcset?: string
 		as?: string
+		type?: string
+		crossorigin?: string
 	}[]
 	style?: {
 		cssText: string
