@@ -1,4 +1,5 @@
 const DEFAULT_CHARSET = { charset: 'UTF-8' }
+const DEFAULT_VIEWPORT = { content: 'width=device-width, initial-scale=1' }
 
 export interface HeadItems {
 	title?: string
@@ -39,15 +40,20 @@ export function renderHeadItems(headItems: HeadItems[]): string {
 
 	const tags: string[] = []
 
-	const metaWithNameOrProperty = items.meta?.filter((i) => i.name || i.property)
-
 	const charset = items.meta?.filter((i) => i.charset).at(-1) || DEFAULT_CHARSET
 	tags.push(`<meta charset="${charset.charset}">`)
 
+	const viewport =
+		items.meta?.filter((i) => i.name === 'viewport').at(-1) || DEFAULT_VIEWPORT
+	tags.push(`<meta name="viewport" content="${viewport.content}">`)
+
 	tags.push(`<title>${items.title}</title>`)
 
-	if (metaWithNameOrProperty?.length)
-		metaWithNameOrProperty.forEach((meta) => {
+	const unhandledMetaItems = items.meta?.filter(
+		(i) => i.property || (i.name && i.name !== 'viewport')
+	)
+	if (unhandledMetaItems?.length)
+		unhandledMetaItems.forEach((meta) => {
 			const attrs = Object.entries(meta)
 				.map(([key, value]) => `${key}="${value}"`)
 				.join(' ')
