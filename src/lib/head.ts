@@ -1,9 +1,12 @@
+const DEFAULT_CHARSET = { charset: 'UTF-8' }
+
 export interface HeadItems {
 	title?: string
 	meta?: {
 		name?: string
 		property?: string
-		content: string
+		content?: string
+		charset?: string
 	}[]
 	link?: {
 		rel: string
@@ -36,10 +39,15 @@ export function renderHeadItems(headItems: HeadItems[]): string {
 
 	const tags: string[] = []
 
+	const metaWithNameOrProperty = items.meta?.filter((i) => i.name || i.property)
+
+	const charset = items.meta?.filter((i) => i.charset).at(-1) || DEFAULT_CHARSET
+	tags.push(`<meta charset="${charset.charset}">`)
+
 	tags.push(`<title>${items.title}</title>`)
 
-	if (items.meta)
-		items.meta.forEach((meta) => {
+	if (metaWithNameOrProperty?.length)
+		metaWithNameOrProperty.forEach((meta) => {
 			const attrs = Object.entries(meta)
 				.map(([key, value]) => `${key}="${value}"`)
 				.join(' ')
@@ -100,7 +108,7 @@ function mergeHeadItems(headItems: HeadItems[]): HeadItems {
 function deduplicateMetaTags(metaTags: HeadItems['meta']): HeadItems['meta'] {
 	const metaMap = new Map<
 		string,
-		{ name?: string; property?: string; content: string }
+		{ name?: string; property?: string; content?: string }
 	>()
 
 	metaTags?.forEach((meta) => {
