@@ -6,6 +6,7 @@ export interface HeadItems {
 	meta?: {
 		name?: string
 		property?: string
+		'http-equiv'?: string
 		content?: string
 		charset?: string
 	}[]
@@ -46,6 +47,15 @@ export function renderHeadItems(headItems: HeadItems[]): string {
 	const viewport =
 		items.meta?.filter((i) => i.name === 'viewport').at(-1) || DEFAULT_VIEWPORT
 	tags.push(`<meta name="viewport" content="${viewport.content}">`)
+
+	const httpEquivMeta = items.meta?.filter((i) => i['http-equiv'])
+	if (httpEquivMeta?.length)
+		httpEquivMeta.forEach((meta) => {
+			const attrs = Object.entries(meta)
+				.map(([key, value]) => `${key}="${value}"`)
+				.join(' ')
+			tags.push(`<meta ${attrs}>`)
+		})
 
 	tags.push(`<title>${items.title}</title>`)
 
@@ -112,13 +122,19 @@ function mergeHeadItems(headItems: HeadItems[]): HeadItems {
 }
 
 function deduplicateMetaTags(metaTags: HeadItems['meta']): HeadItems['meta'] {
+	// TODO: type properly
 	const metaMap = new Map<
 		string,
-		{ name?: string; property?: string; content?: string }
+		{
+			name?: string
+			property?: string
+			'http-equiv'?: string
+			content?: string
+		}
 	>()
 
 	metaTags?.forEach((meta) => {
-		const key = meta.property || meta.name
+		const key = meta.property || meta.name || meta['http-equiv']
 		if (key) metaMap.set(key, meta)
 	})
 
