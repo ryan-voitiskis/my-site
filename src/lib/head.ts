@@ -1,43 +1,18 @@
 const DEFAULT_CHARSET = { charset: 'UTF-8' }
 const DEFAULT_VIEWPORT = { content: 'width=device-width, initial-scale=1' }
 
-interface MetaItem {
-	name?: string
-	property?: string
-	'http-equiv'?: string
-	content?: string
-	charset?: string
-}
-
-interface LinkItem {
-	rel: string
-	href: string
-	imagesrcset?: string
-	as?: string
-	type?: string
-	crossorigin?: string
-}
-
-interface StyleItem {
-	cssText: string
-}
-
-interface ScriptItem {
-	src?: string
+interface HeadTag {
+	[key: string]: any
 	innerHTML?: string
-}
-
-interface NoScriptItem {
-	innerHTML: string
 }
 
 export interface HeadItems {
 	title?: string
-	meta?: MetaItem[]
-	link?: LinkItem[]
-	style?: StyleItem[]
-	script?: ScriptItem[]
-	noscript?: NoScriptItem[]
+	meta?: HeadTag[]
+	link?: HeadTag[]
+	style?: HeadTag[]
+	script?: HeadTag[]
+	noscript?: HeadTag[]
 }
 
 /*
@@ -61,10 +36,7 @@ export function renderHeadItems(headItems: HeadItems[]): string {
 	const httpEquivMeta = items.meta?.filter((i) => i['http-equiv'])
 	if (httpEquivMeta?.length)
 		httpEquivMeta.forEach((meta) => {
-			const attrs = Object.entries(meta)
-				.map(([key, value]) => `${key}="${value}"`)
-				.join(' ')
-			tags.push(`<meta ${attrs}>`)
+			tags.push(`<meta ${renderAttrs(meta)}>`)
 		})
 
 	tags.push(`<title>${items.title}</title>`)
@@ -74,18 +46,12 @@ export function renderHeadItems(headItems: HeadItems[]): string {
 	)
 	if (unhandledMetaItems?.length)
 		unhandledMetaItems.forEach((meta) => {
-			const attrs = Object.entries(meta)
-				.map(([key, value]) => `${key}="${value}"`)
-				.join(' ')
-			tags.push(`<meta ${attrs}>`)
+			tags.push(`<meta ${renderAttrs(meta)}>`)
 		})
 
 	if (items.link)
 		items.link.forEach((link) => {
-			const attrs = Object.entries(link)
-				.map(([key, value]) => `${key}="${value}"`)
-				.join(' ')
-			tags.push(`<link ${attrs}>`)
+			tags.push(`<link ${renderAttrs(link)}>`)
 		})
 
 	if (items.style)
@@ -95,8 +61,9 @@ export function renderHeadItems(headItems: HeadItems[]): string {
 
 	if (items.script)
 		items.script.forEach((script) => {
-			const attrs = script.src ? `src="${script.src}"` : ''
-			tags.push(`<script ${attrs}>${script.innerHTML || ''}</script>`)
+			tags.push(
+				`<script ${renderAttrs(script)}>${script.innerHTML || ''}</script>`
+			)
 		})
 
 	if (items.noscript)
@@ -110,11 +77,11 @@ export function renderHeadItems(headItems: HeadItems[]): string {
 function mergeHeadItems(headItems: HeadItems[]): HeadItems {
 	const mergedHeadItems = {
 		title: '',
-		meta: [] as MetaItem[],
-		link: [] as LinkItem[],
-		style: [] as StyleItem[],
-		script: [] as ScriptItem[],
-		noscript: [] as NoScriptItem[]
+		meta: [] as HeadTag[],
+		link: [] as HeadTag[],
+		style: [] as HeadTag[],
+		script: [] as HeadTag[],
+		noscript: [] as HeadTag[]
 	}
 
 	headItems.forEach((item) => {
@@ -131,10 +98,10 @@ function mergeHeadItems(headItems: HeadItems[]): HeadItems {
 	return mergedHeadItems
 }
 
-function deduplicateMetaItems(metaItems: MetaItem[]): MetaItem[] {
-	const metaMap = new Map<string, Omit<MetaItem, 'charset'>>()
+function deduplicateMetaItems(metaItems: HeadTag[]): HeadTag[] {
+	const metaMap = new Map<string, Omit<HeadTag, 'charset'>>()
 
-	metaItems?.forEach((meta) => {
+	metaItems.forEach((meta) => {
 		const key = meta.property || meta.name || meta['http-equiv']
 		if (key) metaMap.set(key, meta)
 	})
@@ -142,9 +109,20 @@ function deduplicateMetaItems(metaItems: MetaItem[]): MetaItem[] {
 	return Array.from(metaMap.values())
 }
 
+// TODO: test formatting of attr and <tag attr="" attr />{innerHTML}</tag>
+// TODO: also test no more than one space between attrs
+function renderAttrs(tag: HeadTag): string {
+	return Object.entries(tag)
+		.map(([key, value]) => {
+			if (typeof value === 'boolean') return value ? key : ''
+			else return `${key}="${value}"`
+		})
+		.filter((attr) => attr !== '')
+		.join(' ')
+}
+
 function validateHeadItems(headItems: HeadItems) {
+	// TODO: better error messages - ideally inc page name 'in index.astro' or 'on page /foo'
 	if (!headItems.title || !headItems.title.length)
 		throw new Error('Missing title tag in head.')
 }
-
-// TODO: better error messages - ideally inc page name 'in index.astro' or 'on page /foo'
