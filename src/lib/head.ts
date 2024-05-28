@@ -1,39 +1,49 @@
 const DEFAULT_CHARSET = { charset: 'UTF-8' }
 const DEFAULT_VIEWPORT = { content: 'width=device-width, initial-scale=1' }
 
+interface MetaItem {
+	name?: string
+	property?: string
+	'http-equiv'?: string
+	content?: string
+	charset?: string
+}
+
+interface LinkItem {
+	rel: string
+	href: string
+	imagesrcset?: string
+	as?: string
+	type?: string
+	crossorigin?: string
+}
+
+interface StyleItem {
+	cssText: string
+}
+
+interface ScriptItem {
+	src?: string
+	innerHTML?: string
+}
+
+interface NoScriptItem {
+	innerHTML: string
+}
+
 export interface HeadItems {
 	title?: string
-	meta?: {
-		name?: string
-		property?: string
-		'http-equiv'?: string
-		content?: string
-		charset?: string
-	}[]
-	link?: {
-		rel: string
-		href: string
-		imagesrcset?: string
-		as?: string
-		type?: string
-		crossorigin?: string
-	}[]
-	style?: {
-		cssText: string
-	}[]
-	script?: {
-		src?: string
-		innerHTML?: string
-	}[]
-	noscript?: {
-		innerHTML: string
-	}[]
+	meta?: MetaItem[]
+	link?: LinkItem[]
+	style?: StyleItem[]
+	script?: ScriptItem[]
+	noscript?: NoScriptItem[]
 }
 
 /*
-	there is no limit to the number of HeadItems objects that can be passed in to 
-	the function. later objects will override earlier objects in the case of 
-	duplicates. for this reason, order global first, then page specific in the [].
+  there is no limit to the number of HeadItems objects that can be passed in to 
+  the function. later objects will override earlier objects in the case of 
+  duplicates. for this reason, order global first, then page specific in the [].
 */
 export function renderHeadItems(headItems: HeadItems[]): string {
 	const items = mergeHeadItems(headItems)
@@ -98,42 +108,33 @@ export function renderHeadItems(headItems: HeadItems[]): string {
 }
 
 function mergeHeadItems(headItems: HeadItems[]): HeadItems {
-	const mergedHeadItems: HeadItems = {
+	const mergedHeadItems = {
 		title: '',
-		meta: [],
-		link: [],
-		style: [],
-		script: [],
-		noscript: []
+		meta: [] as MetaItem[],
+		link: [] as LinkItem[],
+		style: [] as StyleItem[],
+		script: [] as ScriptItem[],
+		noscript: [] as NoScriptItem[]
 	}
 
 	headItems.forEach((item) => {
 		if (item.title && item.title.length) mergedHeadItems.title = item.title
-		if (item.meta) mergedHeadItems.meta?.push(...item.meta)
-		if (item.link) mergedHeadItems.link?.push(...item.link)
-		if (item.style) mergedHeadItems.style?.push(...item.style)
-		if (item.script) mergedHeadItems.script?.push(...item.script)
-		if (item.noscript) mergedHeadItems.noscript?.push(...item.noscript)
+		if (item.meta) mergedHeadItems.meta.push(...item.meta)
+		if (item.link) mergedHeadItems.link.push(...item.link)
+		if (item.style) mergedHeadItems.style.push(...item.style)
+		if (item.script) mergedHeadItems.script.push(...item.script)
+		if (item.noscript) mergedHeadItems.noscript.push(...item.noscript)
 	})
 
-	mergedHeadItems.meta = deduplicateMetaTags(mergedHeadItems.meta)
+	mergedHeadItems.meta = deduplicateMetaItems(mergedHeadItems.meta)
 
 	return mergedHeadItems
 }
 
-function deduplicateMetaTags(metaTags: HeadItems['meta']): HeadItems['meta'] {
-	// TODO: type properly
-	const metaMap = new Map<
-		string,
-		{
-			name?: string
-			property?: string
-			'http-equiv'?: string
-			content?: string
-		}
-	>()
+function deduplicateMetaItems(metaItems: MetaItem[]): MetaItem[] {
+	const metaMap = new Map<string, Omit<MetaItem, 'charset'>>()
 
-	metaTags?.forEach((meta) => {
+	metaItems?.forEach((meta) => {
 		const key = meta.property || meta.name || meta['http-equiv']
 		if (key) metaMap.set(key, meta)
 	})
