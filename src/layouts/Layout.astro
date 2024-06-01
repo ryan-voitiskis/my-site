@@ -25,6 +25,18 @@ const layoutHeadItems: HeadItems = {
 			as: 'font',
 			type: 'font/woff2',
 			crossorigin: 'anonymous'
+		},
+		{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+		{ rel: 'sitemap', href: '/sitemap-index.xml' }
+	],
+	meta: [
+		{ property: 'og:type', content: 'website' },
+		{ property: 'twitter:creator', content: '@ryanvoitiskis' },
+		{ property: 'twitter:site', content: '@ryanvoitiskis' }
+	],
+	script: [
+		{
+			innerHTML: persistTheme
 		}
 	]
 }
@@ -36,13 +48,7 @@ const renderedHead = renderHeadItems([layoutHeadItems, pageHeadItems])
 <!doctype html>
 <html lang="en">
 	<head>
-		<script is:inline set:html={persistTheme} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="sitemap" href="/sitemap-index.xml" />
 		<Fragment set:html={renderedHead} />
-		<meta property="og:type" content="website" />
-		<meta property="twitter:creator" content="@ryanvoitiskis" />
-		<meta property="twitter:site" content="@ryanvoitiskis" />
 	</head>
 	<body>
 		<header

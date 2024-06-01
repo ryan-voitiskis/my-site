@@ -129,7 +129,7 @@ function applyDefaultPriorities(tags: Tag[]): PrioritisedTag[] {
 				break
 
 			default:
-				priority = 300
+				priority = 120
 		}
 		prioritisedTags.push({ ...tag, priority })
 	})
