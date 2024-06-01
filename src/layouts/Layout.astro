@@ -10,22 +10,17 @@ interface Props {
 	navItem?: string // current nav item to highlight (must match the label)
 }
 
+const preloadFontAttrs = {
+	rel: 'preload',
+	as: 'font',
+	type: 'font/woff2',
+	crossorigin: 'anonymous'
+}
+
 const layoutHeadItems: HeadItems = {
 	link: [
-		{
-			rel: 'preload',
-			href: '/fonts/InterVariable.woff2',
-			as: 'font',
-			type: 'font/woff2',
-			crossorigin: 'anonymous'
-		},
-		{
-			rel: 'preload',
-			href: '/fonts/BerkeleyMonoVariable-Regular.woff2',
-			as: 'font',
-			type: 'font/woff2',
-			crossorigin: 'anonymous'
-		},
+		{ ...preloadFontAttrs, href: '/fonts/InterVariable.woff2' },
+		{ ...preloadFontAttrs, href: '/fonts/BerkeleyMonoVariable-Regular.woff2' },
 		{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
 		{ rel: 'sitemap', href: '/sitemap-index.xml' }
 	],
@@ -34,11 +29,7 @@ const layoutHeadItems: HeadItems = {
 		{ property: 'twitter:creator', content: '@ryanvoitiskis' },
 		{ property: 'twitter:site', content: '@ryanvoitiskis' }
 	],
-	script: [
-		{
-			innerHTML: persistTheme
-		}
-	]
+	script: [{ innerHTML: persistTheme }]
 }
 
 const { headItems: pageHeadItems, navItem } = Astro.props
