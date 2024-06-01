@@ -1,21 +1,38 @@
 const DEFAULT_CHARSET = { charset: 'UTF-8' }
 const DEFAULT_VIEWPORT = { content: 'width=device-width, initial-scale=1' }
 
-interface HeadTag {
+type TagName = 'meta' | 'link' | 'style' | 'script' | 'noscript'
+
+type BaseItem = {
 	[key: string]: any
-	innerHTML?: string
+	priority?: number
 }
 
-export interface HeadItems {
-	title?: string
-	meta?: HeadTag[]
-	link?: HeadTag[]
-	style?: HeadTag[]
-	script?: HeadTag[]
-	noscript?: HeadTag[]
+type ContentItem = BaseItem & {
+	innerHTML: string
 }
+
+type Tag = (BaseItem | ContentItem) & {
+	tagName: TagName
+}
+
+type PrioritisedTag = Tag & {
+	priority: number
+}
+
+export type HeadItems = {
+	title?: string
+	meta?: BaseItem[]
+	link?: BaseItem[]
+	style?: ContentItem[]
+	script?: ContentItem[]
+	noscript?: ContentItem[]
+}
+
+type MergedHeadItems = Required<HeadItems>
 
 /*
+	// TODO: move this to README
   there is no limit to the number of HeadItems objects that can be passed in to 
   the function. later objects will override earlier objects in the case of 
   duplicates. for this reason, order global first, then page specific in the [].
@@ -24,64 +41,99 @@ export function renderHeadItems(headItems: HeadItems[]): string {
 	const items = mergeHeadItems(headItems)
 	validateHeadItems(items)
 
-	const tags: string[] = []
+	const tags: Tag[] = []
+	const tagNames = ['meta', 'link', 'style', 'script', 'noscript'] as TagName[]
+	tagNames.forEach((tag) => {
+		tags.push(...items[tag].map((item) => ({ ...item, tagName: tag })))
+	})
 
-	const charset = items.meta?.filter((i) => i.charset).at(-1) || DEFAULT_CHARSET
-	tags.push(`<meta charset="${charset.charset}">`)
+	let prioritisedTags = applyDefaultPriorities(tags)
+	prioritisedTags = applyDefaultTags(prioritisedTags)
 
-	const viewport =
-		items.meta?.filter((i) => i.name === 'viewport').at(-1) || DEFAULT_VIEWPORT
-	tags.push(`<meta name="viewport" content="${viewport.content}">`)
+	const orderedTags = prioritisedTags.sort((a, b) => a.priority - b.priority)
 
-	const httpEquivMeta = items.meta?.filter((i) => i['http-equiv'])
-	if (httpEquivMeta?.length)
-		httpEquivMeta.forEach((meta) => {
-			tags.push(`<meta ${renderAttrs(meta)}>`)
-		})
+	const preTitleTags = orderedTags
+		.filter((i) => i.priority < 0)
+		.map((item) => renderHeadTag(item))
+	const postTitleTags = orderedTags
+		.filter((i) => i.priority > 0)
+		.map((item) => renderHeadTag(item))
 
-	tags.push(`<title>${items.title}</title>`)
-
-	const unhandledMetaItems = items.meta?.filter(
-		(i) => i.property || (i.name && i.name !== 'viewport')
-	)
-	if (unhandledMetaItems?.length)
-		unhandledMetaItems.forEach((meta) => {
-			tags.push(`<meta ${renderAttrs(meta)}>`)
-		})
-
-	if (items.link)
-		items.link.forEach((link) => {
-			tags.push(`<link ${renderAttrs(link)}>`)
-		})
-
-	if (items.style)
-		items.style.forEach((style) => {
-			tags.push(`<style>${style.cssText}</style>`)
-		})
-
-	if (items.script)
-		items.script.forEach((script) => {
-			tags.push(
-				`<script ${renderAttrs(script)}>${script.innerHTML || ''}</script>`
-			)
-		})
-
-	if (items.noscript)
-		items.noscript.forEach((noscript) => {
-			tags.push(`<noscript>${noscript.innerHTML}</noscript>`)
-		})
-
-	return tags.join('\n')
+	return [
+		...preTitleTags,
+		`<title>${items.title}</title>`,
+		...postTitleTags
+	].join('\n')
 }
 
-function mergeHeadItems(headItems: HeadItems[]): HeadItems {
+function applyDefaultTags(tags: PrioritisedTag[]): PrioritisedTag[] {
+	if (!tags.some((tag) => tag.tagName === 'meta' && tag.charset))
+		tags.push({ ...DEFAULT_CHARSET, tagName: 'meta', priority: -3 })
+
+	if (!tags.some((tag) => tag.tagName === 'meta' && tag.name === 'viewport'))
+		tags.push({ ...DEFAULT_VIEWPORT, tagName: 'meta', priority: -2 })
+
+	return tags
+}
+
+function applyDefaultPriorities(tags: Tag[]): PrioritisedTag[] {
+	const prioritisedTags: PrioritisedTag[] = tags.filter(
+		(tag) => tag.priority
+	) as PrioritisedTag[] // TODO: remove type assertion
+	const unprioritisedTags = tags.filter((tag) => !tag.priority)
+
+	unprioritisedTags.forEach((tag) => {
+		switch (tag.tagName) {
+			case 'meta':
+				if (tag.charset) prioritisedTags.push({ ...tag, priority: -3 })
+				else if (tag.name === 'viewport')
+					prioritisedTags.push({ ...tag, priority: -2 })
+				else if (tag['http-equiv'])
+					prioritisedTags.push({ ...tag, priority: -1 })
+				else prioritisedTags.push({ ...tag, priority: 100 })
+				break
+
+			case 'link':
+				if (tag.rel === 'preconnect')
+					prioritisedTags.push({ ...tag, priority: 10 })
+				if (tag.rel === 'preload')
+					prioritisedTags.push({ ...tag, priority: 60 })
+				if (tag.rel === 'prefetch')
+					prioritisedTags.push({ ...tag, priority: 80 })
+				if (tag.rel === 'stylesheet')
+					prioritisedTags.push({ ...tag, priority: 50 })
+				else prioritisedTags.push({ ...tag, priority: 0 })
+				break
+
+			case 'style':
+				prioritisedTags.push({
+					...tag,
+					priority: tag.innerHTML.includes('@import') ? 30 : 51
+				})
+				break
+
+			case 'script':
+				if (tag.async) prioritisedTags.push({ ...tag, priority: 20 })
+				else if (tag.defer) prioritisedTags.push({ ...tag, priority: 70 })
+				else prioritisedTags.push({ ...tag, priority: 40 })
+				break
+
+			default:
+				prioritisedTags.push({ ...tag, priority: 300 })
+		}
+	})
+
+	return prioritisedTags
+}
+
+function mergeHeadItems(headItems: HeadItems[]): MergedHeadItems {
 	const mergedHeadItems = {
 		title: '',
-		meta: [] as HeadTag[],
-		link: [] as HeadTag[],
-		style: [] as HeadTag[],
-		script: [] as HeadTag[],
-		noscript: [] as HeadTag[]
+		meta: [] as BaseItem[],
+		link: [] as BaseItem[],
+		style: [] as ContentItem[],
+		script: [] as ContentItem[],
+		noscript: [] as ContentItem[]
 	}
 
 	headItems.forEach((item) => {
@@ -93,13 +145,14 @@ function mergeHeadItems(headItems: HeadItems[]): HeadItems {
 		if (item.noscript) mergedHeadItems.noscript.push(...item.noscript)
 	})
 
+	// TODO [later]: consider moving deduplication to the parent function
 	mergedHeadItems.meta = deduplicateMetaItems(mergedHeadItems.meta)
 
 	return mergedHeadItems
 }
 
-function deduplicateMetaItems(metaItems: HeadTag[]): HeadTag[] {
-	const metaMap = new Map<string, Omit<HeadTag, 'charset'>>()
+function deduplicateMetaItems(metaItems: BaseItem[]): BaseItem[] {
+	const metaMap = new Map<string, BaseItem>()
 
 	metaItems.forEach((meta) => {
 		const key = meta.property || meta.name || meta['http-equiv']
@@ -109,10 +162,19 @@ function deduplicateMetaItems(metaItems: HeadTag[]): HeadTag[] {
 	return Array.from(metaMap.values())
 }
 
+function renderHeadTag(item: BaseItem | ContentItem): string {
+	const attrs = renderAttrs(item)
+	return ['meta', 'link'].includes(item.tagName)
+		? `<${item.tagName} ${attrs} />`
+		: `<${item.tagName}${attrs && ' '}${attrs}>${item.innerHTML}</${item.tagName}>`
+}
+
 // TODO: test formatting of attr and <tag attr="" attr />{innerHTML}</tag>
 // TODO: also test no more than one space between attrs
-function renderAttrs(tag: HeadTag): string {
-	return Object.entries(tag)
+// TODO: remove priority before rendering
+function renderAttrs(item: BaseItem | ContentItem): string {
+	return Object.entries(item)
+		.filter(([key]) => !['innerHTML', 'priority', 'tagName'].includes(key))
 		.map(([key, value]) => {
 			if (typeof value === 'boolean') return value ? key : ''
 			else return `${key}="${value}"`
