@@ -42,7 +42,7 @@ export function renderHeadItems(headItems: HeadItems[]): string {
 	validateHeadItems(items)
 
 	const tags: Tag[] = []
-	const tagNames = ['meta', 'link', 'style', 'script', 'noscript'] as TagName[]
+	const tagNames: TagName[] = ['meta', 'link', 'style', 'script', 'noscript']
 	tagNames.forEach((tag) => {
 		tags.push(...items[tag].map((item) => ({ ...item, tagName: tag })))
 	})
@@ -64,66 +64,6 @@ export function renderHeadItems(headItems: HeadItems[]): string {
 		`<title>${items.title}</title>`,
 		...postTitleTags
 	].join('\n')
-}
-
-function applyDefaultTags(tags: PrioritisedTag[]): PrioritisedTag[] {
-	if (!tags.some((tag) => tag.tagName === 'meta' && tag.charset))
-		tags.push({ ...DEFAULT_CHARSET, tagName: 'meta', priority: -3 })
-
-	if (!tags.some((tag) => tag.tagName === 'meta' && tag.name === 'viewport'))
-		tags.push({ ...DEFAULT_VIEWPORT, tagName: 'meta', priority: -2 })
-
-	return tags
-}
-
-function applyDefaultPriorities(tags: Tag[]): PrioritisedTag[] {
-	const prioritisedTags: PrioritisedTag[] = tags.filter(
-		(tag) => tag.priority
-	) as PrioritisedTag[] // TODO: remove type assertion
-	const unprioritisedTags = tags.filter((tag) => !tag.priority)
-
-	unprioritisedTags.forEach((tag) => {
-		switch (tag.tagName) {
-			case 'meta':
-				if (tag.charset) prioritisedTags.push({ ...tag, priority: -3 })
-				else if (tag.name === 'viewport')
-					prioritisedTags.push({ ...tag, priority: -2 })
-				else if (tag['http-equiv'])
-					prioritisedTags.push({ ...tag, priority: -1 })
-				else prioritisedTags.push({ ...tag, priority: 100 })
-				break
-
-			case 'link':
-				if (tag.rel === 'preconnect')
-					prioritisedTags.push({ ...tag, priority: 10 })
-				if (tag.rel === 'preload')
-					prioritisedTags.push({ ...tag, priority: 60 })
-				if (tag.rel === 'prefetch')
-					prioritisedTags.push({ ...tag, priority: 80 })
-				if (tag.rel === 'stylesheet')
-					prioritisedTags.push({ ...tag, priority: 50 })
-				else prioritisedTags.push({ ...tag, priority: 0 })
-				break
-
-			case 'style':
-				prioritisedTags.push({
-					...tag,
-					priority: tag.innerHTML.includes('@import') ? 30 : 51
-				})
-				break
-
-			case 'script':
-				if (tag.async) prioritisedTags.push({ ...tag, priority: 20 })
-				else if (tag.defer) prioritisedTags.push({ ...tag, priority: 70 })
-				else prioritisedTags.push({ ...tag, priority: 40 })
-				break
-
-			default:
-				prioritisedTags.push({ ...tag, priority: 300 })
-		}
-	})
-
-	return prioritisedTags
 }
 
 function mergeHeadItems(headItems: HeadItems[]): MergedHeadItems {
@@ -149,6 +89,62 @@ function mergeHeadItems(headItems: HeadItems[]): MergedHeadItems {
 	mergedHeadItems.meta = deduplicateMetaItems(mergedHeadItems.meta)
 
 	return mergedHeadItems
+}
+
+function applyDefaultPriorities(tags: Tag[]): PrioritisedTag[] {
+	const prioritisedTags: PrioritisedTag[] = []
+	const unprioritisedTags: Tag[] = []
+
+	tags.forEach((tag) => {
+		if (tag.priority !== undefined) prioritisedTags.push(tag as PrioritisedTag)
+		else unprioritisedTags.push(tag)
+	})
+
+	unprioritisedTags.forEach((tag) => {
+		let priority: number
+		switch (tag.tagName) {
+			case 'meta':
+				if (tag.charset) priority = -3
+				else if (tag.name === 'viewport') priority = -2
+				else if (tag['http-equiv']) priority = -1
+				else priority = 100
+				break
+
+			case 'link':
+				if (tag.rel === 'preconnect') priority = 10
+				else if (tag.rel === 'preload') priority = 60
+				else if (tag.rel === 'prefetch') priority = 80
+				else if (tag.rel === 'stylesheet') priority = 50
+				else priority = 90
+				break
+
+			case 'style':
+				priority = tag.innerHTML.includes('@import') ? 30 : 51
+				break
+
+			case 'script':
+				if (tag.async) priority = 20
+				else if (tag.defer) priority = 70
+				else priority = 40
+				break
+
+			default:
+				priority = 300
+		}
+		prioritisedTags.push({ ...tag, priority })
+	})
+
+	return prioritisedTags
+}
+
+function applyDefaultTags(tags: PrioritisedTag[]): PrioritisedTag[] {
+	if (!tags.some((tag) => tag.tagName === 'meta' && tag.charset))
+		tags.push({ ...DEFAULT_CHARSET, tagName: 'meta', priority: -3 })
+
+	if (!tags.some((tag) => tag.tagName === 'meta' && tag.name === 'viewport'))
+		tags.push({ ...DEFAULT_VIEWPORT, tagName: 'meta', priority: -2 })
+
+	return tags
 }
 
 function deduplicateMetaItems(metaItems: BaseItem[]): BaseItem[] {
