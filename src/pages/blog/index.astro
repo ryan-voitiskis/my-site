@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content'
 
 import PostPreview from '@/components/PostPreview.astro'
 import Layout from '@/layouts/Layout.astro'
-import type { HeadItems } from '@/lib/head'
+import type { HeadItems } from 'astro-helmet'
 
 const posts = await getCollection('blog')
 posts.sort((a, b) => {
