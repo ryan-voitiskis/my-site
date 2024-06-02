@@ -31,15 +31,9 @@ export type HeadItems = {
 
 type MergedHeadItems = Required<HeadItems>
 
-/*
-	// TODO: move this to README
-  there is no limit to the number of HeadItems objects that can be passed in to 
-  the function. later objects will override earlier objects in the case of 
-  duplicates. for this reason, order global first, then page specific in the [].
-*/
 export function renderHeadItems(headItems: HeadItems[]): string {
 	const items = mergeHeadItems(headItems)
-	validateHeadItems(items)
+	if (!items.title) throw new Error('Missing title tag.')
 
 	const tags: Tag[] = []
 	const tagNames: TagName[] = ['meta', 'link', 'style', 'script', 'noscript']
@@ -66,17 +60,17 @@ export function renderHeadItems(headItems: HeadItems[]): string {
 	].join('\n')
 }
 
-function mergeHeadItems(headItems: HeadItems[]): MergedHeadItems {
-	const mergedHeadItems = {
+function mergeHeadItems(items: HeadItems[]): MergedHeadItems {
+	const mergedHeadItems: MergedHeadItems = {
 		title: '',
-		meta: [] as BaseItem[],
-		link: [] as BaseItem[],
-		style: [] as ContentItem[],
-		script: [] as ContentItem[],
-		noscript: [] as ContentItem[]
+		meta: [],
+		link: [],
+		style: [],
+		script: [],
+		noscript: []
 	}
 
-	headItems.forEach((item) => {
+	items.forEach((item) => {
 		if (item.title && item.title.length) mergedHeadItems.title = item.title
 		if (item.meta) mergedHeadItems.meta.push(...item.meta)
 		if (item.link) mergedHeadItems.link.push(...item.link)
@@ -85,7 +79,6 @@ function mergeHeadItems(headItems: HeadItems[]): MergedHeadItems {
 		if (item.noscript) mergedHeadItems.noscript.push(...item.noscript)
 	})
 
-	// TODO [later]: consider moving deduplication to the parent function
 	mergedHeadItems.meta = deduplicateMetaItems(mergedHeadItems.meta)
 
 	return mergedHeadItems
@@ -165,10 +158,7 @@ function renderHeadTag(item: BaseItem | ContentItem): string {
 		: `<${item.tagName}${attrs && ' '}${attrs}>${item.innerHTML}</${item.tagName}>`
 }
 
-// TODO: test formatting of attr and <tag attr="" attr />{innerHTML}</tag>
-// TODO: also test no more than one space between attrs
-// TODO: remove priority before rendering
-function renderAttrs(item: BaseItem | ContentItem): string {
+export function renderAttrs(item: BaseItem | ContentItem): string {
 	return Object.entries(item)
 		.filter(([key]) => !['innerHTML', 'priority', 'tagName'].includes(key))
 		.map(([key, value]) => {
@@ -177,10 +167,4 @@ function renderAttrs(item: BaseItem | ContentItem): string {
 		})
 		.filter((attr) => attr !== '')
 		.join(' ')
-}
-
-function validateHeadItems(headItems: HeadItems) {
-	// TODO: better error messages - ideally inc page name 'in index.astro' or 'on page /foo'
-	if (!headItems.title || !headItems.title.length)
-		throw new Error('Missing title tag in head.')
 }
