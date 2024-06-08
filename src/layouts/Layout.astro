@@ -3,7 +3,8 @@ import '@/styles/main.scss'
 
 import ButtonLink from '@/components/ButtonLink.astro'
 import ThemeToggle from '@/components/ThemeToggle.vue'
-import { renderHead, type HeadItems } from 'astro-helmet'
+import Helmet from 'astro-helmet'
+import type { HeadItems } from 'astro-helmet'
 import persistTheme from '@/lib/persistTheme.min.js?raw'
 
 interface Props {
@@ -34,14 +35,11 @@ const layoutHeadItems: HeadItems = {
 }
 
 const { headItems: pageHeadItems, navItem } = Astro.props
-const head = renderHead([layoutHeadItems, pageHeadItems])
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<Fragment set:html={head} />
-	</head>
+	<Helmet headItems={[layoutHeadItems, pageHeadItems]} />
 	<body>
 		<header
 			class="flex h-14 w-full justify-between border-b bg-muted transition-colors duration-420"

@@ -23,7 +23,7 @@
 		"@vueuse/core": "^10.10.0",
 		"astro": "^4.9.2",
 		"astro-expressive-code": "^0.35.3",
-		"astro-helmet": "^0.2.0",
+		"astro-helmet": "^1.0.0",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
 		"embla-carousel": "^8.1.3",
