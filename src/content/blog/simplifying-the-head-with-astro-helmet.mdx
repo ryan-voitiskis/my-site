@@ -1,0 +1,206 @@
+---
+title: Simplifying the <head> with astro-helmet
+format: article
+published: '2024-06-09'
+short: Why and how to use astro-helmet to manage the document head of Astro projects.
+cover: ./covers/simplifying-the-head-with-astro-helmet.jpg
+coverAlt: TODO
+tags: ['Astro', 'head', 'SEO']
+---
+
+Adding tags to the `<head>` of an Astro project is fairly trivial. You can add tags like `<title>`, `<meta>`, `<link>`, and `<script>` directly to the `<head>` in your layout component. The Astro docs recommend writting a single `<head>` tag in a layout component. See [using `<head>` in a component](https://docs.astro.build/en/guides/troubleshooting/#using-head-in-a-component).
+
+One problem I had to solve soon after starting building this site in Astro, was how to get page specific head tags in to the head in the Layout component. There are two simple ways to achieve this:
+
+1. Use a [`<slot>`](https://docs.astro.build/en/basics/astro-components/#slots):
+
+{/* prettier-ignore-start */}
+```astro
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<slot name="head" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+	</head>
+	<body> ... </body>
+</html>
+```
+{/* prettier-ignore-end */}
+
+2. Use props to pass the data for the tags in to the Layout component:
+
+{/* prettier-ignore-start */}
+```astro
+---
+interface Props {
+	title: string
+}
+
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{title}</title>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+	</head>
+	<body> ... </body>
+</html>
+```
+{/* prettier-ignore-end */}
+
+For a nice implementation of this, see the [Astro Starter Kit: Blog BaseHead.astro component](https://github.com/withastro/astro/blob/main/examples/blog/src/components/BaseHead.astro)
+
+Both of these solutions became messy quickly. I wanted to:
+
+- manage the head tags in a more structured way
+- merge the head tags from the layout and page components
+- deduplicate meta tags
+- control the order of the tags in a consistent and configurable way
+
+So I built `astro-helmet`, a utility for managing the document head of Astro projects. It provides a simple and flexible API for adding head items from multiple components and controlling their order.
+
+## Using astro-helmet
+
+To use `astro-helmet`, first install it with npm:
+
+```bash
+npm i astro-helmet
+```
+
+`astro-helmet` can be used in a variety of ways, covering all use cases I could think of. There are two props that can be passed in to the component:
+
+- `headItems: HeadItems | HeadItems[]`
+- `options: Options`
+
+### Basic example
+
+In this example, a single `headItems` object is passed in as the prop of the same name:
+
+```astro title="src/layouts/Layout.astro"
+---
+import Helmet from 'astro-helmet'
+
+const headItems = {
+	title: 'My Site Title',
+	base: [{ href: 'https://example.com' }],
+	meta: [
+		{ name: 'description', content: 'My site description' },
+		{ property: 'og:type', content: 'website' }
+	],
+	link: [{ rel: 'stylesheet', href: 'styles.css' }],
+	style: [{ innerHTML: 'body { color: red; }' }],
+	script: [{ innerHTML: 'console.log("Hello, world!")' }],
+	noscript: [{ innerHTML: 'Please enable JavaScript' }]
+}
+---
+
+<!doctype html>
+<html lang="en">
+	<Helmet {headItems} />
+	<body> ... </body>
+</html>
+```
+
+This example doesn't have much application, as most of the time you will want to define the title and other tags in the page component. If you have no layout specific head tags, you could define the `headItems` in the page component, then pass them in as a prop.
+
+You can also use the type for `headItems` in the layout or page component:
+
+```ts
+import type { HeadItems } from 'astro-helmet'
+
+const headItems: HeadItems = {}
+```
+
+### Merging tags from multiple components
+
+A more likely use case, and one that utilises `astro-helmet` more powerfully, is defining one `headItems` object in your layout component, and another in your page component.
+
+The `headItems` prop can take an array of `HeadItems` and merge them together. Conflicting tags are deduplicated with the last tag taking precedence.
+
+```astro title="src/layouts/Layout.astro"
+---
+import Helmet from 'astro-helmet'
+import type { HeadItems } from 'astro-helmet'
+
+interface Props {
+	headItems: HeadItems
+}
+
+const layoutHeadItems: HeadItems = {
+	title: 'My Site Title',
+	base: [{ href: 'https://example.com' }],
+	meta: [
+		{ name: 'description', content: 'My site description' },
+		{ property: 'og:type', content: 'website' }
+	],
+	link: [{ rel: 'stylesheet', href: 'styles.css' }],
+	style: [{ innerHTML: 'body { color: red; }' }],
+	script: [{ innerHTML: 'console.log("Hello, world!")' }],
+	noscript: [{ innerHTML: 'Please enable JavaScript' }]
+}
+
+const { headItems: pageHeadItems } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+	<Helmet headItems={[layoutHeadItems, pageHeadItems]} />
+	<body> ... </body>
+</html>
+```
+
+{/* prettier-ignore-start */}
+```astro title="src/pages/index.astro"
+---
+import type { HeadItems } from 'astro-helmet'
+import Layout from '@/layouts/Layout.astro'
+
+const headItems = {
+	title: 'Home Page',
+	meta: [
+		{ name: 'description', content: 'Home page description' },
+		{ property: 'og:type', content: 'website' }
+	]
+}
+---
+
+<Layout {headItems}>
+	<main> ... </main>
+</Layout>
+```
+{/* prettier-ignore-end */}
+
+This will result in the following `<head>`:
+
+{/* prettier-ignore-start */}
+```html
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<base href="https://example.com">
+	<title>Home Page</title>
+	<script>console.log("Hello, world!")</script>
+	<link rel="stylesheet" href="styles.css">
+	<style>body { color: red; }</style>
+	<meta name="description" content="Home page description">
+	<meta property="og:type" content="website">
+	<noscript>Please enable JavaScript</noscript>
+</head>
+```
+{/* prettier-ignore-end */}
+
+### Example with preloading \<img\>
+
+### Example with options
+
+## Controlling the order of tags
+
+## Options
+
+## Conclusion
