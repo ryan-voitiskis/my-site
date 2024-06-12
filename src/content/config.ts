@@ -12,20 +12,18 @@ const blogCollection = defineCollection({
 				short: z.string(),
 				cover: image().optional(),
 				coverAlt: z.string().optional(),
+				displayCoverInArticle: z.boolean().optional(),
+				maxWidth: z.number().optional(),
 				readingTime: z.string().optional(),
-				images: z
-					.array(
-						z.object({
-							src: z.string(),
-							alt: z.string()
-						})
-					)
-					.optional(),
 				tags: z.array(z.string()).optional()
 			})
 			.refine((data) => !(data.cover && !data.coverAlt), {
 				message: 'coverAlt is required when cover is present',
 				path: ['coverAlt']
+			})
+			.refine((data) => !(data.displayCoverInArticle && !data.cover), {
+				message: 'cover is required when displayCoverInArticle is true',
+				path: ['cover']
 			})
 })
 

@@ -4,7 +4,9 @@ format: article
 published: '2024-06-09'
 short: Why and how to use astro-helmet to manage the document head of Astro projects.
 cover: ./covers/simplifying-the-head-with-astro-helmet.jpg
-coverAlt: TODO
+coverAlt: Astronaut's helmet with code reflected off the visor.
+displayCoverInArticle: true
+maxWidth: 690
 tags: ['Astro', 'head', 'SEO']
 ---
 
@@ -12,10 +14,10 @@ Adding tags to the `<head>` of an Astro project is fairly trivial. You can add t
 
 One problem I had to solve soon after starting building this site in Astro, was how to get page specific head tags in to the head in the Layout component. There are two simple ways to achieve this:
 
-1. Use a [`<slot>`](https://docs.astro.build/en/basics/astro-components/#slots):
+**1.** Use a [`<slot>`](https://docs.astro.build/en/basics/astro-components/#slots):
 
 {/* prettier-ignore-start */}
-```astro
+```astro title="src/layouts/Layout.astro"
 <!doctype html>
 <html lang="en">
 	<head>
@@ -29,10 +31,10 @@ One problem I had to solve soon after starting building this site in Astro, was 
 ```
 {/* prettier-ignore-end */}
 
-2. Use props to pass the data for the tags in to the Layout component:
+**2.** Use props to pass the data for the tags in to the Layout component:
 
 {/* prettier-ignore-start */}
-```astro
+```astro title="src/layouts/Layout.astro"
 ---
 interface Props {
 	title: string
@@ -63,7 +65,7 @@ Both of these solutions became messy quickly. I wanted to:
 - deduplicate meta tags
 - control the order of the tags in a consistent and configurable way
 
-So I built `astro-helmet`, a utility for managing the document head of Astro projects. It provides a simple and flexible API for adding head items from multiple components and controlling their order.
+I built `astro-helmet`, a utility for managing the document head of Astro projects. It provides a simple and flexible API for adding head items from multiple components and controlling their order.
 
 ## Using astro-helmet
 
@@ -197,6 +199,12 @@ This will result in the following `<head>`:
 
 ### Example with preloading \<img\>
 
+### Example with preloading \<font\>
+
+### Example inlining script
+
+eg. persistTheme, why
+
 ### Example with options
 
 ## Controlling the order of tags
@@ -204,3 +212,34 @@ This will result in the following `<head>`:
 ## Options
 
 ## Conclusion
+
+## Appendix
+
+### Type definitions
+
+```ts
+type BaseItem = {
+	[key: string]: any
+	priority?: number
+}
+
+type ContentItem = BaseItem & {
+	innerHTML?: string
+}
+
+type HeadItems = {
+	title?: string
+	base?: BaseItem[]
+	meta?: BaseItem[]
+	link?: BaseItem[]
+	style?: ContentItem[]
+	script?: ContentItem[]
+	noscript?: ContentItem[]
+}
+```
+
+### Other exisiting solutions
+
+- [astro-capo](https://github.com/natemoo-re/astro-capo)
+- [astro-head](https://github.com/zfben/astro-head)
+- [@astrolib/seo](https://github.com/onwidget/astrolib/tree/main/packages/seo)

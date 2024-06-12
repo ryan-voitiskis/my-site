@@ -58,17 +58,34 @@ if (entry.data.cover && entry.data.coverAlt) {
 	)
 }
 
-const lcp = mdxEntry.optimisedGallery?.find(
+const galleryLcp = mdxEntry.optimisedGallery?.find(
 	(item: OptimisedGalleryItem) => item.isLCP
 )
+
+if (galleryLcp)
+	headItems.link!.push({
+		rel: 'preload',
+		href: galleryLcp.preview.src,
+		imagesrcset: galleryLcp.preview.srcSet.attribute,
+		as: 'image'
+	})
+
+const lcp =
+	entry.data.displayCoverInArticle &&
+	entry.data.cover &&
+	(await getImage({
+		src: entry.data.cover,
+		format: 'webp',
+		width: 736,
+		densities: [1.5, 2, 3],
+		loading: 'eager',
+		decoding: 'sync'
+	}))
 
 if (lcp)
 	headItems.link!.push({
 		rel: 'preload',
-		href: lcp.preview.src,
-		imagesrcset: lcp.preview.srcSet?.attribute
-			? lcp.preview.srcSet.attribute
-			: undefined,
+		imagesrcset: lcp.srcSet.attribute,
 		as: 'image'
 	})
 ---
@@ -78,12 +95,8 @@ if (lcp)
 <Layout {headItems}>
 	<main class="w-full">
 		<article
-			class:list={[
-				'mx-auto w-full px-4 pb-48 text-md',
-				entry.data.format === 'image_collection'
-					? 'max-w-[1120px]'
-					: 'max-w-screen-sm'
-			]}
+			style={`max-width: ${entry.data.maxWidth || 608}px;`}
+			class="mx-auto w-full px-4 pb-48 text-md"
 		>
 			<h1 class="text-balance">{entry.data.title}</h1>
 			<table
@@ -108,6 +121,16 @@ if (lcp)
 					</tr>
 				</tbody>
 			</table>
+			{
+				lcp && (
+					<img
+						srcset={lcp.srcSet.attribute}
+						alt={entry.data.coverAlt}
+						{...lcp.attributes}
+						class="mb-8"
+					/>
+				)
+			}
 			<Content />
 			<a
 				href="/blog"
