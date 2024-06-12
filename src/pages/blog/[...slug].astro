@@ -76,7 +76,7 @@ const lcp =
 	(await getImage({
 		src: entry.data.cover,
 		format: 'webp',
-		width: 736,
+		width: entry.data.maxWidth || 608,
 		densities: [1.5, 2, 3],
 		loading: 'eager',
 		decoding: 'sync'
@@ -95,7 +95,7 @@ if (lcp)
 <Layout {headItems}>
 	<main class="w-full">
 		<article
-			style={`max-width: ${entry.data.maxWidth || 608}px;`}
+			style={`max-width: ${entry.data.maxWidth ? entry.data.maxWidth + 32 : 608}px;`}
 			class="mx-auto w-full px-4 pb-48 text-md"
 		>
 			<h1 class="text-balance">{entry.data.title}</h1>

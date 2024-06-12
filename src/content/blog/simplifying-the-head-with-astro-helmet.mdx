@@ -199,17 +199,63 @@ This will result in the following `<head>`:
 
 ### Example with preloading \<img\>
 
+If you are optimising LCP, you might find that a `<link rel="preload">` tag is helpful for loading an image asset.
+
+This example demonstrates how `astro-helmet` can be used with a [`[...slug].astro`](https://docs.astro.build/en/guides/routing/#example-dynamic-pages-at-multiple-levels) component to cleanly add dynamic head items when rendering a collection. We use [`getImage()`](https://docs.astro.build/en/guides/images/#generating-images-with-getimage) from `'astro:assets'` to generate the image srcset. We then include this in `headItems.link` array as a `rel="preload"` item.
+
+```astro title="src/pages/blog/[...slug].astro"
+---
+import { getCollection } from 'astro:content'
+import { getImage } from 'astro:assets'
+import Layout from '@/layouts/Layout.astro'
+
+export async function getStaticPaths() {
+	const blogEntries = await getCollection('blog')
+	return blogEntries.map((entry) => ({ ... }))
+}
+
+const { entry } = Astro.props
+const { Content } = await entry.render()
+
+const lcp = await getImage({
+	src: entry.data.cover,
+	format: 'webp',
+	width: 736,
+	densities: [1.5, 2, 3],
+	loading: 'eager',
+	decoding: 'sync'
+})
+
+const headItems = {
+	title: entry.data.title,
+	link: [
+		{ rel: 'canonical', href: 'https://example.com' },
+		{ rel: 'preload', imagesrcset: lcp.srcSet.attribute, as: 'image' }
+	]
+}
+---
+
+<Layout {headItems}>
+	<main>
+		{lcp && <img srcset={lcp.srcSet.attribute} {...lcp.attributes} />}
+		<Content />
+	</main>
+</Layout>
+```
+
+This can be used with the `Layout.astro` component from the previous example.
+
 ### Example with preloading \<font\>
 
 ### Example inlining script
 
 eg. persistTheme, why
 
-### Example with options
-
 ## Controlling the order of tags
 
 ## Options
+
+### Example with options
 
 ## Conclusion
 
