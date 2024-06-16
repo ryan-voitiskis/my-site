@@ -197,7 +197,7 @@ This will result in the following `<head>`:
 ```
 {/* prettier-ignore-end */}
 
-### Example with preloading \<img\>
+### Example preloading an image
 
 If you are optimising LCP, you might find that a `<link rel="preload">` tag is helpful for loading an image asset.
 
@@ -245,11 +245,51 @@ const headItems = {
 
 This can be used with the `Layout.astro` component from the previous example.
 
-### Example with preloading \<font\>
+### Example preloading a font
+
+This example assumes you have a font in your `public/fonts`. See [Using custom fonts](https://docs.astro.build/en/guides/fonts/2) from the Astro docs.
+
+```ts
+const headItems = {
+	link: [
+		{
+			rel: 'preload',
+			as: 'font',
+			type: 'font/woff2',
+			crossorigin: 'anonymous',
+			href: '/fonts/InterVariable.woff2'
+		}
+	]
+}
+```
+
+This is the result added to the `<head>`:
+
+```html
+<link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/fonts/InterVariable.woff2">
+```
 
 ### Example inlining script
 
-eg. persistTheme, why
+Inlining a script in the head can be useful for adding functionality that is required before the page is rendered. This example demonstrates how to do this.
+
+Note the use of [`?raw`](https://vitejs.dev/guide/assets#importing-asset-as-string) to import the minified script as a string. This is then added as the `innerHTML` of a script tag.
+
+```astro title="src/layouts/Layout.astro"
+---
+import scriptForHead from '@/lib/scriptForHead.min.js?raw'
+
+const headItems = {
+	script: [{ innerHTML: scriptForHead }]
+}
+---
+```
+
+This is the result added to the `<head>`:
+
+```html
+<script>{scriptForHead}</script>
+```
 
 ## Controlling the order of tags
 
