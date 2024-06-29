@@ -1,0 +1,41 @@
+---
+title: Leonardo.Ai lifelike exploration
+format: image_collection
+published: '2024-06-16'
+short: Collection of surreal but lifelife images generated with Leonardo.Ai.
+cover: ../../assets/posts/leonardo_0/7.jpg
+coverAlt: AI generated image
+tags: ['Leonardo.Ai']
+---
+
+import { Image, getImage } from 'astro:assets'
+
+import { optimiseGallery } from '@/lib/image'
+
+import ImageGallery from '@/components/ImageGallery.vue'
+
+import img0 from '@/assets/posts/leonardo_0/0.jpg'
+import img1 from '@/assets/posts/leonardo_0/1.jpg'
+import img2 from '@/assets/posts/leonardo_0/2.jpg'
+import img3 from '@/assets/posts/leonardo_0/3.jpg'
+import img4 from '@/assets/posts/leonardo_0/4.jpg'
+import img5 from '@/assets/posts/leonardo_0/5.jpg'
+import img6 from '@/assets/posts/leonardo_0/6.jpg'
+import img7 from '@/assets/posts/leonardo_0/7.jpg'
+import img8 from '@/assets/posts/leonardo_0/8.jpg'
+
+export const alt = `Leonardo AI generated image.`
+
+export const optimisedGallery = await optimiseGallery([
+	{ src: img0, alt, isLCP: true },
+	{ src: img1, alt },
+	{ src: img2, alt },
+	{ src: img3, alt },
+	{ src: img4, alt },
+	{ src: img5, alt },
+	{ src: img6, alt },
+	{ src: img7, alt },
+	{ src: img8, alt }
+])
+
+<ImageGallery gallery={optimisedGallery} client:load />
