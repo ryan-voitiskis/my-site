@@ -10,9 +10,9 @@ maxWidth: 690
 tags: ['Astro', 'head', 'SEO']
 ---
 
-Adding tags to the `<head>` of an Astro project is fairly trivial. You can add tags like `<title>`, `<meta>`, `<link>`, and `<script>` directly to the `<head>` in your layout component. The Astro docs recommend writting a single `<head>` tag in a layout component. See [using `<head>` in a component](https://docs.astro.build/en/guides/troubleshooting/#using-head-in-a-component).
+Adding tags to the `<head>` of an Astro project is fairly trivial. You can add tags like `<title>`, `<meta>`, `<link>`, and `<script>` directly to the `<head>` in your layout component. The Astro docs recommend writing a single `<head>` tag in a layout component. See [using `<head>` in a component](https://docs.astro.build/en/guides/troubleshooting/#using-head-in-a-component).
 
-One problem I had to solve soon after starting building this site in Astro, was how to get page specific head tags in to the head in the Layout component. There are two simple ways to achieve this:
+One problem I had to solve soon after starting building this site in Astro, was how to get page specific head tags into the head in the Layout component. There are two simple ways to achieve this:
 
 **1.** Use a [`<slot>`](https://docs.astro.build/en/basics/astro-components/#slots):
 
@@ -78,7 +78,7 @@ npm i astro-helmet
 `astro-helmet` can be used in a variety of ways, covering all use cases I could think of. There are two props that can be passed in to the component:
 
 - `headItems: HeadItems | HeadItems[]`
-- `options: Options`
+- [`options: Options`](#options)
 
 ### Basic example
 
@@ -293,11 +293,90 @@ This is the result added to the `<head>`:
 
 ## Controlling the order of tags
 
+By default, astro-helmet orders the head tags in a sensible way, based on the recommended `<head>` tag order in Harry Roberts' "Get Your Head Straight" talk. The default order is:
+
+| priority | item                                          |
+| -------- | --------------------------------------------- |
+| \-4      | `<meta charset="">`                           |
+| \-3      | `<meta name="viewport">`                      |
+| \-2      | `<base href="">`                              |
+| \-1      | `<meta http-equiv="">`                        |
+| 0        | `<title>`                                     |
+| 10       | `<link rel="preconnect" />`                   |
+| 20       | `<script src="" async></script>`              |
+| 30       | `<style>` where innerHTML.includes('@import') |
+| 40       | `<script>`                                    |
+| 50       | `<link rel="stylesheet" />`                   |
+| 60       | `<link rel="preload" />`                      |
+| 70       | `<script src="" defer></script>`              |
+| 80       | `<link rel="prefetch" />`                     |
+| 90       | remaining `<link>`                            |
+| 100      | remaining `<meta>`                            |
+| 110      | anything else                                 |
+
+You can override this default order by specifying a priority on any head item. For example:
+
+```ts
+const headItems = {
+  // priority 1 will move the script to just below the <title>
+  script: [{ src: '/scripts/importantScript.js', priority: 1 }]
+}
+```
+
+You can also provide a custom [`applyPriority`](#applypriority) function in the options to fully customise the tag order. See the Options section below for details.
+
 ## Options
+
+`astro-helmet` accepts an optional options prop which allows you to customise its behavior
+
+```ts
+interface Options {
+  omitHeadTags?: boolean
+  applyPriority?: (tag: Tag) => Required<Tag>
+}
+```
+
+#### `omitHeadTags`
+
+By default, `astro-helmet` will render the `<head>` opening and closing tags around the head items. Set this to true if you want it to only render the inner tags.
+
+#### `applyPriority`
+
+A function that takes a head tag and returns it with a priority property added. This allows you to fully customise the order of the rendered tags. See the [default implementation](https://github.com/ryan-voitiskis/astro-helmet/blob/master/src/main.ts#L105) for an example.
 
 ### Example with options
 
-## Conclusion
+Here's an example using both options:
+
+```astro title="src/layouts/Layout.astro"
+---
+import Helmet from 'astro-helmet'
+
+const headItems = { title: 'My Site Title' }
+
+function customPriority(tag) {
+  // Render meta tags before title
+  if (tag.tagName === 'meta') return { ...tag, priority: -1 }
+  // Render Open Graph meta tags last  
+  if (tag.property?.startsWith('og:')) return { ...tag, priority: 1000 }
+  // Otherwise, use default priority
+  return applyPriorityDefault(tag)
+}
+
+const options = { 
+  omitHeadTags: true,
+  applyPriority: customPriority
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <Helmet {headItems} {options} />
+  </head>
+  <body> ... </body>
+</html>
+```
 
 ## Appendix
 
@@ -322,9 +401,24 @@ type HeadItems = {
 	script?: ContentItem[]
 	noscript?: ContentItem[]
 }
+
+type TagName =
+	| 'title'
+	| 'base'
+	| 'meta'
+	| 'link'
+	| 'style'
+	| 'script'
+	| 'noscript'
+
+type Tag = (BaseItem | ContentItem) & {
+	tagName: TagName
+	priority?: number
+}
+
 ```
 
-### Other exisiting solutions
+### Other existing solutions
 
 - [astro-capo](https://github.com/natemoo-re/astro-capo)
 - [astro-head](https://github.com/zfben/astro-head)
