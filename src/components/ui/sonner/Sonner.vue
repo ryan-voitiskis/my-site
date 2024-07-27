@@ -11,7 +11,8 @@ const props = defineProps<ToasterProps>()
 		:toast-options="{
 			classes: {
 				toast:
-					'group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg',
+					'group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg justify-center !shadow-foreground/20 !text-xs',
+				title: '!font-[120] font-mono',
 				description: 'group-[.toast]:text-muted-foreground',
 				actionButton:
 					'group-[.toast]:bg-primary group-[.toast]:text-primary-foreground',

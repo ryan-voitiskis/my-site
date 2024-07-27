@@ -31,13 +31,24 @@ const headItems: HeadItems = {
 			</h1>
 		</div>
 		<div
-			class="mx-auto flex w-full flex-col items-center justify-center gap-8 pb-48 pt-12 md:flex-row"
+			class="mx-auto flex w-full flex-col items-center justify-center gap-8 pb-48 md:flex-row"
 		>
-			<div class="w-full max-w-64 text-sm text-muted-foreground">
+			<div
+				class="w-full max-w-64 pt-16 text-sm text-muted-foreground md:self-start"
+			>
 				<p class="mb-2">developer from melbourne, au</p>
 				<p class="mb-2">fullstack, mostly with js</p>
-				<a href="mailto:ryanvoitiskis@pm.me">ryanvoitiskis@pm.me</a>
+				<Button
+					id={'talk_to_me'}
+					variant="blank"
+					class="pl-0 font-sans font-medium"
+					aria-label="focus on name input field"
+				>
+					talk to me
+					<IconChevronsDown class="ml-1 mt-[1px] h-5 w-5 md:-rotate-90" />
+				</Button>
 			</div>
+			<ContactForm class="w-full max-w-screen-xs" client:only="vue" />
 		</div>
 	</main>
 </Layout>
