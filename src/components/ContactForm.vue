@@ -35,8 +35,9 @@ const onSubmit = form.handleSubmit(async (values) => {
 	formData.append('message', values.message)
 	const res = await fetch('/', {
 		method: 'POST',
-		headers: { 'Content-Type': 'multipart/form-data' },
-		body: formData
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+		// @ts-ignore
+		body: new URLSearchParams(formData).toString()
 	})
 	if (res.ok) {
 		toast.success(`thanks for getting in touch ${values.name}!`)
