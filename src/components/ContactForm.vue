@@ -21,7 +21,7 @@ const formSchema = toTypedSchema(
 	z.object({
 		name: z.string().trim().min(2).max(100),
 		email: z.string().trim().email().max(420),
-		message: z.string().trim().min(8).max(9000)
+		message: z.string().trim().min(10).max(9000)
 	})
 )
 
@@ -101,7 +101,7 @@ const showMessageError = computed(() => form.isFieldTouched('message'))
 			</FormItem>
 		</FormField>
 
-		<Button type="submit" class="my-4">submit</Button>3
+		<Button type="submit" class="my-4">submit</Button>
 		<Toaster position="bottom-center" />
 	</form>
 </template>
