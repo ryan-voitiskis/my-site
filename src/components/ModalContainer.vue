@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineModel, onBeforeUnmount, watchEffect } from 'vue'
+import { onBeforeUnmount, watchEffect } from 'vue'
 
 const show = defineModel({
 	default: false,

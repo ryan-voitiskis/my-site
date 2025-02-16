@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type PropType, defineProps, nextTick, onMounted, ref } from 'vue'
+import { type PropType, nextTick, onMounted, ref } from 'vue'
 
 import IconCrossCircle from '@/components/icons/IconCrossCircle.vue'
 import { Button } from '@/components/ui/button'
