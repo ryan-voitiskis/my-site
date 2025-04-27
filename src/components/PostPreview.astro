@@ -17,7 +17,7 @@ const { post, index } = Astro.props
 	href={`/blog/${post.slug}`}
 	tabindex="0"
 	class:list={[
-		'group flex h-auto w-full flex-col gap-12 overflow-hidden rounded-none border-b p-0 py-12 font-mono text-md font-normal text-foreground transition-colors duration-420 hover:no-underline focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring sm:flex-row',
+		'group text-md text-foreground focus-visible:ring-ring flex h-auto w-full flex-col gap-12 overflow-hidden rounded-none border-b p-0 py-12 font-mono font-normal transition-colors duration-420 hover:no-underline focus-visible:ring-4 focus-visible:outline-hidden sm:flex-row',
 		!post.data.cover && !post.data.coverAlt && 'md:px-24'
 	]}
 >
@@ -38,7 +38,7 @@ const { post, index } = Astro.props
 		class="flex w-full flex-col items-start gap-4 lg:flex-row lg:!items-center lg:justify-items-start lg:gap-12"
 	>
 		<table
-			class="clean mb-0 h-fit w-[260px] shrink-0 font-mono text-xs text-muted-foreground"
+			class="clean text-muted-foreground mb-0 h-fit w-[260px] shrink-0 font-mono text-xs"
 		>
 			<tbody>
 				<tr>
@@ -63,7 +63,7 @@ const { post, index } = Astro.props
 		</table>
 		<div class="w-full font-sans">
 			<h2
-				class="mb-4 text-pretty underline decoration-transparent transition duration-100 group-hover:decoration-heading-text group-focus:decoration-heading-text"
+				class="group-hover:decoration-heading-text group-focus:decoration-heading-text mb-4 text-pretty underline decoration-transparent transition duration-100"
 			>
 				{post.data.title}
 			</h2>

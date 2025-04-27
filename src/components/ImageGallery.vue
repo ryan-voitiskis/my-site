@@ -42,7 +42,7 @@ onMounted(() => {
 </script>
 
 <template>
-	<p class="text-center text-sm italic text-muted-foreground">
+	<p class="text-muted-foreground text-center text-sm italic">
 		click an image to view fullsize
 	</p>
 	<div
@@ -75,7 +75,7 @@ onMounted(() => {
 		>
 			<IconCrossCircle class="h-16 w-16" />
 		</Button>
-		<Carousel ref="carouselContainerRef" tabindex="-1" class="outline-none">
+		<Carousel ref="carouselContainerRef" tabindex="-1" class="outline-hidden">
 			<CarouselContent>
 				<CarouselItem v-for="image in gallery" :key="image.full.src">
 					<img
@@ -88,7 +88,7 @@ onMounted(() => {
 			<div class="my-4 flex justify-center">
 				<CarouselPrevious variant="modal" />
 				<div
-					class="flex w-32 select-none items-center justify-center text-center font-mono text-2xl font-semibold text-yellow-100"
+					class="flex w-32 items-center justify-center text-center font-mono text-2xl font-semibold text-yellow-100 select-none"
 				>
 					{{ current }} / {{ gallery.length }}
 				</div>

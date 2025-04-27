@@ -96,11 +96,11 @@ if (lcp)
 	<main class="w-full">
 		<article
 			style={`max-width: ${entry.data.maxWidth ? entry.data.maxWidth + 32 : 608}px;`}
-			class="mx-auto w-full px-4 pb-48 text-md"
+			class="text-md mx-auto w-full px-4 pb-48"
 		>
 			<h1 class="text-balance">{entry.data.title}</h1>
 			<table
-				class="clean ml-2 border-l-4 border-l-secondary font-mono text-xs text-muted-foreground sm:ml-6"
+				class="clean border-l-secondary text-muted-foreground ml-2 border-l-4 font-mono text-xs sm:ml-6"
 			>
 				<tbody>
 					{
@@ -134,7 +134,7 @@ if (lcp)
 			<Content />
 			<a
 				href="/blog"
-				class="mx-auto my-16 flex h-9 w-fit items-center justify-center whitespace-nowrap rounded-md border px-4 py-2 font-mono text-sm font-[120] text-primary shadow-sm transition-colors duration-420 hover:border-primary hover:bg-foreground/10 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+				class="text-primary hover:border-primary hover:bg-foreground/10 focus-visible:ring-ring mx-auto my-16 flex h-9 w-fit items-center justify-center rounded-md border px-4 py-2 font-mono text-sm font-[120] whitespace-nowrap shadow-xs transition-colors duration-420 hover:no-underline focus-visible:ring-2 focus-visible:outline-hidden"
 				>back to other posts</a
 			>
 		</article>

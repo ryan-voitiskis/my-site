@@ -3,22 +3,22 @@ import { type VariantProps, cva } from 'class-variance-authority'
 export { default as Button } from './Button.vue'
 
 export const buttonVariants = cva(
-	'inline-flex items-center justify-center whitespace-nowrap rounded-md font-mono text-sm font-[120] transition-colors duration-420 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
+	'focus-visible:ring-ring inline-flex items-center justify-center rounded-md font-mono text-sm font-[120] whitespace-nowrap transition-colors duration-420 focus-visible:ring-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50',
 	{
 		variants: {
 			variant: {
 				default:
-					'bg-primary text-primary-foreground shadow hover:bg-primary/80',
+					'bg-primary text-primary-foreground hover:bg-primary/80 shadow-sm',
 				destructive:
-					'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90',
+					'bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-xs',
 				outline:
-					'border text-primary shadow-sm hover:border-primary hover:bg-foreground/10 hover:no-underline',
+					'text-primary hover:border-primary hover:bg-foreground/10 border shadow-xs hover:no-underline',
 				secondary:
-					'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
+					'bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-xs',
 				ghost: 'hover:bg-accent hover:text-accent-foreground',
 				link: 'text-primary underline-offset-4 hover:underline',
 				'nav-link':
-					'font-[130] text-foreground hover:bg-vmuted dark:text-secondary',
+					'text-foreground hover:bg-vmuted dark:text-secondary font-[130]',
 				blank: 'whitespace-normal',
 				image: 'focus-visible:ring-8'
 			},

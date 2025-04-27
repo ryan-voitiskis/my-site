@@ -29,7 +29,7 @@ const { validationListeners } = useValidation(() => props.name)
 		v-model="modelValue"
 		:class="
 			cn(
-				'flex min-h-[128px] w-full rounded-md border border-input bg-white/30 px-3 py-2 text-sm shadow-sm transition-colors duration-420 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 dark:bg-muted',
+				'border-muted placeholder:text-muted-foreground focus-visible:ring-ring bg-input flex min-h-[128px] w-full rounded-md border px-3 py-2 text-sm shadow-xs transition-colors duration-420 focus-visible:ring-1 focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-50',
 				props.class
 			)
 		"

@@ -39,7 +39,7 @@ watchEffect(() => {
 
 <template>
 	<div
-		class="fixed left-0 top-0 flex h-full w-full items-center justify-center bg-backdrop backdrop-blur"
+		class="bg-backdrop fixed top-0 left-0 flex h-full w-full items-center justify-center backdrop-blur-sm"
 		:class="{ invisible: !show }"
 		:style="{ zIndex: show ? '50' : '-1' }"
 		@click.self="show = false"

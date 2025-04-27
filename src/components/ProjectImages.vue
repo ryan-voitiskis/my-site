@@ -12,9 +12,7 @@ defineProps<{ images: OptimisedImage[] }>()
 </script>
 
 <template>
-	<Carousel
-		class="max-w-screen-xs focus-visible:!ring-8 focus-visible:ring-ring"
-	>
+	<Carousel class="focus-visible:ring-ring max-w-[475px] focus-visible:!ring-8">
 		<CarouselContent>
 			<CarouselItem v-for="(image, i) in images" :key="i">
 				<img

@@ -26,7 +26,7 @@ const headItems: HeadItems = {
 <Layout {headItems} navItem="about">
 	<main class="mx-auto w-full px-4 pb-48">
 		<div class="mx-auto w-full max-w-[1120px] px-4">
-			<h1 class="font-mono text-sm font-[120] text-muted-foreground">
+			<h1 class="text-muted-foreground font-mono text-sm font-[120]">
 				> ryan_voitiskis
 			</h1>
 		</div>
@@ -34,7 +34,7 @@ const headItems: HeadItems = {
 			class="mx-auto flex w-full flex-col items-center justify-center gap-8 pb-48 md:flex-row"
 		>
 			<div
-				class="w-full max-w-64 pt-16 text-sm text-muted-foreground md:self-start"
+				class="text-muted-foreground w-full max-w-64 pt-16 text-sm md:self-start"
 			>
 				<p class="mb-2">developer from melbourne, au</p>
 				<p class="mb-2">fullstack, mostly with js</p>
@@ -45,10 +45,10 @@ const headItems: HeadItems = {
 					aria-label="focus on name input field"
 				>
 					talk to me
-					<IconChevronsDown class="ml-1 mt-[1px] h-5 w-5 md:-rotate-90" />
+					<IconChevronsDown class="mt-[1px] ml-1 h-5 w-5 md:-rotate-90" />
 				</Button>
 			</div>
-			<ContactForm class="w-full max-w-screen-xs" client:only="vue" />
+			<ContactForm class="w-full max-w-[475px]" client:only="vue" />
 		</div>
 	</main>
 </Layout>

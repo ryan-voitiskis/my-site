@@ -35,7 +35,7 @@
 	--destructive-foreground: hsl(60 9.1% 97.8%);
 
 	--border: hsl(20 5.9% 84%);
-	--input: var(--muted);
+	--input: hsl(45, 22%, 98%);
 	--ring: hsl(338 75% 73%);
 
 	--radius: 0.5rem;
@@ -78,10 +78,10 @@
 	--destructive-foreground: hsl(60 9.1% 97.8%);
 
 	--border: hsl(217 10% 32%);
-	--input: var(--muted);
+	--input: hsl(216 15% 19%);
 	--ring: hsl(169 100% 60%);
 
-	--hr: 0, 0%, 60%;
+	--hr: hsl(0 0% 60%);
 	--heading-text: var(--secondary);
 	--selection: hsla(40, 100%, 79%, 0.6);
 	--code-selection: hsl(216 15% 36%);

@@ -11,7 +11,7 @@ const { href, label, current } = Astro.props
 <a
 	{href}
 	class:list={[
-		'-my-4 inline-flex h-9 items-center justify-center whitespace-nowrap rounded-md px-4 py-2 font-mono text-sm font-[130] text-foreground !decoration-primary !decoration-[0.1rem] transition-colors duration-420 hover:bg-vmuted hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 dark:text-secondary',
+		'text-foreground !decoration-primary hover:bg-vmuted focus-visible:ring-ring dark:text-secondary -my-4 inline-flex h-9 items-center justify-center rounded-md px-4 py-2 font-mono text-sm font-[130] whitespace-nowrap !decoration-[0.1rem] transition-colors duration-420 hover:no-underline focus-visible:ring-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50',
 		{ underline: label === current }
 	]}
 >
