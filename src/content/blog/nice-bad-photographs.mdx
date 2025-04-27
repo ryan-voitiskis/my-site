@@ -1,0 +1,38 @@
+---
+title: Nice bad photographs
+format: image_collection
+published: '2025-04-27'
+short: Lenses can see the feelings better than the eye.
+cover: ../../assets/posts/nice-bad-photographs/000061.JPG
+coverAlt: An inaccurate photograph
+maxWidth: 1120
+tags: ['photographs']
+---
+
+import { Image, getImage } from 'astro:assets'
+
+import { optimiseGallery } from '@/lib/image'
+
+import ImageGallery from '@/components/ImageGallery.vue'
+
+import img000001 from '@/assets/posts/nice-bad-photographs/000001.JPG'
+import img000012 from '@/assets/posts/nice-bad-photographs/000012.JPG'
+import img000021 from '@/assets/posts/nice-bad-photographs/000021.JPG'
+import img000027 from '@/assets/posts/nice-bad-photographs/000027.JPG'
+import img000036 from '@/assets/posts/nice-bad-photographs/000036.JPG'
+import img000043 from '@/assets/posts/nice-bad-photographs/000043.JPG'
+import img000061 from '@/assets/posts/nice-bad-photographs/000061.JPG'
+
+export const alt = `An inaccurate photograph.`
+
+export const optimisedGallery = await optimiseGallery([
+	{ src: img000001, alt, isLCP: true },
+	{ src: img000012, alt },
+	{ src: img000021, alt },
+	{ src: img000027, alt },
+	{ src: img000036, alt },
+	{ src: img000043, alt },
+	{ src: img000061, alt }
+])
+
+<ImageGallery gallery={optimisedGallery} client:load />

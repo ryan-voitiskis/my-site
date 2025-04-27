@@ -53,14 +53,22 @@ onMounted(() => {
 			v-for="(image, i) in gallery"
 			variant="image"
 			size="image"
-			class="hover-sepia-invert overflow-hidden transition duration-300"
+			:class="[
+				'hover-sepia-invert overflow-hidden bg-black transition duration-300',
+				{
+					'aspect-[1/1]':
+						image.preview.options.width &&
+						image.preview.options.height &&
+						image.preview.options.width < image.preview.options.height
+				}
+			]"
 			aria-label="Open image in modal"
 			@click="openInModal(i)"
 		>
 			<img
 				:srcset="image.preview.srcSet.attribute"
 				v-bind="image.preview.attributes"
-				class="h-full w-full object-cover"
+				class="h-full w-full object-contain"
 			/>
 		</Button>
 	</div>
