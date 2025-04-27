@@ -1,0 +1,54 @@
+---
+title: Autumn on Ektar 100
+format: image_collection
+published: '2025-04-27'
+short: Photographs of Melbourne on an Autumn afternoon.
+cover: ../../assets/posts/ektar-100-0/000046.JPG
+coverAlt: Photograph of Melbourne AU on Ektar 100, SMC Pentax-M 50mm F2
+maxWidth: 1120
+tags: ['photographs']
+---
+
+import { Image, getImage } from 'astro:assets'
+
+import { optimiseGallery } from '@/lib/image'
+
+import ImageGallery from '@/components/ImageGallery.vue'
+
+import img000006 from '@/assets/posts/ektar-100-0/000006.JPG'
+import img000007 from '@/assets/posts/ektar-100-0/000007.JPG'
+import img000009 from '@/assets/posts/ektar-100-0/000009.JPG'
+import img000011 from '@/assets/posts/ektar-100-0/000011.JPG'
+import img000013 from '@/assets/posts/ektar-100-0/000013.JPG'
+import img000016 from '@/assets/posts/ektar-100-0/000016.JPG'
+import img000022 from '@/assets/posts/ektar-100-0/000022.JPG'
+import img000023 from '@/assets/posts/ektar-100-0/000023.JPG'
+import img000024 from '@/assets/posts/ektar-100-0/000024.JPG'
+import img000026 from '@/assets/posts/ektar-100-0/000026.JPG'
+import img000034 from '@/assets/posts/ektar-100-0/000034.JPG'
+import img000040 from '@/assets/posts/ektar-100-0/000040.JPG'
+import img000046 from '@/assets/posts/ektar-100-0/000046.JPG'
+
+export const alt = `Photograph of Melbourne AU on Ektar 100, SMC Pentax-M 50mm F2`
+
+export const optimisedGallery = await optimiseGallery([
+	{ src: img000006, alt, isLCP: true },
+	{ src: img000007, alt },
+	{ src: img000009, alt },
+	{ src: img000011, alt },
+	{ src: img000013, alt },
+	{ src: img000016, alt },
+	{ src: img000022, alt },
+	{ src: img000023, alt },
+	{ src: img000024, alt },
+	{ src: img000026, alt },
+	{ src: img000034, alt },
+	{ src: img000040, alt },
+	{ src: img000046, alt }
+])
+
+<div class="text-center text-sm">
+	Ektar 100, SMC Pentax-M 50mm F2, Melbourne AU
+</div>
+
+<ImageGallery gallery={optimisedGallery} client:load />
