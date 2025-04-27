@@ -1,0 +1,74 @@
+* {
+	border-color: var(--color-border);
+}
+
+body {
+	background-color: var(--color-background);
+	color: var(--color-foreground);
+
+	/* required to fix https://github.com/radix-ui/primitives/issues/1925 */
+	padding-right: 0 !important;
+}
+
+*,
+*:before,
+*:after {
+	transition:
+		background-color 160ms,
+		background 160ms,
+		color 160ms;
+}
+
+.hover-sepia-invert:hover {
+	filter: sepia(1) invert(1);
+}
+
+::selection {
+	background: var(--selection);
+}
+
+/* Remove the default autofill styles in Chrome */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+/* inline code */
+:not(pre) > code {
+	font-size: 14px;
+	font-weight: 130;
+	line-height: 1rem;
+	display: inline;
+	border: 1px solid hsl(var(--vmuted));
+	padding: 2px 6px;
+	border-radius: 4px;
+	background: hsl(var(--muted));
+}
+
+a code,
+code a {
+	color: hsl(var(--primary-on-vmuted)); /* accessibility fix */
+}
+
+/* this is the least compromise solution
+webkit scrollbar either causes a layout shift or
+if scrollbar-gutter: stable - gutter has wrong colour in header
+so get rid of it until browsers fix it */
+::-webkit-scrollbar {
+	width: 0 !important;
+}
+
+/**
+NOTE: style rules to disable "auto-scrolling" animation when transitioning to another Astro page. Needs to be global.
+See: https://github.com/withastro/roadmap/discussions/770#discussioncomment-8362528
+
+::view-transition-group(*) {
+	animation: none;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation: none;
+}
+*/

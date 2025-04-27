@@ -1,6 +1,5 @@
 ---
-import '@/styles/main.scss'
-
+import '@/styles/main.css'
 import ButtonLink from '@/components/ButtonLink.astro'
 import ThemeToggle from '@/components/ThemeToggle.vue'
 import Helmet from 'astro-helmet'
@@ -42,7 +41,7 @@ const { headItems: pageHeadItems, navItem } = Astro.props
 	<Helmet headItems={[layoutHeadItems, pageHeadItems]} />
 	<body>
 		<header
-			class="flex h-14 w-full justify-between border-b bg-muted transition-colors duration-420"
+			class="bg-muted flex h-14 w-full justify-between border-b transition-colors duration-420"
 		>
 			<div
 				class="mx-auto flex w-full max-w-[1120px] flex-row items-center justify-between p-4"
@@ -57,7 +56,7 @@ const { headItems: pageHeadItems, navItem } = Astro.props
 		</header>
 
 		<div
-			class="min-h-[calc(100vh_-_56px)] bg-background pt-8 transition-colors duration-420"
+			class="bg-background min-h-[calc(100vh_-_56px)] pt-8 transition-colors duration-420"
 		>
 			<!-- root node of slot should be <main> for semantic purpose -->
 			<slot />

@@ -1,0 +1,28 @@
+/*
+Used by shadcn-vue accordion.
+This was appropriated for tailwind v4 and is no longer in the tailwind config.
+https://www.shadcn-vue.com/docs/components/accordion.html#update-tailwind-config-js
+*/
+
+@theme {
+	--animate-accordion-down: accordion-down 0.2s ease-out;
+	--animate-accordion-up: accordion-up 0.2s ease-out;
+
+	@keyframes accordion-down {
+		from {
+			height: 0;
+		}
+		to {
+			height: var(--radix-accordion-content-height);
+		}
+	}
+
+	@keyframes accordion-up {
+		from {
+			height: var(--radix-accordion-content-height);
+		}
+		to {
+			height: 0;
+		}
+	}
+}

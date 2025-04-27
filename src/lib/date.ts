@@ -5,12 +5,14 @@ const dateOptions: Intl.DateTimeFormatOptions = {
 	day: 'numeric'
 }
 
+/*
 const timeOptions: Intl.DateTimeFormatOptions = {
 	timeZone: 'Australia/Melbourne',
 	hour: '2-digit',
 	minute: '2-digit',
 	hour12: true
 }
+*/
 
 export function dateStringToLocale(date: string): string {
 	const isoDate = new Date(date)

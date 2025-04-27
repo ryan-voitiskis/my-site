@@ -1,8 +1,8 @@
 import mdx from '@astrojs/mdx'
 import netlify from '@astrojs/netlify'
 import sitemap from '@astrojs/sitemap'
-import tailwind from '@astrojs/tailwind'
 import vue from '@astrojs/vue'
+import tailwindcss from '@tailwindcss/vite'
 import expressiveCode from 'astro-expressive-code'
 import { defineConfig } from 'astro/config'
 
@@ -10,14 +10,15 @@ import githubLightCustom from './themes/github-light-custom.json'
 
 export default defineConfig({
 	site: 'https://ryanvoitiskis.com/',
-	prefetch: {
-		prefetchAll: true
+	output: 'static',
+	trailingSlash: 'never',
+	prefetch: { prefetchAll: true },
+	adapter: netlify(),
+	vite: {
+		plugins: [tailwindcss()]
 	},
 	integrations: [
 		vue(),
-		tailwind({
-			applyBaseStyles: false
-		}),
 		expressiveCode({
 			themes: [githubLightCustom, 'github-dark'],
 			themeCssSelector: (theme) =>
@@ -52,7 +53,6 @@ export default defineConfig({
 		mdx(),
 		sitemap()
 	],
-	output: 'static',
 	markdown: {
 		shikiConfig: {
 			themes: {
@@ -60,6 +60,5 @@ export default defineConfig({
 				dark: 'github-dark' // TODO: custom dark
 			}
 		}
-	},
-	adapter: netlify()
+	}
 })

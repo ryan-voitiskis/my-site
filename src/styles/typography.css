@@ -1,0 +1,181 @@
+html {
+	font-size: 16px; /* 1rem = 16px */
+	body {
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+		font-family: var(--sans-serif-font);
+		font-size: 1.125rem; /* 18px */
+		line-height: 1.5em;
+		font-weight: 400;
+		margin: 0;
+	}
+}
+
+h1,
+h1 a,
+h2,
+h2 a,
+h3,
+h3 a,
+h4,
+h4 a {
+	line-height: 1.3;
+	color: hsl(var(--heading-text));
+	font-family: Inter, sans-serif;
+	font-weight: 500;
+	letter-spacing: 0.0625rem;
+	margin-top: 0;
+	text-wrap: balance;
+	a {
+		text-decoration: none;
+	}
+}
+
+h1,
+h1 a {
+	font-size: 2.25rem;
+	font-weight: 600;
+	margin-bottom: 1rem;
+}
+
+h2,
+h2 a {
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+}
+
+h3,
+h3 a {
+	font-size: 1.4rem;
+	margin-bottom: 0.5rem;
+}
+
+h4,
+h4 a {
+	font-size: 1.3rem;
+	margin-bottom: 0.25rem;
+}
+
+@media screen and (max-width: 768px) {
+	h1 {
+		font-size: 1.75rem;
+	}
+	h2 {
+		font-size: 1.3rem;
+	}
+	h3 {
+		font-size: 1.5rem;
+	}
+	h4 {
+		font-size: 1.5rem;
+	}
+}
+
+a {
+	color: hsl(var(--primary));
+	text-decoration: none;
+	font-weight: 500;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+ul {
+	margin-left: 2rem;
+	list-style-type: disc;
+}
+
+ol {
+	list-style: decimal inside;
+}
+
+ol,
+ul {
+	padding-left: 0;
+	margin-top: 0;
+	li::marker {
+		color: hsl(var(--heading-text));
+	}
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+	margin: 15px 0 15px 30px;
+	font-size: 90%;
+}
+
+li {
+	margin-bottom: 8px;
+}
+
+dl,
+figure,
+table,
+p,
+ul,
+ol,
+form,
+.expressive-code {
+	margin-bottom: 24px;
+}
+
+p:has(+ ul),
+p:has(+ ol) {
+	margin-bottom: 8px;
+}
+
+hr {
+	width: 100%; /* flex compatability */
+	margin: 16px 0;
+	border-width: 0;
+	border-top: 1px solid hsl(var(--hr));
+}
+
+th {
+	font-weight: 500;
+}
+
+th,
+td {
+	padding: 12px 15px;
+	text-align: left;
+	border-bottom: 1px solid hsl(var(--border));
+}
+
+table.clean td,
+table.clean th {
+	border: none;
+	padding: 0 8px;
+}
+
+table.clean th:first-child,
+table.clean td:first-child,
+th:first-child,
+td:first-child {
+	padding-left: 0;
+}
+
+table.clean th:last-child,
+table.clean td:last-child,
+th:last-child,
+td:last-child {
+	padding-right: 0;
+}
+
+blockquote {
+	margin-bottom: 24px;
+	padding-left: 16px;
+	color: hsl(var(--muted-foreground));
+	border-left: 4px solid hsl(var(--secondary));
+	font-style: italic;
+	p {
+		margin: 0;
+	}
+	/* inline code */
+	:not(pre) > code {
+		color: hsl(var(--foreground));
+	}
+}
