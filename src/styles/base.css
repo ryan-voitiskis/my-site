@@ -41,15 +41,15 @@ input:-webkit-autofill:active {
 	font-weight: 130;
 	line-height: 1rem;
 	display: inline;
-	border: 1px solid hsl(var(--vmuted));
+	border: 1px solid var(--vmuted);
 	padding: 2px 6px;
 	border-radius: 4px;
-	background: hsl(var(--muted));
+	background: var(--muted);
 }
 
 a code,
 code a {
-	color: hsl(var(--primary-on-vmuted)); /* accessibility fix */
+	color: var(--primary-on-vmuted); /* accessibility fix */
 }
 
 /* this is the least compromise solution

@@ -25,7 +25,7 @@ export default defineConfig({
 				`[class="${theme.name === 'github-dark' ? 'dark' : 'light'}"]`,
 			useDarkModeMediaQuery: false,
 			styleOverrides: {
-				borderColor: 'hsl(var(--border))',
+				borderColor: 'var(--border)',
 				borderRadius: '8px',
 				borderWidth: '1px',
 				codeFontFamily: 'BerkeleyMono, monospace',
@@ -36,16 +36,16 @@ export default defineConfig({
 				frames: {
 					editorActiveTabBackground: ({ theme }) =>
 						theme.colors['editor.background'],
-					editorTabBarBorderBottomColor: 'hsl(var(--border))',
-					editorTabBarBackground: 'hsl(var(--vmuted))',
+					editorTabBarBorderBottomColor: 'var(--border)',
+					editorTabBarBackground: 'var(--vmuted)',
 					editorActiveTabIndicatorTopColor: 'transparent',
 					editorActiveTabIndicatorBottomColor: ({ theme }) =>
 						theme.colors['editor.background'],
 					terminalBackground: ({ theme }) => theme.colors['editor.background'],
-					terminalTitlebarBackground: 'hsl(var(--vmuted))',
-					terminalTitlebarBorderBottomColor: 'hsl(var(--border))',
-					tooltipSuccessBackground: 'hsl(var(--primary))',
-					tooltipSuccessForeground: 'hsl(var(--primary-foreground))',
+					terminalTitlebarBackground: 'var(--vmuted)',
+					terminalTitlebarBorderBottomColor: 'var(--border)',
+					tooltipSuccessBackground: 'var(--primary)',
+					tooltipSuccessForeground: 'var(--primary-foreground)',
 					frameBoxShadowCssValue: 'none'
 				}
 			}
